@@ -58,8 +58,6 @@ namespace SCTAttendanceSystemUI
                     {
                         if (reader.Read())
                         {
-                            // Login successful
-                            MessageBox.Show("Login successful!");
 
                             this.Hide();
                             FormEmployeeDashboard empDashboard = new FormEmployeeDashboard(name);

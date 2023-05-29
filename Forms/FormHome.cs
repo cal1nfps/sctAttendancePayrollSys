@@ -1,25 +1,25 @@
-﻿using ExcelDataReader;
-using Microsoft.Graph;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
+using MySql.Data.MySqlClient;
+using SCTAttendanceSystemUI.Forms.filterAttendance;
+
 
 
 namespace SCTAttendanceSystemUI.Forms
 {
     public partial class FormHome : Form
     {
+        private MySqlConnection connection;
+        private MySqlDataAdapter adapter;
+        private DataTable table;
 
         public FormHome()
         {
             InitializeComponent();
+            string connectionString = "server=localhost;user=root;password=root;database=payrollsys";
+            connection = new MySqlConnection(connectionString);
             //MessageBox.Show("Please enter your chosen excel file and choose a sheet. Thank you!", "To proceed to Home", MessageBoxButtons.OK);
         }
 
@@ -437,6 +437,200 @@ namespace SCTAttendanceSystemUI.Forms
         private void FormHome_Load_1(object sender, EventArgs e)
         {
             labelDashboardDate.Text = DateTime.Now.ToLongDateString();
+            {
+
+                adapter = new MySqlDataAdapter("SELECT * FROM empattendance", connection);
+
+
+                // Create a DataTable to hold the data
+                table = new DataTable();
+
+                // Fill the DataTable with the data retrieved by the adapter
+                adapter.Fill(table);
+
+
+                // Set the DataSource of the DataGridView to the DataTable
+                dataGridView1.DataSource = table;
+
+                dataGridView1.Columns[0].Width = 40;
+                dataGridView1.Columns[1].Width = 150;
+                dataGridView1.Columns[2].Width = 40;
+
+                //reader.Close();
+                connection.Close();
+            }
+        }
+
+        private void sortComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedItem = sortComboBox.SelectedItem.ToString();   //Selected combobox item
+
+
+
+            //SORTS THE COLUMN 'EMPLOYEE_NUMBER'
+            if (selectedItem == "Lowest - Highest")
+            {
+                dataGridView1.Sort(dataGridView1.Columns["empnum"], ListSortDirection.Ascending);    //Sorts the selected column 'Employee_Number' to Ascending    
+            }
+
+
+            if (selectedItem == "Highest - Lowest")
+            {
+                dataGridView1.Sort(dataGridView1.Columns["empnum"], ListSortDirection.Descending);   //Sorts the selected column 'Employee_Number' to Descending
+            }
+        }
+
+        private void sortENcomboBox_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            string selectedItem = sortENcomboBox.SelectedItem.ToString();   //Selected combobox item
+
+
+
+            //SORTS THE COLUMN 'EMPLOYEE_NUMBER'
+            if (selectedItem == "A - Z")
+            {
+                dataGridView1.Sort(dataGridView1.Columns["name"], ListSortDirection.Ascending);    //Sorts the selected column 'Employee_Number' to Ascending    
+            }
+
+
+            if (selectedItem == "Z - A")
+            {
+                dataGridView1.Sort(dataGridView1.Columns["name"], ListSortDirection.Descending);   //Sorts the selected column 'Employee_Number' to Descending
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            // APPLY FILTER
+            // Create an instance of the second form
+            filterAttendanceButton filterForm = new filterAttendanceButton();
+
+            // Show the second form as a dialog and wait for it to close
+            DialogResult result = filterForm.ShowDialog();
+
+            // Check if the user clicked the OK button
+            if (result == DialogResult.OK)
+            {
+                // Get the selected values from the comboboxes in the second form
+                string occupation = filterForm.filterComboBox.SelectedItem?.ToString();
+                string department = filterForm.comboBox2.SelectedItem?.ToString();
+                string month = filterForm.comboBox1.SelectedItem?.ToString();
+
+                // Check if at least one combobox is selected
+                if (string.IsNullOrWhiteSpace(occupation) && string.IsNullOrWhiteSpace(department) && string.IsNullOrWhiteSpace(month))
+                {
+                    MessageBox.Show("Please select at least one filter option.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    // Apply the filters to the datagridview
+                    string filter = "";
+
+                    if (!string.IsNullOrWhiteSpace(occupation))
+                    {
+                        filter += $"[occupation] = '{occupation}'";
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(department))
+                    {
+                        if (!string.IsNullOrWhiteSpace(filter))
+                        {
+                            filter += " AND ";
+                        }
+
+                        filter += $"[department] = '{department}'";
+                    }
+
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        if (row.Cells[4].Value != null)
+                        {
+                            DateTime dateValue;
+                            if (DateTime.TryParseExact(row.Cells[4].Value.ToString(), "MMMM dd, yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out dateValue))
+                            {
+                                if (dateValue.ToString("MMMM") == month)
+                                {
+                                    dataGridView1.Rows.Add(row.Cells.Cast<DataGridViewCell>().ToArray());
+                                }
+                            }
+                        }
+                    }
+
+
+                    (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = filter;
+                }
+            }
+        }
+
+
+        private void dataGridView1_CellFormatting_1(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Check if the current cell belongs to the "DateColumn" and has a datetime value
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "date" && e.Value != null && e.Value is DateTime)
+            {
+                // Format the datetime value to the desired format
+                DateTime dateValue = (DateTime)e.Value;
+                e.Value = dateValue.ToString("MMMM dd, yyyy");
+                e.FormattingApplied = true;
+            }
+
+            // Check if the current cell belongs to the "DateColumn" and has a datetime value
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "timein" && e.Value != null && e.Value is DateTime)
+            {
+                // Format the datetime value to the desired format
+                DateTime dateValue = (DateTime)e.Value;
+                e.Value = dateValue.ToString("hh:mm:ss tt");
+                e.FormattingApplied = true;
+            }
+
+            // Check if the current cell belongs to the "DateColumn" and has a datetime value
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "timeout" && e.Value != null && e.Value is DateTime)
+            {
+                // Format the datetime value to the desired format
+                DateTime dateValue = (DateTime)e.Value;
+                e.Value = dateValue.ToString("hh:mm:ss tt");
+                e.FormattingApplied = true;
+            }
+            // Check if the current cell belongs to the "DateColumn" and has a datetime value
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "totalhours" && e.Value != null && e.Value is DateTime)
+            {
+                // Format the datetime value to the desired format
+                DateTime dateValue = (DateTime)e.Value;
+                e.Value = dateValue.ToString("hh:mm:ss tt");
+                e.FormattingApplied = true;
+            }
+        }
+
+
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            // Check if the value changed occurred in either Time-In or Time-Out column
+            if (e.ColumnIndex == dataGridView1.Columns["timein"].Index || e.ColumnIndex == dataGridView1.Columns["timeout"].Index)
+            {
+                // Get the corresponding row
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+                // Get the values of Time-In and Time-Out columns
+                string timeIn = row.Cells["timein"].Value?.ToString();
+                string timeOut = row.Cells["timeout"].Value?.ToString();
+
+                // Check if both Time-In and Time-Out values are not empty
+                if (!string.IsNullOrEmpty(timeIn) && !string.IsNullOrEmpty(timeOut))
+                {
+                    // Parse the time values
+                    DateTime timeInValue = DateTime.Parse(timeIn);
+                    DateTime timeOutValue = DateTime.Parse(timeOut);
+
+                    // Calculate the total hours
+                    TimeSpan totalHours = timeOutValue - timeInValue;
+
+                    // Set the value of Total Hours column
+                    row.Cells["totalhours"].Value = totalHours.TotalHours.ToString();
+
+                    // Optionally, you can store the Total Hours value in MySQL Workbench here
+                    // ...
+                }
+            }
         }
     }
 }

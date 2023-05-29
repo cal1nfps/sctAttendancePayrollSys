@@ -1,5 +1,4 @@
-﻿using Microsoft.Office.Interop.Excel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SCTAttendanceSystemUI.Forms.filterButton
+namespace SCTAttendanceSystemUI.Forms.filterAttendance
 {
-    public partial class filterForm : Form
+    public partial class filterAttendanceButton : Form
     {
-        public filterForm()
+        public filterAttendanceButton()
         {
             InitializeComponent();
-        }
-
-        private void cancelButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -29,15 +23,24 @@ namespace SCTAttendanceSystemUI.Forms.filterButton
             this.DialogResult = DialogResult.OK;
         }
 
-
         private void button2_Click(object sender, EventArgs e)
         {
             //CLEAR BUTTON
-            DataGridView dataGridView1 = System.Windows.Forms.Application.OpenForms["FormEmployeeList"].Controls["dataGridView1"] as DataGridView;
+            DataGridView dataGridView1 = System.Windows.Forms.Application.OpenForms["FormHome"].Controls["dataGridView1"] as DataGridView;
             if (dataGridView1 != null)
             {
                 (dataGridView1.DataSource as System.Data.DataTable).DefaultView.RowFilter = string.Empty;
             }
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

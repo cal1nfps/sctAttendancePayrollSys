@@ -45,6 +45,16 @@ namespace SCTAttendanceSystemUI.Forms
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
+
+            // Check if the current cell belongs to the "DateColumn" and has a datetime value
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "dob" && e.Value != null && e.Value is DateTime)
+            {
+                // Format the datetime value to the desired format
+                DateTime dateValue = (DateTime)e.Value;
+                e.Value = dateValue.ToString("MMMM dd, yyyy");
+                e.FormattingApplied = true;
+            }
+
         }
 
         private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
@@ -53,10 +63,11 @@ namespace SCTAttendanceSystemUI.Forms
 
             if (e.RowIndex >= 0)
             {
+
                 // Get the value of the selected cell
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
                 string value1 = row.Cells[0].Value.ToString();
-                string value3 = row.Cells[19].Value.ToString();
                 string value4 = row.Cells[18].Value.ToString();
                 string value5 = row.Cells[10].Value.ToString();
                 string value6 = row.Cells[11].Value.ToString();
@@ -64,10 +75,17 @@ namespace SCTAttendanceSystemUI.Forms
                 string value8 = row.Cells[20].Value.ToString();
                 string value9 = row.Cells[21].Value.ToString();
 
+                string cellValue = row.Cells[19].Value.ToString();
+                if (DateTime.TryParse(cellValue, out DateTime value3))
+                {
+                    textBox3.Text = value3.ToString("MMMM dd, yyyy");
+                }
+                else
+                {
+                }
 
                 // Display the value in a TextBox
                 textBox1.Text = value1; // Employee number
-                textBox3.Text = value3; //Hire of date
                 textBox4.Text = value4; // Account number
                 textBox7.Text = value5; // Home Number
                 textBox6.Text = value6; // Phone number

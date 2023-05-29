@@ -67,9 +67,9 @@
             labelDate.ForeColor = Color.Black;
             labelDate.Location = new Point(136, 45);
             labelDate.Name = "labelDate";
-            labelDate.Size = new Size(68, 23);
+            labelDate.Size = new Size(73, 23);
             labelDate.TabIndex = 9;
-            labelDate.Text = "DATE:";
+            labelDate.Text = "DATE: ";
             // 
             // labelTime
             // 
@@ -78,9 +78,9 @@
             labelTime.ForeColor = Color.Black;
             labelTime.Location = new Point(136, 92);
             labelTime.Name = "labelTime";
-            labelTime.Size = new Size(65, 23);
+            labelTime.Size = new Size(70, 23);
             labelTime.TabIndex = 10;
-            labelTime.Text = "TIME:";
+            labelTime.Text = "TIME: ";
             // 
             // buttonTimeIn
             // 

@@ -1,6 +1,6 @@
-﻿namespace SCTAttendanceSystemUI.Forms.filterButton
+﻿namespace SCTAttendanceSystemUI.Forms.filterAttendance
 {
-    partial class filterForm
+    partial class filterAttendanceButton
     {
         /// <summary>
         /// Required designer variable.
@@ -28,41 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(filterForm));
-            cancelButton = new Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(filterAttendanceButton));
             panel1 = new Panel();
             button2 = new Button();
             panel4 = new Panel();
             panel3 = new Panel();
             panel2 = new Panel();
             comboBox2 = new ComboBox();
-            comboBox1 = new ComboBox();
             button1 = new Button();
             filterComboBox = new ComboBox();
-            mySqlCommand1 = new MySqlConnector.MySqlCommand();
+            cancelButton = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // cancelButton
-            // 
-            cancelButton.BackColor = Color.Transparent;
-            cancelButton.BackgroundImageLayout = ImageLayout.None;
-            cancelButton.FlatAppearance.BorderColor = Color.White;
-            cancelButton.FlatAppearance.BorderSize = 0;
-            cancelButton.FlatStyle = FlatStyle.Flat;
-            cancelButton.Font = new Font("Roboto Mono", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            cancelButton.ForeColor = Color.Gray;
-            cancelButton.Image = (Image)resources.GetObject("cancelButton.Image");
-            cancelButton.ImageAlign = ContentAlignment.MiddleLeft;
-            cancelButton.Location = new Point(9, 10);
-            cancelButton.Name = "cancelButton";
-            cancelButton.Size = new Size(87, 25);
-            cancelButton.TabIndex = 6;
-            cancelButton.Text = "Filters";
-            cancelButton.TextAlign = ContentAlignment.MiddleRight;
-            cancelButton.UseMnemonic = false;
-            cancelButton.UseVisualStyleBackColor = false;
-            cancelButton.Click += cancelButton_Click;
             // 
             // panel1
             // 
@@ -73,14 +50,13 @@
             panel1.Controls.Add(panel3);
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(comboBox2);
-            panel1.Controls.Add(comboBox1);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(filterComboBox);
             panel1.Controls.Add(cancelButton);
             panel1.Location = new Point(2, 1);
             panel1.Name = "panel1";
             panel1.Size = new Size(213, 332);
-            panel1.TabIndex = 7;
+            panel1.TabIndex = 8;
             // 
             // button2
             // 
@@ -139,20 +115,6 @@
             comboBox2.TabIndex = 65;
             comboBox2.Text = "DEPARTMENT";
             // 
-            // comboBox1
-            // 
-            comboBox1.BackColor = Color.WhiteSmoke;
-            comboBox1.Cursor = Cursors.Hand;
-            comboBox1.FlatStyle = FlatStyle.Flat;
-            comboBox1.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Male", "Female" });
-            comboBox1.Location = new Point(36, 194);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(142, 23);
-            comboBox1.TabIndex = 64;
-            comboBox1.Text = "GENDER";
-            // 
             // button1
             // 
             button1.BackColor = Color.White;
@@ -186,41 +148,52 @@
             filterComboBox.TabIndex = 62;
             filterComboBox.Text = "OCCUPATION";
             // 
-            // mySqlCommand1
+            // cancelButton
             // 
-            mySqlCommand1.CommandTimeout = 0;
-            mySqlCommand1.Connection = null;
-            mySqlCommand1.Transaction = null;
-            mySqlCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
+            cancelButton.BackColor = Color.Transparent;
+            cancelButton.BackgroundImageLayout = ImageLayout.None;
+            cancelButton.FlatAppearance.BorderColor = Color.White;
+            cancelButton.FlatAppearance.BorderSize = 0;
+            cancelButton.FlatStyle = FlatStyle.Flat;
+            cancelButton.Font = new Font("Roboto Mono", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            cancelButton.ForeColor = Color.Gray;
+            cancelButton.Image = (Image)resources.GetObject("cancelButton.Image");
+            cancelButton.ImageAlign = ContentAlignment.MiddleLeft;
+            cancelButton.Location = new Point(9, 10);
+            cancelButton.Name = "cancelButton";
+            cancelButton.Size = new Size(87, 25);
+            cancelButton.TabIndex = 6;
+            cancelButton.Text = "Filters";
+            cancelButton.TextAlign = ContentAlignment.MiddleRight;
+            cancelButton.UseMnemonic = false;
+            cancelButton.UseVisualStyleBackColor = false;
+            cancelButton.Click += cancelButton_Click;
             // 
-            // filterForm
+            // filterAttendanceButton
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(216, 335);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Location = new Point(1140, 260);
-            Name = "filterForm";
+            Location = new Point(1407, 325);
+            Name = "filterAttendanceButton";
             StartPosition = FormStartPosition.Manual;
-            Text = "filterForm";
+            Text = "filterAttendanceButton";
             panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Button cancelButton;
         private Panel panel1;
-        private MySqlConnector.MySqlCommand mySqlCommand1;
-        private Button button1;
-        public ComboBox filterComboBox;
+        private Button button2;
         private Panel panel4;
         private Panel panel3;
         private Panel panel2;
         public ComboBox comboBox2;
-        public ComboBox comboBox1;
-        private Button button2;
+        private Button button1;
+        public ComboBox filterComboBox;
+        private Button cancelButton;
     }
 }
