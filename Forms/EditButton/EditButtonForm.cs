@@ -12,6 +12,8 @@ using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using System.Xml.Linq;
+using System.Drawing;
+
 
 namespace SCTAttendanceSystemUI.Forms
 {
@@ -54,6 +56,27 @@ namespace SCTAttendanceSystemUI.Forms
         public string department { get { return comboBox5.Text; } set { comboBox5.Text = value; } }
         public string timein { get { return comboBox6.Text; } set { comboBox6.Text = value; } }
         public string timeout { get { return comboBox7.Text; } set { comboBox7.Text = value; } }
+        public byte[] image
+        {
+            get
+            {
+                ImageConverter converter = new ImageConverter();
+                return (byte[])converter.ConvertTo(pictureBox1.Image, typeof(byte[]));
+            }
+            set
+            {
+                if (value != null)
+                {
+                    ImageConverter converter = new ImageConverter();
+                    pictureBox1.Image = (Image)converter.ConvertFrom(value);
+                }
+                else
+                {
+                    pictureBox1.Image = null;
+                }
+            }
+        }
+
 
 
 
@@ -65,15 +88,18 @@ namespace SCTAttendanceSystemUI.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            //UPDATES EMPLOYEE INFORMATION
             try
             {
                 connection.Open();
 
                 string query = "UPDATE employee SET occupation = @occupation, department = @department, firstname = @firstname, middle = @middlename, lastname = @lastname, suffix = @suffix, homenum = @homenum, " +
-                    "phonenum = @phonenum, email = @email, address = @address, province = @province, city = @city, postal = @postal, accountnum = @accountnum, timein = @timein, timeout = @timeout" +
+                    "phonenum = @phonenum, email = @email, address = @address, province = @province, city = @city, postal = @postal, accountnum = @accountnum, timein = @timein, timeout = @timeout, image_data = @imageData" +
                     " WHERE employeenum = @employeenum";
                 MySqlCommand command = new MySqlCommand(query, connection);
+
+                byte[] imageData = ImageToByteArray(pictureBox1.Image);
+
                 command.Parameters.AddWithValue("@occupation", comboBox4.Text);
                 command.Parameters.AddWithValue("@department", comboBox5.Text);
                 command.Parameters.AddWithValue("@firstname", textBox2.Text);
@@ -91,6 +117,7 @@ namespace SCTAttendanceSystemUI.Forms
                 command.Parameters.AddWithValue("@timein", comboBox6.Text);
                 command.Parameters.AddWithValue("@timeout", comboBox7.Text);
                 command.Parameters.AddWithValue("@employeenum", textBox12.Text);
+                command.Parameters.AddWithValue("@imageData", imageData);
 
                 command.ExecuteNonQuery();
 
@@ -110,41 +137,26 @@ namespace SCTAttendanceSystemUI.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //UPLOAD IMAGE
+            //UPLOAD AND DISPLAYS IMAGE
 
-            /*            OpenFileDialog dialog = new OpenFileDialog();
-                        dialog.Filter = "Image Files (*.jpg;*.jpeg;*.png;*.gif)|*.jpg;*.jpeg;*.png;*.gif";
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files (*.jpg, *.jpeg, *.png)|*.jpg;*.jpeg;*.png";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string imagePath = openFileDialog.FileName;
+                pictureBox1.Image = Image.FromFile(imagePath);
 
-                        if (dialog.ShowDialog() == DialogResult.OK)
-                        {
-                            // Load the selected image file into a Bitmap object
-                            Bitmap image = new Bitmap(dialog.FileName);
 
-                            // Convert the Bitmap object to a byte array
-                            byte[] imageData;
-                            using (MemoryStream stream = new MemoryStream())
-                            {
-                                image.Save(stream, ImageFormat.Jpeg);
-                                imageData = stream.ToArray();
-                            }
+            }
+        }
 
-                            // Connect to the MySQL database
-                            string connectionString = "server=localhost;user id=root;database=login_attendancesystem;password=root";
-                            MySqlConnection connection = new MySqlConnection(connectionString);
-                            connection.Open();
-
-                            // Insert the image data into the database table
-                            string query = "INSERT INTO employee_image VALUES (1, LOAD_FILE(emp_img))";
-                            MySqlCommand command = new MySqlCommand(query, connection);
-                            command.Parameters.AddWithValue("emp_img", imageData);
-                            command.ExecuteNonQuery();
-
-                            // Close the database connection
-                            connection.Close();
-
-                            // Display the uploaded image in the PictureBox control
-                            pictureBox1.Image = image;
-                        }*/
+        private byte[] ImageToByteArray(Image image)
+        {
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                return memoryStream.ToArray();
+            }
         }
 
         private void textBox5_KeyPress_1(object sender, KeyPressEventArgs e)
@@ -181,7 +193,7 @@ namespace SCTAttendanceSystemUI.Forms
 
         private void EditButtonForm_Load(object sender, EventArgs e)
         {
-
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
         }
     }
 }

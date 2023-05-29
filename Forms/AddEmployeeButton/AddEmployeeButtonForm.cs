@@ -26,6 +26,10 @@ namespace SCTAttendanceSystemUI.Forms
         private MySqlDataAdapter adapter;
         private DataTable table;
 
+        private bool isDragging;
+        private Point dragStartPoint;
+        private Point imageStartPosition;
+
 
         public AddEmployeeButtonForm()
         {
@@ -54,7 +58,7 @@ namespace SCTAttendanceSystemUI.Forms
             if (string.IsNullOrEmpty(textBox12.Text) || string.IsNullOrEmpty(textBox2.Text) || string.IsNullOrEmpty(textBox1.Text) || string.IsNullOrEmpty(textBox3.Text)
                 || comboBox1.SelectedIndex == -1 || string.IsNullOrEmpty(textBox8.Text) || string.IsNullOrEmpty(textBox5.Text) || string.IsNullOrEmpty(textBox7.Text) ||
                 string.IsNullOrEmpty(textBox6.Text) || comboBox2.SelectedIndex == -1 || comboBox3.SelectedIndex == -1 || string.IsNullOrEmpty(textBox9.Text) ||
-                string.IsNullOrEmpty(textBox4.Text) || string.IsNullOrEmpty(textBox11.Text) || comboBox4.SelectedIndex == -1 )
+                string.IsNullOrEmpty(textBox4.Text) || string.IsNullOrEmpty(textBox11.Text) || comboBox4.SelectedIndex == -1 || pictureBox1.Image == null)
             {
                 MessageBox.Show("Please fill in all the required fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -66,9 +70,12 @@ namespace SCTAttendanceSystemUI.Forms
                     connection.Open();
 
                     string query = "INSERT INTO employee (employeenum, name, occupation, department, firstname, middle, lastname, suffix, gender, dob, homenum, phonenum, email, address, country, province, city, postal, " +
-                        "accountnum, hiredate, timein, timeout) VALUES (@employeenum, @name, @occupation, @department, @firstname, @middle, @lastname, @suffix, @gender, @dob, @homenum, @phonenum, @email, @address, " +
-                        "@country, @province, @city, @postal, @accountnum, @hiredate, @timein, @timeout)";
+                        "accountnum, hiredate, timein, timeout, image_data) VALUES (@employeenum, @name, @occupation, @department, @firstname, @middle, @lastname, @suffix, @gender, @dob, @homenum, @phonenum, @email, @address, " +
+                        "@country, @province, @city, @postal, @accountnum, @hiredate, @timein, @timeout, @imageData)";
                     MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                    byte[] imageData = ImageToByteArray(pictureBox1.Image);
+
 
                     cmd.Parameters.AddWithValue("@employeenum", textBox12.Text); //textbox
                     cmd.Parameters.AddWithValue("@firstname", textBox2.Text); //textbox
@@ -91,6 +98,7 @@ namespace SCTAttendanceSystemUI.Forms
                     cmd.Parameters.AddWithValue("@department", comboBox5.Text); //combobox
                     cmd.Parameters.AddWithValue("@timein", comboBox6.Text); //combobox
                     cmd.Parameters.AddWithValue("@timeout", comboBox7.Text); //combobox
+                    cmd.Parameters.AddWithValue("@imageData", imageData);
 
 
 
@@ -98,7 +106,7 @@ namespace SCTAttendanceSystemUI.Forms
                     string middle = textBox1.Text;
                     string last = textBox3.Text;
                     string suffix = textBox10.Text;
-                    string name = first + " " + middle + " " + last + " " + suffix ;
+                    string name = first + " " + middle + " " + last + " " + suffix;
 
                     cmd.Parameters.AddWithValue("@name", name); //textbox
 
@@ -122,40 +130,27 @@ namespace SCTAttendanceSystemUI.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //UPLOAD IMAGE
+            //UPLOAD AND DISPLAYS IMAGE
 
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Image Files (*.jpg;*.jpeg;*.png;*.gif)|*.jpg;*.jpeg;*.png;*.gif";
-
-            if (dialog.ShowDialog() == DialogResult.OK)
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files (*.jpg, *.jpeg, *.png)|*.jpg;*.jpeg;*.png";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                // Load the selected image file into a Bitmap object
-                Bitmap image = new Bitmap(dialog.FileName);
+                string imagePath = openFileDialog.FileName;
+                pictureBox1.Image = Image.FromFile(imagePath);
 
-                // Convert the Bitmap object to a byte array
-                byte[] imageData;
-                using (MemoryStream stream = new MemoryStream())
-                {
-                    image.Save(stream, ImageFormat.Jpeg);
-                    imageData = stream.ToArray();
-                }
+                // Set the position of the image within the PictureBox
+                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
 
-                // Connect to the MySQL database
-                string connectionString = "server=localhost;user id=root;database=payrollsys;password=root";
-                MySqlConnection connection = new MySqlConnection(connectionString);
-                connection.Open();
+            }
+        }
 
-                // Insert the image data into the database table
-                string query = "INSERT INTO employee_image VALUES (1, LOAD_FILE(emp_img))";
-                MySqlCommand command = new MySqlCommand(query, connection);
-                command.Parameters.AddWithValue("emp_img", imageData);
-                command.ExecuteNonQuery();
-
-                // Close the database connection
-                connection.Close();
-
-                // Display the uploaded image in the PictureBox control
-                pictureBox1.Image = image;
+        private byte[] ImageToByteArray(Image image)
+        {
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                return memoryStream.ToArray();
             }
         }
 
@@ -190,5 +185,6 @@ namespace SCTAttendanceSystemUI.Forms
                 MessageBox.Show("You can only enter 8 digits.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

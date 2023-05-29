@@ -193,9 +193,9 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.WhiteSmoke;
-            pictureBox1.Location = new Point(806, 50);
+            pictureBox1.Location = new Point(848, 50);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(242, 212);
+            pictureBox1.Size = new Size(200, 200);
             pictureBox1.TabIndex = 36;
             pictureBox1.TabStop = false;
             // 

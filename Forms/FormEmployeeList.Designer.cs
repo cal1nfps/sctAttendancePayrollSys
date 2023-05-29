@@ -280,7 +280,7 @@
             pictureBox1.BackColor = Color.WhiteSmoke;
             pictureBox1.Location = new Point(31, 19);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(180, 180);
+            pictureBox1.Size = new Size(200, 200);
             pictureBox1.TabIndex = 8;
             pictureBox1.TabStop = false;
             // 
@@ -621,7 +621,6 @@
         private Label label4;
         private Label label3;
         private Label label5;
-        private PictureBox pictureBox1;
         private Panel panel3;
         private Label label6;
         private Label label7;
@@ -649,5 +648,6 @@
         private Button button2;
         private Button button4;
         public DataGridView dataGridView1;
+        public PictureBox pictureBox1;
     }
 }

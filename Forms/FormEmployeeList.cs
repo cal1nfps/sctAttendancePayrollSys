@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using SCTAttendanceSystemUI.Forms.filterButton;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using System.Drawing;
 
 
 namespace SCTAttendanceSystemUI.Forms
@@ -76,6 +77,18 @@ namespace SCTAttendanceSystemUI.Forms
 
             }
 
+            // Displays store image from a cell to a PictureBox
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                byte[] imageBytes = (byte[])row.Cells["image_data"].Value;
+
+                using (MemoryStream memoryStream = new MemoryStream(imageBytes))
+                {
+                    pictureBox1.Image = Image.FromStream(memoryStream);
+                }
+            }
+
             //Stores multiple cell values
             string data = "";
             if (e.RowIndex >= 0)
@@ -99,6 +112,7 @@ namespace SCTAttendanceSystemUI.Forms
 
         private void FormEmployeeList_Load_1(object sender, EventArgs e)
         {
+            LoadImageData();
 
             {
 
@@ -134,9 +148,36 @@ namespace SCTAttendanceSystemUI.Forms
                 dataGridView1.Columns["hiredate"].Visible = false;    //Hide a specific column
                 dataGridView1.Columns["timein"].Visible = false;    //Hide a specific column
                 dataGridView1.Columns["timeout"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["emp_img"].Visible = false;    //Hide a specific column
+                dataGridView1.Columns["image_data"].Visible = false;    //Hide a specific column
 
                 //reader.Close();
+                connection.Close();
+            }
+        }
+
+        private void LoadImageData()
+        {
+            try
+            {
+                connection.Open();
+
+                string query = "SELECT employeenum, image_data FROM employee";
+                MySqlCommand command = new MySqlCommand(query, connection);
+
+                DataTable dataTable = new DataTable();
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command);
+                dataAdapter.Fill(dataTable);
+                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+
+
+                dataGridView1.DataSource = dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
                 connection.Close();
             }
         }
@@ -220,7 +261,7 @@ namespace SCTAttendanceSystemUI.Forms
                 string department = dataGridView1.Rows[rowIndex].Cells[3].Value.ToString();
                 string timein = dataGridView1.Rows[rowIndex].Cells[20].Value.ToString();
                 string timeout = dataGridView1.Rows[rowIndex].Cells[21].Value.ToString();
-
+                byte[] imageData = (byte[])dataGridView1.Rows[rowIndex].Cells[22].Value;
 
                 //set the public properties of the textboxes on the second form
                 edit.firstname = firstname;
@@ -244,6 +285,7 @@ namespace SCTAttendanceSystemUI.Forms
                 edit.department = department;
                 edit.timein = timein;
                 edit.timeout = timeout;
+                edit.image = imageData;
 
                 //show the second form
                 edit.Show();
