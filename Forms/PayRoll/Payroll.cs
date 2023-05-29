@@ -69,7 +69,7 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
             dataGridView1.Columns["hiredate"].Visible = false;    //Hide a specific column
             dataGridView1.Columns["timein"].Visible = false;    //Hide a specific column
             dataGridView1.Columns["timeout"].Visible = false;    //Hide a specific column
-            dataGridView1.Columns["emp_img"].Visible = false;    //Hide a specific column
+            dataGridView1.Columns["image_data"].Visible = false;    //Hide a specific column
 
 
             //reader.Close();

@@ -12,13 +12,18 @@ namespace SCTAttendanceSystemUI.Employee
 {
     public partial class FormEmployeeDashboard : Form
     {
-        public FormEmployeeDashboard()
+
+        private string name;
+
+        public FormEmployeeDashboard(string name)
         {
             InitializeComponent();
+            this.name = name;
         }
 
         private void FormEmployeeDashboard_Load(object sender, EventArgs e)
         {
+            label1.Text = name;
             timer1.Start();
             labelDate.Text = "Date Today: " + DateTime.Now.ToLongDateString();
         }
@@ -26,11 +31,6 @@ namespace SCTAttendanceSystemUI.Employee
         private void timer1_Tick(object sender, EventArgs e)
         {
             labelTime.Text = "Current Time: " + DateTime.Now.ToString("h:mm:ss tt");
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void buttonTimeIn_Click(object sender, EventArgs e)
