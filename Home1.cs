@@ -104,7 +104,7 @@ namespace SCTAttendanceSystemUI
             {
                 if (currentButton != (Button)buttonSender)
                 {
-                    DisableButtonSearch();
+                    //DisableButtonSearch();
 
                     currentButton = (Button)buttonSender;
                     currentButton.ForeColor = Color.Gray;
@@ -143,7 +143,7 @@ namespace SCTAttendanceSystemUI
             }
         }
 
-        private void DisableButtonSearch()
+        /*private void DisableButtonSearch()
         {
             foreach (Control previousButton in panelSearch.Controls)
             {
@@ -153,7 +153,7 @@ namespace SCTAttendanceSystemUI
                     previousButton.ForeColor = Color.Gray;
                 }
             }
-        }
+        }*/
 
         private void OpenChildForm(Form childForm, object btnSender)
         {
@@ -187,7 +187,7 @@ namespace SCTAttendanceSystemUI
             //HomeLabel.Text = currentForm.Text;
         }*/
 
-        private void OpenChildFormSearch(Form childForm, object btnSender)
+        /*private void OpenChildFormSearch(Form childForm, object btnSender)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -200,7 +200,7 @@ namespace SCTAttendanceSystemUI
             this.panelDesktopPane.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
-        }
+        }*/
 
         private void OpenChildFormDepEmp(Form childForm, object btnSender)
         {
@@ -474,7 +474,7 @@ namespace SCTAttendanceSystemUI
                 form_home1.ShowDialog();
                 this.Close();
             }
-        }*/
+        }
 
 
         private void buttonSearch_Click_1(object sender, EventArgs e)
@@ -486,39 +486,15 @@ namespace SCTAttendanceSystemUI
         private void Home1_Load_1(object sender, EventArgs e)
         {
 
-        }
+        }*/
 
         /// <summary>
         /// /
         /// </summary>
 
-        private void buttonAttendance_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new Forms.FormHome(), sender);
-            hideSubMenu();
-        }
-
-        private void buttonDepartment_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new Forms.FormDepartment(), sender);
-            hideSubMenu();
-        }
-
-        private void buttonAbsentees_Click_1(object sender, EventArgs e)
+        /*private void buttonAbsentees_Click_1(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormAbsentees(), sender);
-            hideSubMenu();
-        }
-
-        private void buttonEmployees_Click_1(object sender, EventArgs e)
-        {
-            showSubMenu(panelEmployeesSubMenu);
-            OpenChildFormDepEmp(new Forms.FormLogout(), sender);
-        }
-
-        private void buttonEmployeeList_Click_1(object sender, EventArgs e)
-        {
-            OpenChildForm(new Forms.FormEmployeeList(), sender);
             hideSubMenu();
         }
 
@@ -534,37 +510,65 @@ namespace SCTAttendanceSystemUI
             hideSubMenu();
         }
 
-        private void buttonOvertime_Click_1(object sender, EventArgs e)
+        private void buttonLeave_Click_1(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.FormLeave(), sender);
+            hideSubMenu();
+        }*/
+
+        /// <summary>
+        /// 
+        /// </summary>
+
+        private void buttonAttendance_Click_1(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.FormHome(), sender);
+            hideSubMenu();
+        }
+
+        private void buttonDepartment_Click_1(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.FormDepartment(), sender);
+            hideSubMenu();
+        }
+
+        private void buttonEmployees_Click(object sender, EventArgs e)
+        {
+            showSubMenu(panelEmployeesSubMenu);
+            OpenChildFormDepEmp(new Forms.FormLogout(), sender);
+        }
+
+        private void buttonEmployeeList_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.FormEmployeeList(), sender);
+            hideSubMenu();
+        }
+
+        private void buttonOvertime_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormOvertime(), sender);
             hideSubMenu();
         }
 
-        private void buttonDeduction_Click_1(object sender, EventArgs e)
+        private void buttonDeduction_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormDeduction(), sender);
             hideSubMenu();
         }
 
-        private void buttonLeave_Click_1(object sender, EventArgs e)
-        {
-            OpenChildForm(new Forms.FormLeave(), sender);
-            hideSubMenu();
-        }
-
-        private void buttonPayroll_Click_1(object sender, EventArgs e)
+        private void buttonPayroll_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormPayroll(), sender);
             hideSubMenu();
         }
 
-        private void buttonSettings_Click_1(object sender, EventArgs e)
+        private void buttonSettings_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormSettings(), sender);
             hideSubMenu();
         }
 
-        private void buttonLogout_Click_1(object sender, EventArgs e)
+        private void buttonLogout_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to logout?", "Logout Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
