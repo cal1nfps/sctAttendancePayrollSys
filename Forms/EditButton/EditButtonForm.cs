@@ -56,6 +56,8 @@ namespace SCTAttendanceSystemUI.Forms
         public string department { get { return comboBox5.Text; } set { comboBox5.Text = value; } }
         public string timein { get { return comboBox6.Text; } set { comboBox6.Text = value; } }
         public string timeout { get { return comboBox7.Text; } set { comboBox7.Text = value; } }
+        public string jobstatus { get { return comboBox8.Text; } set { comboBox8.Text = value; } }
+
         public byte[] image
         {
             get
@@ -93,7 +95,7 @@ namespace SCTAttendanceSystemUI.Forms
             {
                 connection.Open();
 
-                string query = "UPDATE employee SET occupation = @occupation, department = @department, firstname = @firstname, middle = @middlename, lastname = @lastname, suffix = @suffix, homenum = @homenum, " +
+                string query = "UPDATE employee SET occupation = @occupation, department = @department, jobstatus = @jobstatus, firstname = @firstname, middle = @middlename, lastname = @lastname, suffix = @suffix, homenum = @homenum, " +
                     "phonenum = @phonenum, email = @email, address = @address, province = @province, city = @city, postal = @postal, accountnum = @accountnum, timein = @timein, timeout = @timeout, image_data = @imageData" +
                     " WHERE employeenum = @employeenum";
                 MySqlCommand command = new MySqlCommand(query, connection);
@@ -102,6 +104,7 @@ namespace SCTAttendanceSystemUI.Forms
 
                 command.Parameters.AddWithValue("@occupation", comboBox4.Text);
                 command.Parameters.AddWithValue("@department", comboBox5.Text);
+                command.Parameters.AddWithValue("@jobstatus", comboBox8.Text);
                 command.Parameters.AddWithValue("@firstname", textBox2.Text);
                 command.Parameters.AddWithValue("@middlename", textBox1.Text);
                 command.Parameters.AddWithValue("@lastname", textBox3.Text);

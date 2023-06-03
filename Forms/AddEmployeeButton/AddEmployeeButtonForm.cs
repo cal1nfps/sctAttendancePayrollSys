@@ -58,7 +58,7 @@ namespace SCTAttendanceSystemUI.Forms
             if (string.IsNullOrEmpty(textBox12.Text) || string.IsNullOrEmpty(textBox2.Text) || string.IsNullOrEmpty(textBox1.Text) || string.IsNullOrEmpty(textBox3.Text)
                 || comboBox1.SelectedIndex == -1 || string.IsNullOrEmpty(textBox8.Text) || string.IsNullOrEmpty(textBox5.Text) || string.IsNullOrEmpty(textBox7.Text) ||
                 string.IsNullOrEmpty(textBox6.Text) || comboBox2.SelectedIndex == -1 || comboBox3.SelectedIndex == -1 || string.IsNullOrEmpty(textBox9.Text) ||
-                string.IsNullOrEmpty(textBox4.Text) || string.IsNullOrEmpty(textBox11.Text) || comboBox4.SelectedIndex == -1 || pictureBox1.Image == null)
+                string.IsNullOrEmpty(textBox4.Text) || string.IsNullOrEmpty(textBox11.Text) || comboBox4.SelectedIndex == -1 || pictureBox1.Image == null || comboBox8.SelectedIndex == -1)
             {
                 MessageBox.Show("Please fill in all the required fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -69,8 +69,8 @@ namespace SCTAttendanceSystemUI.Forms
                     //STORES EMPLOYEE DATA
                     connection.Open();
 
-                    string query = "INSERT INTO employee (employeenum, name, occupation, department, firstname, middle, lastname, suffix, gender, dob, homenum, phonenum, email, address, country, province, city, postal, " +
-                        "accountnum, hiredate, timein, timeout, image_data) VALUES (@employeenum, @name, @occupation, @department, @firstname, @middle, @lastname, @suffix, @gender, @dob, @homenum, @phonenum, @email, @address, " +
+                    string query = "INSERT INTO employee (employeenum, name, occupation, department, jobstatus, firstname, middle, lastname, suffix, gender, dob, homenum, phonenum, email, address, country, province, city, postal, " +
+                        "accountnum, hiredate, timein, timeout, image_data) VALUES (@employeenum, @name, @occupation, @department, @jobstatus, @firstname, @middle, @lastname, @suffix, @gender, @dob, @homenum, @phonenum, @email, @address, " +
                         "@country, @province, @city, @postal, @accountnum, @hiredate, @timein, @timeout, @imageData)";
                     MySqlCommand cmd = new MySqlCommand(query, connection);
 
@@ -96,6 +96,7 @@ namespace SCTAttendanceSystemUI.Forms
                     cmd.Parameters.AddWithValue("@hiredate", dateTimePicker2.Value); //datetimepicker
                     cmd.Parameters.AddWithValue("@occupation", comboBox4.Text); //combobox
                     cmd.Parameters.AddWithValue("@department", comboBox5.Text); //combobox
+                    cmd.Parameters.AddWithValue("@jobstatus", comboBox8.Text); //combobox
                     cmd.Parameters.AddWithValue("@timein", comboBox6.Text); //combobox
                     cmd.Parameters.AddWithValue("@timeout", comboBox7.Text); //combobox
                     cmd.Parameters.AddWithValue("@imageData", imageData);
@@ -185,6 +186,5 @@ namespace SCTAttendanceSystemUI.Forms
                 MessageBox.Show("You can only enter 8 digits.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
     }
 }

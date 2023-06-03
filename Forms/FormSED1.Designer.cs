@@ -29,232 +29,185 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSED1));
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.sortComboBox = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.labelSort = new System.Windows.Forms.Label();
-            this.sortENcomboBox = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.labelDepartmentSED = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.SuspendLayout();
+            dataGridView1 = new DataGridView();
+            label3 = new Label();
+            label4 = new Label();
+            labelDepartmentSED = new Label();
+            panel1 = new Panel();
+            panel2 = new Panel();
+            button2 = new Button();
+            button4 = new Button();
+            button1 = new Button();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
+            SuspendLayout();
             // 
             // dataGridView1
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(33, 135);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(1301, 550);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(922, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 17);
-            this.label1.TabIndex = 40;
-            this.label1.Text = "Filter By:";
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.CustomFormat = "MM/dd/yyyy";
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(995, 31);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dateTimePicker2.MaxDate = new System.DateTime(2023, 12, 31, 0, 0, 0, 0);
-            this.dateTimePicker2.MinDate = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(147, 23);
-            this.dateTimePicker2.TabIndex = 41;
-            // 
-            // sortComboBox
-            // 
-            this.sortComboBox.BackColor = System.Drawing.SystemColors.Control;
-            this.sortComboBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.sortComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sortComboBox.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.sortComboBox.FormattingEnabled = true;
-            this.sortComboBox.Items.AddRange(new object[] {
-            "None",
-            "A - Z",
-            "Z - A"});
-            this.sortComboBox.Location = new System.Drawing.Point(1192, 31);
-            this.sortComboBox.Name = "sortComboBox";
-            this.sortComboBox.Size = new System.Drawing.Size(142, 23);
-            this.sortComboBox.TabIndex = 46;
-            this.sortComboBox.Text = "NAME";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(1148, 31);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 17);
-            this.label2.TabIndex = 45;
-            this.label2.Text = "Sort:";
-            // 
-            // labelSort
-            // 
-            this.labelSort.AutoSize = true;
-            this.labelSort.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.labelSort.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelSort.Location = new System.Drawing.Point(1148, 60);
-            this.labelSort.Name = "labelSort";
-            this.labelSort.Size = new System.Drawing.Size(39, 17);
-            this.labelSort.TabIndex = 44;
-            this.labelSort.Text = "Sort:";
-            // 
-            // sortENcomboBox
-            // 
-            this.sortENcomboBox.BackColor = System.Drawing.SystemColors.Control;
-            this.sortENcomboBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.sortENcomboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sortENcomboBox.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.sortENcomboBox.FormattingEnabled = true;
-            this.sortENcomboBox.Items.AddRange(new object[] {
-            "SED",
-            "IBED",
-            "ASP"});
-            this.sortENcomboBox.Location = new System.Drawing.Point(1192, 60);
-            this.sortENcomboBox.Name = "sortENcomboBox";
-            this.sortENcomboBox.Size = new System.Drawing.Size(142, 23);
-            this.sortENcomboBox.TabIndex = 43;
-            this.sortENcomboBox.Text = "DEPARTMENT";
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AllowUserToResizeColumns = false;
+            dataGridView1.AllowUserToResizeRows = false;
+            dataGridView1.BackgroundColor = Color.White;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.ColumnHeadersVisible = false;
+            dataGridView1.Location = new Point(33, 135);
+            dataGridView1.Margin = new Padding(3, 2, 3, 2);
+            dataGridView1.MultiSelect = false;
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridView1.RowTemplate.Height = 28;
+            dataGridView1.Size = new Size(1301, 550);
+            dataGridView1.TabIndex = 0;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(121)))), ((int)(((byte)(0)))));
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(223, 29);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 45);
-            this.label3.TabIndex = 54;
-            this.label3.Text = "1";
+            label3.AutoSize = true;
+            label3.BackColor = Color.FromArgb(255, 121, 0);
+            label3.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(223, 29);
+            label3.Name = "label3";
+            label3.Size = new Size(38, 45);
+            label3.TabIndex = 54;
+            label3.Text = "1";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(121)))), ((int)(((byte)(0)))));
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(15, 49);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(202, 20);
-            this.label4.TabIndex = 53;
-            this.label4.Text = "Total Attendance for today:";
+            label4.AutoSize = true;
+            label4.BackColor = Color.FromArgb(255, 121, 0);
+            label4.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(15, 49);
+            label4.Name = "label4";
+            label4.Size = new Size(202, 20);
+            label4.TabIndex = 53;
+            label4.Text = "Total Attendance for today:";
             // 
             // labelDepartmentSED
             // 
-            this.labelDepartmentSED.AutoSize = true;
-            this.labelDepartmentSED.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(121)))), ((int)(((byte)(0)))));
-            this.labelDepartmentSED.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelDepartmentSED.ForeColor = System.Drawing.Color.White;
-            this.labelDepartmentSED.Location = new System.Drawing.Point(15, 10);
-            this.labelDepartmentSED.Name = "labelDepartmentSED";
-            this.labelDepartmentSED.Size = new System.Drawing.Size(66, 37);
-            this.labelDepartmentSED.TabIndex = 48;
-            this.labelDepartmentSED.Text = "SED";
+            labelDepartmentSED.AutoSize = true;
+            labelDepartmentSED.BackColor = Color.FromArgb(255, 121, 0);
+            labelDepartmentSED.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            labelDepartmentSED.ForeColor = Color.White;
+            labelDepartmentSED.Location = new Point(15, 10);
+            labelDepartmentSED.Name = "labelDepartmentSED";
+            labelDepartmentSED.Size = new Size(66, 37);
+            labelDepartmentSED.TabIndex = 48;
+            labelDepartmentSED.Text = "SED";
             // 
             // panel1
             // 
-            this.panel1.BackgroundImage = global::SCTAttendanceSystemUI.Properties.Resources.BG_LOW_OPACITY;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.sortComboBox);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.labelSort);
-            this.panel1.Controls.Add(this.sortENcomboBox);
-            this.panel1.Controls.Add(this.dateTimePicker2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1423, 730);
-            this.panel1.TabIndex = 55;
+            panel1.BackgroundImage = Properties.Resources.BG_LOW_OPACITY;
+            panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(button4);
+            panel1.Controls.Add(button1);
+            panel1.Controls.Add(panel2);
+            panel1.Controls.Add(button2);
+            panel1.Controls.Add(dataGridView1);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1423, 730);
+            panel1.TabIndex = 55;
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(121)))), ((int)(((byte)(0)))));
-            this.panel2.Controls.Add(this.labelDepartmentSED);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Location = new System.Drawing.Point(84, 31);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(264, 85);
-            this.panel2.TabIndex = 58;
+            panel2.BackColor = Color.FromArgb(255, 121, 0);
+            panel2.Controls.Add(labelDepartmentSED);
+            panel2.Controls.Add(label4);
+            panel2.Controls.Add(label3);
+            panel2.Location = new Point(84, 31);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(264, 85);
+            panel2.TabIndex = 58;
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(33, 20);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(45, 48);
-            this.button2.TabIndex = 57;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            button2.BackColor = Color.Transparent;
+            button2.Cursor = Cursors.Hand;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Times New Roman", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.Image = (Image)resources.GetObject("button2.Image");
+            button2.ImageAlign = ContentAlignment.MiddleLeft;
+            button2.Location = new Point(33, 20);
+            button2.Name = "button2";
+            button2.Size = new Size(45, 48);
+            button2.TabIndex = 57;
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
+            // button4
+            // 
+            button4.BackColor = Color.Green;
+            button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button4.Image = (Image)resources.GetObject("button4.Image");
+            button4.ImageAlign = ContentAlignment.MiddleLeft;
+            button4.Location = new Point(1287, 100);
+            button4.Name = "button4";
+            button4.Padding = new Padding(10, 0, 0, 0);
+            button4.Size = new Size(47, 30);
+            button4.TabIndex = 73;
+            button4.TextAlign = ContentAlignment.MiddleLeft;
+            button4.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Green;
+            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(1234, 100);
+            button1.Name = "button1";
+            button1.Padding = new Padding(10, 0, 0, 0);
+            button1.Size = new Size(47, 30);
+            button1.TabIndex = 72;
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // FormSED1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1423, 730);
-            this.Controls.Add(this.panel1);
-            this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "FormSED1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormSED1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(1423, 730);
+            Controls.Add(panel1);
+            DoubleBuffered = true;
+            FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 2, 3, 2);
+            Name = "FormSED1";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "FormSED1";
+            Load += FormSED1_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            panel1.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion
-
-        private DataGridView dataGridView1;
-        private Label label1;
-        private DateTimePicker dateTimePicker2;
-        private ComboBox sortComboBox;
-        private Label label2;
-        private Label labelSort;
-        private ComboBox sortENcomboBox;
         private Label label3;
         private Label label4;
         private Label labelDepartmentSED;
         private Panel panel1;
         private Button button2;
         private Panel panel2;
+        public DataGridView dataGridView1;
+        private Button button4;
+        private Button button1;
     }
 }

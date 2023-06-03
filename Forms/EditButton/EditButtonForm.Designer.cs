@@ -37,6 +37,8 @@
             label7 = new Label();
             pictureBox1 = new PictureBox();
             panel3 = new Panel();
+            comboBox8 = new ComboBox();
+            label18 = new Label();
             comboBox7 = new ComboBox();
             label17 = new Label();
             comboBox6 = new ComboBox();
@@ -202,6 +204,8 @@
             // 
             panel3.BackColor = Color.White;
             panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(comboBox8);
+            panel3.Controls.Add(label18);
             panel3.Controls.Add(comboBox7);
             panel3.Controls.Add(label17);
             panel3.Controls.Add(comboBox6);
@@ -223,11 +227,32 @@
             panel3.Size = new Size(607, 235);
             panel3.TabIndex = 34;
             // 
+            // comboBox8
+            // 
+            comboBox8.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox8.FormattingEnabled = true;
+            comboBox8.Items.AddRange(new object[] { "FULL-TIME", "PART-TIME" });
+            comboBox8.Location = new Point(103, 192);
+            comboBox8.Name = "comboBox8";
+            comboBox8.Size = new Size(147, 23);
+            comboBox8.TabIndex = 67;
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label18.ForeColor = SystemColors.ControlDarkDark;
+            label18.Location = new Point(23, 195);
+            label18.Name = "label18";
+            label18.Size = new Size(74, 14);
+            label18.TabIndex = 66;
+            label18.Text = "JOB STATUS";
+            // 
             // comboBox7
             // 
             comboBox7.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox7.FormattingEnabled = true;
-            comboBox7.Items.AddRange(new object[] { "4:00PM", "5:00PM", "6:00PM" });
+            comboBox7.Items.AddRange(new object[] { "4:00 PM", "5:00 PM", "6:00 PM" });
             comboBox7.Location = new Point(371, 82);
             comboBox7.Name = "comboBox7";
             comboBox7.Size = new Size(147, 23);
@@ -248,7 +273,7 @@
             // 
             comboBox6.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox6.FormattingEnabled = true;
-            comboBox6.Items.AddRange(new object[] { "7:00AM", "8:00AM", "9:00AM" });
+            comboBox6.Items.AddRange(new object[] { "7:00 AM", "8:00 AM", "9:00 AM" });
             comboBox6.Location = new Point(371, 43);
             comboBox6.Name = "comboBox6";
             comboBox6.Size = new Size(147, 23);
@@ -269,7 +294,7 @@
             // 
             comboBox4.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox4.FormattingEnabled = true;
-            comboBox4.Items.AddRange(new object[] { "Teacher", "Sports Coach", "School Nurse", "Maintenance Technician", "Registrar", "Guidance Counselor", "Guard", "Chairperson", "Faculty (Part - Time)", "Faculty (Full - Time)", "Professor (Part - Time)", "Professor (Full - Time)" });
+            comboBox4.Items.AddRange(new object[] { "Teacher", "Sports Coach", "School Nurse", "Maintenance Technician", "Registrar", "Guidance Counselor", "Guard", "Chairperson" });
             comboBox4.Location = new Point(103, 134);
             comboBox4.Name = "comboBox4";
             comboBox4.Size = new Size(147, 23);
@@ -280,7 +305,7 @@
             comboBox5.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox5.FormattingEnabled = true;
             comboBox5.Items.AddRange(new object[] { "IBED", "SED", "ASP" });
-            comboBox5.Location = new Point(103, 179);
+            comboBox5.Location = new Point(103, 163);
             comboBox5.Name = "comboBox5";
             comboBox5.Size = new Size(147, 23);
             comboBox5.TabIndex = 59;
@@ -290,7 +315,7 @@
             label13.AutoSize = true;
             label13.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label13.ForeColor = SystemColors.ControlDarkDark;
-            label13.Location = new Point(17, 185);
+            label13.Location = new Point(17, 169);
             label13.Name = "label13";
             label13.Size = new Size(80, 14);
             label13.TabIndex = 58;
@@ -738,5 +763,7 @@
         private Label label17;
         private ComboBox comboBox6;
         private Label label16;
+        private ComboBox comboBox8;
+        private Label label18;
     }
 }

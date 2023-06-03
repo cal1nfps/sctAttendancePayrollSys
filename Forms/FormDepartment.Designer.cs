@@ -28,253 +28,253 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panelIbed = new System.Windows.Forms.Panel();
-            this.labelAttendanceIbed = new System.Windows.Forms.Label();
-            this.labelIBED = new System.Windows.Forms.Label();
-            this.button8 = new System.Windows.Forms.Button();
-            this.panelSed = new System.Windows.Forms.Panel();
-            this.labelSedCounter = new System.Windows.Forms.Label();
-            this.labelAttendanceSed = new System.Windows.Forms.Label();
-            this.labelSED = new System.Windows.Forms.Label();
-            this.button11 = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.labelASP = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
-            this.panelAsp = new System.Windows.Forms.Panel();
-            this.labelAttendanceAsp = new System.Windows.Forms.Label();
-            this.labelIbedCounter = new System.Windows.Forms.Label();
-            this.labelAspCounter = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
-            this.panelIbed.SuspendLayout();
-            this.panelSed.SuspendLayout();
-            this.panelAsp.SuspendLayout();
-            this.SuspendLayout();
+            panel1 = new Panel();
+            panelAsp = new Panel();
+            labelAspCounter = new Label();
+            labelAttendanceAsp = new Label();
+            labelASP = new Label();
+            button7 = new Button();
+            panelIbed = new Panel();
+            labelIbedCounter = new Label();
+            labelAttendanceIbed = new Label();
+            labelIBED = new Label();
+            button8 = new Button();
+            panelSed = new Panel();
+            labelSedCounter = new Label();
+            labelAttendanceSed = new Label();
+            labelSED = new Label();
+            button11 = new Button();
+            label11 = new Label();
+            panel1.SuspendLayout();
+            panelAsp.SuspendLayout();
+            panelIbed.SuspendLayout();
+            panelSed.SuspendLayout();
+            SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackgroundImage = global::SCTAttendanceSystemUI.Properties.Resources.BG_LOW_OPACITY;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Controls.Add(this.panelAsp);
-            this.panel1.Controls.Add(this.panelIbed);
-            this.panel1.Controls.Add(this.panelSed);
-            this.panel1.Controls.Add(this.label11);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1120, 626);
-            this.panel1.TabIndex = 33;
-            // 
-            // panelIbed
-            // 
-            this.panelIbed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(16)))), ((int)(((byte)(48)))));
-            this.panelIbed.Controls.Add(this.labelIbedCounter);
-            this.panelIbed.Controls.Add(this.labelAttendanceIbed);
-            this.panelIbed.Controls.Add(this.labelIBED);
-            this.panelIbed.Controls.Add(this.button8);
-            this.panelIbed.Location = new System.Drawing.Point(405, 164);
-            this.panelIbed.Name = "panelIbed";
-            this.panelIbed.Size = new System.Drawing.Size(320, 208);
-            this.panelIbed.TabIndex = 46;
-            // 
-            // labelAttendanceIbed
-            // 
-            this.labelAttendanceIbed.AutoSize = true;
-            this.labelAttendanceIbed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(27)))), ((int)(((byte)(75)))));
-            this.labelAttendanceIbed.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelAttendanceIbed.ForeColor = System.Drawing.Color.White;
-            this.labelAttendanceIbed.Location = new System.Drawing.Point(20, 140);
-            this.labelAttendanceIbed.Name = "labelAttendanceIbed";
-            this.labelAttendanceIbed.Size = new System.Drawing.Size(202, 20);
-            this.labelAttendanceIbed.TabIndex = 43;
-            this.labelAttendanceIbed.Text = "Total Attendance for today:";
-            // 
-            // labelIBED
-            // 
-            this.labelIBED.AutoSize = true;
-            this.labelIBED.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(27)))), ((int)(((byte)(75)))));
-            this.labelIBED.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelIBED.ForeColor = System.Drawing.Color.White;
-            this.labelIBED.Location = new System.Drawing.Point(20, 61);
-            this.labelIBED.Name = "labelIBED";
-            this.labelIBED.Size = new System.Drawing.Size(77, 37);
-            this.labelIBED.TabIndex = 42;
-            this.labelIBED.Text = "IBED";
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(27)))), ((int)(((byte)(75)))));
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Location = new System.Drawing.Point(0, 44);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(320, 164);
-            this.button8.TabIndex = 41;
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // panelSed
-            // 
-            this.panelSed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(16)))), ((int)(((byte)(48)))));
-            this.panelSed.Controls.Add(this.labelSedCounter);
-            this.panelSed.Controls.Add(this.labelAttendanceSed);
-            this.panelSed.Controls.Add(this.labelSED);
-            this.panelSed.Controls.Add(this.button11);
-            this.panelSed.Location = new System.Drawing.Point(70, 164);
-            this.panelSed.Name = "panelSed";
-            this.panelSed.Size = new System.Drawing.Size(320, 208);
-            this.panelSed.TabIndex = 45;
-            // 
-            // labelSedCounter
-            // 
-            this.labelSedCounter.AutoSize = true;
-            this.labelSedCounter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(121)))), ((int)(((byte)(0)))));
-            this.labelSedCounter.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelSedCounter.ForeColor = System.Drawing.Color.White;
-            this.labelSedCounter.Location = new System.Drawing.Point(228, 120);
-            this.labelSedCounter.Name = "labelSedCounter";
-            this.labelSedCounter.Size = new System.Drawing.Size(38, 45);
-            this.labelSedCounter.TabIndex = 38;
-            this.labelSedCounter.Text = "1";
-            // 
-            // labelAttendanceSed
-            // 
-            this.labelAttendanceSed.AutoSize = true;
-            this.labelAttendanceSed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(121)))), ((int)(((byte)(0)))));
-            this.labelAttendanceSed.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelAttendanceSed.ForeColor = System.Drawing.Color.White;
-            this.labelAttendanceSed.Location = new System.Drawing.Point(20, 140);
-            this.labelAttendanceSed.Name = "labelAttendanceSed";
-            this.labelAttendanceSed.Size = new System.Drawing.Size(202, 20);
-            this.labelAttendanceSed.TabIndex = 37;
-            this.labelAttendanceSed.Text = "Total Attendance for today:";
-            // 
-            // labelSED
-            // 
-            this.labelSED.AutoSize = true;
-            this.labelSED.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(121)))), ((int)(((byte)(0)))));
-            this.labelSED.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelSED.ForeColor = System.Drawing.Color.White;
-            this.labelSED.Location = new System.Drawing.Point(20, 61);
-            this.labelSED.Name = "labelSED";
-            this.labelSED.Size = new System.Drawing.Size(66, 37);
-            this.labelSED.TabIndex = 36;
-            this.labelSED.Text = "SED";
-            // 
-            // button11
-            // 
-            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(121)))), ((int)(((byte)(0)))));
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Location = new System.Drawing.Point(0, 44);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(320, 164);
-            this.button11.TabIndex = 35;
-            this.button11.UseVisualStyleBackColor = false;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(48, 32);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(219, 31);
-            this.label11.TabIndex = 33;
-            this.label11.Text = "DEPARTMENTS";
-            // 
-            // labelASP
-            // 
-            this.labelASP.AutoSize = true;
-            this.labelASP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(35)))), ((int)(((byte)(68)))));
-            this.labelASP.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelASP.ForeColor = System.Drawing.Color.White;
-            this.labelASP.Location = new System.Drawing.Point(20, 61);
-            this.labelASP.Name = "labelASP";
-            this.labelASP.Size = new System.Drawing.Size(68, 37);
-            this.labelASP.TabIndex = 44;
-            this.labelASP.Text = "ASP";
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(35)))), ((int)(((byte)(68)))));
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Location = new System.Drawing.Point(0, 46);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(320, 164);
-            this.button7.TabIndex = 43;
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            panel1.BackgroundImage = Properties.Resources.BG_LOW_OPACITY;
+            panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(panelAsp);
+            panel1.Controls.Add(panelIbed);
+            panel1.Controls.Add(panelSed);
+            panel1.Controls.Add(label11);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1120, 626);
+            panel1.TabIndex = 33;
             // 
             // panelAsp
             // 
-            this.panelAsp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(16)))), ((int)(((byte)(48)))));
-            this.panelAsp.Controls.Add(this.labelAspCounter);
-            this.panelAsp.Controls.Add(this.labelAttendanceAsp);
-            this.panelAsp.Controls.Add(this.labelASP);
-            this.panelAsp.Controls.Add(this.button7);
-            this.panelAsp.Location = new System.Drawing.Point(740, 164);
-            this.panelAsp.Name = "panelAsp";
-            this.panelAsp.Size = new System.Drawing.Size(320, 208);
-            this.panelAsp.TabIndex = 47;
-            // 
-            // labelAttendanceAsp
-            // 
-            this.labelAttendanceAsp.AutoSize = true;
-            this.labelAttendanceAsp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(35)))), ((int)(((byte)(68)))));
-            this.labelAttendanceAsp.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelAttendanceAsp.ForeColor = System.Drawing.Color.White;
-            this.labelAttendanceAsp.Location = new System.Drawing.Point(20, 140);
-            this.labelAttendanceAsp.Name = "labelAttendanceAsp";
-            this.labelAttendanceAsp.Size = new System.Drawing.Size(202, 20);
-            this.labelAttendanceAsp.TabIndex = 45;
-            this.labelAttendanceAsp.Text = "Total Attendance for today:";
-            // 
-            // labelIbedCounter
-            // 
-            this.labelIbedCounter.AutoSize = true;
-            this.labelIbedCounter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(27)))), ((int)(((byte)(75)))));
-            this.labelIbedCounter.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelIbedCounter.ForeColor = System.Drawing.Color.White;
-            this.labelIbedCounter.Location = new System.Drawing.Point(228, 120);
-            this.labelIbedCounter.Name = "labelIbedCounter";
-            this.labelIbedCounter.Size = new System.Drawing.Size(38, 45);
-            this.labelIbedCounter.TabIndex = 44;
-            this.labelIbedCounter.Text = "1";
+            panelAsp.BackColor = Color.FromArgb(164, 16, 48);
+            panelAsp.Controls.Add(labelAspCounter);
+            panelAsp.Controls.Add(labelAttendanceAsp);
+            panelAsp.Controls.Add(labelASP);
+            panelAsp.Controls.Add(button7);
+            panelAsp.Location = new Point(740, 164);
+            panelAsp.Name = "panelAsp";
+            panelAsp.Size = new Size(320, 208);
+            panelAsp.TabIndex = 47;
             // 
             // labelAspCounter
             // 
-            this.labelAspCounter.AutoSize = true;
-            this.labelAspCounter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(35)))), ((int)(((byte)(68)))));
-            this.labelAspCounter.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelAspCounter.ForeColor = System.Drawing.Color.White;
-            this.labelAspCounter.Location = new System.Drawing.Point(228, 120);
-            this.labelAspCounter.Name = "labelAspCounter";
-            this.labelAspCounter.Size = new System.Drawing.Size(38, 45);
-            this.labelAspCounter.TabIndex = 46;
-            this.labelAspCounter.Text = "1";
+            labelAspCounter.AutoSize = true;
+            labelAspCounter.BackColor = Color.FromArgb(2, 35, 68);
+            labelAspCounter.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            labelAspCounter.ForeColor = Color.White;
+            labelAspCounter.Location = new Point(228, 120);
+            labelAspCounter.Name = "labelAspCounter";
+            labelAspCounter.Size = new Size(38, 45);
+            labelAspCounter.TabIndex = 46;
+            labelAspCounter.Text = "1";
+            // 
+            // labelAttendanceAsp
+            // 
+            labelAttendanceAsp.AutoSize = true;
+            labelAttendanceAsp.BackColor = Color.FromArgb(2, 35, 68);
+            labelAttendanceAsp.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            labelAttendanceAsp.ForeColor = Color.White;
+            labelAttendanceAsp.Location = new Point(20, 140);
+            labelAttendanceAsp.Name = "labelAttendanceAsp";
+            labelAttendanceAsp.Size = new Size(202, 20);
+            labelAttendanceAsp.TabIndex = 45;
+            labelAttendanceAsp.Text = "Total Attendance for today:";
+            // 
+            // labelASP
+            // 
+            labelASP.AutoSize = true;
+            labelASP.BackColor = Color.FromArgb(2, 35, 68);
+            labelASP.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            labelASP.ForeColor = Color.White;
+            labelASP.Location = new Point(20, 61);
+            labelASP.Name = "labelASP";
+            labelASP.Size = new Size(68, 37);
+            labelASP.TabIndex = 44;
+            labelASP.Text = "ASP";
+            // 
+            // button7
+            // 
+            button7.BackColor = Color.FromArgb(2, 35, 68);
+            button7.FlatStyle = FlatStyle.Flat;
+            button7.Location = new Point(0, 46);
+            button7.Name = "button7";
+            button7.Size = new Size(320, 164);
+            button7.TabIndex = 43;
+            button7.UseVisualStyleBackColor = false;
+            button7.Click += button7_Click;
+            // 
+            // panelIbed
+            // 
+            panelIbed.BackColor = Color.FromArgb(164, 16, 48);
+            panelIbed.Controls.Add(labelIbedCounter);
+            panelIbed.Controls.Add(labelAttendanceIbed);
+            panelIbed.Controls.Add(labelIBED);
+            panelIbed.Controls.Add(button8);
+            panelIbed.Location = new Point(405, 164);
+            panelIbed.Name = "panelIbed";
+            panelIbed.Size = new Size(320, 208);
+            panelIbed.TabIndex = 46;
+            // 
+            // labelIbedCounter
+            // 
+            labelIbedCounter.AutoSize = true;
+            labelIbedCounter.BackColor = Color.FromArgb(99, 27, 75);
+            labelIbedCounter.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            labelIbedCounter.ForeColor = Color.White;
+            labelIbedCounter.Location = new Point(228, 120);
+            labelIbedCounter.Name = "labelIbedCounter";
+            labelIbedCounter.Size = new Size(38, 45);
+            labelIbedCounter.TabIndex = 44;
+            labelIbedCounter.Text = "1";
+            // 
+            // labelAttendanceIbed
+            // 
+            labelAttendanceIbed.AutoSize = true;
+            labelAttendanceIbed.BackColor = Color.FromArgb(99, 27, 75);
+            labelAttendanceIbed.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            labelAttendanceIbed.ForeColor = Color.White;
+            labelAttendanceIbed.Location = new Point(20, 140);
+            labelAttendanceIbed.Name = "labelAttendanceIbed";
+            labelAttendanceIbed.Size = new Size(202, 20);
+            labelAttendanceIbed.TabIndex = 43;
+            labelAttendanceIbed.Text = "Total Attendance for today:";
+            // 
+            // labelIBED
+            // 
+            labelIBED.AutoSize = true;
+            labelIBED.BackColor = Color.FromArgb(99, 27, 75);
+            labelIBED.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            labelIBED.ForeColor = Color.White;
+            labelIBED.Location = new Point(20, 61);
+            labelIBED.Name = "labelIBED";
+            labelIBED.Size = new Size(77, 37);
+            labelIBED.TabIndex = 42;
+            labelIBED.Text = "IBED";
+            // 
+            // button8
+            // 
+            button8.BackColor = Color.FromArgb(99, 27, 75);
+            button8.FlatStyle = FlatStyle.Flat;
+            button8.Location = new Point(0, 44);
+            button8.Name = "button8";
+            button8.Size = new Size(320, 164);
+            button8.TabIndex = 41;
+            button8.UseVisualStyleBackColor = false;
+            button8.Click += button8_Click;
+            // 
+            // panelSed
+            // 
+            panelSed.BackColor = Color.FromArgb(164, 16, 48);
+            panelSed.Controls.Add(labelSedCounter);
+            panelSed.Controls.Add(labelAttendanceSed);
+            panelSed.Controls.Add(labelSED);
+            panelSed.Controls.Add(button11);
+            panelSed.Location = new Point(70, 164);
+            panelSed.Name = "panelSed";
+            panelSed.Size = new Size(320, 208);
+            panelSed.TabIndex = 45;
+            // 
+            // labelSedCounter
+            // 
+            labelSedCounter.AutoSize = true;
+            labelSedCounter.BackColor = Color.FromArgb(255, 121, 0);
+            labelSedCounter.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            labelSedCounter.ForeColor = Color.White;
+            labelSedCounter.Location = new Point(228, 120);
+            labelSedCounter.Name = "labelSedCounter";
+            labelSedCounter.Size = new Size(38, 45);
+            labelSedCounter.TabIndex = 38;
+            labelSedCounter.Text = "1";
+            // 
+            // labelAttendanceSed
+            // 
+            labelAttendanceSed.AutoSize = true;
+            labelAttendanceSed.BackColor = Color.FromArgb(255, 121, 0);
+            labelAttendanceSed.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            labelAttendanceSed.ForeColor = Color.White;
+            labelAttendanceSed.Location = new Point(20, 140);
+            labelAttendanceSed.Name = "labelAttendanceSed";
+            labelAttendanceSed.Size = new Size(202, 20);
+            labelAttendanceSed.TabIndex = 37;
+            labelAttendanceSed.Text = "Total Attendance for today:";
+            // 
+            // labelSED
+            // 
+            labelSED.AutoSize = true;
+            labelSED.BackColor = Color.FromArgb(255, 121, 0);
+            labelSED.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            labelSED.ForeColor = Color.White;
+            labelSED.Location = new Point(20, 61);
+            labelSED.Name = "labelSED";
+            labelSED.Size = new Size(66, 37);
+            labelSED.TabIndex = 36;
+            labelSED.Text = "SED";
+            // 
+            // button11
+            // 
+            button11.BackColor = Color.FromArgb(255, 121, 0);
+            button11.FlatStyle = FlatStyle.Flat;
+            button11.Location = new Point(0, 44);
+            button11.Name = "button11";
+            button11.Size = new Size(320, 164);
+            button11.TabIndex = 35;
+            button11.UseVisualStyleBackColor = false;
+            button11.Click += button11_Click;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.BackColor = Color.Transparent;
+            label11.Font = new Font("Times New Roman", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            label11.Location = new Point(48, 32);
+            label11.Name = "label11";
+            label11.Size = new Size(219, 31);
+            label11.TabIndex = 33;
+            label11.Text = "DEPARTMENTS";
             // 
             // FormDepartment
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1120, 626);
-            this.Controls.Add(this.panel1);
-            this.DoubleBuffered = true;
-            this.MaximumSize = new System.Drawing.Size(1920, 1080);
-            this.Name = "FormDepartment";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormDepartment";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panelIbed.ResumeLayout(false);
-            this.panelIbed.PerformLayout();
-            this.panelSed.ResumeLayout(false);
-            this.panelSed.PerformLayout();
-            this.panelAsp.ResumeLayout(false);
-            this.panelAsp.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(1120, 626);
+            Controls.Add(panel1);
+            DoubleBuffered = true;
+            MaximumSize = new Size(1920, 1080);
+            Name = "FormDepartment";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "FormDepartment";
+            Load += FormDepartment_Load;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            panelAsp.ResumeLayout(false);
+            panelAsp.PerformLayout();
+            panelIbed.ResumeLayout(false);
+            panelIbed.PerformLayout();
+            panelSed.ResumeLayout(false);
+            panelSed.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion

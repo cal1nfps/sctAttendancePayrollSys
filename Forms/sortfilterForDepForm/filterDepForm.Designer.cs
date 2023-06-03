@@ -1,6 +1,6 @@
-﻿namespace SCTAttendanceSystemUI.Forms.filterAttendance
+﻿namespace SCTAttendanceSystemUI.Forms.sortfilterForDepForm
 {
-    partial class filterAttendanceButton
+    partial class filterDepForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,14 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(filterAttendanceButton));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(filterDepForm));
             panel1 = new Panel();
             comboBox3 = new ComboBox();
-            comboBox1 = new ComboBox();
             button2 = new Button();
             panel4 = new Panel();
             panel2 = new Panel();
-            comboBox2 = new ComboBox();
             button1 = new Button();
             filterComboBox = new ComboBox();
             cancelButton = new Button();
@@ -47,18 +45,16 @@
             panel1.BackColor = Color.White;
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(comboBox3);
-            panel1.Controls.Add(comboBox1);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(panel4);
             panel1.Controls.Add(panel2);
-            panel1.Controls.Add(comboBox2);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(filterComboBox);
             panel1.Controls.Add(cancelButton);
             panel1.Location = new Point(2, 1);
             panel1.Name = "panel1";
             panel1.Size = new Size(213, 332);
-            panel1.TabIndex = 8;
+            panel1.TabIndex = 9;
             // 
             // comboBox3
             // 
@@ -73,20 +69,6 @@
             comboBox3.Size = new Size(142, 23);
             comboBox3.TabIndex = 70;
             comboBox3.Text = "JOB STATUS";
-            // 
-            // comboBox1
-            // 
-            comboBox1.BackColor = Color.WhiteSmoke;
-            comboBox1.Cursor = Cursors.Hand;
-            comboBox1.FlatStyle = FlatStyle.Flat;
-            comboBox1.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "None", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" });
-            comboBox1.Location = new Point(36, 152);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(142, 23);
-            comboBox1.TabIndex = 69;
-            comboBox1.Text = "MONTH";
             // 
             // button2
             // 
@@ -122,20 +104,6 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(212, 2);
             panel2.TabIndex = 66;
-            // 
-            // comboBox2
-            // 
-            comboBox2.BackColor = Color.WhiteSmoke;
-            comboBox2.Cursor = Cursors.Hand;
-            comboBox2.FlatStyle = FlatStyle.Flat;
-            comboBox2.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "IBED", "SED", "ASP" });
-            comboBox2.Location = new Point(36, 94);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(142, 23);
-            comboBox2.TabIndex = 65;
-            comboBox2.Text = "DEPARTMENT";
             // 
             // button1
             // 
@@ -191,17 +159,17 @@
             cancelButton.UseVisualStyleBackColor = false;
             cancelButton.Click += cancelButton_Click;
             // 
-            // filterAttendanceButton
+            // filterDepForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(216, 335);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Location = new Point(1407, 325);
-            Name = "filterAttendanceButton";
+            Location = new Point(1460, 365);
+            Name = "filterDepForm";
             StartPosition = FormStartPosition.Manual;
-            Text = "filterAttendanceButton";
+            Text = "filterDepForm";
             panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -209,14 +177,12 @@
         #endregion
 
         private Panel panel1;
+        public ComboBox comboBox3;
         private Button button2;
         private Panel panel4;
         private Panel panel2;
-        public ComboBox comboBox2;
         private Button button1;
         public ComboBox filterComboBox;
         private Button cancelButton;
-        public ComboBox comboBox1;
-        public ComboBox comboBox3;
     }
 }

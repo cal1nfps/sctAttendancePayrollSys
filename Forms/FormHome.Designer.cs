@@ -32,12 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHome));
             labelDashboard = new Label();
             labelDashboardDate = new Label();
-            sortENcomboBox = new ComboBox();
-            labelSort = new Label();
-            label1 = new Label();
-            sortComboBox = new ComboBox();
             dataGridView1 = new DataGridView();
             button4 = new Button();
+            textBox1 = new TextBox();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -63,58 +61,6 @@
             labelDashboardDate.TabIndex = 17;
             labelDashboardDate.Text = "DATE: ";
             labelDashboardDate.Click += labelDashboardDate_Click_1;
-            // 
-            // sortENcomboBox
-            // 
-            sortENcomboBox.BackColor = SystemColors.Control;
-            sortENcomboBox.Cursor = Cursors.Hand;
-            sortENcomboBox.FlatStyle = FlatStyle.Flat;
-            sortENcomboBox.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            sortENcomboBox.FormattingEnabled = true;
-            sortENcomboBox.Items.AddRange(new object[] { "None", "A - Z", "Z - A" });
-            sortENcomboBox.Location = new Point(1059, 65);
-            sortENcomboBox.Name = "sortENcomboBox";
-            sortENcomboBox.Size = new Size(142, 23);
-            sortENcomboBox.TabIndex = 18;
-            sortENcomboBox.Text = "NAME";
-            sortENcomboBox.SelectedIndexChanged += sortENcomboBox_SelectedIndexChanged_1;
-            // 
-            // labelSort
-            // 
-            labelSort.AutoSize = true;
-            labelSort.BackColor = Color.WhiteSmoke;
-            labelSort.Font = new Font("Times New Roman", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            labelSort.Location = new Point(1015, 65);
-            labelSort.Name = "labelSort";
-            labelSort.Size = new Size(39, 17);
-            labelSort.TabIndex = 19;
-            labelSort.Text = "Sort:";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.WhiteSmoke;
-            label1.Font = new Font("Times New Roman", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(823, 65);
-            label1.Name = "label1";
-            label1.Size = new Size(39, 17);
-            label1.TabIndex = 20;
-            label1.Text = "Sort:";
-            // 
-            // sortComboBox
-            // 
-            sortComboBox.BackColor = SystemColors.Control;
-            sortComboBox.Cursor = Cursors.Hand;
-            sortComboBox.FlatStyle = FlatStyle.Flat;
-            sortComboBox.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            sortComboBox.FormattingEnabled = true;
-            sortComboBox.Items.AddRange(new object[] { "None", "Highest - Lowest", "Lowest - Highest" });
-            sortComboBox.Location = new Point(867, 65);
-            sortComboBox.Name = "sortComboBox";
-            sortComboBox.Size = new Size(142, 23);
-            sortComboBox.TabIndex = 21;
-            sortComboBox.Text = "EMPLOYEE NUMBER";
-            sortComboBox.SelectedIndexChanged += sortComboBox_SelectedIndexChanged;
             // 
             // dataGridView1
             // 
@@ -143,7 +89,6 @@
             dataGridView1.Size = new Size(1177, 514);
             dataGridView1.TabIndex = 22;
             dataGridView1.CellFormatting += dataGridView1_CellFormatting_1;
-            dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;
             // 
             // button4
             // 
@@ -164,6 +109,34 @@
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
             // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(978, 63);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(196, 23);
+            textBox1.TabIndex = 66;
+            textBox1.Text = "Search Employee Number or Name";
+            textBox1.TextChanged += textBox1_TextChanged;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Green;
+            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(1180, 58);
+            button1.Name = "button1";
+            button1.Padding = new Padding(10, 0, 0, 0);
+            button1.Size = new Size(47, 30);
+            button1.TabIndex = 69;
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_1;
+            // 
             // FormHome
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -172,12 +145,10 @@
             BackgroundImage = Properties.Resources.BG_LOW_OPACITY;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1666, 822);
+            Controls.Add(button1);
+            Controls.Add(textBox1);
             Controls.Add(button4);
             Controls.Add(dataGridView1);
-            Controls.Add(sortComboBox);
-            Controls.Add(label1);
-            Controls.Add(labelSort);
-            Controls.Add(sortENcomboBox);
             Controls.Add(labelDashboardDate);
             Controls.Add(labelDashboard);
             DoubleBuffered = true;
@@ -196,11 +167,9 @@
 
         private Label labelDashboard;
         private Label labelDashboardDate;
-        private ComboBox sortENcomboBox;
-        private Label labelSort;
-        private Label label1;
-        private ComboBox sortComboBox;
         public DataGridView dataGridView1;
         private Button button4;
+        private TextBox textBox1;
+        private Button button1;
     }
 }

@@ -435,7 +435,7 @@
             label15.AutoSize = true;
             label15.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label15.ForeColor = SystemColors.ControlDarkDark;
-            label15.Location = new Point(430, 8);
+            label15.Location = new Point(447, 8);
             label15.Name = "label15";
             label15.Size = new Size(50, 14);
             label15.TabIndex = 64;
@@ -457,11 +457,11 @@
             label13.AutoSize = true;
             label13.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label13.ForeColor = SystemColors.ControlDarkDark;
-            label13.Location = new Point(284, 8);
+            label13.Location = new Point(274, 8);
             label13.Name = "label13";
-            label13.Size = new Size(45, 14);
+            label13.Size = new Size(64, 14);
             label13.TabIndex = 62;
-            label13.Text = "Gender";
+            label13.Text = "Job Status";
             // 
             // label11
             // 
