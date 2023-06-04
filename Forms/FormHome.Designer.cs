@@ -57,6 +57,7 @@
             labelDashboard.AutoSize = true;
             labelDashboard.BackColor = Color.Transparent;
             labelDashboard.Font = new Font("Times New Roman", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            labelDashboard.ForeColor = Color.IndianRed;
             labelDashboard.Location = new Point(38, 32);
             labelDashboard.Name = "labelDashboard";
             labelDashboard.Size = new Size(370, 31);
@@ -306,7 +307,7 @@
             Controls.Add(labelDashboard);
             DoubleBuffered = true;
             MaximumSize = new Size(1920, 1080);
-            MinimumSize = new Size(1680, 821);
+            MinimumSize = new Size(1598, 821);
             Name = "FormHome";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormHome";
