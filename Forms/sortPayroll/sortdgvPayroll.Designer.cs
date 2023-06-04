@@ -1,6 +1,6 @@
-﻿namespace SCTAttendanceSystemUI.Forms.sortdgvFormHome
+﻿namespace SCTAttendanceSystemUI.Forms.sortPayroll
 {
-    partial class sort
+    partial class sortdgvPayroll
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(sort));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(sortdgvPayroll));
             cancelButton = new Button();
             panel1 = new Panel();
             panel4 = new Panel();
@@ -75,8 +75,7 @@
             panel1.Location = new Point(2, 1);
             panel1.Name = "panel1";
             panel1.Size = new Size(213, 332);
-            panel1.TabIndex = 8;
-            panel1.Paint += panel1_Paint;
+            panel1.TabIndex = 9;
             // 
             // panel4
             // 
@@ -85,7 +84,6 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(212, 2);
             panel4.TabIndex = 67;
-            panel4.Paint += panel4_Paint;
             // 
             // panel3
             // 
@@ -94,7 +92,6 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(212, 2);
             panel3.TabIndex = 67;
-            panel3.Paint += panel3_Paint;
             // 
             // panel2
             // 
@@ -103,7 +100,6 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(212, 2);
             panel2.TabIndex = 66;
-            panel2.Paint += panel2_Paint;
             // 
             // comboBox2
             // 
@@ -157,19 +153,17 @@
             mySqlCommand1.Transaction = null;
             mySqlCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
             // 
-            // sort
+            // sortdgvPayroll
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(216, 335);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Location = new Point(1355, 325);
-            Name = "sort";
+            Name = "sortdgvPayroll";
             StartPosition = FormStartPosition.Manual;
-            Text = "sort";
-            Load += sort_Load;
+            Text = "sortdgvPayroll";
             panel1.ResumeLayout(false);
             ResumeLayout(false);
         }

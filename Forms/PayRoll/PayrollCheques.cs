@@ -157,6 +157,10 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
                 document.Add(new iTextSharp.text.Paragraph(" "));
                 document.Add(new iTextSharp.text.Paragraph(" "));
 
+                string dob = DateTime.Parse(transferredData6).ToString("MMMM dd, yyyy");
+                string hod = DateTime.Parse(transferredData5).ToString("MMMM dd, yyyy");
+
+
 
                 // Create a table with 2 columns
                 PdfPTable table = new PdfPTable(4);
@@ -172,11 +176,11 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
 
                 // Add deductions cell
                 table.AddCell(new PdfPCell(new Phrase("Date of Birth:", dataFont)));
-                table.AddCell(new PdfPCell(new Phrase(transferredData6, dataFont2)));
+                table.AddCell(new PdfPCell(new Phrase(dob, dataFont2)));
 
                 // Add deductions cell
                 table.AddCell(new PdfPCell(new Phrase("Hire Date:", dataFont)));
-                table.AddCell(new PdfPCell(new Phrase(transferredData5, dataFont2)));
+                table.AddCell(new PdfPCell(new Phrase(hod, dataFont2)));
 
                 // Add department cell
                 table.AddCell(new PdfPCell(new Phrase("Department:", dataFont)));

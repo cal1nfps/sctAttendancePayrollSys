@@ -8,14 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
-namespace SCTAttendanceSystemUI.Forms.sortdgvFormHome
+namespace SCTAttendanceSystemUI.Forms.sortPayroll
 {
-
-    public partial class sort : Form
+    public partial class sortdgvPayroll : Form
     {
-
-        public sort()
+        public sortdgvPayroll()
         {
             InitializeComponent();
         }
@@ -29,7 +26,7 @@ namespace SCTAttendanceSystemUI.Forms.sortdgvFormHome
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Sort DGV from FormHome
-            DataGridView dataGridView1 = System.Windows.Forms.Application.OpenForms["FormHome"].Controls["dataGridView1"] as DataGridView;
+            DataGridView dataGridView1 = System.Windows.Forms.Application.OpenForms["FormPayroll"].Controls["dataGridView1"] as DataGridView;
 
             string selectedItem = comboBox1.SelectedItem.ToString();   //Selected combobox item
 
@@ -48,7 +45,7 @@ namespace SCTAttendanceSystemUI.Forms.sortdgvFormHome
             string selectedItem = comboBox2.SelectedItem.ToString();   //Selected combobox item
 
             //Sort DGV from FormHome
-            DataGridView dataGridView1 = System.Windows.Forms.Application.OpenForms["FormHome"].Controls["dataGridView1"] as DataGridView;
+            DataGridView dataGridView1 = System.Windows.Forms.Application.OpenForms["FormPayroll"].Controls["dataGridView1"] as DataGridView;
 
             //SORTS THE COLUMN 'NAME'
             if (selectedItem == "A - Z")
@@ -68,41 +65,19 @@ namespace SCTAttendanceSystemUI.Forms.sortdgvFormHome
             string selectedItem = filterComboBox.SelectedItem.ToString();   //Selected combobox item
 
             //Sort DGV from FormHome
-            DataGridView dataGridView1 = System.Windows.Forms.Application.OpenForms["FormHome"].Controls["dataGridView1"] as DataGridView;
+            DataGridView dataGridView1 = System.Windows.Forms.Application.OpenForms["FormPayroll"].Controls["dataGridView1"] as DataGridView;
 
             //SORTS THE COLUMN 'EMPLOYEE_NUMBER'
             if (selectedItem == "Lowest - Highest")
             {
-                dataGridView1.Sort(dataGridView1.Columns["empnum"], ListSortDirection.Ascending);    //Sorts the selected column 'Employee_Number' to Ascending    
+                dataGridView1.Sort(dataGridView1.Columns["employeenum"], ListSortDirection.Ascending);    //Sorts the selected column 'Employee_Number' to Ascending    
             }
 
 
             if (selectedItem == "Highest - Lowest")
             {
-                dataGridView1.Sort(dataGridView1.Columns["empnum"], ListSortDirection.Descending);   //Sorts the selected column 'Employee_Number' to Descending
+                dataGridView1.Sort(dataGridView1.Columns["employeenum"], ListSortDirection.Descending);   //Sorts the selected column 'Employee_Number' to Descending
             }
-        }
-
-        private void sort_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
         }
     }
 }

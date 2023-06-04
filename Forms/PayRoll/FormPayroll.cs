@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using SCTAttendanceSystemUI.Forms.PayRoll;
 using SCTAttendanceSystemUI.Forms.sortdgvFormHome;
-
+using SCTAttendanceSystemUI.Forms.sortPayroll;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace SCTAttendanceSystemUI.Forms
@@ -135,6 +135,13 @@ namespace SCTAttendanceSystemUI.Forms
         private void button3_Click_1(object sender, EventArgs e)
         {
             sort sortDgvForm = new sort();
+
+            sortDgvForm.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            sortdgvPayroll sortDgvForm = new sortdgvPayroll();
 
             sortDgvForm.Show();
         }

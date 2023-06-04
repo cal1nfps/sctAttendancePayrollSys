@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPayroll));
             labelPayroll = new Label();
             buttonOvertimeAdd = new Button();
             button2 = new Button();
@@ -38,6 +39,7 @@
             labelFullName = new Label();
             labelEmployeeNo = new Label();
             dataGridView1 = new DataGridView();
+            button1 = new Button();
             panelFormOvertime.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -61,7 +63,7 @@
             buttonOvertimeAdd.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             buttonOvertimeAdd.Image = Properties.Resources.export;
             buttonOvertimeAdd.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonOvertimeAdd.Location = new Point(609, 29);
+            buttonOvertimeAdd.Location = new Point(1019, 26);
             buttonOvertimeAdd.Name = "buttonOvertimeAdd";
             buttonOvertimeAdd.Padding = new Padding(10, 0, 0, 0);
             buttonOvertimeAdd.Size = new Size(100, 30);
@@ -80,7 +82,7 @@
             button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button2.Image = Properties.Resources.export;
             button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(732, 29);
+            button2.Location = new Point(1125, 26);
             button2.Name = "button2";
             button2.Padding = new Padding(10, 0, 0, 0);
             button2.Size = new Size(100, 30);
@@ -97,6 +99,8 @@
             panelFormOvertime.Controls.Add(labelCashAdvance);
             panelFormOvertime.Controls.Add(labelDeduction);
             panelFormOvertime.Controls.Add(labelGrossPay);
+            panelFormOvertime.Controls.Add(button2);
+            panelFormOvertime.Controls.Add(buttonOvertimeAdd);
             panelFormOvertime.Controls.Add(labelFullName);
             panelFormOvertime.Controls.Add(labelEmployeeNo);
             panelFormOvertime.Location = new Point(51, 90);
@@ -183,6 +187,25 @@
             dataGridView1.TabIndex = 54;
             dataGridView1.CellFormatting += dataGridView1_CellFormatting_1;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.Green;
+            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(1241, 54);
+            button1.Name = "button1";
+            button1.Padding = new Padding(10, 0, 0, 0);
+            button1.Size = new Size(47, 30);
+            button1.TabIndex = 70;
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // FormPayroll
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -191,10 +214,9 @@
             BackgroundImage = Properties.Resources.BG_LOW_OPACITY;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1904, 1041);
+            Controls.Add(button1);
             Controls.Add(dataGridView1);
             Controls.Add(panelFormOvertime);
-            Controls.Add(button2);
-            Controls.Add(buttonOvertimeAdd);
             Controls.Add(labelPayroll);
             DoubleBuffered = true;
             MaximumSize = new Size(1920, 1080);
@@ -221,5 +243,6 @@
         private Label labelGrossPay;
         private Label labelFullName;
         private DataGridView dataGridView1;
+        private Button button1;
     }
 }

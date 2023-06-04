@@ -21,9 +21,14 @@ namespace SCTAttendanceSystemUI.Forms
 {
     public partial class FormSettings : Form
     {
+        private MySqlConnection connection;
+        private MySqlDataAdapter adapter;
+        private DataTable table;
         public FormSettings()
         {
             InitializeComponent();
+            string connectionString = "server=localhost;user=root;password=root;database=payrollsys";
+            connection = new MySqlConnection(connectionString);
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -34,34 +39,6 @@ namespace SCTAttendanceSystemUI.Forms
         private void buttonSave_Click(object sender, EventArgs e)
         {
 
-            if (textBoxCurrentPassword.Text == textBoxNewPassword.Text)
-            {
-                //This is my connection string i have assigned the database file address path
-                string MyConnection2 = "datasource=localhost;port=3306;uid=root;pwd=root;";
-                //This is my update query in which i am taking input from the user through windows forms and update the record.
-                string Query = "update login_attendancesystem.user set password='" + this.textBoxNewPassword.Text + "' where username='" + this.textBoxIDNo.Text + "';";
-                //This is  MySqlConnection here i have created the object and pass my connection string.
-                MySqlConnection MyConn2 = new MySqlConnection(MyConnection2);
-                MySqlCommand MyCommand2 = new MySqlCommand(Query, MyConn2);
-                MySqlDataReader MyReader2;
-                MyConn2.Open();
-                MyReader2 = MyCommand2.ExecuteReader();
-                if (MessageBox.Show("Are you sure you want to save?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    MessageBox.Show("Sucessfully saved!", "Confirmation", MessageBoxButtons.OK);
-                    textBoxCurrentPassword.Text = String.Empty;
-                    textBoxNewPassword.Text = String.Empty;
-                    textBoxIDNo.Text = String.Empty;
-                }
-                while (MyReader2.Read())
-                {
-                }
-                MyConn2.Close();//Connection closed here
-            }
-            else
-            {
-                MessageBox.Show("Password do not match");
-            }
         }
 
         private void labelCurrentPassword_Click(object sender, EventArgs e)
@@ -126,6 +103,72 @@ namespace SCTAttendanceSystemUI.Forms
 
         private void labelAccountNumber_Click(object sender, EventArgs e)
         {
+        }
+
+        private void labelAccountNumber_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelIDNo_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSave_Click_1(object sender, EventArgs e)
+        {
+            string username = textBoxIDNo.Text;
+            string currentPassword = textBoxCurrentPassword.Text;
+            string newPassword = textBoxNewPassword.Text;
+            string verifyPassword = textBoxCurrentPassword.Text;
+
+            if (currentPassword == verifyPassword)
+            {
+                // Create a connection to MySQL
+
+                try
+                {
+                    connection.Open();
+
+                    // Update the password in the adminlogin table
+                    string updateQuery = "UPDATE adminlogin SET password = @NewPassword WHERE username = @Username";
+
+                    using (MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection))
+                    {
+                        updateCommand.Parameters.AddWithValue("@NewPassword", newPassword);
+                        updateCommand.Parameters.AddWithValue("@Username", username);
+
+                        // Execute the update query
+                        int rowsAffected = updateCommand.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Password changed successfully!");
+                            textBoxCurrentPassword.Text = String.Empty;
+                            textBoxNewPassword.Text = String.Empty;
+                            textBoxCurrentPassword.Text = String.Empty;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to change password.");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Passwords do not match.");
+            }
+        }
+
+        private void labelCurrentPassword_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

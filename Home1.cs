@@ -578,5 +578,17 @@ namespace SCTAttendanceSystemUI
                 this.Close();
             }
         }
+
+        private void buttonOvertime_Click_1(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.FormOvertime(), sender);
+            hideSubMenu();
+        }
+
+        private void buttonDeduction_Click_1(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.FormDeduction(), sender);
+            hideSubMenu();
+        }
     }
 }

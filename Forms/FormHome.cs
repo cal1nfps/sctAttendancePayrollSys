@@ -677,9 +677,7 @@ namespace SCTAttendanceSystemUI.Forms
                 dataGridView1.Columns["jobhours"].Visible = false;    // Hide a specific column
                 dataGridView1.Columns["jobtimein"].Visible = false;    // Hide a specific column
                 dataGridView1.Columns["jobtimeout"].Visible = false;    // Hide a specific column
-                dataGridView1.Columns["undertime"].Visible = false;    // Hide a specific column
                 dataGridView1.Columns["absences"].Visible = false;    // Hide a specific column
-                dataGridView1.Columns["late"].Visible = false;    // Hide a specific column
 
 
             }
@@ -688,6 +686,11 @@ namespace SCTAttendanceSystemUI.Forms
                 MessageBox.Show("An error occurred: " + ex.Message);
                 connection.Close();
             }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

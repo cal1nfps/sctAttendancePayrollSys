@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHome));
             labelDashboard = new Label();
             labelDashboardDate = new Label();
@@ -37,6 +37,8 @@
             textBox1 = new TextBox();
             button1 = new Button();
             panelAttendanceForToday = new Panel();
+            label2 = new Label();
+            label1 = new Label();
             labelStatus = new Label();
             labelOvertimeHours = new Label();
             labelTimeOut = new Label();
@@ -57,7 +59,7 @@
             labelDashboard.AutoSize = true;
             labelDashboard.BackColor = Color.Transparent;
             labelDashboard.Font = new Font("Times New Roman", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            labelDashboard.ForeColor = Color.IndianRed;
+            labelDashboard.ForeColor = Color.Black;
             labelDashboard.Location = new Point(38, 32);
             labelDashboard.Name = "labelDashboard";
             labelDashboard.Size = new Size(370, 31);
@@ -84,15 +86,15 @@
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.ColumnHeadersVisible = false;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.NullValue = null;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.NullValue = null;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.Location = new Point(103, 130);
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
@@ -153,6 +155,8 @@
             // 
             panelAttendanceForToday.BackColor = Color.White;
             panelAttendanceForToday.BorderStyle = BorderStyle.FixedSingle;
+            panelAttendanceForToday.Controls.Add(label2);
+            panelAttendanceForToday.Controls.Add(label1);
             panelAttendanceForToday.Controls.Add(labelStatus);
             panelAttendanceForToday.Controls.Add(labelOvertimeHours);
             panelAttendanceForToday.Controls.Add(labelTimeOut);
@@ -168,6 +172,29 @@
             panelAttendanceForToday.Name = "panelAttendanceForToday";
             panelAttendanceForToday.Size = new Size(1177, 30);
             panelAttendanceForToday.TabIndex = 70;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.ForeColor = SystemColors.ControlDarkDark;
+            label2.Location = new Point(1076, 7);
+            label2.Name = "label2";
+            label2.Size = new Size(66, 14);
+            label2.TabIndex = 71;
+            label2.Text = "Late Hours";
+            label2.Click += label2_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.ControlDarkDark;
+            label1.Location = new Point(980, 7);
+            label1.Name = "label1";
+            label1.Size = new Size(62, 14);
+            label1.TabIndex = 71;
+            label1.Text = "Undertime";
             // 
             // labelStatus
             // 
@@ -339,5 +366,7 @@
         private Label labelDep;
         private Label labelName;
         private Label labelEmpNum;
+        private Label label2;
+        private Label label1;
     }
 }
