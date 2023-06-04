@@ -57,6 +57,8 @@ namespace SCTAttendanceSystemUI.Forms
         public string timein { get { return comboBox6.Text; } set { comboBox6.Text = value; } }
         public string timeout { get { return comboBox7.Text; } set { comboBox7.Text = value; } }
         public string jobstatus { get { return comboBox8.Text; } set { comboBox8.Text = value; } }
+        public string jobsalary { get { return textBox14.Text; } set { textBox14.Text = value; } }
+
 
         public byte[] image
         {
@@ -95,8 +97,8 @@ namespace SCTAttendanceSystemUI.Forms
             {
                 connection.Open();
 
-                string query = "UPDATE employee SET occupation = @occupation, department = @department, jobstatus = @jobstatus, firstname = @firstname, middle = @middlename, lastname = @lastname, suffix = @suffix, homenum = @homenum, " +
-                    "phonenum = @phonenum, email = @email, address = @address, province = @province, city = @city, postal = @postal, accountnum = @accountnum, timein = @timein, timeout = @timeout, image_data = @imageData" +
+                string query = "UPDATE employee SET occupation = @occupation, department = @department, jobstatus = @jobstatus, name = @name, firstname = @firstname, middle = @middlename, lastname = @lastname, suffix = @suffix, homenum = @homenum, " +
+                    "phonenum = @phonenum, email = @email, address = @address, province = @province, city = @city, postal = @postal, accountnum = @accountnum, timein = @timein, timeout = @timeout, image_data = @imageData, jobsalary = @jobsalary" +
                     " WHERE employeenum = @employeenum";
                 MySqlCommand command = new MySqlCommand(query, connection);
 
@@ -121,6 +123,16 @@ namespace SCTAttendanceSystemUI.Forms
                 command.Parameters.AddWithValue("@timeout", comboBox7.Text);
                 command.Parameters.AddWithValue("@employeenum", textBox12.Text);
                 command.Parameters.AddWithValue("@imageData", imageData);
+                command.Parameters.AddWithValue("@jobsalary", textBox14.Text);
+
+
+                string first = textBox2.Text;
+                string middle = textBox1.Text;
+                string last = textBox3.Text;
+                string suffix = textBox10.Text;
+                string name = first + " " + middle + " " + last + " " + suffix;
+
+                command.Parameters.AddWithValue("@name", name); //textbox
 
                 command.ExecuteNonQuery();
 

@@ -81,6 +81,8 @@
             textBox1 = new TextBox();
             doblbl = new Label();
             genderlbl = new Label();
+            label19 = new Label();
+            textBox14 = new TextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel3.SuspendLayout();
@@ -205,6 +207,8 @@
             // 
             panel3.BackColor = Color.White;
             panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(textBox14);
+            panel3.Controls.Add(label19);
             panel3.Controls.Add(comboBox8);
             panel3.Controls.Add(label18);
             panel3.Controls.Add(comboBox7);
@@ -699,6 +703,27 @@
             genderlbl.TabIndex = 11;
             genderlbl.Text = "GENDER";
             // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label19.ForeColor = SystemColors.ControlDarkDark;
+            label19.Location = new Point(314, 126);
+            label19.Name = "label19";
+            label19.Size = new Size(51, 14);
+            label19.TabIndex = 66;
+            label19.Text = "SALARY";
+            // 
+            // textBox14
+            // 
+            textBox14.ForeColor = Color.Silver;
+            textBox14.Location = new Point(371, 123);
+            textBox14.Name = "textBox14";
+            textBox14.PlaceholderText = "Salary";
+            textBox14.Size = new Size(147, 23);
+            textBox14.TabIndex = 58;
+            textBox14.TextChanged += textBox14_TextChanged;
+            // 
             // AddEmployeeButtonForm
             // 
             BackColor = Color.Gainsboro;
@@ -773,5 +798,7 @@
         private Label label16;
         private ComboBox comboBox8;
         private Label label18;
+        private Label label19;
+        private TextBox textBox14;
     }
 }

@@ -55,7 +55,7 @@ namespace SCTAttendanceSystemUI.Forms
             if (string.IsNullOrEmpty(textBox12.Text) || string.IsNullOrEmpty(textBox2.Text) || string.IsNullOrEmpty(textBox1.Text) || string.IsNullOrEmpty(textBox3.Text)
                 || comboBox1.SelectedIndex == -1 || string.IsNullOrEmpty(textBox8.Text) || string.IsNullOrEmpty(textBox5.Text) || string.IsNullOrEmpty(textBox7.Text) ||
                 string.IsNullOrEmpty(textBox6.Text) || comboBox2.SelectedIndex == -1 || comboBox3.SelectedIndex == -1 || string.IsNullOrEmpty(textBox9.Text) ||
-                string.IsNullOrEmpty(textBox4.Text) || string.IsNullOrEmpty(textBox11.Text) || comboBox4.SelectedIndex == -1 || pictureBox1.Image == null || comboBox8.SelectedIndex == -1)
+                string.IsNullOrEmpty(textBox4.Text) || string.IsNullOrEmpty(textBox11.Text) || comboBox4.SelectedIndex == -1 || pictureBox1.Image == null || comboBox8.SelectedIndex == -1 || string.IsNullOrWhiteSpace(textBox14.Text))
             {
                 MessageBox.Show("Please fill in all the required fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -67,8 +67,8 @@ namespace SCTAttendanceSystemUI.Forms
                     connection.Open();
 
                     string query = "INSERT INTO employee (employeenum, name, occupation, department, jobstatus, firstname, middle, lastname, suffix, gender, dob, homenum, phonenum, email, address, country, province, city, postal, " +
-                        "accountnum, hiredate, timein, timeout, image_data) VALUES (@employeenum, @name, @occupation, @department, @jobstatus, @firstname, @middle, @lastname, @suffix, @gender, @dob, @homenum, @phonenum, @email, @address, " +
-                        "@country, @province, @city, @postal, @accountnum, @hiredate, @timein, @timeout, @imageData)";
+                        "accountnum, hiredate, timein, timeout, image_data, jobsalary) VALUES (@employeenum, @name, @occupation, @department, @jobstatus, @firstname, @middle, @lastname, @suffix, @gender, @dob, @homenum, @phonenum, @email, @address, " +
+                        "@country, @province, @city, @postal, @accountnum, @hiredate, @timein, @timeout, @imageData, @jobsalary)";
                     MySqlCommand cmd = new MySqlCommand(query, connection);
 
                     byte[] imageData = ImageToByteArray(pictureBox1.Image);
@@ -97,6 +97,8 @@ namespace SCTAttendanceSystemUI.Forms
                     cmd.Parameters.AddWithValue("@timein", comboBox6.Text); //combobox
                     cmd.Parameters.AddWithValue("@timeout", comboBox7.Text); //combobox
                     cmd.Parameters.AddWithValue("@imageData", imageData);
+                    cmd.Parameters.AddWithValue("@jobsalary", textBox14.Text); //combobox
+
 
 
 
@@ -170,6 +172,11 @@ namespace SCTAttendanceSystemUI.Forms
             Random random = new Random();
             int randomNumber = random.Next(10000, 99999);
             textBox12.Text = randomNumber.ToString();
+        }
+
+        private void textBox14_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

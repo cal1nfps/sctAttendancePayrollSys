@@ -295,6 +295,7 @@
             // dataGridView1
             // 
             dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AllowUserToResizeColumns = false;
             dataGridView1.AllowUserToResizeRows = false;
             dataGridView1.BackgroundColor = Color.White;
@@ -340,22 +341,22 @@
         private Button cancelButton;
         private Button personalButton;
         private Panel panel1;
-        private DataGridView dataGridView1;
         private Panel panel2;
         private Label label1;
         private Label label12;
         private Label label2;
-        private TextBox textBox1;
-        private TextBox textBox3;
         private TextBox textBox2;
         private Label label5;
         private Label label4;
         private Label label3;
-        private TextBox textBox4;
-        private TextBox textBox5;
         private Label label6;
         private Label label7;
         private Label label8;
-        private TextBox textBox6;
+        public DataGridView dataGridView1;
+        public TextBox textBox1;
+        public TextBox textBox3;
+        public TextBox textBox4;
+        public TextBox textBox5;
+        public TextBox textBox6;
     }
 }

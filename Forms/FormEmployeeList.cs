@@ -252,6 +252,8 @@ namespace SCTAttendanceSystemUI.Forms
                 dataGridView1.Columns["jobhours"].Visible = false;    //Hide a specific column
                 dataGridView1.Columns["jobtimein"].Visible = false;    //Hide a specific column
                 dataGridView1.Columns["jobtimeout"].Visible = false;    //Hide a specific column
+                dataGridView1.Columns["jobsalary"].Visible = false;    //Hide a specific column
+
 
 
                 //reader.Close();
@@ -367,6 +369,8 @@ namespace SCTAttendanceSystemUI.Forms
                 string timein = dataGridView1.Rows[rowIndex].Cells[21].Value.ToString();
                 string timeout = dataGridView1.Rows[rowIndex].Cells[22].Value.ToString();
                 byte[] imageData = (byte[])dataGridView1.Rows[rowIndex].Cells[23].Value;
+                string jobsalary = dataGridView1.Rows[rowIndex].Cells[27].Value.ToString();
+
 
                 //set the public properties of the textboxes on the second form
                 edit.firstname = firstname;
@@ -392,6 +396,8 @@ namespace SCTAttendanceSystemUI.Forms
                 edit.timein = timein;
                 edit.timeout = timeout;
                 edit.image = imageData;
+                edit.jobsalary = jobsalary;
+
 
                 //show the second form
                 edit.Show();

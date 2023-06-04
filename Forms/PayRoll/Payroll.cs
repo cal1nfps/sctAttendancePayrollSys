@@ -70,6 +70,11 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
             dataGridView1.Columns["timein"].Visible = false;    //Hide a specific column
             dataGridView1.Columns["timeout"].Visible = false;    //Hide a specific column
             dataGridView1.Columns["image_data"].Visible = false;    //Hide a specific column
+            dataGridView1.Columns["jobhours"].Visible = false;    //Hide a specific column
+            dataGridView1.Columns["jobtimein"].Visible = false;    //Hide a specific column
+            dataGridView1.Columns["jobtimeout"].Visible = false;    //Hide a specific column
+
+
 
 
             //reader.Close();
@@ -107,7 +112,7 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
                 double salary = 0.0;
                 double allowance = 0.0;
                 double gross = 0.0;
-                double deduction = 1200.0;
+                double deduction = 1075.0;
                 double net = 0.0;
 
                 switch (occupation)
@@ -142,6 +147,11 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
                         totalHours = 40.0;
                         allowance = 120.0;
                         break;
+                    case "Chairperson":
+                        hourlyRate = 60.0;
+                        totalHours = 40.0;
+                        allowance = 120.0;
+                        break;
                     case "Guard":
                         hourlyRate = 20.0;
                         totalHours = 60.0;
@@ -156,9 +166,14 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
                 gross = salary + allowance;
                 net = gross - deduction;
 
+
+
+                string value1 = row.Cells[27].Value.ToString();
+                textBox3.Text = value1; // Employee number
+
+
                 textBox1.Text = hourlyRate.ToString();
                 textBox2.Text = totalHours.ToString();
-                textBox3.Text = salary.ToString();
                 textBox6.Text = gross.ToString();
                 textBox5.Text = deduction.ToString();
                 textBox4.Text = net.ToString();
