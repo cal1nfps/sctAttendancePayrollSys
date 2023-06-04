@@ -57,5 +57,34 @@ namespace SCTAttendanceSystemUI.Forms.filterAttendance
         {
             this.Close();
         }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void filterComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
     }
 }

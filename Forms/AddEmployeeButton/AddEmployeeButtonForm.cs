@@ -38,21 +38,18 @@ namespace SCTAttendanceSystemUI.Forms
             connection = new MySqlConnection(connectionString);
         }
 
-        private void cancelButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
 
+        private byte[] ImageToByteArray(Image image)
+        {
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                return memoryStream.ToArray();
+            }
         }
 
-        private void button3_Click_1(object sender, EventArgs e)
-        {
-            //RANDOMIZE NUMBERS FOR EMPLOYEE NUM
-            Random random = new Random();
-            int randomNumber = random.Next(10000, 99999);
-            textBox12.Text = randomNumber.ToString();
-        }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
             //GIVES A ERROR FOR EMPTY FIELDS
             if (string.IsNullOrEmpty(textBox12.Text) || string.IsNullOrEmpty(textBox2.Text) || string.IsNullOrEmpty(textBox1.Text) || string.IsNullOrEmpty(textBox3.Text)
@@ -129,7 +126,28 @@ namespace SCTAttendanceSystemUI.Forms
             this.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void cancelButton_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void textBox8_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //LIMITS DIGITS NUMBERS FOR HOME NUMBER
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+
+            TextBox textBox = sender as TextBox;
+            if (textBox != null && textBox.Text.Length >= 8 && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+                MessageBox.Show("You can only enter 8 digits.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
         {
             //UPLOAD AND DISPLAYS IMAGE
 
@@ -146,45 +164,12 @@ namespace SCTAttendanceSystemUI.Forms
             }
         }
 
-        private byte[] ImageToByteArray(Image image)
+        private void button3_Click(object sender, EventArgs e)
         {
-            using (MemoryStream memoryStream = new MemoryStream())
-            {
-                image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
-                return memoryStream.ToArray();
-            }
-        }
-
-        private void textBox5_KeyPress_1(object sender, KeyPressEventArgs e)
-        {
-            //LIMITS DIGITS NUMBERS FOR PHONE NUMBER
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-
-            TextBox textBox = sender as TextBox;
-            if (textBox != null && textBox.Text.Length >= 11 && e.KeyChar != (char)Keys.Back)
-            {
-                e.Handled = true;
-                MessageBox.Show("You can only enter 11 digits.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void textBox8_KeyPress_1(object sender, KeyPressEventArgs e)
-        {
-            //LIMITS DIGITS NUMBERS FOR HOME NUMBER
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-
-            TextBox textBox = sender as TextBox;
-            if (textBox != null && textBox.Text.Length >= 8 && e.KeyChar != (char)Keys.Back)
-            {
-                e.Handled = true;
-                MessageBox.Show("You can only enter 8 digits.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //RANDOMIZE NUMBERS FOR EMPLOYEE NUM
+            Random random = new Random();
+            int randomNumber = random.Next(10000, 99999);
+            textBox12.Text = randomNumber.ToString();
         }
     }
 }

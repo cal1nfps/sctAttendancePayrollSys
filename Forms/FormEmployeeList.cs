@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using SCTAttendanceSystemUI.Forms.filterButton;
+using System.Globalization;
+using System.Threading;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using System.Drawing;
 
@@ -127,111 +129,10 @@ namespace SCTAttendanceSystemUI.Forms
             textBox2.Text = data;
         }
 
-        private Dictionary<string, (TimeSpan, TimeSpan)> occupationTimeMapping;
-
-        private void AssignTimeInTimeout()
-        {
-            // Get the DataGridView instance
-            adapter = new MySqlDataAdapter("SELECT * FROM empattendance", connection);
-
-
-            // Create a DataTable to hold the data
-            table = new DataTable();
-
-            // Fill the DataTable with the data retrieved by the adapter
-            adapter.Fill(table);
-
-
-            // Set the DataSource of the DataGridView to the DataTable
-            dataGridView1.DataSource = table;
-            try
-            {
-                connection.Open();
-
-                // Loop through each row in the DataGridView
-                foreach (DataGridViewRow row in dataGridView1.Rows)
-                {
-                    // Get the occupation value from the "occupation" column
-                    string occupation = row.Cells["occupation"].Value.ToString();
-
-                    // Assign time-in and time-out based on the matched occupation
-                    string jobTimeIn, jobTimeOut;
-
-                    switch (occupation)
-                    {
-                        case "Teacher":
-                            jobTimeIn = "07:00:00";
-                            jobTimeOut = "17:00:00";
-                            break;
-                        case "Sports Coach":
-                            jobTimeIn = "07:00:00";
-                            jobTimeOut = "16:00:00";
-                            break;
-                        case "School Nurse":
-                            jobTimeIn = "08:00:00";
-                            jobTimeOut = "16:00:00";
-                            break;
-                        case "Maintenance Technician":
-                            jobTimeIn = "09:00:00";
-                            jobTimeOut = "17:00:00";
-                            break;
-                        case "Registrar":
-                            jobTimeIn = "07:00:00";
-                            jobTimeOut = "17:00:00";
-                            break;
-                        case "Guidance Counselor":
-                            jobTimeIn = "07:00:00";
-                            jobTimeOut = "16:00:00";
-                            break;
-                        case "Guard":
-                            jobTimeIn = "07:00:00";
-                            jobTimeOut = "18:00:00";
-                            break;
-                        case "Chairperson":
-                            jobTimeIn = "07:00:00";
-                            jobTimeOut = "18:00:00";
-                            break;
-                        default:
-                            // Handle unmatched occupation (if needed)
-                            jobTimeIn = string.Empty;
-                            jobTimeOut = string.Empty;
-                            break;
-                    }
-
-                    // Update the jobtimein and jobtimeout columns in the database
-                    if (!string.IsNullOrEmpty(jobTimeIn) && !string.IsNullOrEmpty(jobTimeOut))
-                    {
-                        int employeeNum = Convert.ToInt32(row.Cells["empnum"].Value);
-
-                        string query = "UPDATE employee SET jobtimein = @jobTimeIn, jobtimeout = @jobTimeOut WHERE employeenum = @employeeNum";
-                        MySqlCommand command = new MySqlCommand(query, connection);
-                        command.Parameters.AddWithValue("@jobTimeIn", jobTimeIn);
-                        command.Parameters.AddWithValue("@jobTimeOut", jobTimeOut);
-                        command.Parameters.AddWithValue("@employeeNum", employeeNum);
-
-                        command.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred: " + ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
-        }
-
-
-
-
 
         private void FormEmployeeList_Load_1(object sender, EventArgs e)
         {
             LoadImageData();
-            AssignTimeInTimeout();
-
 
             {
 
@@ -252,67 +153,84 @@ namespace SCTAttendanceSystemUI.Forms
                 dataGridView1.Columns[4].Width = 70;
                 dataGridView1.Columns[11].Width = 80;
                 dataGridView1.Columns[15].Width = 80;
-                
-                    try
-                    {
-                        connection.Open();
 
-                        // Loop through each row in the DataGridView
-                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                try
+                {
+                    connection.Open();
+
+                    // Loop through each row in the DataGridView
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        // Retrieve the occupation value from the "occupation" column
+                        string occupation = row.Cells["occupation"].Value.ToString();
+
+                        // Assign job hours based on the matched occupation
+                        TimeSpan jobHours;
+                        DateTime jobTimeIn, jobTimeOut;
+                        switch (occupation)
                         {
-                            // Retrieve the occupation value from the "Occupation" column
-                            string occupation = row.Cells["occupation"].Value.ToString();
-
-                            // Assign job hours based on the matched occupation
-                            TimeSpan jobHours;
-                            switch (occupation)
-                            {
-                                case "Teacher":
-                                    jobHours = new TimeSpan(10, 0, 0);
-                                    break;
-                                case "Sports Coach":
-                                    jobHours = new TimeSpan(9, 0, 0);
-                                    break;
-                                case "School Nurse":
-                                    jobHours = new TimeSpan(8, 0, 0);
-                                    break;
-                                case "Maintenance Technician":
-                                    jobHours = new TimeSpan(8, 0, 0);
-                                    break;
-                                case "Registrar":
-                                    jobHours = new TimeSpan(10, 0, 0);
-                                    break;
-                                case "Guidance Counselor":
-                                    jobHours = new TimeSpan(9, 0, 0);
-                                    break;
-                                case "Guard":
-                                    jobHours = new TimeSpan(11, 0, 0);
-                                    break;
-                                case "Chairperson":
-                                    jobHours = new TimeSpan(11, 0, 0);
-                                    break;
-                                default:
-                                    jobHours = TimeSpan.Zero; // Set a default value if occupation does not match any case
-                                    break;
-                            }
-
-                            // Update the JobHours column in the MySQL table for the current row
-                            string updateQuery = "UPDATE employee SET jobhours = @jobhours WHERE occupation = @occupation";
-                            MySqlCommand command = new MySqlCommand(updateQuery, connection);
-                            command.Parameters.AddWithValue("@jobhours", jobHours);
-                            command.Parameters.AddWithValue("@occupation", occupation);
-                            command.ExecuteNonQuery();
+                            case "Teacher":
+                                jobTimeIn = DateTime.ParseExact("07:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                jobTimeOut = DateTime.ParseExact("17:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                break;
+                            case "Sports Coach":
+                                jobTimeIn = DateTime.ParseExact("07:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                jobTimeOut = DateTime.ParseExact("16:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                break;
+                            case "School Nurse":
+                                jobTimeIn = DateTime.ParseExact("08:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                jobTimeOut = DateTime.ParseExact("16:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                break;
+                            case "Maintenance Technician":
+                                jobTimeIn = DateTime.ParseExact("09:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                jobTimeOut = DateTime.ParseExact("17:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                break;
+                            case "Registrar":
+                                jobTimeIn = DateTime.ParseExact("07:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                jobTimeOut = DateTime.ParseExact("17:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                break;
+                            case "Guidance Counselor":
+                                jobTimeIn = DateTime.ParseExact("07:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                jobTimeOut = DateTime.ParseExact("16:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                break;
+                            case "Guard":
+                                jobTimeIn = DateTime.ParseExact("07:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                jobTimeOut = DateTime.ParseExact("18:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                break;
+                            case "Chairperson":
+                                jobTimeIn = DateTime.ParseExact("07:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                jobTimeOut = DateTime.ParseExact("18:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                break;
+                            default:
+                                jobTimeIn = DateTime.MinValue;
+                                jobTimeOut = DateTime.MinValue;
+                                break;
                         }
+
+                        // Update the jobtimein, jobtimeout, and jobhours columns in the MySQL table for the current row
+                        string updateQuery = "UPDATE employee SET jobtimein = @jobtimein, jobtimeout = @jobtimeout, jobhours = SEC_TO_TIME(TIME_TO_SEC(@jobtimeout) - TIME_TO_SEC(@jobtimein)) WHERE occupation = @occupation";
+                        MySqlCommand command = new MySqlCommand(updateQuery, connection);
+                        command.Parameters.AddWithValue("@jobtimein", jobTimeIn);
+                        command.Parameters.AddWithValue("@jobtimeout", jobTimeOut);
+                        command.Parameters.AddWithValue("@occupation", occupation);
+                        command.ExecuteNonQuery();
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("An error occurred: " + ex.Message);
-                    }
-                    finally
-                    {
-                        connection.Close();
-                    }
-                
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+
+                // Set the format of the jobtimein and jobtimeout columns in the DataGridView
+                DataGridViewColumn jobTimeInColumn = dataGridView1.Columns["jobtimein"];
+                DataGridViewColumn jobTimeOutColumn = dataGridView1.Columns["jobtimeout"];
+                jobTimeInColumn.DefaultCellStyle.Format = "hh:mm:ss tt";
+                jobTimeOutColumn.DefaultCellStyle.Format = "hh:mm:ss tt";
+
 
 
                 dataGridView1.Columns["employeenum"].Visible = false;    //Hide a specific column
@@ -332,6 +250,9 @@ namespace SCTAttendanceSystemUI.Forms
                 dataGridView1.Columns["timeout"].Visible = false;    //Hide a specific column
                 dataGridView1.Columns["image_data"].Visible = false;    //Hide a specific column
                 dataGridView1.Columns["jobhours"].Visible = false;    //Hide a specific column
+                dataGridView1.Columns["jobtimein"].Visible = false;    //Hide a specific column
+                dataGridView1.Columns["jobtimeout"].Visible = false;    //Hide a specific column
+
 
                 //reader.Close();
                 connection.Close();

@@ -28,304 +28,294 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHome));
-            this.labelDashboard = new System.Windows.Forms.Label();
-            this.labelDashboardDate = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.panelAttendanceForToday = new System.Windows.Forms.Panel();
-            this.labelTotalHours = new System.Windows.Forms.Label();
-            this.labelTimeIn = new System.Windows.Forms.Label();
-            this.labelDate = new System.Windows.Forms.Label();
-            this.labelJobHours = new System.Windows.Forms.Label();
-            this.labelJobStatus = new System.Windows.Forms.Label();
-            this.labelDep = new System.Windows.Forms.Label();
-            this.labelName = new System.Windows.Forms.Label();
-            this.labelEmpNum = new System.Windows.Forms.Label();
-            this.labelOccupation = new System.Windows.Forms.Label();
-            this.labelTimeOut = new System.Windows.Forms.Label();
-            this.labelOvertimeHours = new System.Windows.Forms.Label();
-            this.labelStatus = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panelAttendanceForToday.SuspendLayout();
-            this.SuspendLayout();
+            labelDashboard = new Label();
+            labelDashboardDate = new Label();
+            dataGridView1 = new DataGridView();
+            button4 = new Button();
+            textBox1 = new TextBox();
+            button1 = new Button();
+            panelAttendanceForToday = new Panel();
+            labelStatus = new Label();
+            labelOvertimeHours = new Label();
+            labelTimeOut = new Label();
+            labelOccupation = new Label();
+            labelTotalHours = new Label();
+            labelTimeIn = new Label();
+            labelDate = new Label();
+            labelJobStatus = new Label();
+            labelDep = new Label();
+            labelName = new Label();
+            labelEmpNum = new Label();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            panelAttendanceForToday.SuspendLayout();
+            SuspendLayout();
             // 
             // labelDashboard
             // 
-            this.labelDashboard.AutoSize = true;
-            this.labelDashboard.BackColor = System.Drawing.Color.Transparent;
-            this.labelDashboard.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelDashboard.Location = new System.Drawing.Point(38, 32);
-            this.labelDashboard.Name = "labelDashboard";
-            this.labelDashboard.Size = new System.Drawing.Size(370, 31);
-            this.labelDashboard.TabIndex = 3;
-            this.labelDashboard.Text = "ATTENDANCE FOR TODAY";
+            labelDashboard.AutoSize = true;
+            labelDashboard.BackColor = Color.Transparent;
+            labelDashboard.Font = new Font("Times New Roman", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            labelDashboard.Location = new Point(38, 32);
+            labelDashboard.Name = "labelDashboard";
+            labelDashboard.Size = new Size(370, 31);
+            labelDashboard.TabIndex = 3;
+            labelDashboard.Text = "ATTENDANCE FOR TODAY";
             // 
             // labelDashboardDate
             // 
-            this.labelDashboardDate.AutoSize = true;
-            this.labelDashboardDate.BackColor = System.Drawing.Color.Transparent;
-            this.labelDashboardDate.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelDashboardDate.Location = new System.Drawing.Point(414, 34);
-            this.labelDashboardDate.Name = "labelDashboardDate";
-            this.labelDashboardDate.Size = new System.Drawing.Size(84, 25);
-            this.labelDashboardDate.TabIndex = 17;
-            this.labelDashboardDate.Text = "DATE: ";
+            labelDashboardDate.AutoSize = true;
+            labelDashboardDate.BackColor = Color.Transparent;
+            labelDashboardDate.Font = new Font("Times New Roman", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            labelDashboardDate.Location = new Point(414, 34);
+            labelDashboardDate.Name = "labelDashboardDate";
+            labelDashboardDate.Size = new Size(84, 25);
+            labelDashboardDate.TabIndex = 17;
+            labelDashboardDate.Text = "DATE: ";
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.ColumnHeadersVisible = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AllowUserToResizeColumns = false;
+            dataGridView1.AllowUserToResizeRows = false;
+            dataGridView1.BackgroundColor = Color.White;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.ColumnHeadersVisible = false;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle2.NullValue = null;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Location = new System.Drawing.Point(103, 130);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(1177, 514);
-            this.dataGridView1.TabIndex = 22;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridView1.Location = new Point(103, 130);
+            dataGridView1.MultiSelect = false;
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(1177, 514);
+            dataGridView1.TabIndex = 22;
+            dataGridView1.CellFormatting += dataGridView1_CellFormatting_2;
             // 
             // button4
             // 
-            this.button4.BackColor = System.Drawing.Color.Green;
-            this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(1233, 53);
-            this.button4.Name = "button4";
-            this.button4.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button4.Size = new System.Drawing.Size(47, 30);
-            this.button4.TabIndex = 65;
-            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button4.UseVisualStyleBackColor = false;
+            button4.BackColor = Color.Green;
+            button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button4.Image = (Image)resources.GetObject("button4.Image");
+            button4.ImageAlign = ContentAlignment.MiddleLeft;
+            button4.Location = new Point(1233, 53);
+            button4.Name = "button4";
+            button4.Padding = new Padding(10, 0, 0, 0);
+            button4.Size = new Size(47, 30);
+            button4.TabIndex = 65;
+            button4.TextAlign = ContentAlignment.MiddleLeft;
+            button4.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click_1;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(978, 58);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(196, 23);
-            this.textBox1.TabIndex = 66;
-            this.textBox1.Text = "Search Employee Number or Name";
+            textBox1.Location = new Point(978, 58);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(196, 23);
+            textBox1.TabIndex = 66;
+            textBox1.Text = "Search Employee Number or Name";
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.Green;
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(1180, 53);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(47, 30);
-            this.button1.TabIndex = 69;
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = false;
+            button1.BackColor = Color.Green;
+            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(1180, 53);
+            button1.Name = "button1";
+            button1.Padding = new Padding(10, 0, 0, 0);
+            button1.Size = new Size(47, 30);
+            button1.TabIndex = 69;
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_2;
             // 
             // panelAttendanceForToday
             // 
-            this.panelAttendanceForToday.BackColor = System.Drawing.Color.White;
-            this.panelAttendanceForToday.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelAttendanceForToday.Controls.Add(this.labelStatus);
-            this.panelAttendanceForToday.Controls.Add(this.labelOvertimeHours);
-            this.panelAttendanceForToday.Controls.Add(this.labelTimeOut);
-            this.panelAttendanceForToday.Controls.Add(this.labelOccupation);
-            this.panelAttendanceForToday.Controls.Add(this.labelTotalHours);
-            this.panelAttendanceForToday.Controls.Add(this.labelTimeIn);
-            this.panelAttendanceForToday.Controls.Add(this.labelDate);
-            this.panelAttendanceForToday.Controls.Add(this.labelJobHours);
-            this.panelAttendanceForToday.Controls.Add(this.labelJobStatus);
-            this.panelAttendanceForToday.Controls.Add(this.labelDep);
-            this.panelAttendanceForToday.Controls.Add(this.labelName);
-            this.panelAttendanceForToday.Controls.Add(this.labelEmpNum);
-            this.panelAttendanceForToday.Location = new System.Drawing.Point(103, 94);
-            this.panelAttendanceForToday.Name = "panelAttendanceForToday";
-            this.panelAttendanceForToday.Size = new System.Drawing.Size(1177, 30);
-            this.panelAttendanceForToday.TabIndex = 70;
-            // 
-            // labelTotalHours
-            // 
-            this.labelTotalHours.AutoSize = true;
-            this.labelTotalHours.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelTotalHours.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelTotalHours.Location = new System.Drawing.Point(855, 7);
-            this.labelTotalHours.Name = "labelTotalHours";
-            this.labelTotalHours.Size = new System.Drawing.Size(68, 14);
-            this.labelTotalHours.TabIndex = 66;
-            this.labelTotalHours.Text = "Total Hours";
-            // 
-            // labelTimeIn
-            // 
-            this.labelTimeIn.AutoSize = true;
-            this.labelTimeIn.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelTimeIn.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelTimeIn.Location = new System.Drawing.Point(662, 7);
-            this.labelTimeIn.Name = "labelTimeIn";
-            this.labelTimeIn.Size = new System.Drawing.Size(48, 14);
-            this.labelTimeIn.TabIndex = 65;
-            this.labelTimeIn.Text = "Time-In";
-            // 
-            // labelDate
-            // 
-            this.labelDate.AutoSize = true;
-            this.labelDate.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelDate.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelDate.Location = new System.Drawing.Point(594, 7);
-            this.labelDate.Name = "labelDate";
-            this.labelDate.Size = new System.Drawing.Size(31, 14);
-            this.labelDate.TabIndex = 64;
-            this.labelDate.Text = "Date";
-            // 
-            // labelJobHours
-            // 
-            this.labelJobHours.AutoSize = true;
-            this.labelJobHours.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelJobHours.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelJobHours.Location = new System.Drawing.Point(492, 7);
-            this.labelJobHours.Name = "labelJobHours";
-            this.labelJobHours.Size = new System.Drawing.Size(63, 14);
-            this.labelJobHours.TabIndex = 63;
-            this.labelJobHours.Text = "Job Hours";
-            // 
-            // labelJobStatus
-            // 
-            this.labelJobStatus.AutoSize = true;
-            this.labelJobStatus.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelJobStatus.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelJobStatus.Location = new System.Drawing.Point(393, 7);
-            this.labelJobStatus.Name = "labelJobStatus";
-            this.labelJobStatus.Size = new System.Drawing.Size(64, 14);
-            this.labelJobStatus.TabIndex = 62;
-            this.labelJobStatus.Text = "Job Status";
-            // 
-            // labelDep
-            // 
-            this.labelDep.AutoSize = true;
-            this.labelDep.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelDep.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelDep.Location = new System.Drawing.Point(171, 7);
-            this.labelDep.Name = "labelDep";
-            this.labelDep.Size = new System.Drawing.Size(70, 14);
-            this.labelDep.TabIndex = 61;
-            this.labelDep.Text = "Department";
-            // 
-            // labelName
-            // 
-            this.labelName.AutoSize = true;
-            this.labelName.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelName.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelName.Location = new System.Drawing.Point(59, 7);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(37, 14);
-            this.labelName.TabIndex = 60;
-            this.labelName.Text = "Name";
-            // 
-            // labelEmpNum
-            // 
-            this.labelEmpNum.AutoSize = true;
-            this.labelEmpNum.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelEmpNum.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelEmpNum.Location = new System.Drawing.Point(15, 7);
-            this.labelEmpNum.Name = "labelEmpNum";
-            this.labelEmpNum.Size = new System.Drawing.Size(14, 14);
-            this.labelEmpNum.TabIndex = 58;
-            this.labelEmpNum.Text = "#";
-            // 
-            // labelOccupation
-            // 
-            this.labelOccupation.AutoSize = true;
-            this.labelOccupation.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelOccupation.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelOccupation.Location = new System.Drawing.Point(274, 7);
-            this.labelOccupation.Name = "labelOccupation";
-            this.labelOccupation.Size = new System.Drawing.Size(68, 14);
-            this.labelOccupation.TabIndex = 67;
-            this.labelOccupation.Text = "Occupation";
-            // 
-            // labelTimeOut
-            // 
-            this.labelTimeOut.AutoSize = true;
-            this.labelTimeOut.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelTimeOut.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelTimeOut.Location = new System.Drawing.Point(755, 7);
-            this.labelTimeOut.Name = "labelTimeOut";
-            this.labelTimeOut.Size = new System.Drawing.Size(57, 14);
-            this.labelTimeOut.TabIndex = 68;
-            this.labelTimeOut.Text = "Time-Out";
-            // 
-            // labelOvertimeHours
-            // 
-            this.labelOvertimeHours.AutoSize = true;
-            this.labelOvertimeHours.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelOvertimeHours.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelOvertimeHours.Location = new System.Drawing.Point(963, 7);
-            this.labelOvertimeHours.Name = "labelOvertimeHours";
-            this.labelOvertimeHours.Size = new System.Drawing.Size(91, 14);
-            this.labelOvertimeHours.TabIndex = 69;
-            this.labelOvertimeHours.Text = "Overtime Hours";
+            panelAttendanceForToday.BackColor = Color.White;
+            panelAttendanceForToday.BorderStyle = BorderStyle.FixedSingle;
+            panelAttendanceForToday.Controls.Add(labelStatus);
+            panelAttendanceForToday.Controls.Add(labelOvertimeHours);
+            panelAttendanceForToday.Controls.Add(labelTimeOut);
+            panelAttendanceForToday.Controls.Add(labelOccupation);
+            panelAttendanceForToday.Controls.Add(labelTotalHours);
+            panelAttendanceForToday.Controls.Add(labelTimeIn);
+            panelAttendanceForToday.Controls.Add(labelDate);
+            panelAttendanceForToday.Controls.Add(labelJobStatus);
+            panelAttendanceForToday.Controls.Add(labelDep);
+            panelAttendanceForToday.Controls.Add(labelName);
+            panelAttendanceForToday.Controls.Add(labelEmpNum);
+            panelAttendanceForToday.Location = new Point(103, 94);
+            panelAttendanceForToday.Name = "panelAttendanceForToday";
+            panelAttendanceForToday.Size = new Size(1177, 30);
+            panelAttendanceForToday.TabIndex = 70;
             // 
             // labelStatus
             // 
-            this.labelStatus.AutoSize = true;
-            this.labelStatus.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelStatus.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelStatus.Location = new System.Drawing.Point(1097, 7);
-            this.labelStatus.Name = "labelStatus";
-            this.labelStatus.Size = new System.Drawing.Size(41, 14);
-            this.labelStatus.TabIndex = 70;
-            this.labelStatus.Text = "Status";
+            labelStatus.AutoSize = true;
+            labelStatus.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelStatus.ForeColor = SystemColors.ControlDarkDark;
+            labelStatus.Location = new Point(887, 7);
+            labelStatus.Name = "labelStatus";
+            labelStatus.Size = new Size(41, 14);
+            labelStatus.TabIndex = 70;
+            labelStatus.Text = "Status";
+            // 
+            // labelOvertimeHours
+            // 
+            labelOvertimeHours.AutoSize = true;
+            labelOvertimeHours.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelOvertimeHours.ForeColor = SystemColors.ControlDarkDark;
+            labelOvertimeHours.Location = new Point(800, 7);
+            labelOvertimeHours.Name = "labelOvertimeHours";
+            labelOvertimeHours.Size = new Size(57, 14);
+            labelOvertimeHours.TabIndex = 69;
+            labelOvertimeHours.Text = "OT Hours";
+            // 
+            // labelTimeOut
+            // 
+            labelTimeOut.AutoSize = true;
+            labelTimeOut.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelTimeOut.ForeColor = SystemColors.ControlDarkDark;
+            labelTimeOut.Location = new Point(625, 7);
+            labelTimeOut.Name = "labelTimeOut";
+            labelTimeOut.Size = new Size(57, 14);
+            labelTimeOut.TabIndex = 68;
+            labelTimeOut.Text = "Time-Out";
+            // 
+            // labelOccupation
+            // 
+            labelOccupation.AutoSize = true;
+            labelOccupation.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelOccupation.ForeColor = SystemColors.ControlDarkDark;
+            labelOccupation.Location = new Point(258, 7);
+            labelOccupation.Name = "labelOccupation";
+            labelOccupation.Size = new Size(68, 14);
+            labelOccupation.TabIndex = 67;
+            labelOccupation.Text = "Occupation";
+            // 
+            // labelTotalHours
+            // 
+            labelTotalHours.AutoSize = true;
+            labelTotalHours.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelTotalHours.ForeColor = SystemColors.ControlDarkDark;
+            labelTotalHours.Location = new Point(709, 7);
+            labelTotalHours.Name = "labelTotalHours";
+            labelTotalHours.Size = new Size(68, 14);
+            labelTotalHours.TabIndex = 66;
+            labelTotalHours.Text = "Total Hours";
+            // 
+            // labelTimeIn
+            // 
+            labelTimeIn.AutoSize = true;
+            labelTimeIn.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelTimeIn.ForeColor = SystemColors.ControlDarkDark;
+            labelTimeIn.Location = new Point(558, 7);
+            labelTimeIn.Name = "labelTimeIn";
+            labelTimeIn.Size = new Size(48, 14);
+            labelTimeIn.TabIndex = 65;
+            labelTimeIn.Text = "Time-In";
+            // 
+            // labelDate
+            // 
+            labelDate.AutoSize = true;
+            labelDate.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelDate.ForeColor = SystemColors.ControlDarkDark;
+            labelDate.Location = new Point(478, 7);
+            labelDate.Name = "labelDate";
+            labelDate.Size = new Size(31, 14);
+            labelDate.TabIndex = 64;
+            labelDate.Text = "Date";
+            // 
+            // labelJobStatus
+            // 
+            labelJobStatus.AutoSize = true;
+            labelJobStatus.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelJobStatus.ForeColor = SystemColors.ControlDarkDark;
+            labelJobStatus.Location = new Point(351, 7);
+            labelJobStatus.Name = "labelJobStatus";
+            labelJobStatus.Size = new Size(64, 14);
+            labelJobStatus.TabIndex = 62;
+            labelJobStatus.Text = "Job Status";
+            // 
+            // labelDep
+            // 
+            labelDep.AutoSize = true;
+            labelDep.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelDep.ForeColor = SystemColors.ControlDarkDark;
+            labelDep.Location = new Point(171, 7);
+            labelDep.Name = "labelDep";
+            labelDep.Size = new Size(70, 14);
+            labelDep.TabIndex = 61;
+            labelDep.Text = "Department";
+            // 
+            // labelName
+            // 
+            labelName.AutoSize = true;
+            labelName.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelName.ForeColor = SystemColors.ControlDarkDark;
+            labelName.Location = new Point(59, 7);
+            labelName.Name = "labelName";
+            labelName.Size = new Size(37, 14);
+            labelName.TabIndex = 60;
+            labelName.Text = "Name";
+            // 
+            // labelEmpNum
+            // 
+            labelEmpNum.AutoSize = true;
+            labelEmpNum.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelEmpNum.ForeColor = SystemColors.ControlDarkDark;
+            labelEmpNum.Location = new Point(15, 7);
+            labelEmpNum.Name = "labelEmpNum";
+            labelEmpNum.Size = new Size(14, 14);
+            labelEmpNum.TabIndex = 58;
+            labelEmpNum.Text = "#";
             // 
             // FormHome
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
-            this.BackgroundImage = global::SCTAttendanceSystemUI.Properties.Resources.BG_LOW_OPACITY;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1666, 822);
-            this.Controls.Add(this.panelAttendanceForToday);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.labelDashboardDate);
-            this.Controls.Add(this.labelDashboard);
-            this.DoubleBuffered = true;
-            this.MaximumSize = new System.Drawing.Size(1920, 1080);
-            this.MinimumSize = new System.Drawing.Size(1680, 821);
-            this.Name = "FormHome";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormHome";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panelAttendanceForToday.ResumeLayout(false);
-            this.panelAttendanceForToday.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
+            BackgroundImage = Properties.Resources.BG_LOW_OPACITY;
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(1666, 822);
+            Controls.Add(panelAttendanceForToday);
+            Controls.Add(button1);
+            Controls.Add(textBox1);
+            Controls.Add(button4);
+            Controls.Add(dataGridView1);
+            Controls.Add(labelDashboardDate);
+            Controls.Add(labelDashboard);
+            DoubleBuffered = true;
+            MaximumSize = new Size(1920, 1080);
+            MinimumSize = new Size(1680, 821);
+            Name = "FormHome";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "FormHome";
+            Load += FormHome_Load_2;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            panelAttendanceForToday.ResumeLayout(false);
+            panelAttendanceForToday.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -344,7 +334,6 @@
         private Label labelTotalHours;
         private Label labelTimeIn;
         private Label labelDate;
-        private Label labelJobHours;
         private Label labelJobStatus;
         private Label labelDep;
         private Label labelName;

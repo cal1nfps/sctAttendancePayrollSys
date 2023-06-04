@@ -416,83 +416,15 @@ namespace SCTAttendanceSystemUI.Forms
 
         }
 
-        private void labelDashboardDate_Click_1(object sender, EventArgs e)
-        {
 
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            sort sortDgvForm = new sort();
+
+            sortDgvForm.Show();
         }
 
-        private void FormHome_Load_1(object sender, EventArgs e)
-        {
-
-            labelDashboardDate.Text = DateTime.Now.ToLongDateString();
-            {
-
-                adapter = new MySqlDataAdapter("SELECT * FROM empattendance", connection);
-
-
-                // Create a DataTable to hold the data
-                table = new DataTable();
-
-                // Fill the DataTable with the data retrieved by the adapter
-                adapter.Fill(table);
-
-
-                // Set the DataSource of the DataGridView to the DataTable
-                dataGridView1.DataSource = table;
-
-                dataGridView1.Columns["id"].Visible = false;    //Hide a specific column
-
-
-                dataGridView1.Columns[1].Width = 40;
-                dataGridView1.Columns[2].Width = 150;
-                dataGridView1.Columns[3].Width = 40;
-
-                foreach (DataGridViewRow row in dataGridView1.Rows)
-                {
-
-
-                    // Retrieve the necessary data from the selected row
-                    int employeeNum = Convert.ToInt32(row.Cells["empnum"].Value);
-                    TimeSpan jobHours = (TimeSpan)row.Cells["jobhours"].Value;
-                    TimeSpan actualHoursWorked = (TimeSpan)row.Cells["totalhours"].Value;
-
-                    // Calculate the overtime hours
-                    int overtimeHours = (int)(actualHoursWorked.TotalHours - jobHours.TotalHours);
-
-                    // Check if overtime occurred
-                    if (overtimeHours > 0)
-                    {
-                        // Update the overtime hours in the database
-                        try
-                        {
-                            connection.Open();
-                            string query = "UPDATE empattendance SET overtimehours = @overtimeHours WHERE empnum = @empnum";
-                            MySqlCommand command = new MySqlCommand(query, connection);
-                            command.Parameters.AddWithValue("@overtimeHours", overtimeHours);
-                            command.Parameters.AddWithValue("@empnum", employeeNum);
-                            command.ExecuteNonQuery();
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("An error occurred: " + ex.Message);
-                        }
-                        finally
-                        {
-                            connection.Close();
-                        }
-                    }
-                    else
-                    {
-                    }
-
-                    //reader.Close();
-                    connection.Close();
-                }
-            }
-        }
-
-
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click_1(object sender, EventArgs e)
         {
             // APPLY FILTER
             // Create an instance of the second form
@@ -508,12 +440,13 @@ namespace SCTAttendanceSystemUI.Forms
                 string occupation = filterForm.filterComboBox.SelectedItem?.ToString();
                 string department = filterForm.comboBox2.SelectedItem?.ToString();
                 string filtermonth = filterForm.comboBox1.SelectedItem?.ToString();
+                string filteryear = filterForm.comboBox4.SelectedItem?.ToString();
                 string jobstatus = filterForm.comboBox3.SelectedItem?.ToString();
 
 
 
                 // Check if at least one combobox is selected
-                if (string.IsNullOrWhiteSpace(occupation) && string.IsNullOrWhiteSpace(department) && string.IsNullOrWhiteSpace(filtermonth) && string.IsNullOrWhiteSpace(jobstatus))
+                if (string.IsNullOrWhiteSpace(occupation) && string.IsNullOrWhiteSpace(department) && string.IsNullOrWhiteSpace(filteryear) && string.IsNullOrWhiteSpace(filtermonth) && string.IsNullOrWhiteSpace(jobstatus))
                 {
                     MessageBox.Show("Please select at least one filter option.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -549,12 +482,23 @@ namespace SCTAttendanceSystemUI.Forms
 
                     string query = "SELECT * FROM empattendance WHERE 1 = 1";
 
+                    if (!string.IsNullOrWhiteSpace(filteryear))
+                    {
+                        string selectedYear = DateTime.ParseExact(filteryear, "yyyy", CultureInfo.InvariantCulture).ToString("yyyy");
+
+                        // Modify the SQL query to filter based on the month
+                        query += $" AND YEAR(date) = {DateTime.ParseExact(selectedYear, "yyyy", CultureInfo.CurrentCulture).Year}";
+
+                    }
+
+                    string query2 = "SELECT * FROM empattendance WHERE 1 = 1";
+
                     if (!string.IsNullOrWhiteSpace(filtermonth))
                     {
                         string selectedMonth = DateTime.ParseExact(filtermonth, "MMMM", CultureInfo.InvariantCulture).ToString("MMMM");
 
                         // Modify the SQL query to filter based on the month
-                        query += $" AND MONTH(date) = {DateTime.ParseExact(selectedMonth, "MMMM", CultureInfo.CurrentCulture).Month}";
+                        query2 += $" AND MONTH(date) = {DateTime.ParseExact(selectedMonth, "MMMM", CultureInfo.CurrentCulture).Month}";
 
                     }
 
@@ -573,8 +517,7 @@ namespace SCTAttendanceSystemUI.Forms
             }
         }
 
-
-        private void dataGridView1_CellFormatting_1(object sender, DataGridViewCellFormattingEventArgs e)
+        private void dataGridView1_CellFormatting_2(object sender, DataGridViewCellFormattingEventArgs e)
         {
 
             // Check if the current cell belongs to the "DateColumn" and has a datetime value
@@ -613,32 +556,130 @@ namespace SCTAttendanceSystemUI.Forms
             }
         }
 
-
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void FormHome_Load_2(object sender, EventArgs e)
         {
+            labelDashboardDate.Text = DateTime.Now.ToLongDateString();
 
-            //SEARCHES NAME OR EMPLOYEE NUMBER
-            string searchText = textBox1.Text.Trim().ToLower();
+            adapter = new MySqlDataAdapter("SELECT * FROM empattendance", connection);
 
+            // Create a DataTable to hold the data
+            table = new DataTable();
 
-            // Filter the data in the DataGridView based on the search text
-            if (int.TryParse(searchText, out int employeeNumber))
+            // Fill the DataTable with the data retrieved by the adapter
+            adapter.Fill(table);
+
+            // Set the DataSource of the DataGridView to the DataTable
+            dataGridView1.DataSource = table;
+
+            try
             {
-                (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = $"name LIKE '%{searchText}%' OR empnum = {employeeNumber}";
+                connection.Open();
+
+                // Retrieve the occupation and job time-in from the database
+                string occupationQuery = "SELECT occupation, jobtimein FROM employee";
+                MySqlCommand occupationCommand = new MySqlCommand(occupationQuery, connection);
+                {
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+
+                        string occupation = row.Cells["occupation"].Value.ToString();
+
+
+                        DateTime timein = Convert.ToDateTime(row.Cells["timein"].Value);
+
+                        DateTime jobtimein = Convert.ToDateTime(row.Cells["jobtimein"].Value);
+
+                        string totalHoursString = row.Cells["totalhours"].Value.ToString();
+                        TimeSpan totalHours = TimeSpan.Parse(totalHoursString);
+
+                        string jobHoursString = row.Cells["jobhours"].Value.ToString();
+                        TimeSpan jobHours = TimeSpan.Parse(jobHoursString);
+
+
+                        // Calculate the expected time-in based on occupation
+                        TimeSpan expectedTimeIn;
+                        switch (occupation)
+                        {
+                            case "Teacher":
+                                expectedTimeIn = new TimeSpan(7, 0, 0);
+                                break;
+                            case "Sports Coach":
+                                expectedTimeIn = new TimeSpan(7, 0, 0);
+                                break;
+                            case "Registrar":
+                                expectedTimeIn = new TimeSpan(7, 0, 0);
+                                break;
+                            case "Guidance Counselor":
+                                expectedTimeIn = new TimeSpan(7, 0, 0);
+                                break;
+                            case "Guard":
+                                expectedTimeIn = new TimeSpan(7, 0, 0);
+                                break;
+                            case "Chairperson":
+                                expectedTimeIn = new TimeSpan(7, 0, 0);
+                                break;
+                            case "School Nurse":
+                                expectedTimeIn = new TimeSpan(8, 0, 0);
+                                break;
+                            case "Maintenance Technician":
+                                expectedTimeIn = new TimeSpan(9, 0, 0);
+                                break;
+                            default:
+                                expectedTimeIn = TimeSpan.Zero; // Set a default value if occupation does not match any case
+                                break;
+                        }
+
+                        // Compare the job time-in with the expected time-in to determine the status
+                        string status = (timein.TimeOfDay <= expectedTimeIn) ? "Present/On-Time" : "Present/Late";
+
+                        // Update the status in the empattendance table
+                        string updateQuery = "UPDATE empattendance SET status = @status WHERE timein = @timein";
+                        MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection);
+
+                        updateCommand.Parameters.AddWithValue("@status", status);
+                        updateCommand.Parameters.AddWithValue("@timein", timein);
+                        updateCommand.ExecuteNonQuery();
+
+                        TimeSpan overtimeHours = totalHours - jobHours;
+
+                        if (overtimeHours < TimeSpan.Zero)
+                        {
+                            overtimeHours = TimeSpan.Zero;
+                        }
+                        // Update the overtimehours column in the employee table for the current occupation
+                        string updateOvertimeQuery = "UPDATE empattendance SET overtimehours = @overtimehours WHERE occupation = @occupation";
+                        MySqlCommand updateOvertimeCommand = new MySqlCommand(updateOvertimeQuery, connection);
+                        updateOvertimeCommand.Parameters.AddWithValue("@overtimehours", overtimeHours.ToString(@"hh\:mm\:ss"));
+                        updateOvertimeCommand.Parameters.AddWithValue("@occupation", occupation);
+                        updateOvertimeCommand.ExecuteNonQuery();
+
+                    }
+
+                }
+
+                dataGridView1.Columns["id"].Visible = false;    // Hide a specific column
+                dataGridView1.Columns[1].Width = 40;
+                dataGridView1.Columns[2].Width = 125;
+                dataGridView1.Columns[3].Width = 80;
+                dataGridView1.Columns[10].Width = 80;
+                dataGridView1.Columns[11].Width = 80;
+                dataGridView1.Columns[12].Width = 80;
+                dataGridView1.Columns[13].Width = 80;
+                dataGridView1.Columns["id"].Visible = false;    // Hide a specific column
+                dataGridView1.Columns["jobhours"].Visible = false;    // Hide a specific column
+                dataGridView1.Columns["jobtimein"].Visible = false;    // Hide a specific column
+                dataGridView1.Columns["jobtimeout"].Visible = false;    // Hide a specific column
+                dataGridView1.Columns["undertime"].Visible = false;    // Hide a specific column
+                dataGridView1.Columns["absences"].Visible = false;    // Hide a specific column
+                dataGridView1.Columns["late"].Visible = false;    // Hide a specific column
+
+
             }
-            else
+            catch (Exception ex)
             {
-                (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = $"name LIKE '%{searchText}%'";
+                MessageBox.Show("An error occurred: " + ex.Message);
+                connection.Close();
             }
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            sort sortDgvForm = new sort();
-
-            sortDgvForm.Show();
-
         }
     }
 }

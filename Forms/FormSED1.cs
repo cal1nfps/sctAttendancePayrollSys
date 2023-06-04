@@ -96,66 +96,15 @@ namespace SCTAttendanceSystemUI.Forms
 
         //this.panel1.Controls.Clear();
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            //panel1.Controls.Clear();
-            //panel1.Controls.Clear();
-            //this.Hide();
-            //OpenForm(FormSettings);
-            OpenChildForm(new Forms.FormDepartment(), sender);
-            //this.Show();
-        }
 
-        private void FormSED1_Load(object sender, EventArgs e)
-        {
-            string specificDepartment = "SED"; // Replace with the specific department name
-            DateTime currentDate = DateTime.Now.Date; // Get the current date
-
-            try
-            {
-                connection.Open();
-                string query2 = "SELECT COUNT(*) FROM empattendance WHERE DATE(timein) = @currentDate AND department = @department";
-                MySqlCommand command2 = new MySqlCommand(query2, connection);
-                command2.Parameters.AddWithValue("@currentDate", currentDate);
-                command2.Parameters.AddWithValue("@department", specificDepartment);
-
-                int employeeCount = Convert.ToInt32(command2.ExecuteScalar());
-
-
-                // Query to retrieve the present employees in the specific department who have time-in today
-                string query = "SELECT empnum, name, occupation, jobstatus FROM empattendance WHERE department = @department AND DATE(timein) = @currentDate";
-                MySqlCommand command = new MySqlCommand(query, connection);
-                command.Parameters.AddWithValue("@department", specificDepartment);
-                command.Parameters.AddWithValue("@currentDate", currentDate);
-
-                // Display the count in a label
-                label3.Text = employeeCount.ToString();
-
-                // Create a DataTable to store the retrieved data
-                DataTable dt = new DataTable();
-                dt.Load(command.ExecuteReader());
-
-                // Set the DataTable as the data source for the DataGridView
-                dataGridView1.DataSource = dt;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred: " + ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
             sortDepForm sortDgv = new sortDepForm(dataGridView1);
 
             sortDgv.Show();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click_1(object sender, EventArgs e)
         {
             // APPLY FILTER
             // Create an instance of the second form
@@ -204,6 +153,53 @@ namespace SCTAttendanceSystemUI.Forms
                 }
 
             }
+        }
+
+        private void FormSED1_Load_1(object sender, EventArgs e)
+        {
+            string specificDepartment = "SED"; // Replace with the specific department name
+            DateTime currentDate = DateTime.Now.Date; // Get the current date
+
+            try
+            {
+                connection.Open();
+                string query2 = "SELECT COUNT(*) FROM empattendance WHERE DATE(timein) = @currentDate AND department = @department";
+                MySqlCommand command2 = new MySqlCommand(query2, connection);
+                command2.Parameters.AddWithValue("@currentDate", currentDate);
+                command2.Parameters.AddWithValue("@department", specificDepartment);
+
+                int employeeCount = Convert.ToInt32(command2.ExecuteScalar());
+
+
+                // Query to retrieve the present employees in the specific department who have time-in today
+                string query = "SELECT empnum, name, occupation, jobstatus FROM empattendance WHERE department = @department AND DATE(timein) = @currentDate";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@department", specificDepartment);
+                command.Parameters.AddWithValue("@currentDate", currentDate);
+
+                // Display the count in a label
+                label3.Text = employeeCount.ToString();
+
+                // Create a DataTable to store the retrieved data
+                DataTable dt = new DataTable();
+                dt.Load(command.ExecuteReader());
+
+                // Set the DataTable as the data source for the DataGridView
+                dataGridView1.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.FormDepartment(), sender);
         }
     }
 }

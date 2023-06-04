@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(filterForm));
             cancelButton = new Button();
             panel1 = new Panel();
+            panel5 = new Panel();
+            comboBox3 = new ComboBox();
             button2 = new Button();
             panel2 = new Panel();
             comboBox2 = new ComboBox();
@@ -38,8 +40,6 @@
             button1 = new Button();
             filterComboBox = new ComboBox();
             mySqlCommand1 = new MySqlConnector.MySqlCommand();
-            comboBox3 = new ComboBox();
-            panel5 = new Panel();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -81,6 +81,28 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(213, 332);
             panel1.TabIndex = 7;
+            // 
+            // panel5
+            // 
+            panel5.BackColor = Color.WhiteSmoke;
+            panel5.Location = new Point(0, 213);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(212, 2);
+            panel5.TabIndex = 68;
+            // 
+            // comboBox3
+            // 
+            comboBox3.BackColor = Color.WhiteSmoke;
+            comboBox3.Cursor = Cursors.Hand;
+            comboBox3.FlatStyle = FlatStyle.Flat;
+            comboBox3.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Items.AddRange(new object[] { "FULL-TIME", "PART-TIME" });
+            comboBox3.Location = new Point(36, 160);
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(142, 23);
+            comboBox3.TabIndex = 69;
+            comboBox3.Text = "JOB STATUS";
             // 
             // button2
             // 
@@ -163,7 +185,7 @@
             filterComboBox.FlatStyle = FlatStyle.Flat;
             filterComboBox.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
             filterComboBox.FormattingEnabled = true;
-            filterComboBox.Items.AddRange(new object[] { "Teacher", "Sports Coach", "School Nurse", "Maintenance Technician", "Registrar", "Guidance Counselor", "Guard", "Chairperson", "Faculty (Part - Time)", "Faculty (Full - Time)", "Professor (Part - Time)", "Professor (Full - Time)" });
+            filterComboBox.Items.AddRange(new object[] { "Teacher", "Sports Coach", "School Nurse", "Maintenance Technician", "Registrar", "Guidance Counselor", "Guard", "Chairperson" });
             filterComboBox.Location = new Point(36, 73);
             filterComboBox.Name = "filterComboBox";
             filterComboBox.Size = new Size(142, 23);
@@ -176,28 +198,6 @@
             mySqlCommand1.Connection = null;
             mySqlCommand1.Transaction = null;
             mySqlCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
-            // 
-            // comboBox3
-            // 
-            comboBox3.BackColor = Color.WhiteSmoke;
-            comboBox3.Cursor = Cursors.Hand;
-            comboBox3.FlatStyle = FlatStyle.Flat;
-            comboBox3.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Items.AddRange(new object[] { "FULL-TIME", "PART-TIME" });
-            comboBox3.Location = new Point(36, 160);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(142, 23);
-            comboBox3.TabIndex = 69;
-            comboBox3.Text = "JOB STATUS";
-            // 
-            // panel5
-            // 
-            panel5.BackColor = Color.WhiteSmoke;
-            panel5.Location = new Point(0, 213);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(212, 2);
-            panel5.TabIndex = 68;
             // 
             // filterForm
             // 
