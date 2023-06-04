@@ -28,137 +28,136 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.labelLoginAs = new System.Windows.Forms.Label();
-            this.labelEmployeeName = new System.Windows.Forms.Label();
-            this.labelDate = new System.Windows.Forms.Label();
-            this.labelTime = new System.Windows.Forms.Label();
-            this.buttonTimeIn = new System.Windows.Forms.Button();
-            this.buttonTimeOut = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            labelLoginAs = new Label();
+            labelEmployeeName = new Label();
+            labelDate = new Label();
+            labelTime = new Label();
+            buttonTimeIn = new Button();
+            buttonTimeOut = new Button();
+            panel1 = new Panel();
+            timer1 = new System.Windows.Forms.Timer(components);
+            label1 = new Label();
+            panel1.SuspendLayout();
+            SuspendLayout();
             // 
             // labelLoginAs
             // 
-            this.labelLoginAs.AutoSize = true;
-            this.labelLoginAs.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelLoginAs.ForeColor = System.Drawing.Color.White;
-            this.labelLoginAs.Location = new System.Drawing.Point(161, 27);
-            this.labelLoginAs.Name = "labelLoginAs";
-            this.labelLoginAs.Size = new System.Drawing.Size(258, 31);
-            this.labelLoginAs.TabIndex = 6;
-            this.labelLoginAs.Text = "You are logged in as:";
+            labelLoginAs.AutoSize = true;
+            labelLoginAs.Font = new Font("Times New Roman", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            labelLoginAs.ForeColor = Color.White;
+            labelLoginAs.Location = new Point(161, 27);
+            labelLoginAs.Name = "labelLoginAs";
+            labelLoginAs.Size = new Size(258, 31);
+            labelLoginAs.TabIndex = 6;
+            labelLoginAs.Text = "You are logged in as:";
             // 
             // labelEmployeeName
             // 
-            this.labelEmployeeName.AutoSize = true;
-            this.labelEmployeeName.Location = new System.Drawing.Point(219, 18);
-            this.labelEmployeeName.Name = "labelEmployeeName";
-            this.labelEmployeeName.Size = new System.Drawing.Size(0, 15);
-            this.labelEmployeeName.TabIndex = 7;
+            labelEmployeeName.AutoSize = true;
+            labelEmployeeName.Location = new Point(219, 18);
+            labelEmployeeName.Name = "labelEmployeeName";
+            labelEmployeeName.Size = new Size(0, 15);
+            labelEmployeeName.TabIndex = 7;
             // 
             // labelDate
             // 
-            this.labelDate.AutoSize = true;
-            this.labelDate.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelDate.ForeColor = System.Drawing.Color.Black;
-            this.labelDate.Location = new System.Drawing.Point(136, 45);
-            this.labelDate.Name = "labelDate";
-            this.labelDate.Size = new System.Drawing.Size(73, 23);
-            this.labelDate.TabIndex = 9;
-            this.labelDate.Text = "DATE: ";
+            labelDate.AutoSize = true;
+            labelDate.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            labelDate.ForeColor = Color.Black;
+            labelDate.Location = new Point(136, 45);
+            labelDate.Name = "labelDate";
+            labelDate.Size = new Size(73, 23);
+            labelDate.TabIndex = 9;
+            labelDate.Text = "DATE: ";
             // 
             // labelTime
             // 
-            this.labelTime.AutoSize = true;
-            this.labelTime.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelTime.ForeColor = System.Drawing.Color.Black;
-            this.labelTime.Location = new System.Drawing.Point(136, 92);
-            this.labelTime.Name = "labelTime";
-            this.labelTime.Size = new System.Drawing.Size(70, 23);
-            this.labelTime.TabIndex = 10;
-            this.labelTime.Text = "TIME: ";
+            labelTime.AutoSize = true;
+            labelTime.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            labelTime.ForeColor = Color.Black;
+            labelTime.Location = new Point(136, 92);
+            labelTime.Name = "labelTime";
+            labelTime.Size = new Size(70, 23);
+            labelTime.TabIndex = 10;
+            labelTime.Text = "TIME: ";
             // 
             // buttonTimeIn
             // 
-            this.buttonTimeIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(208)))), ((int)(((byte)(2)))));
-            this.buttonTimeIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTimeIn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonTimeIn.Location = new System.Drawing.Point(105, 153);
-            this.buttonTimeIn.Name = "buttonTimeIn";
-            this.buttonTimeIn.Size = new System.Drawing.Size(147, 64);
-            this.buttonTimeIn.TabIndex = 11;
-            this.buttonTimeIn.Text = "TIME IN";
-            this.buttonTimeIn.UseVisualStyleBackColor = false;
-            this.buttonTimeIn.Click += new System.EventHandler(this.buttonTimeIn_Click_1);
+            buttonTimeIn.BackColor = Color.FromArgb(247, 208, 2);
+            buttonTimeIn.FlatStyle = FlatStyle.Flat;
+            buttonTimeIn.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonTimeIn.Location = new Point(105, 153);
+            buttonTimeIn.Name = "buttonTimeIn";
+            buttonTimeIn.Size = new Size(147, 64);
+            buttonTimeIn.TabIndex = 11;
+            buttonTimeIn.Text = "TIME IN";
+            buttonTimeIn.UseVisualStyleBackColor = false;
+            buttonTimeIn.Click += buttonTimeIn_Click_1;
             // 
             // buttonTimeOut
             // 
-            this.buttonTimeOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(208)))), ((int)(((byte)(2)))));
-            this.buttonTimeOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTimeOut.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonTimeOut.Location = new System.Drawing.Point(277, 153);
-            this.buttonTimeOut.Name = "buttonTimeOut";
-            this.buttonTimeOut.Size = new System.Drawing.Size(147, 64);
-            this.buttonTimeOut.TabIndex = 12;
-            this.buttonTimeOut.Text = "TIME OUT";
-            this.buttonTimeOut.UseVisualStyleBackColor = false;
-            this.buttonTimeOut.Click += new System.EventHandler(this.buttonTimeOut_Click_1);
+            buttonTimeOut.BackColor = Color.FromArgb(247, 208, 2);
+            buttonTimeOut.FlatStyle = FlatStyle.Flat;
+            buttonTimeOut.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonTimeOut.Location = new Point(309, 153);
+            buttonTimeOut.Name = "buttonTimeOut";
+            buttonTimeOut.Size = new Size(147, 64);
+            buttonTimeOut.TabIndex = 12;
+            buttonTimeOut.Text = "TIME OUT";
+            buttonTimeOut.UseVisualStyleBackColor = false;
+            buttonTimeOut.Click += buttonTimeOut_Click_1;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.buttonTimeOut);
-            this.panel1.Controls.Add(this.buttonTimeIn);
-            this.panel1.Controls.Add(this.labelTime);
-            this.panel1.Controls.Add(this.labelDate);
-            this.panel1.Controls.Add(this.labelEmployeeName);
-            this.panel1.Location = new System.Drawing.Point(116, 83);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(564, 303);
-            this.panel1.TabIndex = 13;
+            panel1.BackColor = Color.White;
+            panel1.Controls.Add(buttonTimeOut);
+            panel1.Controls.Add(buttonTimeIn);
+            panel1.Controls.Add(labelTime);
+            panel1.Controls.Add(labelDate);
+            panel1.Controls.Add(labelEmployeeName);
+            panel1.Location = new Point(116, 83);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(564, 303);
+            panel1.TabIndex = 13;
             // 
             // timer1
             // 
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
+            timer1.Interval = 1000;
+            timer1.Tick += timer1_Tick_1;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(425, 36);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 21);
-            this.label1.TabIndex = 14;
+            label1.AutoSize = true;
+            label1.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(425, 36);
+            label1.Name = "label1";
+            label1.Size = new Size(0, 21);
+            label1.TabIndex = 14;
             // 
             // FormEmployeeDashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(16)))), ((int)(((byte)(52)))));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.labelLoginAs);
-            this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "FormEmployeeDashboard";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "EMPLOYEE DASHBOARD";
-            this.Load += new System.EventHandler(this.FormEmployeeDashboard_Load_1);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(164, 16, 52);
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(800, 450);
+            Controls.Add(label1);
+            Controls.Add(panel1);
+            Controls.Add(labelLoginAs);
+            DoubleBuffered = true;
+            FormBorderStyle = FormBorderStyle.None;
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "FormEmployeeDashboard";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "EMPLOYEE DASHBOARD";
+            Load += FormEmployeeDashboard_Load_1;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
