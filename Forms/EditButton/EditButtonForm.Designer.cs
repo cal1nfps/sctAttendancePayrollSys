@@ -37,6 +37,8 @@
             label7 = new Label();
             pictureBox1 = new PictureBox();
             panel3 = new Panel();
+            textBox14 = new TextBox();
+            label19 = new Label();
             comboBox8 = new ComboBox();
             label18 = new Label();
             comboBox7 = new ComboBox();
@@ -80,8 +82,6 @@
             textBox1 = new TextBox();
             doblbl = new Label();
             genderlbl = new Label();
-            textBox14 = new TextBox();
-            label19 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel3.SuspendLayout();
@@ -230,6 +230,26 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(607, 235);
             panel3.TabIndex = 34;
+            // 
+            // textBox14
+            // 
+            textBox14.ForeColor = Color.Silver;
+            textBox14.Location = new Point(371, 131);
+            textBox14.Name = "textBox14";
+            textBox14.PlaceholderText = "Salary";
+            textBox14.Size = new Size(147, 23);
+            textBox14.TabIndex = 67;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label19.ForeColor = SystemColors.ControlDarkDark;
+            label19.Location = new Point(314, 134);
+            label19.Name = "label19";
+            label19.Size = new Size(51, 14);
+            label19.TabIndex = 68;
+            label19.Text = "SALARY";
             // 
             // comboBox8
             // 
@@ -694,26 +714,6 @@
             genderlbl.Size = new Size(53, 14);
             genderlbl.TabIndex = 11;
             genderlbl.Text = "GENDER";
-            // 
-            // textBox14
-            // 
-            textBox14.ForeColor = Color.Silver;
-            textBox14.Location = new Point(371, 111);
-            textBox14.Name = "textBox14";
-            textBox14.PlaceholderText = "Salary";
-            textBox14.Size = new Size(147, 23);
-            textBox14.TabIndex = 67;
-            // 
-            // label19
-            // 
-            label19.AutoSize = true;
-            label19.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label19.ForeColor = SystemColors.ControlDarkDark;
-            label19.Location = new Point(314, 114);
-            label19.Name = "label19";
-            label19.Size = new Size(51, 14);
-            label19.TabIndex = 68;
-            label19.Text = "SALARY";
             // 
             // EditButtonForm
             // 

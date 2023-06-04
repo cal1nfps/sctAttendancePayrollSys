@@ -240,6 +240,7 @@
             textBox3.ReadOnly = true;
             textBox3.Size = new Size(107, 23);
             textBox3.TabIndex = 64;
+            textBox3.TextChanged += textBox3_TextChanged;
             // 
             // textBox2
             // 

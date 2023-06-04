@@ -416,6 +416,11 @@ namespace SCTAttendanceSystemUI.Forms
 
         }
 
+        // Define a public method to get the DataGridView
+        public DataGridView GetDataGridView()
+        {
+            return dataGridView1; // Replace "dataGridView1" with the actual name of your DataGridView control
+        }
 
         private void button1_Click_2(object sender, EventArgs e)
         {
@@ -560,10 +565,13 @@ namespace SCTAttendanceSystemUI.Forms
         {
             labelDashboardDate.Text = DateTime.Now.ToLongDateString();
 
+
             adapter = new MySqlDataAdapter("SELECT * FROM empattendance", connection);
 
             // Create a DataTable to hold the data
             table = new DataTable();
+
+            DateTime today = DateTime.Today;
 
             // Fill the DataTable with the data retrieved by the adapter
             adapter.Fill(table);
