@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SCTAttendanceSystemUI.Forms.AddLeaveButton;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,12 @@ namespace SCTAttendanceSystemUI.Forms
         public FormLeave()
         {
             InitializeComponent();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            AddLeaveButtonForm form_addLeave = new AddLeaveButtonForm();
+            form_addLeave.ShowDialog();
         }
     }
 }
