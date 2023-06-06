@@ -27,10 +27,10 @@ namespace SCTAttendanceSystemUI
 
         private void customizeDesign()
         {
-            panelEmployeesSubMenu.Visible = false;
+            //panelEmployeesSubMenu.Visible = false;
         }
 
-        private void hideSubMenu()
+        /*private void hideSubMenu()
         {
             if (panelEmployeesSubMenu.Visible == true)
                 panelEmployeesSubMenu.Visible = false;
@@ -40,14 +40,14 @@ namespace SCTAttendanceSystemUI
         {
             if (subMenu.Visible == false)
             {
-                hideSubMenu();
+                //hideSubMenu();
                 subMenu.Visible = true;
             }
             else
             {
                 subMenu.Visible = false;
             }
-        }
+        }*/
 
         /*private void customizeDesign()
         {
@@ -131,7 +131,7 @@ namespace SCTAttendanceSystemUI
                     previousButton.ForeColor = Color.White;
                     previousButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
                 }
-            }*/
+            }
             foreach (Control previousButton in panelEmployeesSubMenu.Controls)
             {
                 if (previousButton.GetType() == typeof(Button))
@@ -140,7 +140,7 @@ namespace SCTAttendanceSystemUI
                     previousButton.ForeColor = Color.White;
                     previousButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
                 }
-            }
+            }*/
         }
 
         /*private void DisableButtonSearch()
@@ -520,55 +520,60 @@ namespace SCTAttendanceSystemUI
         /// 
         /// </summary>
 
-        private void buttonAttendance_Click_1(object sender, EventArgs e)
-        {
-            OpenChildForm(new Forms.FormHome(), sender);
-            hideSubMenu();
-        }
-
-        private void buttonDepartment_Click_1(object sender, EventArgs e)
-        {
-            OpenChildForm(new Forms.FormDepartment(), sender);
-            hideSubMenu();
-        }
-
-        private void buttonEmployees_Click(object sender, EventArgs e)
-        {
-            showSubMenu(panelEmployeesSubMenu);
-            OpenChildFormDepEmp(new Forms.FormLogout(), sender);
-        }
-
-        private void buttonEmployeeList_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new Forms.FormEmployeeList(), sender);
-            hideSubMenu();
-        }
-
         private void buttonOvertime_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormOvertime(), sender);
-            hideSubMenu();
+            //hideSubMenu();
         }
 
         private void buttonDeduction_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormDeduction(), sender);
-            hideSubMenu();
+            //hideSubMenu();
         }
 
         private void buttonPayroll_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormPayroll(), sender);
-            hideSubMenu();
+            //hideSubMenu();
         }
 
-        private void buttonSettings_Click(object sender, EventArgs e)
+        /// <summary>
+        /// 
+        /// </summary>
+
+
+        private void buttonAttendance_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.FormSettings(), sender);
-            hideSubMenu();
+            OpenChildForm(new Forms.FormHome(), sender);
         }
 
-        private void buttonLogout_Click(object sender, EventArgs e)
+        private void buttonDepartment_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.FormDepartment(), sender);
+        }
+
+        private void buttonEmployeeList_Click_1(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.FormEmployeeList(), sender);
+        }
+
+        private void buttonAbsentees_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.FormAbsentees(), sender);
+        }
+
+        private void buttonLeave_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.FormLeave(), sender);
+        }
+
+        private void buttonPayroll_Click_1(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.FormPayroll(), sender);
+        }
+
+        private void buttonLogout_Click_1(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to logout?", "Logout Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -579,16 +584,9 @@ namespace SCTAttendanceSystemUI
             }
         }
 
-        private void buttonOvertime_Click_1(object sender, EventArgs e)
+        private void buttonSettings_Click_1(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.FormOvertime(), sender);
-            hideSubMenu();
-        }
-
-        private void buttonDeduction_Click_1(object sender, EventArgs e)
-        {
-            OpenChildForm(new Forms.FormDeduction(), sender);
-            hideSubMenu();
+            OpenChildForm(new Forms.FormSettings(), sender);
         }
     }
 }

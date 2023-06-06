@@ -153,7 +153,7 @@
             // panelLogo
             // 
             this.panelLogo.BackColor = System.Drawing.Color.Transparent;
-            this.panelLogo.BackgroundImage = global::SCTAttendanceSystemUI.Properties.Resources.bw_logo;
+            this.panelLogo.BackgroundImage = global::SCTAttendanceSystemUI.Properties.Resources.logo;
             this.panelLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.panelLogo.Location = new System.Drawing.Point(339, 306);
             this.panelLogo.Name = "panelLogo";

@@ -20,7 +20,7 @@ namespace SCTAttendanceSystemUI.Forms
             InitializeComponent();
         }
 
-        private void FormAbsentees_Load(object sender, EventArgs e)
+        /*private void FormAbsentees_Load(object sender, EventArgs e)
         {
             labelAbsenteesDate.Text = DateTime.Now.ToLongDateString();
         }
@@ -50,9 +50,9 @@ namespace SCTAttendanceSystemUI.Forms
                     }
                 }
             }
-        }
+        }*/
 
-        private void cboSheet_SelectionChangeCommitted(object sender, EventArgs e)
+        /*private void cboSheet_SelectionChangeCommitted(object sender, EventArgs e)
         {
             DataTable dt = tableCollection[cboSheet.SelectedItem.ToString()];   //Selected excel sheet
             DataView dv = dt.DefaultView;   //Setting the selected excel file or sheet into DataTable
@@ -116,9 +116,9 @@ namespace SCTAttendanceSystemUI.Forms
 
                 }
             }
-        }
+        }*/
 
-        private void buttonExport_Click(object sender, EventArgs e)
+        /*private void buttonExport_Click(object sender, EventArgs e)
         {
             // get the name of the user in local disk c and store it in a variable
             // this is to save the excel file in the local disk c Downloads folder
@@ -149,7 +149,7 @@ namespace SCTAttendanceSystemUI.Forms
             for (int i = 1; i < dataGridView1.Columns.Count + 1; i++)
             {
                 worksheet.Cells[1, i] = dataGridView1.Columns[i - 1].HeaderText;
-            }*/
+            }
 
             // export only the column header visible
             for (int i = 1; i < 7; i++)
@@ -185,15 +185,15 @@ namespace SCTAttendanceSystemUI.Forms
                 {
                     worksheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
                 }
-            }*/
+            }
 
             DateTime localDate = DateTime.Now;
             // save the excel file
             workbook.SaveAs("C:\\Users\\" + serverName + "\\Downloads\\Absentees-Output.xlsx " + " - " + localDate + ".xlsx", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
 
-        }
+        }*/
 
-        private void sortComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        /*private void sortComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedItem = sortComboBox.SelectedItem.ToString();     //Selected combobox item
             DataTable dt = tableCollection[cboSheet.SelectedItem.ToString()];   //Selected sheet
@@ -213,9 +213,9 @@ namespace SCTAttendanceSystemUI.Forms
             }
 
 
-        }
+        }*/
 
-        private void button1_Click(object sender, EventArgs e)
+        /*private void button1_Click(object sender, EventArgs e)
         {
             DataTable dt = tableCollection[cboSheet.SelectedItem.ToString()];   //Selected sheet
 
@@ -223,7 +223,7 @@ namespace SCTAttendanceSystemUI.Forms
 
             dv.RowFilter = "Date = '" + DateTime.Now.ToString("MM/dd/yyyy") + "'" + "AND Status = 'Absent'"; //Filters and displays all the data between the selected date on 'Date' column
             dataGridView2.DataSource = dt;  //Gets or sets data that the DataGridView displays
-        }
+        }*/
 
         private void labelAbsenteesDate_Click(object sender, EventArgs e)
         {
