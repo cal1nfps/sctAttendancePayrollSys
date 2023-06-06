@@ -124,8 +124,8 @@
             // panelLogo
             // 
             this.panelLogo.BackColor = System.Drawing.Color.Transparent;
-            this.panelLogo.BackgroundImage = global::SCTAttendanceSystemUI.Properties.Resources.logo;
-            this.panelLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panelLogo.BackgroundImage = global::SCTAttendanceSystemUI.Properties.Resources.logo1;
+            this.panelLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panelLogo.Location = new System.Drawing.Point(428, 272);
             this.panelLogo.Name = "panelLogo";
             this.panelLogo.Size = new System.Drawing.Size(200, 169);

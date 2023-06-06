@@ -66,7 +66,7 @@
             // 
             // pictureBoxLogo
             // 
-            this.pictureBoxLogo.BackgroundImage = global::SCTAttendanceSystemUI.Properties.Resources.logo;
+            this.pictureBoxLogo.BackgroundImage = global::SCTAttendanceSystemUI.Properties.Resources.logo1;
             this.pictureBoxLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBoxLogo.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBoxLogo.Location = new System.Drawing.Point(0, 0);

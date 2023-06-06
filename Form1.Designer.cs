@@ -36,6 +36,7 @@
             this.labelSiena = new System.Windows.Forms.Label();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panelLogo1 = new System.Windows.Forms.Panel();
             this.panelColorBg.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.SuspendLayout();
@@ -118,8 +119,8 @@
             // panelLogo
             // 
             this.panelLogo.BackColor = System.Drawing.Color.Transparent;
-            this.panelLogo.BackgroundImage = global::SCTAttendanceSystemUI.Properties.Resources.bw_logo;
-            this.panelLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panelLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panelLogo.Controls.Add(this.panelLogo1);
             this.panelLogo.Controls.Add(this.labelSiena);
             this.panelLogo.Controls.Add(this.labelTaytay);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -135,6 +136,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(980, 822);
             this.panel1.TabIndex = 9;
+            // 
+            // panelLogo1
+            // 
+            this.panelLogo1.BackColor = System.Drawing.Color.Transparent;
+            this.panelLogo1.BackgroundImage = global::SCTAttendanceSystemUI.Properties.Resources.logo1;
+            this.panelLogo1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panelLogo1.Location = new System.Drawing.Point(393, 340);
+            this.panelLogo1.Name = "panelLogo1";
+            this.panelLogo1.Size = new System.Drawing.Size(200, 169);
+            this.panelLogo1.TabIndex = 16;
             // 
             // Form1
             // 
@@ -173,5 +184,6 @@
         private Panel panelLogo;
         private Button button1;
         private Panel panel1;
+        private Panel panelLogo1;
     }
 }
