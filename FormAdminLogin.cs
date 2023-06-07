@@ -62,6 +62,10 @@ namespace SCTAttendanceSystemUI
                 MessageBox.Show("An error occurred: " + ex.Message);
             }
 
+            /*this.Hide();
+            Home1 form_home1 = new Home1();
+            form_home1.ShowDialog();
+            this.Close();*/
 
         }
 
