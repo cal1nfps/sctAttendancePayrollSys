@@ -28,186 +28,192 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panelBg = new Panel();
-            buttonSave = new Button();
-            buttonLogin = new Button();
-            textBoxIDNo = new TextBox();
-            textBoxCurrentPassword = new TextBox();
-            textBoxNewPassword = new TextBox();
-            labelCurrentPassword = new Label();
-            labelNewPassword = new Label();
-            labelPassword = new Label();
-            labelIDNo = new Label();
-            labelAccountNumber = new Label();
-            labelAccountSettings = new Label();
-            panelBg.SuspendLayout();
-            SuspendLayout();
+            this.panelBg = new System.Windows.Forms.Panel();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonLogin = new System.Windows.Forms.Button();
+            this.textBoxIDNo = new System.Windows.Forms.TextBox();
+            this.textBoxCurrentPassword = new System.Windows.Forms.TextBox();
+            this.textBoxNewPassword = new System.Windows.Forms.TextBox();
+            this.labelCurrentPassword = new System.Windows.Forms.Label();
+            this.labelNewPassword = new System.Windows.Forms.Label();
+            this.labelPassword = new System.Windows.Forms.Label();
+            this.labelIDNo = new System.Windows.Forms.Label();
+            this.labelAccountNumber = new System.Windows.Forms.Label();
+            this.labelChangePassword = new System.Windows.Forms.Label();
+            this.panelBg.SuspendLayout();
+            this.SuspendLayout();
             // 
             // panelBg
             // 
-            panelBg.BackColor = SystemColors.Control;
-            panelBg.BackgroundImage = Properties.Resources.white1bg;
-            panelBg.Controls.Add(buttonSave);
-            panelBg.Controls.Add(buttonLogin);
-            panelBg.Controls.Add(textBoxIDNo);
-            panelBg.Controls.Add(textBoxCurrentPassword);
-            panelBg.Controls.Add(textBoxNewPassword);
-            panelBg.Controls.Add(labelCurrentPassword);
-            panelBg.Controls.Add(labelNewPassword);
-            panelBg.Controls.Add(labelPassword);
-            panelBg.Controls.Add(labelIDNo);
-            panelBg.Controls.Add(labelAccountNumber);
-            panelBg.Location = new Point(51, 100);
-            panelBg.Name = "panelBg";
-            panelBg.Size = new Size(1336, 562);
-            panelBg.TabIndex = 8;
+            this.panelBg.BackColor = System.Drawing.SystemColors.Control;
+            this.panelBg.BackgroundImage = global::SCTAttendanceSystemUI.Properties.Resources.white1bg;
+            this.panelBg.Controls.Add(this.buttonSave);
+            this.panelBg.Controls.Add(this.buttonLogin);
+            this.panelBg.Controls.Add(this.textBoxIDNo);
+            this.panelBg.Controls.Add(this.textBoxCurrentPassword);
+            this.panelBg.Controls.Add(this.textBoxNewPassword);
+            this.panelBg.Controls.Add(this.labelCurrentPassword);
+            this.panelBg.Controls.Add(this.labelNewPassword);
+            this.panelBg.Controls.Add(this.labelPassword);
+            this.panelBg.Controls.Add(this.labelIDNo);
+            this.panelBg.Controls.Add(this.labelAccountNumber);
+            this.panelBg.Location = new System.Drawing.Point(51, 80);
+            this.panelBg.Name = "panelBg";
+            this.panelBg.Size = new System.Drawing.Size(923, 434);
+            this.panelBg.TabIndex = 8;
             // 
             // buttonSave
             // 
-            buttonSave.BackColor = Color.FromArgb(247, 208, 2);
-            buttonSave.Cursor = Cursors.Hand;
-            buttonSave.FlatStyle = FlatStyle.Flat;
-            buttonSave.Font = new Font("Times New Roman", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonSave.Location = new Point(623, 454);
-            buttonSave.Name = "buttonSave";
-            buttonSave.Size = new Size(150, 40);
-            buttonSave.TabIndex = 10;
-            buttonSave.Text = "SAVE";
-            buttonSave.UseVisualStyleBackColor = false;
-            buttonSave.Click += buttonSave_Click_1;
+            this.buttonSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(208)))), ((int)(((byte)(2)))));
+            this.buttonSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSave.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonSave.Location = new System.Drawing.Point(411, 362);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(150, 40);
+            this.buttonSave.TabIndex = 10;
+            this.buttonSave.Text = "SAVE";
+            this.buttonSave.UseVisualStyleBackColor = false;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click_2);
             // 
             // buttonLogin
             // 
-            buttonLogin.BackColor = Color.FromArgb(247, 208, 2);
-            buttonLogin.FlatStyle = FlatStyle.Flat;
-            buttonLogin.Font = new Font("Times New Roman", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonLogin.Location = new Point(1561, 739);
-            buttonLogin.Name = "buttonLogin";
-            buttonLogin.Size = new Size(150, 40);
-            buttonLogin.TabIndex = 9;
-            buttonLogin.Text = "SAVE";
-            buttonLogin.UseVisualStyleBackColor = false;
+            this.buttonLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(208)))), ((int)(((byte)(2)))));
+            this.buttonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonLogin.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonLogin.Location = new System.Drawing.Point(1561, 739);
+            this.buttonLogin.Name = "buttonLogin";
+            this.buttonLogin.Size = new System.Drawing.Size(150, 40);
+            this.buttonLogin.TabIndex = 9;
+            this.buttonLogin.Text = "SAVE";
+            this.buttonLogin.UseVisualStyleBackColor = false;
             // 
             // textBoxIDNo
             // 
-            textBoxIDNo.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxIDNo.Location = new Point(557, 113);
-            textBoxIDNo.MaxLength = 100;
-            textBoxIDNo.Multiline = true;
-            textBoxIDNo.Name = "textBoxIDNo";
-            textBoxIDNo.Size = new Size(290, 40);
-            textBoxIDNo.TabIndex = 8;
+            this.textBoxIDNo.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxIDNo.Location = new System.Drawing.Point(345, 88);
+            this.textBoxIDNo.MaxLength = 100;
+            this.textBoxIDNo.Multiline = true;
+            this.textBoxIDNo.Name = "textBoxIDNo";
+            this.textBoxIDNo.Size = new System.Drawing.Size(290, 40);
+            this.textBoxIDNo.TabIndex = 8;
+            this.textBoxIDNo.TextChanged += new System.EventHandler(this.textBoxIDNo_TextChanged_1);
             // 
             // textBoxCurrentPassword
             // 
-            textBoxCurrentPassword.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxCurrentPassword.Location = new Point(557, 380);
-            textBoxCurrentPassword.MaxLength = 100;
-            textBoxCurrentPassword.Multiline = true;
-            textBoxCurrentPassword.Name = "textBoxCurrentPassword";
-            textBoxCurrentPassword.Size = new Size(290, 40);
-            textBoxCurrentPassword.TabIndex = 7;
+            this.textBoxCurrentPassword.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxCurrentPassword.Location = new System.Drawing.Point(345, 288);
+            this.textBoxCurrentPassword.MaxLength = 100;
+            this.textBoxCurrentPassword.Multiline = true;
+            this.textBoxCurrentPassword.Name = "textBoxCurrentPassword";
+            this.textBoxCurrentPassword.Size = new System.Drawing.Size(290, 40);
+            this.textBoxCurrentPassword.TabIndex = 7;
+            this.textBoxCurrentPassword.TextChanged += new System.EventHandler(this.textBoxCurrentPassword_TextChanged_1);
             // 
             // textBoxNewPassword
             // 
-            textBoxNewPassword.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxNewPassword.Location = new Point(557, 308);
-            textBoxNewPassword.MaxLength = 100;
-            textBoxNewPassword.Multiline = true;
-            textBoxNewPassword.Name = "textBoxNewPassword";
-            textBoxNewPassword.Size = new Size(290, 40);
-            textBoxNewPassword.TabIndex = 6;
+            this.textBoxNewPassword.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxNewPassword.Location = new System.Drawing.Point(345, 216);
+            this.textBoxNewPassword.MaxLength = 100;
+            this.textBoxNewPassword.Multiline = true;
+            this.textBoxNewPassword.Name = "textBoxNewPassword";
+            this.textBoxNewPassword.Size = new System.Drawing.Size(290, 40);
+            this.textBoxNewPassword.TabIndex = 6;
+            this.textBoxNewPassword.TextChanged += new System.EventHandler(this.textBoxNewPassword_TextChanged_1);
             // 
             // labelCurrentPassword
             // 
-            labelCurrentPassword.AutoSize = true;
-            labelCurrentPassword.BackColor = Color.Transparent;
-            labelCurrentPassword.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            labelCurrentPassword.Location = new Point(419, 383);
-            labelCurrentPassword.Name = "labelCurrentPassword";
-            labelCurrentPassword.Size = new Size(141, 28);
-            labelCurrentPassword.TabIndex = 5;
-            labelCurrentPassword.Text = "New Password:";
-            labelCurrentPassword.Click += labelCurrentPassword_Click_1;
+            this.labelCurrentPassword.AutoSize = true;
+            this.labelCurrentPassword.BackColor = System.Drawing.Color.Transparent;
+            this.labelCurrentPassword.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelCurrentPassword.Location = new System.Drawing.Point(207, 291);
+            this.labelCurrentPassword.Name = "labelCurrentPassword";
+            this.labelCurrentPassword.Size = new System.Drawing.Size(141, 28);
+            this.labelCurrentPassword.TabIndex = 5;
+            this.labelCurrentPassword.Text = "New Password:";
+            this.labelCurrentPassword.Click += new System.EventHandler(this.labelCurrentPassword_Click_2);
             // 
             // labelNewPassword
             // 
-            labelNewPassword.AutoSize = true;
-            labelNewPassword.BackColor = Color.Transparent;
-            labelNewPassword.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            labelNewPassword.Location = new Point(384, 311);
-            labelNewPassword.Name = "labelNewPassword";
-            labelNewPassword.Size = new Size(167, 28);
-            labelNewPassword.TabIndex = 4;
-            labelNewPassword.Text = "Current Password:";
+            this.labelNewPassword.AutoSize = true;
+            this.labelNewPassword.BackColor = System.Drawing.Color.Transparent;
+            this.labelNewPassword.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelNewPassword.Location = new System.Drawing.Point(172, 219);
+            this.labelNewPassword.Name = "labelNewPassword";
+            this.labelNewPassword.Size = new System.Drawing.Size(167, 28);
+            this.labelNewPassword.TabIndex = 4;
+            this.labelNewPassword.Text = "Current Password:";
+            this.labelNewPassword.Click += new System.EventHandler(this.labelNewPassword_Click_1);
             // 
             // labelPassword
             // 
-            labelPassword.AutoSize = true;
-            labelPassword.BackColor = Color.Transparent;
-            labelPassword.Font = new Font("Times New Roman", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            labelPassword.Location = new Point(612, 261);
-            labelPassword.Name = "labelPassword";
-            labelPassword.Size = new Size(144, 26);
-            labelPassword.TabIndex = 3;
-            labelPassword.Text = "PASSWORD";
+            this.labelPassword.AutoSize = true;
+            this.labelPassword.BackColor = System.Drawing.Color.Transparent;
+            this.labelPassword.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelPassword.Location = new System.Drawing.Point(400, 169);
+            this.labelPassword.Name = "labelPassword";
+            this.labelPassword.Size = new System.Drawing.Size(144, 26);
+            this.labelPassword.TabIndex = 3;
+            this.labelPassword.Text = "PASSWORD";
+            this.labelPassword.Click += new System.EventHandler(this.labelPassword_Click_1);
             // 
             // labelIDNo
             // 
-            labelIDNo.AutoSize = true;
-            labelIDNo.BackColor = Color.Transparent;
-            labelIDNo.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            labelIDNo.Location = new Point(384, 116);
-            labelIDNo.Name = "labelIDNo";
-            labelIDNo.Size = new Size(167, 28);
-            labelIDNo.TabIndex = 2;
-            labelIDNo.Text = "Your Admin User: ";
-            labelIDNo.Click += labelIDNo_Click_1;
+            this.labelIDNo.AutoSize = true;
+            this.labelIDNo.BackColor = System.Drawing.Color.Transparent;
+            this.labelIDNo.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelIDNo.Location = new System.Drawing.Point(172, 91);
+            this.labelIDNo.Name = "labelIDNo";
+            this.labelIDNo.Size = new System.Drawing.Size(167, 28);
+            this.labelIDNo.TabIndex = 2;
+            this.labelIDNo.Text = "Your Admin User: ";
+            this.labelIDNo.Click += new System.EventHandler(this.labelIDNo_Click_2);
             // 
             // labelAccountNumber
             // 
-            labelAccountNumber.AutoSize = true;
-            labelAccountNumber.BackColor = Color.Transparent;
-            labelAccountNumber.Font = new Font("Times New Roman", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            labelAccountNumber.Location = new Point(641, 49);
-            labelAccountNumber.Name = "labelAccountNumber";
-            labelAccountNumber.Size = new Size(95, 26);
-            labelAccountNumber.TabIndex = 1;
-            labelAccountNumber.Text = "ADMIN";
-            labelAccountNumber.Click += labelAccountNumber_Click_1;
+            this.labelAccountNumber.AutoSize = true;
+            this.labelAccountNumber.BackColor = System.Drawing.Color.Transparent;
+            this.labelAccountNumber.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelAccountNumber.Location = new System.Drawing.Point(429, 24);
+            this.labelAccountNumber.Name = "labelAccountNumber";
+            this.labelAccountNumber.Size = new System.Drawing.Size(95, 26);
+            this.labelAccountNumber.TabIndex = 1;
+            this.labelAccountNumber.Text = "ADMIN";
+            this.labelAccountNumber.Click += new System.EventHandler(this.labelAccountNumber_Click_2);
             // 
-            // labelAccountSettings
+            // labelChangePassword
             // 
-            labelAccountSettings.AutoSize = true;
-            labelAccountSettings.BackColor = Color.Transparent;
-            labelAccountSettings.Font = new Font("Times New Roman", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            labelAccountSettings.Location = new Point(51, 28);
-            labelAccountSettings.Name = "labelAccountSettings";
-            labelAccountSettings.Size = new Size(294, 31);
-            labelAccountSettings.TabIndex = 0;
-            labelAccountSettings.Text = "ACCOUNT SETTINGS";
+            this.labelChangePassword.AutoSize = true;
+            this.labelChangePassword.BackColor = System.Drawing.Color.Transparent;
+            this.labelChangePassword.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelChangePassword.Location = new System.Drawing.Point(51, 28);
+            this.labelChangePassword.Name = "labelChangePassword";
+            this.labelChangePassword.Size = new System.Drawing.Size(293, 31);
+            this.labelChangePassword.TabIndex = 0;
+            this.labelChangePassword.Text = "CHANGE PASSWORD";
             // 
             // FormSettings
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            AutoScroll = true;
-            BackgroundImage = Properties.Resources.BG_LOW_OPACITY;
-            BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1666, 822);
-            Controls.Add(panelBg);
-            Controls.Add(labelAccountSettings);
-            DoubleBuffered = true;
-            FormBorderStyle = FormBorderStyle.Fixed3D;
-            MaximumSize = new Size(1920, 1080);
-            MinimumSize = new Size(1681, 822);
-            Name = "FormSettings";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormSettings";
-            panelBg.ResumeLayout(false);
-            panelBg.PerformLayout();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.BackgroundImage = global::SCTAttendanceSystemUI.Properties.Resources.BG_LOW_OPACITY;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1260, 677);
+            this.Controls.Add(this.panelBg);
+            this.Controls.Add(this.labelChangePassword);
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximumSize = new System.Drawing.Size(1920, 1080);
+            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.Name = "FormSettings";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "FormSettings";
+            this.panelBg.ResumeLayout(false);
+            this.panelBg.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
@@ -217,7 +223,7 @@
         private Label labelPassword;
         private Label labelIDNo;
         private Label labelAccountNumber;
-        private Label labelAccountSettings;
+        private Label labelChangePassword;
         private TextBox textBoxIDNo;
         private TextBox textBoxCurrentPassword;
         private TextBox textBoxNewPassword;

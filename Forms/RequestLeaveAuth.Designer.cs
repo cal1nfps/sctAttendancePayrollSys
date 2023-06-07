@@ -28,165 +28,166 @@
         /// </summary>
         private void InitializeComponent()
         {
-            RedPanel = new Panel();
-            empname = new Label();
-            button1 = new Button();
-            RequestLogin = new Button();
-            Empnumber = new TextBox();
-            labelIdNo = new Label();
-            welcomelabel = new Label();
-            panelLogo = new Panel();
-            labelTaytay = new Label();
-            labelSiena = new Label();
-            RedPanel.SuspendLayout();
-            SuspendLayout();
+            this.RedPanel = new System.Windows.Forms.Panel();
+            this.empname = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.RequestLogin = new System.Windows.Forms.Button();
+            this.Empnumber = new System.Windows.Forms.TextBox();
+            this.labelIdNo = new System.Windows.Forms.Label();
+            this.welcomelabel = new System.Windows.Forms.Label();
+            this.panelLogo = new System.Windows.Forms.Panel();
+            this.labelTaytay = new System.Windows.Forms.Label();
+            this.labelSiena = new System.Windows.Forms.Label();
+            this.RedPanel.SuspendLayout();
+            this.SuspendLayout();
             // 
             // RedPanel
             // 
-            RedPanel.BackColor = Color.FromArgb(164, 16, 52);
-            RedPanel.Controls.Add(empname);
-            RedPanel.Controls.Add(button1);
-            RedPanel.Controls.Add(RequestLogin);
-            RedPanel.Controls.Add(Empnumber);
-            RedPanel.Controls.Add(labelIdNo);
-            RedPanel.Controls.Add(welcomelabel);
-            RedPanel.Dock = DockStyle.Right;
-            RedPanel.Font = new Font("Tahoma", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            RedPanel.Location = new Point(696, 0);
-            RedPanel.Name = "RedPanel";
-            RedPanel.Size = new Size(690, 788);
-            RedPanel.TabIndex = 10;
+            this.RedPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(16)))), ((int)(((byte)(52)))));
+            this.RedPanel.Controls.Add(this.empname);
+            this.RedPanel.Controls.Add(this.button1);
+            this.RedPanel.Controls.Add(this.RequestLogin);
+            this.RedPanel.Controls.Add(this.Empnumber);
+            this.RedPanel.Controls.Add(this.labelIdNo);
+            this.RedPanel.Controls.Add(this.welcomelabel);
+            this.RedPanel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.RedPanel.Font = new System.Drawing.Font("Tahoma", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.RedPanel.Location = new System.Drawing.Point(675, 0);
+            this.RedPanel.Name = "RedPanel";
+            this.RedPanel.Size = new System.Drawing.Size(605, 720);
+            this.RedPanel.TabIndex = 10;
             // 
             // empname
             // 
-            empname.AutoSize = true;
-            empname.BackColor = Color.Transparent;
-            empname.Font = new Font("Times New Roman", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            empname.ForeColor = Color.White;
-            empname.Location = new Point(116, 259);
-            empname.Name = "empname";
-            empname.Size = new Size(178, 31);
-            empname.TabIndex = 7;
-            empname.Text = "EMPLOYEE!";
+            this.empname.AutoSize = true;
+            this.empname.BackColor = System.Drawing.Color.Transparent;
+            this.empname.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.empname.ForeColor = System.Drawing.Color.White;
+            this.empname.Location = new System.Drawing.Point(116, 259);
+            this.empname.Name = "empname";
+            this.empname.Size = new System.Drawing.Size(178, 31);
+            this.empname.TabIndex = 7;
+            this.empname.Text = "EMPLOYEE!";
             // 
             // button1
             // 
-            button1.BackColor = Color.Transparent;
-            button1.Cursor = Cursors.Hand;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Times New Roman", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Image = Properties.Resources.close;
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(602, 48);
-            button1.Name = "button1";
-            button1.Size = new Size(62, 58);
-            button1.TabIndex = 6;
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button1.Image = global::SCTAttendanceSystemUI.Properties.Resources.close;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(500, 46);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(62, 58);
+            this.button1.TabIndex = 6;
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // RequestLogin
             // 
-            RequestLogin.BackColor = Color.FromArgb(247, 208, 2);
-            RequestLogin.Cursor = Cursors.Hand;
-            RequestLogin.FlatStyle = FlatStyle.Flat;
-            RequestLogin.Font = new Font("Times New Roman", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            RequestLogin.Location = new Point(432, 401);
-            RequestLogin.Name = "RequestLogin";
-            RequestLogin.Size = new Size(111, 40);
-            RequestLogin.TabIndex = 5;
-            RequestLogin.Text = "LOGIN";
-            RequestLogin.UseVisualStyleBackColor = false;
-            RequestLogin.Click += RequestLogin_Click;
+            this.RequestLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(208)))), ((int)(((byte)(2)))));
+            this.RequestLogin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.RequestLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RequestLogin.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.RequestLogin.Location = new System.Drawing.Point(432, 401);
+            this.RequestLogin.Name = "RequestLogin";
+            this.RequestLogin.Size = new System.Drawing.Size(111, 40);
+            this.RequestLogin.TabIndex = 5;
+            this.RequestLogin.Text = "LOGIN";
+            this.RequestLogin.UseVisualStyleBackColor = false;
             // 
             // Empnumber
             // 
-            Empnumber.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            Empnumber.Location = new Point(141, 401);
-            Empnumber.MaxLength = 100;
-            Empnumber.Multiline = true;
-            Empnumber.Name = "Empnumber";
-            Empnumber.PlaceholderText = "EMPLOYEE ID";
-            Empnumber.Size = new Size(290, 40);
-            Empnumber.TabIndex = 3;
+            this.Empnumber.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Empnumber.Location = new System.Drawing.Point(141, 401);
+            this.Empnumber.MaxLength = 100;
+            this.Empnumber.Multiline = true;
+            this.Empnumber.Name = "Empnumber";
+            this.Empnumber.PlaceholderText = "EMPLOYEE ID";
+            this.Empnumber.Size = new System.Drawing.Size(290, 40);
+            this.Empnumber.TabIndex = 3;
             // 
             // labelIdNo
             // 
-            labelIdNo.AutoSize = true;
-            labelIdNo.BackColor = Color.Transparent;
-            labelIdNo.Font = new Font("Times New Roman", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            labelIdNo.ForeColor = Color.White;
-            labelIdNo.Location = new Point(93, 360);
-            labelIdNo.Name = "labelIdNo";
-            labelIdNo.RightToLeft = RightToLeft.No;
-            labelIdNo.Size = new Size(158, 22);
-            labelIdNo.TabIndex = 1;
-            labelIdNo.Text = "EMPLOYEE NO.";
+            this.labelIdNo.AutoSize = true;
+            this.labelIdNo.BackColor = System.Drawing.Color.Transparent;
+            this.labelIdNo.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelIdNo.ForeColor = System.Drawing.Color.White;
+            this.labelIdNo.Location = new System.Drawing.Point(93, 360);
+            this.labelIdNo.Name = "labelIdNo";
+            this.labelIdNo.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.labelIdNo.Size = new System.Drawing.Size(158, 22);
+            this.labelIdNo.TabIndex = 1;
+            this.labelIdNo.Text = "EMPLOYEE NO.";
             // 
             // welcomelabel
             // 
-            welcomelabel.AutoSize = true;
-            welcomelabel.BackColor = Color.Transparent;
-            welcomelabel.Font = new Font("Times New Roman", 32F, FontStyle.Bold, GraphicsUnit.Point);
-            welcomelabel.ForeColor = Color.White;
-            welcomelabel.Location = new Point(41, 172);
-            welcomelabel.Name = "welcomelabel";
-            welcomelabel.Size = new Size(269, 49);
-            welcomelabel.TabIndex = 0;
-            welcomelabel.Text = "WELCOME,";
+            this.welcomelabel.AutoSize = true;
+            this.welcomelabel.BackColor = System.Drawing.Color.Transparent;
+            this.welcomelabel.Font = new System.Drawing.Font("Times New Roman", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.welcomelabel.ForeColor = System.Drawing.Color.White;
+            this.welcomelabel.Location = new System.Drawing.Point(41, 172);
+            this.welcomelabel.Name = "welcomelabel";
+            this.welcomelabel.Size = new System.Drawing.Size(269, 49);
+            this.welcomelabel.TabIndex = 0;
+            this.welcomelabel.Text = "WELCOME,";
             // 
             // panelLogo
             // 
-            panelLogo.BackColor = Color.Transparent;
-            panelLogo.BackgroundImage = Properties.Resources.logo1;
-            panelLogo.BackgroundImageLayout = ImageLayout.Zoom;
-            panelLogo.Location = new Point(241, 229);
-            panelLogo.Name = "panelLogo";
-            panelLogo.Size = new Size(200, 169);
-            panelLogo.TabIndex = 15;
+            this.panelLogo.BackColor = System.Drawing.Color.Transparent;
+            this.panelLogo.BackgroundImage = global::SCTAttendanceSystemUI.Properties.Resources.logo1;
+            this.panelLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panelLogo.Location = new System.Drawing.Point(241, 229);
+            this.panelLogo.Name = "panelLogo";
+            this.panelLogo.Size = new System.Drawing.Size(200, 169);
+            this.panelLogo.TabIndex = 15;
             // 
             // labelTaytay
             // 
-            labelTaytay.AutoSize = true;
-            labelTaytay.BackColor = Color.Transparent;
-            labelTaytay.Font = new Font("Times New Roman", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            labelTaytay.Location = new Point(241, 473);
-            labelTaytay.Name = "labelTaytay";
-            labelTaytay.Size = new Size(215, 31);
-            labelTaytay.TabIndex = 14;
-            labelTaytay.Text = "TAYTAY, RIZAL";
+            this.labelTaytay.AutoSize = true;
+            this.labelTaytay.BackColor = System.Drawing.Color.Transparent;
+            this.labelTaytay.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelTaytay.Location = new System.Drawing.Point(241, 473);
+            this.labelTaytay.Name = "labelTaytay";
+            this.labelTaytay.Size = new System.Drawing.Size(215, 31);
+            this.labelTaytay.TabIndex = 14;
+            this.labelTaytay.Text = "TAYTAY, RIZAL";
             // 
             // labelSiena
             // 
-            labelSiena.AutoSize = true;
-            labelSiena.BackColor = Color.Transparent;
-            labelSiena.Font = new Font("Times New Roman", 40F, FontStyle.Bold, GraphicsUnit.Point);
-            labelSiena.Location = new Point(111, 401);
-            labelSiena.Name = "labelSiena";
-            labelSiena.Size = new Size(469, 62);
-            labelSiena.TabIndex = 13;
-            labelSiena.Text = "SIENA COLLEGE";
+            this.labelSiena.AutoSize = true;
+            this.labelSiena.BackColor = System.Drawing.Color.Transparent;
+            this.labelSiena.Font = new System.Drawing.Font("Times New Roman", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelSiena.Location = new System.Drawing.Point(111, 401);
+            this.labelSiena.Name = "labelSiena";
+            this.labelSiena.Size = new System.Drawing.Size(469, 62);
+            this.labelSiena.TabIndex = 13;
+            this.labelSiena.Text = "SIENA COLLEGE";
             // 
             // RequestLeaveAuth
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.BG_LOW_OPACITY;
-            BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1386, 788);
-            Controls.Add(panelLogo);
-            Controls.Add(labelTaytay);
-            Controls.Add(labelSiena);
-            Controls.Add(RedPanel);
-            DoubleBuffered = true;
-            FormBorderStyle = FormBorderStyle.None;
-            Name = "RequestLeaveAuth";
-            Text = "RequestLeaveAuth";
-            Load += RequestLeaveAuth_Load;
-            RedPanel.ResumeLayout(false);
-            RedPanel.PerformLayout();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::SCTAttendanceSystemUI.Properties.Resources.BG_LOW_OPACITY;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.Controls.Add(this.panelLogo);
+            this.Controls.Add(this.labelTaytay);
+            this.Controls.Add(this.labelSiena);
+            this.Controls.Add(this.RedPanel);
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximumSize = new System.Drawing.Size(1920, 1080);
+            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.Name = "RequestLeaveAuth";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "RequestLeaveAuth";
+            this.RedPanel.ResumeLayout(false);
+            this.RedPanel.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

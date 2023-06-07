@@ -170,5 +170,50 @@ namespace SCTAttendanceSystemUI.Forms
         {
 
         }
+
+        private void textBoxIDNo_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSave_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxCurrentPassword_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxNewPassword_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelCurrentPassword_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelNewPassword_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelPassword_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelIDNo_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelAccountNumber_Click_2(object sender, EventArgs e)
+        {
+
+        }
     }
 }

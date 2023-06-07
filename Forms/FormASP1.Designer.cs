@@ -29,242 +29,247 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormASP1));
-            panel1 = new Panel();
-            panelIBED1 = new Panel();
-            labelOccupation = new Label();
-            labelJobStatus = new Label();
-            labelName = new Label();
-            labelEmpNum = new Label();
-            button4 = new Button();
-            button1 = new Button();
-            dataGridView1 = new DataGridView();
-            panel2 = new Panel();
-            label1 = new Label();
-            label5 = new Label();
-            label4 = new Label();
-            button2 = new Button();
-            panel1.SuspendLayout();
-            panelIBED1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            panel2.SuspendLayout();
-            SuspendLayout();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelIBED1 = new System.Windows.Forms.Panel();
+            this.labelOccupation = new System.Windows.Forms.Label();
+            this.labelJobStatus = new System.Windows.Forms.Label();
+            this.labelName = new System.Windows.Forms.Label();
+            this.labelEmpNum = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.buttonBackBtn = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
+            this.panelIBED1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.SuspendLayout();
             // 
             // panel1
             // 
-            panel1.BackgroundImage = Properties.Resources.BG_LOW_OPACITY;
-            panel1.BackgroundImageLayout = ImageLayout.Stretch;
-            panel1.Controls.Add(panelIBED1);
-            panel1.Controls.Add(button4);
-            panel1.Controls.Add(button1);
-            panel1.Controls.Add(dataGridView1);
-            panel1.Controls.Add(panel2);
-            panel1.Controls.Add(button2);
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1423, 730);
-            panel1.TabIndex = 59;
+            this.panel1.BackgroundImage = global::SCTAttendanceSystemUI.Properties.Resources.BG_LOW_OPACITY;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.panelIBED1);
+            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.buttonBackBtn);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.MaximumSize = new System.Drawing.Size(1920, 1080);
+            this.panel1.MinimumSize = new System.Drawing.Size(800, 600);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1280, 720);
+            this.panel1.TabIndex = 59;
             // 
             // panelIBED1
             // 
-            panelIBED1.BackColor = Color.White;
-            panelIBED1.BorderStyle = BorderStyle.FixedSingle;
-            panelIBED1.Controls.Add(labelOccupation);
-            panelIBED1.Controls.Add(labelJobStatus);
-            panelIBED1.Controls.Add(labelName);
-            panelIBED1.Controls.Add(labelEmpNum);
-            panelIBED1.Location = new Point(33, 130);
-            panelIBED1.Name = "panelIBED1";
-            panelIBED1.Size = new Size(1177, 30);
-            panelIBED1.TabIndex = 76;
+            this.panelIBED1.BackColor = System.Drawing.Color.White;
+            this.panelIBED1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelIBED1.Controls.Add(this.labelOccupation);
+            this.panelIBED1.Controls.Add(this.labelJobStatus);
+            this.panelIBED1.Controls.Add(this.labelName);
+            this.panelIBED1.Controls.Add(this.labelEmpNum);
+            this.panelIBED1.Location = new System.Drawing.Point(33, 130);
+            this.panelIBED1.Name = "panelIBED1";
+            this.panelIBED1.Size = new System.Drawing.Size(951, 30);
+            this.panelIBED1.TabIndex = 76;
             // 
             // labelOccupation
             // 
-            labelOccupation.AutoSize = true;
-            labelOccupation.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            labelOccupation.ForeColor = SystemColors.ControlDarkDark;
-            labelOccupation.Location = new Point(233, 7);
-            labelOccupation.Name = "labelOccupation";
-            labelOccupation.Size = new Size(68, 14);
-            labelOccupation.TabIndex = 67;
-            labelOccupation.Text = "Occupation";
+            this.labelOccupation.AutoSize = true;
+            this.labelOccupation.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelOccupation.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelOccupation.Location = new System.Drawing.Point(233, 7);
+            this.labelOccupation.Name = "labelOccupation";
+            this.labelOccupation.Size = new System.Drawing.Size(68, 14);
+            this.labelOccupation.TabIndex = 67;
+            this.labelOccupation.Text = "Occupation";
             // 
             // labelJobStatus
             // 
-            labelJobStatus.AutoSize = true;
-            labelJobStatus.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            labelJobStatus.ForeColor = SystemColors.ControlDarkDark;
-            labelJobStatus.Location = new Point(387, 7);
-            labelJobStatus.Name = "labelJobStatus";
-            labelJobStatus.Size = new Size(64, 14);
-            labelJobStatus.TabIndex = 62;
-            labelJobStatus.Text = "Job Status";
+            this.labelJobStatus.AutoSize = true;
+            this.labelJobStatus.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelJobStatus.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelJobStatus.Location = new System.Drawing.Point(387, 7);
+            this.labelJobStatus.Name = "labelJobStatus";
+            this.labelJobStatus.Size = new System.Drawing.Size(64, 14);
+            this.labelJobStatus.TabIndex = 62;
+            this.labelJobStatus.Text = "Job Status";
             // 
             // labelName
             // 
-            labelName.AutoSize = true;
-            labelName.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            labelName.ForeColor = SystemColors.ControlDarkDark;
-            labelName.Location = new Point(65, 7);
-            labelName.Name = "labelName";
-            labelName.Size = new Size(37, 14);
-            labelName.TabIndex = 60;
-            labelName.Text = "Name";
+            this.labelName.AutoSize = true;
+            this.labelName.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelName.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelName.Location = new System.Drawing.Point(65, 7);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(37, 14);
+            this.labelName.TabIndex = 60;
+            this.labelName.Text = "Name";
             // 
             // labelEmpNum
             // 
-            labelEmpNum.AutoSize = true;
-            labelEmpNum.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            labelEmpNum.ForeColor = SystemColors.ControlDarkDark;
-            labelEmpNum.Location = new Point(15, 7);
-            labelEmpNum.Name = "labelEmpNum";
-            labelEmpNum.Size = new Size(14, 14);
-            labelEmpNum.TabIndex = 58;
-            labelEmpNum.Text = "#";
+            this.labelEmpNum.AutoSize = true;
+            this.labelEmpNum.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelEmpNum.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelEmpNum.Location = new System.Drawing.Point(15, 7);
+            this.labelEmpNum.Name = "labelEmpNum";
+            this.labelEmpNum.Size = new System.Drawing.Size(14, 14);
+            this.labelEmpNum.TabIndex = 58;
+            this.labelEmpNum.Text = "#";
             // 
             // button4
             // 
-            button4.BackColor = Color.Green;
-            button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
-            button4.FlatAppearance.BorderSize = 0;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.Location = new Point(1287, 99);
-            button4.Name = "button4";
-            button4.Padding = new Padding(10, 0, 0, 0);
-            button4.Size = new Size(47, 30);
-            button4.TabIndex = 73;
-            button4.TextAlign = ContentAlignment.MiddleLeft;
-            button4.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button4.UseVisualStyleBackColor = false;
-            button4.Click += button4_Click_1;
+            this.button4.BackColor = System.Drawing.Color.Green;
+            this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button4.Location = new System.Drawing.Point(937, 94);
+            this.button4.Name = "button4";
+            this.button4.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.button4.Size = new System.Drawing.Size(47, 30);
+            this.button4.TabIndex = 73;
+            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button1
             // 
-            button1.BackColor = Color.Green;
-            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(1234, 99);
-            button1.Name = "button1";
-            button1.Padding = new Padding(10, 0, 0, 0);
-            button1.Size = new Size(47, 30);
-            button1.TabIndex = 72;
-            button1.TextAlign = ContentAlignment.MiddleLeft;
-            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click_1;
+            this.button1.BackColor = System.Drawing.Color.Green;
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(884, 94);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(47, 30);
+            this.button1.TabIndex = 72;
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dataGridView1
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AllowUserToResizeColumns = false;
-            dataGridView1.AllowUserToResizeRows = false;
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.ColumnHeadersVisible = false;
-            dataGridView1.Location = new Point(33, 165);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(1301, 520);
-            dataGridView1.TabIndex = 61;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ColumnHeadersVisible = false;
+            this.dataGridView1.Location = new System.Drawing.Point(33, 165);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.Size = new System.Drawing.Size(951, 354);
+            this.dataGridView1.TabIndex = 61;
             // 
             // panel2
             // 
-            panel2.BackColor = Color.FromArgb(2, 35, 68);
-            panel2.Controls.Add(label1);
-            panel2.Controls.Add(label5);
-            panel2.Controls.Add(label4);
-            panel2.Location = new Point(84, 31);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(264, 85);
-            panel2.TabIndex = 60;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(35)))), ((int)(((byte)(68)))));
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Location = new System.Drawing.Point(84, 31);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(264, 85);
+            this.panel2.TabIndex = 60;
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.FromArgb(2, 35, 68);
-            label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(220, 25);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 45);
-            label1.TabIndex = 60;
-            label1.Text = "1";
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(35)))), ((int)(((byte)(68)))));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(220, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 45);
+            this.label1.TabIndex = 60;
+            this.label1.Text = "1";
             // 
             // label5
             // 
-            label5.AutoSize = true;
-            label5.BackColor = Color.FromArgb(2, 35, 68);
-            label5.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.ForeColor = Color.White;
-            label5.Location = new Point(12, 13);
-            label5.Name = "label5";
-            label5.Size = new Size(68, 37);
-            label5.TabIndex = 62;
-            label5.Text = "ASP";
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(35)))), ((int)(((byte)(68)))));
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(12, 13);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 37);
+            this.label5.TabIndex = 62;
+            this.label5.Text = "ASP";
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.FromArgb(2, 35, 68);
-            label4.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(12, 50);
-            label4.Name = "label4";
-            label4.Size = new Size(202, 20);
-            label4.TabIndex = 59;
-            label4.Text = "Total Attendance for today:";
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(35)))), ((int)(((byte)(68)))));
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(12, 50);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(202, 20);
+            this.label4.TabIndex = 59;
+            this.label4.Text = "Total Attendance for today:";
             // 
-            // button2
+            // buttonBackBtn
             // 
-            button2.BackColor = Color.Transparent;
-            button2.Cursor = Cursors.Hand;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Times New Roman", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(33, 20);
-            button2.Name = "button2";
-            button2.Size = new Size(45, 48);
-            button2.TabIndex = 59;
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click_1;
+            this.buttonBackBtn.BackColor = System.Drawing.Color.Transparent;
+            this.buttonBackBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonBackBtn.FlatAppearance.BorderSize = 0;
+            this.buttonBackBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBackBtn.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonBackBtn.Image = ((System.Drawing.Image)(resources.GetObject("buttonBackBtn.Image")));
+            this.buttonBackBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonBackBtn.Location = new System.Drawing.Point(33, 20);
+            this.buttonBackBtn.Name = "buttonBackBtn";
+            this.buttonBackBtn.Size = new System.Drawing.Size(45, 48);
+            this.buttonBackBtn.TabIndex = 59;
+            this.buttonBackBtn.UseVisualStyleBackColor = false;
+            this.buttonBackBtn.Click += new System.EventHandler(this.buttonBackBtn_Click);
             // 
             // FormASP1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1423, 730);
-            Controls.Add(panel1);
-            DoubleBuffered = true;
-            FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 2, 3, 2);
-            Name = "FormASP1";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormASP1";
-            Load += FormASP1_Load_1;
-            panel1.ResumeLayout(false);
-            panelIBED1.ResumeLayout(false);
-            panelIBED1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.Controls.Add(this.panel1);
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximumSize = new System.Drawing.Size(1920, 1080);
+            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.Name = "FormASP1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "FormASP1";
+            this.Load += new System.EventHandler(this.FormASP1_Load);
+            this.panel1.ResumeLayout(false);
+            this.panelIBED1.ResumeLayout(false);
+            this.panelIBED1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
         private Panel panel1;
-        private Button button2;
+        private Button buttonBackBtn;
         private Panel panel2;
         private Label label1;
         private Label label5;

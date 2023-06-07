@@ -47,6 +47,7 @@ namespace SCTAttendanceSystemUI
 
                     if (result > 0)
                     {
+                        this.Hide();
                         Home1 form_home = new Home1();
                         form_home.ShowDialog();
                         this.Close();

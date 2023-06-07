@@ -61,10 +61,10 @@
             // 
             this.dataGridViewLeave.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewLeave.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewLeave.Location = new System.Drawing.Point(103, 130);
+            this.dataGridViewLeave.Location = new System.Drawing.Point(38, 130);
             this.dataGridViewLeave.Name = "dataGridViewLeave";
             this.dataGridViewLeave.RowTemplate.Height = 25;
-            this.dataGridViewLeave.Size = new System.Drawing.Size(1177, 514);
+            this.dataGridViewLeave.Size = new System.Drawing.Size(951, 392);
             this.dataGridViewLeave.TabIndex = 16;
             // 
             // panelLeaveForToday
@@ -77,9 +77,9 @@
             this.panelLeaveForToday.Controls.Add(this.labelDep);
             this.panelLeaveForToday.Controls.Add(this.labelName);
             this.panelLeaveForToday.Controls.Add(this.labelEmpNum);
-            this.panelLeaveForToday.Location = new System.Drawing.Point(103, 94);
+            this.panelLeaveForToday.Location = new System.Drawing.Point(38, 94);
             this.panelLeaveForToday.Name = "panelLeaveForToday";
-            this.panelLeaveForToday.Size = new System.Drawing.Size(1177, 30);
+            this.panelLeaveForToday.Size = new System.Drawing.Size(951, 30);
             this.panelLeaveForToday.TabIndex = 72;
             // 
             // labelOccupation
@@ -150,7 +150,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(925, 58);
+            this.textBox1.Location = new System.Drawing.Point(634, 63);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(196, 23);
             this.textBox1.TabIndex = 73;
@@ -165,7 +165,7 @@
             this.button1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(1127, 53);
+            this.button1.Location = new System.Drawing.Point(836, 58);
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.button1.Size = new System.Drawing.Size(47, 30);
@@ -183,7 +183,7 @@
             this.button4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(1180, 53);
+            this.button4.Location = new System.Drawing.Point(889, 58);
             this.button4.Name = "button4";
             this.button4.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.button4.Size = new System.Drawing.Size(47, 30);
@@ -201,7 +201,7 @@
             this.button3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(1233, 53);
+            this.button3.Location = new System.Drawing.Point(942, 58);
             this.button3.Name = "button3";
             this.button3.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.button3.Size = new System.Drawing.Size(47, 30);
@@ -218,7 +218,7 @@
             this.AutoScroll = true;
             this.BackgroundImage = global::SCTAttendanceSystemUI.Properties.Resources.BG_LOW_OPACITY;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1666, 822);
+            this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button1);
@@ -228,7 +228,7 @@
             this.Controls.Add(this.labelLeave);
             this.DoubleBuffered = true;
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
-            this.MinimumSize = new System.Drawing.Size(1598, 821);
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "FormLeave";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormLeave";
