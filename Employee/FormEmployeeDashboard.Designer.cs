@@ -36,6 +36,7 @@
             buttonTimeIn = new Button();
             buttonTimeOut = new Button();
             panel1 = new Panel();
+            RequestLeaveBtn = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
             label1 = new Label();
             panel1.SuspendLayout();
@@ -111,6 +112,7 @@
             // panel1
             // 
             panel1.BackColor = Color.White;
+            panel1.Controls.Add(RequestLeaveBtn);
             panel1.Controls.Add(buttonTimeOut);
             panel1.Controls.Add(buttonTimeIn);
             panel1.Controls.Add(labelTime);
@@ -118,8 +120,21 @@
             panel1.Controls.Add(labelEmployeeName);
             panel1.Location = new Point(116, 83);
             panel1.Name = "panel1";
-            panel1.Size = new Size(564, 303);
+            panel1.Size = new Size(564, 323);
             panel1.TabIndex = 13;
+            // 
+            // RequestLeaveBtn
+            // 
+            RequestLeaveBtn.BackColor = Color.FromArgb(255, 121, 0);
+            RequestLeaveBtn.FlatStyle = FlatStyle.Flat;
+            RequestLeaveBtn.Font = new Font("Times New Roman", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            RequestLeaveBtn.Location = new Point(192, 247);
+            RequestLeaveBtn.Name = "RequestLeaveBtn";
+            RequestLeaveBtn.Size = new Size(167, 51);
+            RequestLeaveBtn.TabIndex = 13;
+            RequestLeaveBtn.Text = "REQUEST LEAVE";
+            RequestLeaveBtn.UseVisualStyleBackColor = false;
+            RequestLeaveBtn.Click += RequestLeaveBtn_Click;
             // 
             // timer1
             // 
@@ -172,5 +187,6 @@
         private System.Windows.Forms.Timer timer1;
         private Label label1;
         private Button button1;
+        private Button RequestLeaveBtn;
     }
 }

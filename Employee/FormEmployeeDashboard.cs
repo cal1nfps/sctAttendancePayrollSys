@@ -12,7 +12,7 @@ using MySql.Data.MySqlClient;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using System.Xml;
 using System.Data.SqlTypes;
-
+using SCTAttendanceSystemUI.Resources;
 
 namespace SCTAttendanceSystemUI.Employee
 {
@@ -56,7 +56,7 @@ namespace SCTAttendanceSystemUI.Employee
                     // A record already exists, meaning the user has already time-in for the day
                     MessageBox.Show("You have already time-in for today.");
                     this.Hide();
-                    Form1 form_form1 = new Form1();
+                    FormRequestLeave form_form1 = new FormRequestLeave();
                     form_form1.ShowDialog();
                 }
                 else
@@ -92,7 +92,7 @@ namespace SCTAttendanceSystemUI.Employee
 
                         MessageBox.Show("Attendance Time-In successfully!");
                         this.Hide();
-                        Form1 form_form1 = new Form1();
+                        FormRequestLeave form_form1 = new FormRequestLeave();
                         form_form1.ShowDialog();
                     }
                     else
@@ -155,7 +155,7 @@ namespace SCTAttendanceSystemUI.Employee
 
 
             this.Hide();
-            Form1 form_form1 = new Form1();
+            FormRequestLeave form_form1 = new FormRequestLeave();
             form_form1.ShowDialog();
             this.Close();
         }
@@ -171,5 +171,14 @@ namespace SCTAttendanceSystemUI.Employee
             timer1.Start();
             labelDate.Text = DateTime.Now.ToLongDateString();
         }
+
+        private void RequestLeaveBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            RequestLeaveAuth form_req = new RequestLeaveAuth(name);
+            form_req.ShowDialog();
+            this.Close();
+        }
+
     }
 }
