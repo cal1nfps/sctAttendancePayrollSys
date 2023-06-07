@@ -514,7 +514,7 @@ namespace SCTAttendanceSystemUI
         {
             OpenChildForm(new Forms.FormLeave(), sender);
             hideSubMenu();
-        }*/
+        }
 
         /// <summary>
         /// 
@@ -536,44 +536,49 @@ namespace SCTAttendanceSystemUI
         {
             OpenChildForm(new Forms.FormPayroll(), sender);
             //hideSubMenu();
-        }
+        }*/
 
         /// <summary>
         /// 
+        ///
         /// </summary>
 
-
-        private void buttonAttendance_Click(object sender, EventArgs e)
+        private void buttonAttendance_Click_1(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormHome(), sender);
         }
 
-        private void buttonDepartment_Click(object sender, EventArgs e)
+        private void buttonDepartment_Click_1(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormDepartment(), sender);
         }
 
-        private void buttonEmployeeList_Click_1(object sender, EventArgs e)
+        private void buttonEmployeeList_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormEmployeeList(), sender);
         }
 
-        private void buttonAbsentees_Click(object sender, EventArgs e)
+        private void buttonAbsentees_Click_1(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormAbsentees(), sender);
         }
 
-        private void buttonLeave_Click(object sender, EventArgs e)
+        private void buttonLeave_Click_1(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormLeave(), sender);
         }
 
-        private void buttonPayroll_Click_1(object sender, EventArgs e)
+        private void buttonPayroll_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormPayroll(), sender);
         }
 
-        private void buttonLogout_Click_1(object sender, EventArgs e)
+        private void buttonSettings_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.FormSettings(), sender);
+        }
+
+        private void buttonLogout_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to logout?", "Logout Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -582,11 +587,6 @@ namespace SCTAttendanceSystemUI
                 form_home1.ShowDialog();
                 this.Close();
             }
-        }
-
-        private void buttonSettings_Click_1(object sender, EventArgs e)
-        {
-            OpenChildForm(new Forms.FormSettings(), sender);
         }
     }
 }
