@@ -2,13 +2,13 @@ using MySql.Data.MySqlClient;
 
 namespace SCTAttendanceSystemUI
 {
-    public partial class Form1 : Form
+    public partial class WelcomePage : Form
     {
 
         string username, password;
 
 
-        public Form1()
+        public WelcomePage()
         {
             InitializeComponent();
         }
@@ -68,7 +68,7 @@ namespace SCTAttendanceSystemUI
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form2 form_home2 = new Form2();
+            EmployeeLogin form_home2 = new EmployeeLogin();
             form_home2.ShowDialog();
             this.Close();
         }
@@ -76,7 +76,7 @@ namespace SCTAttendanceSystemUI
         private void buttonLogin_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-            FormAdminLogin form_admin = new FormAdminLogin();
+            AdminLogin form_admin = new AdminLogin();
             form_admin.ShowDialog();
             this.Close();
         }

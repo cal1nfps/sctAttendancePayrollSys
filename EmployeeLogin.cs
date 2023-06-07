@@ -14,11 +14,11 @@ using SCTAttendanceSystemUI.Forms;
 
 namespace SCTAttendanceSystemUI
 {
-    public partial class Form2 : Form
+    public partial class EmployeeLogin : Form
     {
         private MySqlConnection connection;
         private MySqlDataAdapter adapter;
-        public Form2()
+        public EmployeeLogin()
         {
             InitializeComponent();
             string connectionString = "server=localhost;user=root;password=root;database=payrollsys";
@@ -28,7 +28,7 @@ namespace SCTAttendanceSystemUI
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form1 form_form1 = new Form1();
+            WelcomePage form_form1 = new WelcomePage();
             form_form1.ShowDialog();
             this.Close();
         }
@@ -91,6 +91,17 @@ namespace SCTAttendanceSystemUI
             return true;
         }
 
+        private void backBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            WelcomePage form_form1 = new WelcomePage();
+            form_form1.ShowDialog();
+            this.Close();
+        }
 
+        private void backBtn_MouseHover(object sender, EventArgs e)
+        {
+            backBtn.BackColor = Color.FromArgb(164, 16, 48);
+        }
     }
 }

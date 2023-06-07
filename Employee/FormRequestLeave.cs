@@ -20,7 +20,7 @@ namespace SCTAttendanceSystemUI.Employee
         private void ExitBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form1 form_form1 = new Form1();
+            WelcomePage form_form1 = new WelcomePage();
             form_form1.ShowDialog();
             this.Close();
 

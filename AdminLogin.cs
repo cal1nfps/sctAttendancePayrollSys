@@ -12,12 +12,12 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace SCTAttendanceSystemUI
 {
-    public partial class FormAdminLogin : Form
+    public partial class AdminLogin : Form
     {
         private MySqlConnection connection;
         private MySqlDataAdapter adapter;
         private DataTable table;
-        public FormAdminLogin()
+        public AdminLogin()
         {
             InitializeComponent();
             string connectionString = "server=localhost;user=root;password=root;database=payrollsys";
@@ -72,9 +72,14 @@ namespace SCTAttendanceSystemUI
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form1 form_form1 = new Form1();
+            WelcomePage form_form1 = new WelcomePage();
             form_form1.ShowDialog();
             this.Close();
+        }
+
+        private void button1_MouseHover(object sender, EventArgs e)
+        {
+            button1.BackColor = Color.FromArgb(164, 16, 48);
         }
     }
 }

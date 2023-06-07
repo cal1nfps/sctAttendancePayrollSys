@@ -583,7 +583,7 @@ namespace SCTAttendanceSystemUI
             if (MessageBox.Show("Are you sure you want to logout?", "Logout Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 this.Hide();
-                Form1 form_home1 = new Form1();
+                WelcomePage form_home1 = new WelcomePage();
                 form_home1.ShowDialog();
                 this.Close();
             }
