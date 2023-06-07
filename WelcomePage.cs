@@ -52,7 +52,7 @@ namespace SCTAttendanceSystemUI
             con.Close();*/
         }
 
-        private void main_form()
+        /*private void main_form()
         {
             this.Hide();
             Home1 form_home1 = new Home1();
@@ -79,11 +79,22 @@ namespace SCTAttendanceSystemUI
             AdminLogin form_admin = new AdminLogin();
             form_admin.ShowDialog();
             this.Close();
+        }*/
+
+        private void buttonAdmin_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AdminLogin form_admin = new AdminLogin();
+            form_admin.ShowDialog();
+            this.Close();
         }
 
-        private void labelPassword_Click(object sender, EventArgs e)
+        private void buttonEmployee_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            EmployeeLogin form_home2 = new EmployeeLogin();
+            form_home2.ShowDialog();
+            this.Close();
         }
     }
 }

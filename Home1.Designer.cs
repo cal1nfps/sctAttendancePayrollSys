@@ -61,7 +61,7 @@
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1370, 110);
+            this.panelHeader.Size = new System.Drawing.Size(1264, 110);
             this.panelHeader.TabIndex = 3;
             // 
             // pictureBoxLogo
@@ -103,7 +103,7 @@
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 110);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(214, 639);
+            this.panelMenu.Size = new System.Drawing.Size(214, 571);
             this.panelMenu.TabIndex = 4;
             // 
             // buttonLogout
@@ -118,7 +118,7 @@
             this.buttonLogout.Location = new System.Drawing.Point(0, 512);
             this.buttonLogout.Name = "buttonLogout";
             this.buttonLogout.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.buttonLogout.Size = new System.Drawing.Size(214, 65);
+            this.buttonLogout.Size = new System.Drawing.Size(197, 65);
             this.buttonLogout.TabIndex = 25;
             this.buttonLogout.Text = "     LOGOUT";
             this.buttonLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -138,7 +138,7 @@
             this.buttonSettings.Location = new System.Drawing.Point(0, 447);
             this.buttonSettings.Name = "buttonSettings";
             this.buttonSettings.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.buttonSettings.Size = new System.Drawing.Size(214, 65);
+            this.buttonSettings.Size = new System.Drawing.Size(197, 65);
             this.buttonSettings.TabIndex = 25;
             this.buttonSettings.Text = "     SETTINGS";
             this.buttonSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -158,7 +158,7 @@
             this.buttonPayroll.Location = new System.Drawing.Point(0, 382);
             this.buttonPayroll.Name = "buttonPayroll";
             this.buttonPayroll.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.buttonPayroll.Size = new System.Drawing.Size(214, 65);
+            this.buttonPayroll.Size = new System.Drawing.Size(197, 65);
             this.buttonPayroll.TabIndex = 25;
             this.buttonPayroll.Text = "     PAYROLL";
             this.buttonPayroll.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -178,7 +178,7 @@
             this.buttonLeave.Location = new System.Drawing.Point(0, 317);
             this.buttonLeave.Name = "buttonLeave";
             this.buttonLeave.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.buttonLeave.Size = new System.Drawing.Size(214, 65);
+            this.buttonLeave.Size = new System.Drawing.Size(197, 65);
             this.buttonLeave.TabIndex = 25;
             this.buttonLeave.Text = "     LEAVE";
             this.buttonLeave.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -198,7 +198,7 @@
             this.buttonAbsentees.Location = new System.Drawing.Point(0, 252);
             this.buttonAbsentees.Name = "buttonAbsentees";
             this.buttonAbsentees.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.buttonAbsentees.Size = new System.Drawing.Size(214, 65);
+            this.buttonAbsentees.Size = new System.Drawing.Size(197, 65);
             this.buttonAbsentees.TabIndex = 25;
             this.buttonAbsentees.Text = "     ABSENTEES";
             this.buttonAbsentees.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -218,7 +218,7 @@
             this.buttonEmployeeList.Location = new System.Drawing.Point(0, 187);
             this.buttonEmployeeList.Name = "buttonEmployeeList";
             this.buttonEmployeeList.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.buttonEmployeeList.Size = new System.Drawing.Size(214, 65);
+            this.buttonEmployeeList.Size = new System.Drawing.Size(197, 65);
             this.buttonEmployeeList.TabIndex = 25;
             this.buttonEmployeeList.Text = "    EMPLOYEE LIST";
             this.buttonEmployeeList.UseVisualStyleBackColor = true;
@@ -236,7 +236,7 @@
             this.buttonDepartment.Location = new System.Drawing.Point(0, 122);
             this.buttonDepartment.Name = "buttonDepartment";
             this.buttonDepartment.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.buttonDepartment.Size = new System.Drawing.Size(214, 65);
+            this.buttonDepartment.Size = new System.Drawing.Size(197, 65);
             this.buttonDepartment.TabIndex = 25;
             this.buttonDepartment.Text = "DEPARTMENTS";
             this.buttonDepartment.UseVisualStyleBackColor = true;
@@ -255,7 +255,7 @@
             this.buttonAttendance.Location = new System.Drawing.Point(0, 57);
             this.buttonAttendance.Name = "buttonAttendance";
             this.buttonAttendance.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.buttonAttendance.Size = new System.Drawing.Size(214, 65);
+            this.buttonAttendance.Size = new System.Drawing.Size(197, 65);
             this.buttonAttendance.TabIndex = 25;
             this.buttonAttendance.Text = "     ATTENDANCE";
             this.buttonAttendance.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -279,13 +279,12 @@
             // 
             // panelDesktopPane
             // 
+            this.panelDesktopPane.AutoScroll = true;
             this.panelDesktopPane.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelDesktopPane.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktopPane.Location = new System.Drawing.Point(214, 110);
-            this.panelDesktopPane.MaximumSize = new System.Drawing.Size(1920, 1080);
-            this.panelDesktopPane.MinimumSize = new System.Drawing.Size(1454, 712);
             this.panelDesktopPane.Name = "panelDesktopPane";
-            this.panelDesktopPane.Size = new System.Drawing.Size(1454, 712);
+            this.panelDesktopPane.Size = new System.Drawing.Size(1050, 571);
             this.panelDesktopPane.TabIndex = 5;
             // 
             // tableLayoutPanel2
@@ -338,7 +337,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.panelDesktopPane);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelHeader);
@@ -347,7 +346,7 @@
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(1364, 726);
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "Home1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SCT ATTENDANCE SYSTEM";

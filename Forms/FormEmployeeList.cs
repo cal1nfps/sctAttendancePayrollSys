@@ -472,5 +472,328 @@ namespace SCTAttendanceSystemUI.Forms
                 }
             }
         }
+
+        /// <summary>
+        /// with reference
+        /// </summary>
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            AddEmployeeButtonForm form_addEmployee = new AddEmployeeButtonForm();
+            form_addEmployee.ShowDialog();
+        }
+
+        private void FormEmployeeList_Load(object sender, EventArgs e)
+        {
+            LoadImageData();
+
+            {
+
+                adapter = new MySqlDataAdapter("SELECT * FROM employee", connection);
+
+
+                // Create a DataTable to hold the data
+                table = new DataTable();
+
+                // Fill the DataTable with the data retrieved by the adapter
+                adapter.Fill(table);
+
+
+                // Set the DataSource of the DataGridView to the DataTable
+                dataGridView1.DataSource = table;
+
+                dataGridView1.Columns[3].Width = 70;
+                dataGridView1.Columns[4].Width = 70;
+                dataGridView1.Columns[11].Width = 80;
+                dataGridView1.Columns[15].Width = 80;
+
+                try
+                {
+                    connection.Open();
+
+                    // Loop through each row in the DataGridView
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        // Retrieve the occupation value from the "occupation" column
+                        string occupation = row.Cells["occupation"].Value.ToString();
+
+                        // Assign job hours based on the matched occupation
+                        TimeSpan jobHours;
+                        DateTime jobTimeIn, jobTimeOut;
+                        switch (occupation)
+                        {
+                            case "Teacher":
+                                jobTimeIn = DateTime.ParseExact("07:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                jobTimeOut = DateTime.ParseExact("17:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                break;
+                            case "Sports Coach":
+                                jobTimeIn = DateTime.ParseExact("07:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                jobTimeOut = DateTime.ParseExact("16:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                break;
+                            case "School Nurse":
+                                jobTimeIn = DateTime.ParseExact("08:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                jobTimeOut = DateTime.ParseExact("16:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                break;
+                            case "Maintenance Technician":
+                                jobTimeIn = DateTime.ParseExact("09:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                jobTimeOut = DateTime.ParseExact("17:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                break;
+                            case "Registrar":
+                                jobTimeIn = DateTime.ParseExact("07:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                jobTimeOut = DateTime.ParseExact("17:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                break;
+                            case "Guidance Counselor":
+                                jobTimeIn = DateTime.ParseExact("07:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                jobTimeOut = DateTime.ParseExact("16:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                break;
+                            case "Guard":
+                                jobTimeIn = DateTime.ParseExact("07:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                jobTimeOut = DateTime.ParseExact("18:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                break;
+                            case "Chairperson":
+                                jobTimeIn = DateTime.ParseExact("07:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                jobTimeOut = DateTime.ParseExact("18:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
+                                break;
+                            default:
+                                jobTimeIn = DateTime.MinValue;
+                                jobTimeOut = DateTime.MinValue;
+                                break;
+                        }
+
+                        // Update the jobtimein, jobtimeout, and jobhours columns in the MySQL table for the current row
+                        string updateQuery = "UPDATE employee SET jobtimein = @jobtimein, jobtimeout = @jobtimeout, jobhours = SEC_TO_TIME(TIME_TO_SEC(@jobtimeout) - TIME_TO_SEC(@jobtimein)) WHERE occupation = @occupation";
+                        MySqlCommand command = new MySqlCommand(updateQuery, connection);
+                        command.Parameters.AddWithValue("@jobtimein", jobTimeIn);
+                        command.Parameters.AddWithValue("@jobtimeout", jobTimeOut);
+                        command.Parameters.AddWithValue("@occupation", occupation);
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+
+                // Set the format of the jobtimein and jobtimeout columns in the DataGridView
+                DataGridViewColumn jobTimeInColumn = dataGridView1.Columns["jobtimein"];
+                DataGridViewColumn jobTimeOutColumn = dataGridView1.Columns["jobtimeout"];
+                jobTimeInColumn.DefaultCellStyle.Format = "hh:mm:ss tt";
+                jobTimeOutColumn.DefaultCellStyle.Format = "hh:mm:ss tt";
+
+
+
+                dataGridView1.Columns["employeenum"].Visible = false;    //Hide a specific column
+                dataGridView1.Columns["firstname"].Visible = false;    //Hide a specific column
+                dataGridView1.Columns["middle"].Visible = false;    //Hide a specific column
+                dataGridView1.Columns["lastname"].Visible = false;    //Hide a specific column
+                dataGridView1.Columns["gender"].Visible = false;    //Hide a specific column
+                dataGridView1.Columns["suffix"].Visible = false;    //Hide a specific column
+                dataGridView1.Columns["homenum"].Visible = false;    //Hide a specific column
+                dataGridView1.Columns["phonenum"].Visible = false;    //Hide a specific column
+                dataGridView1.Columns["email"].Visible = false;    //Hide a specific column
+                dataGridView1.Columns["address"].Visible = false;    //Hide a specific column
+                dataGridView1.Columns["postal"].Visible = false;    //Hide a specific column
+                dataGridView1.Columns["accountnum"].Visible = false;    //Hide a specific column
+                dataGridView1.Columns["hiredate"].Visible = false;    //Hide a specific column
+                dataGridView1.Columns["timein"].Visible = false;    //Hide a specific column
+                dataGridView1.Columns["timeout"].Visible = false;    //Hide a specific column
+                dataGridView1.Columns["image_data"].Visible = false;    //Hide a specific column
+                dataGridView1.Columns["jobhours"].Visible = false;    //Hide a specific column
+                dataGridView1.Columns["jobtimein"].Visible = false;    //Hide a specific column
+                dataGridView1.Columns["jobtimeout"].Visible = false;    //Hide a specific column
+                dataGridView1.Columns["jobsalary"].Visible = false;    //Hide a specific column
+
+
+
+                //reader.Close();
+                connection.Close();
+            }
+        }
+
+        private void sortComboBox_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            string selectedItem = sortComboBox.SelectedItem.ToString();     //Selected combobox item
+
+            //SORTS THE COLUMN 'NAME'
+            if (selectedItem == "A - Z")
+            {
+                this.dataGridView1.Sort(this.dataGridView1.Columns["name"], ListSortDirection.Ascending);   //Sorts the selected column 'Name' to Ascending
+            }
+
+            if (selectedItem == "Z - A")
+            {
+                this.dataGridView1.Sort(this.dataGridView1.Columns["name"], ListSortDirection.Descending);  //Sorts the selected column 'Name' to Descending
+            }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            // DELETE EMPLOYEE INFORMATION
+            DialogResult result = MessageBox.Show("Are you sure you want to delete this Employee?", "Confirmation", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                connection.Open();
+
+                // Get selected cell value from DataGridView
+                string selectedCellValue = dataGridView1.SelectedCells[0].Value.ToString();
+
+                // Delete selected cell value from MySQL database
+                string query = "DELETE FROM employee WHERE name = @name";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@name", selectedCellValue);
+                command.ExecuteNonQuery();
+
+                // Display message box to confirm deletion
+                MessageBox.Show("Employee deleted successfully.");
+
+                // Refresh DataGridView to show updated data
+                dataGridView1.Update();
+                dataGridView1.Refresh();
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            //EDIT BUTTON
+
+            if (dataGridView1.SelectedCells.Count > 0)
+            {
+                // Get the selected row index
+                int rowIndex = dataGridView1.SelectedCells[0].RowIndex;
+
+                //create an instance of the second form
+                EditButtonForm edit = new EditButtonForm();
+
+                // Get the data from the selected row
+                string firstname = dataGridView1.Rows[rowIndex].Cells[5].Value.ToString();
+                string middlename = dataGridView1.Rows[rowIndex].Cells[6].Value.ToString();
+                string lastname = dataGridView1.Rows[rowIndex].Cells[7].Value.ToString();
+                string suffix = dataGridView1.Rows[rowIndex].Cells[8].Value.ToString();
+                string gender = dataGridView1.Rows[rowIndex].Cells[9].Value.ToString();
+                string dob = dataGridView1.Rows[rowIndex].Cells[10].Value.ToString();
+                string country = dataGridView1.Rows[rowIndex].Cells[15].Value.ToString();
+                string address = dataGridView1.Rows[rowIndex].Cells[14].Value.ToString();
+                string province = dataGridView1.Rows[rowIndex].Cells[16].Value.ToString();
+                string city = dataGridView1.Rows[rowIndex].Cells[17].Value.ToString();
+                string postal = dataGridView1.Rows[rowIndex].Cells[18].Value.ToString();
+                string phone = dataGridView1.Rows[rowIndex].Cells[12].Value.ToString();
+                string telephone = dataGridView1.Rows[rowIndex].Cells[11].Value.ToString();
+                string email = dataGridView1.Rows[rowIndex].Cells[13].Value.ToString();
+                string empnum = dataGridView1.Rows[rowIndex].Cells[0].Value.ToString();
+                string account = dataGridView1.Rows[rowIndex].Cells[19].Value.ToString();
+                string hdate = dataGridView1.Rows[rowIndex].Cells[20].Value.ToString();
+                string occupation = dataGridView1.Rows[rowIndex].Cells[2].Value.ToString();
+                string department = dataGridView1.Rows[rowIndex].Cells[3].Value.ToString();
+                string jobstatus = dataGridView1.Rows[rowIndex].Cells[4].Value.ToString();
+                string timein = dataGridView1.Rows[rowIndex].Cells[21].Value.ToString();
+                string timeout = dataGridView1.Rows[rowIndex].Cells[22].Value.ToString();
+                byte[] imageData = (byte[])dataGridView1.Rows[rowIndex].Cells[23].Value;
+                string jobsalary = dataGridView1.Rows[rowIndex].Cells[27].Value.ToString();
+
+
+                //set the public properties of the textboxes on the second form
+                edit.firstname = firstname;
+                edit.middlename = middlename;
+                edit.lastname = lastname;
+                edit.suffix = suffix;
+                edit.gender = gender;
+                edit.dob = dob;
+                edit.country = country;
+                edit.address = address;
+                edit.province = province;
+                edit.city = city;
+                edit.postal = postal;
+                edit.phone = phone;
+                edit.telephone = telephone;
+                edit.email = email;
+                edit.empnum = empnum;
+                edit.account = account;
+                edit.hdate = hdate;
+                edit.occupation = occupation;
+                edit.department = department;
+                edit.jobstatus = jobstatus;
+                edit.timein = timein;
+                edit.timeout = timeout;
+                edit.image = imageData;
+                edit.jobsalary = jobsalary;
+
+
+                //show the second form
+                edit.Show();
+            }
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            // APPLY FILTER
+            // Create an instance of the second form
+            filterForm filterForm = new filterForm();
+
+            // Show the second form as a dialog and wait for it to close
+            DialogResult result = filterForm.ShowDialog();
+
+            // Check if the user clicked the OK button
+            if (result == DialogResult.OK)
+            {
+                // Get the selected values from the comboboxes in the second form
+                string occupation = filterForm.filterComboBox.SelectedItem?.ToString();
+                string department = filterForm.comboBox2.SelectedItem?.ToString();
+                string gender = filterForm.comboBox1.SelectedItem?.ToString();
+                string jobstatus = filterForm.comboBox3.SelectedItem?.ToString();
+
+                // Check if at least one combobox is selected
+                if (string.IsNullOrWhiteSpace(occupation) && string.IsNullOrWhiteSpace(department) && string.IsNullOrWhiteSpace(gender) && string.IsNullOrWhiteSpace(jobstatus))
+                {
+                    MessageBox.Show("Please select at least one filter option.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    // Apply the filters to the datagridview
+                    string filter = "";
+
+                    if (!string.IsNullOrWhiteSpace(occupation))
+                    {
+                        filter += $"[occupation] = '{occupation}'";
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(department))
+                    {
+                        if (!string.IsNullOrWhiteSpace(filter))
+                        {
+                            filter += " AND ";
+                        }
+
+                        filter += $"[department] = '{department}'";
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(gender))
+                    {
+                        if (!string.IsNullOrWhiteSpace(filter))
+                        {
+                            filter += " AND ";
+                        }
+
+                        filter += $"[gender] = '{gender}'";
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(jobstatus))
+                    {
+                        if (!string.IsNullOrWhiteSpace(filter))
+                        {
+                            filter += " AND ";
+                        }
+
+                        filter += $"[jobstatus] = '{jobstatus}'";
+                    }
+
+                    (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = filter;
+                }
+            }
+        }
     }
 }
