@@ -228,11 +228,11 @@
             labelDuration.AutoSize = true;
             labelDuration.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             labelDuration.ForeColor = SystemColors.ControlDarkDark;
-            labelDuration.Location = new Point(323, 102);
+            labelDuration.Location = new Point(335, 105);
             labelDuration.Name = "labelDuration";
-            labelDuration.Size = new Size(42, 14);
+            labelDuration.Size = new Size(30, 14);
             labelDuration.TabIndex = 64;
-            labelDuration.Text = "LEAVE";
+            labelDuration.Text = "END";
             // 
             // comboBoxLeave
             // 

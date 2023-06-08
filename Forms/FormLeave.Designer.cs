@@ -53,6 +53,7 @@
             label6 = new Label();
             label7 = new Label();
             textBox2 = new TextBox();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewLeave).BeginInit();
             panelLeaveForToday.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -72,14 +73,28 @@
             // 
             // dataGridViewLeave
             // 
+            dataGridViewLeave.AllowUserToAddRows = false;
+            dataGridViewLeave.AllowUserToDeleteRows = false;
+            dataGridViewLeave.AllowUserToResizeColumns = false;
+            dataGridViewLeave.AllowUserToResizeRows = false;
             dataGridViewLeave.BackgroundColor = Color.White;
             dataGridViewLeave.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewLeave.ColumnHeadersVisible = false;
+            dataGridViewLeave.EnableHeadersVisualStyles = false;
             dataGridViewLeave.Location = new Point(34, 184);
+            dataGridViewLeave.MultiSelect = false;
             dataGridViewLeave.Name = "dataGridViewLeave";
+            dataGridViewLeave.RowHeadersVisible = false;
+            dataGridViewLeave.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewLeave.RowTemplate.Height = 25;
+            dataGridViewLeave.ShowCellErrors = false;
+            dataGridViewLeave.ShowCellToolTips = false;
+            dataGridViewLeave.ShowEditingIcon = false;
+            dataGridViewLeave.ShowRowErrors = false;
             dataGridViewLeave.Size = new Size(555, 392);
             dataGridViewLeave.TabIndex = 16;
             dataGridViewLeave.CellContentClick += dataGridViewLeave_CellContentClick;
+            dataGridViewLeave.CellFormatting += dataGridViewLeave_CellFormatting;
             // 
             // panelLeaveForToday
             // 
@@ -156,9 +171,9 @@
             // 
             textBox1.Location = new Point(393, 122);
             textBox1.Name = "textBox1";
+            textBox1.PlaceholderText = "Search Name";
             textBox1.Size = new Size(196, 23);
             textBox1.TabIndex = 73;
-            textBox1.Text = "Search Employee Number or Name";
             textBox1.TextChanged += textBox1_TextChanged;
             // 
             // button1
@@ -268,6 +283,7 @@
             button2.TextAlign = ContentAlignment.MiddleLeft;
             button2.TextImageRelation = TextImageRelation.ImageBeforeText;
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // button5
             // 
@@ -310,6 +326,7 @@
             // 
             panel1.BackColor = Color.White;
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label5);
@@ -325,29 +342,30 @@
             label2.AutoSize = true;
             label2.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = SystemColors.ControlDarkDark;
-            label2.Location = new Point(305, 7);
+            label2.Location = new Point(136, 7);
             label2.Name = "label2";
             label2.Size = new Size(68, 14);
             label2.TabIndex = 67;
             label2.Text = "Occupation";
+            label2.Click += label2_Click;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = SystemColors.ControlDarkDark;
-            label4.Location = new Point(453, 7);
+            label4.Location = new Point(286, 7);
             label4.Name = "label4";
-            label4.Size = new Size(54, 14);
+            label4.Size = new Size(64, 14);
             label4.TabIndex = 64;
-            label4.Text = "Duration";
+            label4.Text = "Job Status";
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = SystemColors.ControlDarkDark;
-            label5.Location = new Point(171, 7);
+            label5.Location = new Point(210, 7);
             label5.Name = "label5";
             label5.Size = new Size(70, 14);
             label5.TabIndex = 61;
@@ -379,9 +397,21 @@
             // 
             textBox2.Location = new Point(689, 122);
             textBox2.Name = "textBox2";
+            textBox2.PlaceholderText = "Search Name";
             textBox2.Size = new Size(196, 23);
             textBox2.TabIndex = 82;
-            textBox2.Text = "Search Employee Number or Name";
+            textBox2.TextChanged += textBox2_TextChanged;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.ForeColor = SystemColors.ControlDarkDark;
+            label3.Location = new Point(356, 7);
+            label3.Name = "label3";
+            label3.Size = new Size(31, 14);
+            label3.TabIndex = 68;
+            label3.Text = "Date";
             // 
             // FormLeave
             // 
@@ -448,5 +478,6 @@
         private Label label6;
         private Label label7;
         private TextBox textBox2;
+        private Label label3;
     }
 }

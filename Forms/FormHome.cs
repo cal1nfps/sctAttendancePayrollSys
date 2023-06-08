@@ -734,7 +734,7 @@ namespace SCTAttendanceSystemUI.Forms
             }
         }
 
-/*        private DataView dataView;
+        private DataView dataView;
         private DataTable originalDataTable;
 
         private void SearchData(string searchText)
@@ -745,9 +745,9 @@ namespace SCTAttendanceSystemUI.Forms
                 dataView = new DataView(originalDataTable);
             }
 
-            dataView.RowFilter = $"NameColumn LIKE '%{searchText}%' OR Convert(empnum, 'System.String') LIKE '%{searchText}%'";
+            dataView.RowFilter = $"name LIKE '%{searchText}%' OR Convert(empnum, 'System.String') LIKE '%{searchText}%'";
             dataGridView1.DataSource = dataView;
-        }*/
+        }
 
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -759,8 +759,8 @@ namespace SCTAttendanceSystemUI.Forms
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-/*            string searchText = textBox1.Text;
-            SearchData(searchText);*/
+            string searchText = textBox1.Text;
+            SearchData(searchText);
         }
     }
 }

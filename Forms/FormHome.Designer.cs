@@ -128,9 +128,9 @@
             // 
             textBox1.Location = new Point(913, 59);
             textBox1.Name = "textBox1";
+            textBox1.PlaceholderText = "Search Name or Employee Number";
             textBox1.Size = new Size(196, 23);
             textBox1.TabIndex = 66;
-            textBox1.Text = "Search Employee Number or Name";
             textBox1.TextChanged += textBox1_TextChanged;
             // 
             // button1
