@@ -26,12 +26,15 @@ namespace SCTAttendanceSystemUI.Resources
             this.name = name;
         }
 
-        private void RequestLeaveAuth_Load(object sender, EventArgs e)
+        private void RequestLogin_Click_1(object sender, EventArgs e)
         {
-            empname.Text = name;
+            this.Hide();
+            FormRequestLeave form_form1 = new FormRequestLeave(name);
+            form_form1.ShowDialog();
+            this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
             this.Hide();
             WelcomePage form_form1 = new WelcomePage();
@@ -39,12 +42,9 @@ namespace SCTAttendanceSystemUI.Resources
             this.Close();
         }
 
-        private void RequestLogin_Click(object sender, EventArgs e)
+        private void RequestLeaveAuth_Load_1(object sender, EventArgs e)
         {
-            this.Hide();
-            FormRequestLeave form_form1 = new FormRequestLeave();
-            form_form1.ShowDialog();
-            this.Close();
+            empname.Text = name;
         }
     }
 }

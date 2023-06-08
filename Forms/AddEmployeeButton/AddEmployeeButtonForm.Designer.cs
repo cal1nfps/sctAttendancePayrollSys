@@ -171,6 +171,7 @@
             panel1.Size = new Size(1160, 710);
             panel1.TabIndex = 0;
             panel1.TabStop = true;
+            panel1.Paint += panel1_Paint;
             // 
             // JobStatus
             // 
@@ -470,6 +471,7 @@
             MobilePhone.Name = "MobilePhone";
             MobilePhone.Size = new Size(170, 23);
             MobilePhone.TabIndex = 12;
+            MobilePhone.KeyPress += MobilePhone_KeyPress;
             // 
             // textBox13
             // 
@@ -727,12 +729,14 @@
             UploadImage.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             UploadImage.ForeColor = SystemColors.ControlDarkDark;
             UploadImage.Image = (Image)resources.GetObject("UploadImage.Image");
-            UploadImage.Location = new Point(848, 251);
+            UploadImage.Location = new Point(848, 257);
             UploadImage.Name = "UploadImage";
             UploadImage.Padding = new Padding(10, 0, 0, 0);
-            UploadImage.Size = new Size(57, 24);
+            UploadImage.RightToLeft = RightToLeft.No;
+            UploadImage.Size = new Size(49, 24);
             UploadImage.TabIndex = 24;
-            UploadImage.TextImageRelation = TextImageRelation.TextBeforeImage;
+            UploadImage.TextAlign = ContentAlignment.MiddleRight;
+            UploadImage.TextImageRelation = TextImageRelation.ImageBeforeText;
             UploadImage.UseVisualStyleBackColor = false;
             UploadImage.Click += button2_Click_1;
             // 

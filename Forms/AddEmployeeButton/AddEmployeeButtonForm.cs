@@ -117,6 +117,7 @@ namespace SCTAttendanceSystemUI.Forms
 
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Employee data saved successfully!");
+                    this.Close();
                 }
                 catch (Exception ex)
                 {
@@ -128,8 +129,6 @@ namespace SCTAttendanceSystemUI.Forms
                 }
             }
 
-
-            this.Close();
         }
 
         private void cancelButton_Click_1(object sender, EventArgs e)
@@ -187,6 +186,25 @@ namespace SCTAttendanceSystemUI.Forms
             }
         }
 
+        private void MobilePhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //LIMITS DIGITS NUMBERS FOR HOME NUMBER
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
 
+            TextBox textBox = sender as TextBox;
+            if (textBox != null && textBox.Text.Length >= 11 && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+                MessageBox.Show("You can only enter 11 digits.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

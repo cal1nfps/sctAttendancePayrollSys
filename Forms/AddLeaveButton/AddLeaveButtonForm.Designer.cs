@@ -28,325 +28,362 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.personalButton = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.textBoxSuffix = new System.Windows.Forms.TextBox();
-            this.cancelButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.labelPersonalInfo = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.textBoxDuration = new System.Windows.Forms.TextBox();
-            this.labelDuration = new System.Windows.Forms.Label();
-            this.comboBoxLeave = new System.Windows.Forms.ComboBox();
-            this.labelLeave = new System.Windows.Forms.Label();
-            this.comboBoxOccupation = new System.Windows.Forms.ComboBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.comboBoxDepartment = new System.Windows.Forms.ComboBox();
-            this.labelDepartment = new System.Windows.Forms.Label();
-            this.labelEmployeeInfo = new System.Windows.Forms.Label();
-            this.labelOccupation = new System.Windows.Forms.Label();
-            this.textBoxEmployeeNo = new System.Windows.Forms.TextBox();
-            this.labelEmployeeNo = new System.Windows.Forms.Label();
-            this.textBoxFirstName = new System.Windows.Forms.TextBox();
-            this.textBoxLastName = new System.Windows.Forms.TextBox();
-            this.textBoxMiddleInitial = new System.Windows.Forms.TextBox();
-            this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.SuspendLayout();
+            personalButton = new Button();
+            panel1 = new Panel();
+            textBoxSuffix = new TextBox();
+            cancelButton = new Button();
+            button1 = new Button();
+            labelPersonalInfo = new Label();
+            panel3 = new Panel();
+            comboBox1 = new ComboBox();
+            label2 = new Label();
+            label1 = new Label();
+            textBox1 = new TextBox();
+            textBoxDuration = new TextBox();
+            labelDuration = new Label();
+            comboBoxLeave = new ComboBox();
+            labelLeave = new Label();
+            comboBoxOccupation = new ComboBox();
+            comboBoxDepartment = new ComboBox();
+            labelDepartment = new Label();
+            labelEmployeeInfo = new Label();
+            labelOccupation = new Label();
+            textBoxEmployeeNo = new TextBox();
+            labelEmployeeNo = new Label();
+            textBoxFirstName = new TextBox();
+            textBoxLastName = new TextBox();
+            textBoxMiddleInitial = new TextBox();
+            panel1.SuspendLayout();
+            panel3.SuspendLayout();
+            SuspendLayout();
             // 
             // personalButton
             // 
-            this.personalButton.BackColor = System.Drawing.Color.White;
-            this.personalButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.personalButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(31)))), ((int)(((byte)(52)))));
-            this.personalButton.FlatAppearance.BorderSize = 2;
-            this.personalButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(31)))), ((int)(((byte)(52)))));
-            this.personalButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(209)))), ((int)(((byte)(10)))));
-            this.personalButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.personalButton.Font = new System.Drawing.Font("Bahnschrift Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.personalButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.personalButton.Location = new System.Drawing.Point(-1, -1);
-            this.personalButton.Name = "personalButton";
-            this.personalButton.Size = new System.Drawing.Size(98, 41);
-            this.personalButton.TabIndex = 1;
-            this.personalButton.Text = "Information";
-            this.personalButton.UseMnemonic = false;
-            this.personalButton.UseVisualStyleBackColor = false;
+            personalButton.BackColor = Color.White;
+            personalButton.BackgroundImageLayout = ImageLayout.None;
+            personalButton.FlatAppearance.BorderColor = Color.FromArgb(164, 31, 52);
+            personalButton.FlatAppearance.BorderSize = 2;
+            personalButton.FlatAppearance.CheckedBackColor = Color.FromArgb(164, 31, 52);
+            personalButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(247, 209, 10);
+            personalButton.FlatStyle = FlatStyle.Flat;
+            personalButton.Font = new Font("Bahnschrift Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            personalButton.ForeColor = SystemColors.ControlText;
+            personalButton.Location = new Point(-1, -1);
+            personalButton.Name = "personalButton";
+            personalButton.Size = new Size(145, 41);
+            personalButton.TabIndex = 1;
+            personalButton.Text = "Request Information";
+            personalButton.UseMnemonic = false;
+            personalButton.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.textBoxSuffix);
-            this.panel1.Controls.Add(this.cancelButton);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.labelPersonalInfo);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.textBoxFirstName);
-            this.panel1.Controls.Add(this.textBoxLastName);
-            this.panel1.Controls.Add(this.textBoxMiddleInitial);
-            this.panel1.Location = new System.Drawing.Point(-1, 38);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(691, 420);
-            this.panel1.TabIndex = 4;
+            panel1.BackColor = Color.White;
+            panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Controls.Add(textBoxSuffix);
+            panel1.Controls.Add(cancelButton);
+            panel1.Controls.Add(button1);
+            panel1.Controls.Add(labelPersonalInfo);
+            panel1.Controls.Add(panel3);
+            panel1.Controls.Add(textBoxFirstName);
+            panel1.Controls.Add(textBoxLastName);
+            panel1.Controls.Add(textBoxMiddleInitial);
+            panel1.Location = new Point(-1, 38);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(691, 420);
+            panel1.TabIndex = 4;
             // 
             // textBoxSuffix
             // 
-            this.textBoxSuffix.ForeColor = System.Drawing.Color.Silver;
-            this.textBoxSuffix.Location = new System.Drawing.Point(578, 50);
-            this.textBoxSuffix.Name = "textBoxSuffix";
-            this.textBoxSuffix.PlaceholderText = "SUFFIX";
-            this.textBoxSuffix.Size = new System.Drawing.Size(67, 23);
-            this.textBoxSuffix.TabIndex = 4;
+            textBoxSuffix.Enabled = false;
+            textBoxSuffix.ForeColor = Color.Black;
+            textBoxSuffix.Location = new Point(578, 50);
+            textBoxSuffix.Name = "textBoxSuffix";
+            textBoxSuffix.PlaceholderText = "SUFFIX";
+            textBoxSuffix.Size = new Size(67, 23);
+            textBoxSuffix.TabIndex = 4;
             // 
             // cancelButton
             // 
-            this.cancelButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cancelButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.cancelButton.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cancelButton.Location = new System.Drawing.Point(557, 352);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(88, 34);
-            this.cancelButton.TabIndex = 5;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseMnemonic = false;
-            this.cancelButton.UseVisualStyleBackColor = false;
+            cancelButton.BackColor = Color.WhiteSmoke;
+            cancelButton.BackgroundImageLayout = ImageLayout.None;
+            cancelButton.FlatAppearance.BorderColor = Color.DimGray;
+            cancelButton.FlatStyle = FlatStyle.Flat;
+            cancelButton.ForeColor = SystemColors.ControlText;
+            cancelButton.Location = new Point(557, 352);
+            cancelButton.Name = "cancelButton";
+            cancelButton.Size = new Size(88, 34);
+            cancelButton.TabIndex = 5;
+            cancelButton.Text = "Reject";
+            cancelButton.UseMnemonic = false;
+            cancelButton.UseVisualStyleBackColor = false;
+            cancelButton.Click += cancelButton_Click;
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(463, 352);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(88, 34);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Confirm";
-            this.button1.UseMnemonic = false;
-            this.button1.UseVisualStyleBackColor = false;
+            button1.BackColor = SystemColors.ActiveCaption;
+            button1.BackgroundImageLayout = ImageLayout.None;
+            button1.FlatAppearance.BorderColor = Color.DimGray;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = SystemColors.ControlText;
+            button1.Location = new Point(463, 352);
+            button1.Name = "button1";
+            button1.Size = new Size(88, 34);
+            button1.TabIndex = 6;
+            button1.Text = "Approve";
+            button1.UseMnemonic = false;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // labelPersonalInfo
             // 
-            this.labelPersonalInfo.AutoSize = true;
-            this.labelPersonalInfo.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelPersonalInfo.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelPersonalInfo.Location = new System.Drawing.Point(38, 21);
-            this.labelPersonalInfo.Name = "labelPersonalInfo";
-            this.labelPersonalInfo.Size = new System.Drawing.Size(119, 14);
-            this.labelPersonalInfo.TabIndex = 24;
-            this.labelPersonalInfo.Text = "Personal Information";
+            labelPersonalInfo.AutoSize = true;
+            labelPersonalInfo.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelPersonalInfo.ForeColor = SystemColors.ControlDarkDark;
+            labelPersonalInfo.Location = new Point(38, 21);
+            labelPersonalInfo.Name = "labelPersonalInfo";
+            labelPersonalInfo.Size = new Size(119, 14);
+            labelPersonalInfo.TabIndex = 24;
+            labelPersonalInfo.Text = "Personal Information";
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.textBoxDuration);
-            this.panel3.Controls.Add(this.labelDuration);
-            this.panel3.Controls.Add(this.comboBoxLeave);
-            this.panel3.Controls.Add(this.labelLeave);
-            this.panel3.Controls.Add(this.comboBoxOccupation);
-            this.panel3.Controls.Add(this.button3);
-            this.panel3.Controls.Add(this.comboBoxDepartment);
-            this.panel3.Controls.Add(this.labelDepartment);
-            this.panel3.Controls.Add(this.labelEmployeeInfo);
-            this.panel3.Controls.Add(this.labelOccupation);
-            this.panel3.Controls.Add(this.textBoxEmployeeNo);
-            this.panel3.Controls.Add(this.labelEmployeeNo);
-            this.panel3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.panel3.Location = new System.Drawing.Point(38, 89);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(607, 235);
-            this.panel3.TabIndex = 34;
+            panel3.BackColor = Color.White;
+            panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(comboBox1);
+            panel3.Controls.Add(label2);
+            panel3.Controls.Add(label1);
+            panel3.Controls.Add(textBox1);
+            panel3.Controls.Add(textBoxDuration);
+            panel3.Controls.Add(labelDuration);
+            panel3.Controls.Add(comboBoxLeave);
+            panel3.Controls.Add(labelLeave);
+            panel3.Controls.Add(comboBoxOccupation);
+            panel3.Controls.Add(comboBoxDepartment);
+            panel3.Controls.Add(labelDepartment);
+            panel3.Controls.Add(labelEmployeeInfo);
+            panel3.Controls.Add(labelOccupation);
+            panel3.Controls.Add(textBoxEmployeeNo);
+            panel3.Controls.Add(labelEmployeeNo);
+            panel3.ForeColor = SystemColors.ControlText;
+            panel3.Location = new Point(38, 89);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(607, 235);
+            panel3.TabIndex = 34;
+            // 
+            // comboBox1
+            // 
+            comboBox1.BackColor = Color.White;
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.Enabled = false;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "FULL-TIME", "PART-TIME" });
+            comboBox1.Location = new Point(103, 134);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(147, 23);
+            comboBox1.TabIndex = 73;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.ForeColor = SystemColors.ControlDarkDark;
+            label2.Location = new Point(23, 137);
+            label2.Name = "label2";
+            label2.Size = new Size(74, 14);
+            label2.TabIndex = 72;
+            label2.Text = "JOB STATUS";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.ControlDarkDark;
+            label1.Location = new Point(323, 76);
+            label1.Name = "label1";
+            label1.Size = new Size(42, 14);
+            label1.TabIndex = 71;
+            label1.Text = "START";
+            // 
+            // textBox1
+            // 
+            textBox1.Enabled = false;
+            textBox1.ForeColor = Color.Silver;
+            textBox1.Location = new Point(371, 99);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(147, 23);
+            textBox1.TabIndex = 70;
             // 
             // textBoxDuration
             // 
-            this.textBoxDuration.ForeColor = System.Drawing.Color.Silver;
-            this.textBoxDuration.Location = new System.Drawing.Point(103, 134);
-            this.textBoxDuration.Name = "textBoxDuration";
-            this.textBoxDuration.PlaceholderText = "Duration";
-            this.textBoxDuration.Size = new System.Drawing.Size(147, 23);
-            this.textBoxDuration.TabIndex = 69;
+            textBoxDuration.Enabled = false;
+            textBoxDuration.ForeColor = Color.Silver;
+            textBoxDuration.Location = new Point(371, 73);
+            textBoxDuration.Name = "textBoxDuration";
+            textBoxDuration.Size = new Size(147, 23);
+            textBoxDuration.TabIndex = 69;
             // 
             // labelDuration
             // 
-            this.labelDuration.AutoSize = true;
-            this.labelDuration.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelDuration.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelDuration.Location = new System.Drawing.Point(33, 137);
-            this.labelDuration.Name = "labelDuration";
-            this.labelDuration.Size = new System.Drawing.Size(64, 14);
-            this.labelDuration.TabIndex = 64;
-            this.labelDuration.Text = "DURATION";
+            labelDuration.AutoSize = true;
+            labelDuration.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelDuration.ForeColor = SystemColors.ControlDarkDark;
+            labelDuration.Location = new Point(323, 102);
+            labelDuration.Name = "labelDuration";
+            labelDuration.Size = new Size(42, 14);
+            labelDuration.TabIndex = 64;
+            labelDuration.Text = "LEAVE";
             // 
             // comboBoxLeave
             // 
-            this.comboBoxLeave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxLeave.FormattingEnabled = true;
-            this.comboBoxLeave.Items.AddRange(new object[] {
-            "Sick Leave",
-            "Emergency Leave",
-            "Vacation Leave",
-            "Special Leave"});
-            this.comboBoxLeave.Location = new System.Drawing.Point(103, 163);
-            this.comboBoxLeave.Name = "comboBoxLeave";
-            this.comboBoxLeave.Size = new System.Drawing.Size(147, 23);
-            this.comboBoxLeave.TabIndex = 61;
+            comboBoxLeave.BackColor = Color.White;
+            comboBoxLeave.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxLeave.Enabled = false;
+            comboBoxLeave.FormattingEnabled = true;
+            comboBoxLeave.Items.AddRange(new object[] { "Sick Leave", "Emergency Leave", "Vacation Leave", "Special Leave" });
+            comboBoxLeave.Location = new Point(103, 163);
+            comboBoxLeave.Name = "comboBoxLeave";
+            comboBoxLeave.Size = new Size(147, 23);
+            comboBoxLeave.TabIndex = 61;
             // 
             // labelLeave
             // 
-            this.labelLeave.AutoSize = true;
-            this.labelLeave.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelLeave.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelLeave.Location = new System.Drawing.Point(51, 166);
-            this.labelLeave.Name = "labelLeave";
-            this.labelLeave.Size = new System.Drawing.Size(42, 14);
-            this.labelLeave.TabIndex = 60;
-            this.labelLeave.Text = "LEAVE";
+            labelLeave.AutoSize = true;
+            labelLeave.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelLeave.ForeColor = SystemColors.ControlDarkDark;
+            labelLeave.Location = new Point(51, 166);
+            labelLeave.Name = "labelLeave";
+            labelLeave.Size = new Size(42, 14);
+            labelLeave.TabIndex = 60;
+            labelLeave.Text = "LEAVE";
             // 
             // comboBoxOccupation
             // 
-            this.comboBoxOccupation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxOccupation.FormattingEnabled = true;
-            this.comboBoxOccupation.Items.AddRange(new object[] {
-            "Teacher",
-            "Sports Coach",
-            "School Nurse",
-            "Maintenance Technician",
-            "Registrar",
-            "Guidance Counselor",
-            "Guard",
-            "Chairperson"});
-            this.comboBoxOccupation.Location = new System.Drawing.Point(103, 105);
-            this.comboBoxOccupation.Name = "comboBoxOccupation";
-            this.comboBoxOccupation.Size = new System.Drawing.Size(147, 23);
-            this.comboBoxOccupation.TabIndex = 57;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(256, 47);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(25, 23);
-            this.button3.TabIndex = 56;
-            this.button3.UseVisualStyleBackColor = false;
+            comboBoxOccupation.BackColor = Color.White;
+            comboBoxOccupation.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxOccupation.Enabled = false;
+            comboBoxOccupation.FormattingEnabled = true;
+            comboBoxOccupation.Items.AddRange(new object[] { "Teacher", "Sports Coach", "School Nurse", "Maintenance Technician", "Registrar", "Guidance Counselor", "Guard", "Chairperson" });
+            comboBoxOccupation.Location = new Point(103, 105);
+            comboBoxOccupation.Name = "comboBoxOccupation";
+            comboBoxOccupation.Size = new Size(147, 23);
+            comboBoxOccupation.TabIndex = 57;
             // 
             // comboBoxDepartment
             // 
-            this.comboBoxDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxDepartment.FormattingEnabled = true;
-            this.comboBoxDepartment.Items.AddRange(new object[] {
-            "IBED",
-            "SED",
-            "ASP"});
-            this.comboBoxDepartment.Location = new System.Drawing.Point(103, 76);
-            this.comboBoxDepartment.Name = "comboBoxDepartment";
-            this.comboBoxDepartment.Size = new System.Drawing.Size(147, 23);
-            this.comboBoxDepartment.TabIndex = 59;
+            comboBoxDepartment.BackColor = Color.White;
+            comboBoxDepartment.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxDepartment.Enabled = false;
+            comboBoxDepartment.FormattingEnabled = true;
+            comboBoxDepartment.Items.AddRange(new object[] { "IBED", "SED", "ASP" });
+            comboBoxDepartment.Location = new Point(103, 76);
+            comboBoxDepartment.Name = "comboBoxDepartment";
+            comboBoxDepartment.Size = new Size(147, 23);
+            comboBoxDepartment.TabIndex = 59;
             // 
             // labelDepartment
             // 
-            this.labelDepartment.AutoSize = true;
-            this.labelDepartment.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelDepartment.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelDepartment.Location = new System.Drawing.Point(17, 82);
-            this.labelDepartment.Name = "labelDepartment";
-            this.labelDepartment.Size = new System.Drawing.Size(80, 14);
-            this.labelDepartment.TabIndex = 58;
-            this.labelDepartment.Text = "DEPARTMENT";
+            labelDepartment.AutoSize = true;
+            labelDepartment.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelDepartment.ForeColor = SystemColors.ControlDarkDark;
+            labelDepartment.Location = new Point(17, 82);
+            labelDepartment.Name = "labelDepartment";
+            labelDepartment.Size = new Size(80, 14);
+            labelDepartment.TabIndex = 58;
+            labelDepartment.Text = "DEPARTMENT";
             // 
             // labelEmployeeInfo
             // 
-            this.labelEmployeeInfo.AutoSize = true;
-            this.labelEmployeeInfo.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelEmployeeInfo.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelEmployeeInfo.Location = new System.Drawing.Point(10, 13);
-            this.labelEmployeeInfo.Name = "labelEmployeeInfo";
-            this.labelEmployeeInfo.Size = new System.Drawing.Size(140, 14);
-            this.labelEmployeeInfo.TabIndex = 35;
-            this.labelEmployeeInfo.Text = "Employment Information";
+            labelEmployeeInfo.AutoSize = true;
+            labelEmployeeInfo.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelEmployeeInfo.ForeColor = SystemColors.ControlDarkDark;
+            labelEmployeeInfo.Location = new Point(10, 13);
+            labelEmployeeInfo.Name = "labelEmployeeInfo";
+            labelEmployeeInfo.Size = new Size(140, 14);
+            labelEmployeeInfo.TabIndex = 35;
+            labelEmployeeInfo.Text = "Employment Information";
             // 
             // labelOccupation
             // 
-            this.labelOccupation.AutoSize = true;
-            this.labelOccupation.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelOccupation.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelOccupation.Location = new System.Drawing.Point(21, 108);
-            this.labelOccupation.Name = "labelOccupation";
-            this.labelOccupation.Size = new System.Drawing.Size(76, 14);
-            this.labelOccupation.TabIndex = 24;
-            this.labelOccupation.Text = "OCCUPATION";
+            labelOccupation.AutoSize = true;
+            labelOccupation.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelOccupation.ForeColor = SystemColors.ControlDarkDark;
+            labelOccupation.Location = new Point(21, 108);
+            labelOccupation.Name = "labelOccupation";
+            labelOccupation.Size = new Size(76, 14);
+            labelOccupation.TabIndex = 24;
+            labelOccupation.Text = "OCCUPATION";
             // 
             // textBoxEmployeeNo
             // 
-            this.textBoxEmployeeNo.Enabled = false;
-            this.textBoxEmployeeNo.ForeColor = System.Drawing.Color.Silver;
-            this.textBoxEmployeeNo.Location = new System.Drawing.Point(103, 47);
-            this.textBoxEmployeeNo.Name = "textBoxEmployeeNo";
-            this.textBoxEmployeeNo.ReadOnly = true;
-            this.textBoxEmployeeNo.Size = new System.Drawing.Size(147, 23);
-            this.textBoxEmployeeNo.TabIndex = 20;
+            textBoxEmployeeNo.BackColor = Color.White;
+            textBoxEmployeeNo.Enabled = false;
+            textBoxEmployeeNo.ForeColor = Color.Black;
+            textBoxEmployeeNo.Location = new Point(103, 47);
+            textBoxEmployeeNo.Name = "textBoxEmployeeNo";
+            textBoxEmployeeNo.ReadOnly = true;
+            textBoxEmployeeNo.Size = new Size(147, 23);
+            textBoxEmployeeNo.TabIndex = 20;
             // 
             // labelEmployeeNo
             // 
-            this.labelEmployeeNo.AutoSize = true;
-            this.labelEmployeeNo.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelEmployeeNo.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelEmployeeNo.Location = new System.Drawing.Point(10, 50);
-            this.labelEmployeeNo.Name = "labelEmployeeNo";
-            this.labelEmployeeNo.Size = new System.Drawing.Size(87, 14);
-            this.labelEmployeeNo.TabIndex = 18;
-            this.labelEmployeeNo.Text = "EMPLOYEE NO.";
+            labelEmployeeNo.AutoSize = true;
+            labelEmployeeNo.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelEmployeeNo.ForeColor = SystemColors.ControlDarkDark;
+            labelEmployeeNo.Location = new Point(10, 50);
+            labelEmployeeNo.Name = "labelEmployeeNo";
+            labelEmployeeNo.Size = new Size(87, 14);
+            labelEmployeeNo.TabIndex = 18;
+            labelEmployeeNo.Text = "EMPLOYEE NO.";
             // 
             // textBoxFirstName
             // 
-            this.textBoxFirstName.ForeColor = System.Drawing.Color.Silver;
-            this.textBoxFirstName.Location = new System.Drawing.Point(42, 50);
-            this.textBoxFirstName.Name = "textBoxFirstName";
-            this.textBoxFirstName.PlaceholderText = "FIRST NAME";
-            this.textBoxFirstName.Size = new System.Drawing.Size(207, 23);
-            this.textBoxFirstName.TabIndex = 1;
+            textBoxFirstName.Enabled = false;
+            textBoxFirstName.ForeColor = Color.Black;
+            textBoxFirstName.Location = new Point(42, 50);
+            textBoxFirstName.Name = "textBoxFirstName";
+            textBoxFirstName.PlaceholderText = "FIRST NAME";
+            textBoxFirstName.Size = new Size(207, 23);
+            textBoxFirstName.TabIndex = 1;
             // 
             // textBoxLastName
             // 
-            this.textBoxLastName.ForeColor = System.Drawing.Color.Silver;
-            this.textBoxLastName.Location = new System.Drawing.Point(274, 50);
-            this.textBoxLastName.Name = "textBoxLastName";
-            this.textBoxLastName.PlaceholderText = "LAST NAME";
-            this.textBoxLastName.Size = new System.Drawing.Size(212, 23);
-            this.textBoxLastName.TabIndex = 2;
+            textBoxLastName.Enabled = false;
+            textBoxLastName.ForeColor = Color.Black;
+            textBoxLastName.Location = new Point(274, 50);
+            textBoxLastName.Name = "textBoxLastName";
+            textBoxLastName.PlaceholderText = "LAST NAME";
+            textBoxLastName.Size = new Size(212, 23);
+            textBoxLastName.TabIndex = 2;
             // 
             // textBoxMiddleInitial
             // 
-            this.textBoxMiddleInitial.ForeColor = System.Drawing.Color.Silver;
-            this.textBoxMiddleInitial.Location = new System.Drawing.Point(511, 50);
-            this.textBoxMiddleInitial.Name = "textBoxMiddleInitial";
-            this.textBoxMiddleInitial.PlaceholderText = "M.I.";
-            this.textBoxMiddleInitial.Size = new System.Drawing.Size(46, 23);
-            this.textBoxMiddleInitial.TabIndex = 3;
+            textBoxMiddleInitial.Enabled = false;
+            textBoxMiddleInitial.ForeColor = Color.Black;
+            textBoxMiddleInitial.Location = new Point(511, 50);
+            textBoxMiddleInitial.Name = "textBoxMiddleInitial";
+            textBoxMiddleInitial.PlaceholderText = "M.I.";
+            textBoxMiddleInitial.Size = new Size(46, 23);
+            textBoxMiddleInitial.TabIndex = 3;
             // 
             // AddLeaveButtonForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(690, 457);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.personalButton);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "AddLeaveButtonForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AddLeaveButtonForm";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Gainsboro;
+            ClientSize = new Size(690, 457);
+            Controls.Add(panel1);
+            Controls.Add(personalButton);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "AddLeaveButtonForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "AddLeaveButtonForm";
+            Load += AddLeaveButtonForm_Load;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion
@@ -363,7 +400,6 @@
         private ComboBox comboBoxLeave;
         private Label labelLeave;
         private ComboBox comboBoxOccupation;
-        private Button button3;
         private ComboBox comboBoxDepartment;
         private Label labelDepartment;
         private Label labelEmployeeInfo;
@@ -373,5 +409,9 @@
         private TextBox textBoxFirstName;
         private TextBox textBoxLastName;
         private TextBox textBoxMiddleInitial;
+        private TextBox textBox1;
+        private Label label1;
+        private ComboBox comboBox1;
+        private Label label2;
     }
 }
