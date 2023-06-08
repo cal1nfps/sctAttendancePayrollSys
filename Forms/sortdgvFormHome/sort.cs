@@ -35,11 +35,11 @@ namespace SCTAttendanceSystemUI.Forms.sortdgvFormHome
 
             if (selectedItem == "Recent - Oldest")
             {
-                dataGridView1.Sort(dataGridView1.Columns["date"], ListSortDirection.Descending);
+                dataGridView1.Sort(dataGridView1.Columns["timein"], ListSortDirection.Descending);
             }
             if (selectedItem == "Oldest - Recent")
             {
-                dataGridView1.Sort(dataGridView1.Columns["date"], ListSortDirection.Ascending);
+                dataGridView1.Sort(dataGridView1.Columns["timein"], ListSortDirection.Ascending);
             }
         }
 

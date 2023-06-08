@@ -151,6 +151,70 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(536, 408);
             this.panel2.TabIndex = 52;
+
+            button3.BackColor = Color.Transparent;
+            button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button3.Image = (Image)resources.GetObject("button3.Image");
+            button3.ImageAlign = ContentAlignment.MiddleLeft;
+            button3.Location = new Point(767, 93);
+            button3.Name = "button3";
+            button3.Padding = new Padding(10, 0, 0, 0);
+            button3.Size = new Size(47, 30);
+            button3.TabIndex = 50;
+            button3.TextAlign = ContentAlignment.MiddleLeft;
+            button3.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click_1;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(164, 16, 48);
+            panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Controls.Add(label1);
+            panel1.Location = new Point(767, 129);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(605, 74);
+            panel1.TabIndex = 51;
+            panel1.Paint += panel1_Paint;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Bahnschrift Condensed", 26.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(16, 8);
+            label1.Name = "label1";
+            label1.Size = new Size(269, 42);
+            label1.TabIndex = 0;
+            label1.Text = "Employee Information";
+            label1.Click += label1_Click;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.White;
+            panel2.BorderStyle = BorderStyle.Fixed3D;
+            panel2.Controls.Add(label19);
+            panel2.Controls.Add(textBox9);
+            panel2.Controls.Add(textBox8);
+            panel2.Controls.Add(label18);
+            panel2.Controls.Add(panel3);
+            panel2.Controls.Add(pictureBox1);
+            panel2.Controls.Add(label5);
+            panel2.Controls.Add(label4);
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(label2);
+            panel2.Controls.Add(textBox4);
+            panel2.Controls.Add(textBox3);
+            panel2.Controls.Add(textBox2);
+            panel2.Controls.Add(textBox1);
+            panel2.Location = new Point(767, 200);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(605, 455);
+            panel2.TabIndex = 52;
+            panel2.Paint += panel2_Paint;
             // 
             // label19
             // 
@@ -377,6 +441,24 @@
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(479, 414);
             this.dataGridView1.TabIndex = 53;
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToResizeColumns = false;
+            dataGridView1.AllowUserToResizeRows = false;
+            dataGridView1.BackgroundColor = Color.White;
+            dataGridView1.BorderStyle = BorderStyle.Fixed3D;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.ColumnHeadersVisible = false;
+            dataGridView1.Location = new Point(38, 129);
+            dataGridView1.MultiSelect = false;
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(723, 526);
+            dataGridView1.TabIndex = 53;
+            dataGridView1.CellClick += dataGridView1_CellClick_1;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dataGridView1.CellFormatting += dataGridView1_CellFormatting_1;
             // 
             // label12
             // 
@@ -405,6 +487,21 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(479, 30);
             this.panel4.TabIndex = 59;
+            panel4.BackColor = Color.White;
+            panel4.BorderStyle = BorderStyle.FixedSingle;
+            panel4.Controls.Add(label17);
+            panel4.Controls.Add(label16);
+            panel4.Controls.Add(label15);
+            panel4.Controls.Add(label14);
+            panel4.Controls.Add(label13);
+            panel4.Controls.Add(label11);
+            panel4.Controls.Add(label10);
+            panel4.Controls.Add(label12);
+            panel4.Location = new Point(38, 93);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(723, 30);
+            panel4.TabIndex = 59;
+            panel4.Paint += panel4_Paint;
             // 
             // label17
             // 
@@ -568,6 +665,87 @@
             this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click_1);
+
+            sortComboBox.BackColor = Color.WhiteSmoke;
+            sortComboBox.Cursor = Cursors.Hand;
+            sortComboBox.FlatStyle = FlatStyle.Flat;
+            sortComboBox.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            sortComboBox.FormattingEnabled = true;
+            sortComboBox.Items.AddRange(new object[] { "None", "A - Z", "Z - A" });
+            sortComboBox.Location = new Point(619, 64);
+            sortComboBox.Name = "sortComboBox";
+            sortComboBox.Size = new Size(142, 23);
+            sortComboBox.TabIndex = 61;
+            sortComboBox.Text = "NAME";
+            sortComboBox.SelectedIndexChanged += sortComboBox_SelectedIndexChanged;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.BackColor = Color.WhiteSmoke;
+            label20.Font = new Font("Times New Roman", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            label20.Location = new Point(575, 64);
+            label20.Name = "label20";
+            label20.Size = new Size(39, 17);
+            label20.TabIndex = 60;
+            label20.Text = "Sort:";
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Gold;
+            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(820, 94);
+            button1.Name = "button1";
+            button1.Padding = new Padding(10, 0, 0, 0);
+            button1.Size = new Size(45, 30);
+            button1.TabIndex = 62;
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.Firebrick;
+            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.Image = (Image)resources.GetObject("button2.Image");
+            button2.ImageAlign = ContentAlignment.MiddleLeft;
+            button2.Location = new Point(871, 93);
+            button2.Name = "button2";
+            button2.Padding = new Padding(10, 0, 0, 0);
+            button2.Size = new Size(45, 30);
+            button2.TabIndex = 63;
+            button2.TextAlign = ContentAlignment.MiddleLeft;
+            button2.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
+            // button4
+            // 
+            button4.BackColor = Color.Green;
+            button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button4.Image = (Image)resources.GetObject("button4.Image");
+            button4.ImageAlign = ContentAlignment.MiddleLeft;
+            button4.Location = new Point(714, 28);
+            button4.Name = "button4";
+            button4.Padding = new Padding(10, 0, 0, 0);
+            button4.Size = new Size(47, 30);
+            button4.TabIndex = 64;
+            button4.TextAlign = ContentAlignment.MiddleLeft;
+            button4.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // FormEmployeeList
             // 

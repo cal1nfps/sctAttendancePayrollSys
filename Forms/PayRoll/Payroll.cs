@@ -12,6 +12,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Org.BouncyCastle.Crypto.Macs;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using Microsoft.Kiota.Abstractions;
 
 namespace SCTAttendanceSystemUI.Forms.PayRoll
 {
@@ -111,10 +112,17 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
                 //double totalHoursNumeric = totalHours.TotalHours;
 
                 double jobSalary = (double)row.Cells["jobsalary"].Value;
+                TimeSpan jobHours = (TimeSpan)row.Cells["jobhours"].Value;
+                double jobHoursNumeric = jobHours.TotalHours;
+
+
                 double totalSalary = 0.0;
                 double allowance = 0.0;
                 double gross = 0.0;
-                double deduction = 1075.0; //SSS: 675, PAGIBIG: 100, PHILHEALTH: 300
+                double sss = 675.0;
+                double ph = 300.0;
+                double pagibig = 100.0;
+                double deduction = 0.0; //SSS: 675, PAGIBIG: 100, PHILHEALTH: 300
                 double net = 0.0;
 
 
@@ -156,47 +164,170 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
                         break;
 
                 }
-
-                string currentMonth = DateTime.Now.ToString("MMMM");
-
-                string query = "SELECT SUM(TIME_TO_SEC(totalhours)) / 3600 AS TotalHours FROM empattendance WHERE MONTH(date) = MONTH(CURRENT_DATE()) AND empnum = @EmployeeNumber";
-
-                if (connection.State != ConnectionState.Open)
-                    connection.Open();
-
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                if (filterComboBox.SelectedItem.ToString() == "MONTHLY")
                 {
-                    // Add a parameter to the MySqlCommand for the employee number
-                    command.Parameters.AddWithValue("@EmployeeNumber", employeeNumber);
+                    string totalHoursQuery = "SELECT SUM(TIME_TO_SEC(totalhours)) / 3600 AS TotalHours FROM empattendance WHERE MONTH(date) = MONTH(CURRENT_DATE()) AND empnum = @EmployeeNumber";
+                    string undertimeQuery = "SELECT SUM(TIME_TO_SEC(undertime)) / 3600 AS TotalHours FROM empattendance WHERE MONTH(date) = MONTH(CURRENT_DATE()) AND empnum = @EmployeeNumber";
+                    string lateQuery = "SELECT SUM(TIME_TO_SEC(late)) / 3600 AS TotalHours FROM empattendance WHERE MONTH(date) = MONTH(CURRENT_DATE()) AND empnum = @EmployeeNumber";
+                    string overtimeQuery = "SELECT SUM(TIME_TO_SEC(overtimehours)) / 3600 AS TotalHours FROM empattendance WHERE MONTH(date) = MONTH(CURRENT_DATE()) AND empnum = @EmployeeNumber";
 
-                    // Execute the query and retrieve the totalhours
-                    object result = command.ExecuteScalar();
 
-                    if (result != null && result != DBNull.Value)
+                    if (connection.State != ConnectionState.Open)
+                        connection.Open();
+
+                    using (MySqlCommand totalHoursCommand = new MySqlCommand(totalHoursQuery, connection))
+                    using (MySqlCommand undertimeCommand = new MySqlCommand(undertimeQuery, connection))
+                    using (MySqlCommand lateCommand = new MySqlCommand(lateQuery, connection))
+                    using (MySqlCommand overtimeCommand = new MySqlCommand(overtimeQuery, connection))
                     {
-
-                        double totalHoursNumeric = Convert.ToDouble(result);
-
-                        textBox2.Text = totalHoursNumeric.ToString();
-
-                        double hourlyRate = jobSalary * 12 / 365 / 8;
+                        totalHoursCommand.Parameters.AddWithValue("@EmployeeNumber", employeeNumber);
+                        undertimeCommand.Parameters.AddWithValue("@EmployeeNumber", employeeNumber);
+                        lateCommand.Parameters.AddWithValue("@EmployeeNumber", employeeNumber);
+                        overtimeCommand.Parameters.AddWithValue("@EmployeeNumber", employeeNumber);
 
 
-                        totalSalary = jobSalary + hourlyRate * totalHoursNumeric;
+                        double overtimeHours = 0;
+                        double totalHours = 0;
+                        double undertime = 0;
+                        double late = 0;
+
+                        object totalHoursResult = totalHoursCommand.ExecuteScalar();
+                        object undertimeResult = undertimeCommand.ExecuteScalar();
+                        object lateResult = lateCommand.ExecuteScalar();
+                        object overtimeResult = overtimeCommand.ExecuteScalar();
+
+                        if (totalHoursResult != DBNull.Value)
+                            totalHours = Convert.ToDouble(totalHoursResult);
+
+                        if (undertimeResult != DBNull.Value)
+                            undertime = Convert.ToDouble(undertimeResult);
+
+                        if (lateResult != DBNull.Value)
+                            late = Convert.ToDouble(lateResult);
+
+                        if (overtimeResult != DBNull.Value)
+                            overtimeHours += Convert.ToDouble(overtimeResult);
+
+                        double otHours = overtimeHours / jobHoursNumeric * 100;
+
+                        double contributions = sss + pagibig + ph;
+                        double hourlyRate = jobSalary * 12 / 365 / jobHoursNumeric;
+                        deduction = late + undertime + contributions;
+                        totalSalary = jobSalary + hourlyRate + otHours * totalHours;
                         gross = totalSalary + allowance;
                         net = gross - deduction;
 
-
-                        textBox1.Text = $"₱{hourlyRate.ToString("0.00")}";
-                        textBox6.Text = $"₱{totalSalary.ToString("0.00")}";
+                        textBox6.Text = $"₱{gross.ToString("0.00")}";
                         textBox5.Text = $"₱{deduction.ToString("0.00")}";
                         textBox4.Text = $"₱{net.ToString("0.00")}";
-                        textBox3.Text = $"₱{jobSalary.ToString("0.00")}";
-                    }
 
+
+                        //Deduction
+                        textBox16.Text = $"₱{contributions.ToString("0.00")}";
+                        textBox7.Text = undertime.ToString();
+                        textBox8.Text = late.ToString();
+
+                        //Net Pay
+                        textBox14.Text = $"₱{gross.ToString("0.00")}";
+                        textBox15.Text = $"₱{deduction.ToString("0.00")}";
+
+                        //Gross Pay
+                        textBox13.Text = $"₱{totalSalary.ToString("0.00")}";
+                        textBox12.Text = $"₱{allowance.ToString("0.00")}";
+
+                        //Total Salary
+                        textBox2.Text = totalHours.ToString();
+                        textBox9.Text = overtimeHours.ToString();
+                        textBox1.Text = $"₱{hourlyRate.ToString("0.00")}";
+                        textBox11.Text = $"₱{jobSalary.ToString("0.00")}";
+                        textBox3.Text = $"₱{totalSalary.ToString("0.00")}";
+                    }
                 }
 
+                if (filterComboBox.SelectedItem.ToString() == "SEMI-MONTHLY")
+                {
+                    string totalHoursQuery = "SELECT SUM(TIME_TO_SEC(totalhours)) / 3600 AS TotalHours FROM empattendance WHERE MONTH(date) = MONTH(CURRENT_DATE()) / 2 AND empnum = @EmployeeNumber";
+                    string undertimeQuery = "SELECT SUM(TIME_TO_SEC(undertime)) / 3600 AS TotalHours FROM empattendance WHERE MONTH(date) = MONTH(CURRENT_DATE()) / 2 AND empnum = @EmployeeNumber";
+                    string lateQuery = "SELECT SUM(TIME_TO_SEC(late)) / 3600 AS TotalHours FROM empattendance WHERE MONTH(date) = MONTH(CURRENT_DATE()) / 2 AND empnum = @EmployeeNumber";
+                    string overtimeQuery = "SELECT SUM(TIME_TO_SEC(overtimehours)) / 3600 AS TotalHours FROM empattendance WHERE MONTH(date) = MONTH(CURRENT_DATE()) / 2 AND empnum = @EmployeeNumber";
 
+
+                    if (connection.State != ConnectionState.Open)
+                        connection.Open();
+
+                    using (MySqlCommand totalHoursCommand = new MySqlCommand(totalHoursQuery, connection))
+                    using (MySqlCommand undertimeCommand = new MySqlCommand(undertimeQuery, connection))
+                    using (MySqlCommand lateCommand = new MySqlCommand(lateQuery, connection))
+                    using (MySqlCommand overtimeCommand = new MySqlCommand(overtimeQuery, connection))
+                    {
+                        totalHoursCommand.Parameters.AddWithValue("@EmployeeNumber", employeeNumber);
+                        undertimeCommand.Parameters.AddWithValue("@EmployeeNumber", employeeNumber);
+                        lateCommand.Parameters.AddWithValue("@EmployeeNumber", employeeNumber);
+                        overtimeCommand.Parameters.AddWithValue("@EmployeeNumber", employeeNumber);
+
+                        double overtimeHours = 0;
+                        double totalHours = 0;
+                        double undertime = 0;
+                        double late = 0;
+
+                        object totalHoursResult = totalHoursCommand.ExecuteScalar();
+                        object undertimeResult = undertimeCommand.ExecuteScalar();
+                        object lateResult = lateCommand.ExecuteScalar();
+                        object overtimeResult = overtimeCommand.ExecuteScalar();
+
+
+                        if (totalHoursResult != DBNull.Value)
+                            totalHours = Convert.ToDouble(totalHoursResult);
+
+                        if (undertimeResult != DBNull.Value)
+                            undertime = Convert.ToDouble(undertimeResult);
+
+                        if (lateResult != DBNull.Value)
+                            late = Convert.ToDouble(lateResult);
+
+                        if (overtimeResult != DBNull.Value)
+                            overtimeHours += Convert.ToDouble(overtimeResult);
+
+
+                        double totalJobSalary = jobSalary / 2;
+                        double hourlyRate = totalJobSalary * 12 / 365 / jobHoursNumeric;
+                        double contributions = sss + pagibig + ph / 2;
+
+                        double otHours = overtimeHours / jobHoursNumeric * 100;
+
+                        deduction = contributions + undertime + late;
+                        totalSalary = totalJobSalary + hourlyRate + otHours * totalHours;
+                        gross = totalSalary + allowance;
+                        net = gross - deduction;
+
+                        textBox6.Text = $"₱{gross.ToString("0.00")}";
+                        textBox5.Text = $"₱{deduction.ToString("0.00")}";
+                        textBox4.Text = $"₱{net.ToString("0.00")}";
+                        textBox2.Text = totalHours.ToString();
+
+                        //Deduction
+                        textBox16.Text = $"₱{contributions.ToString("0.00")}";
+                        textBox7.Text = undertime.ToString();
+                        textBox8.Text = late.ToString();
+
+
+                        //Net Pay
+                        textBox14.Text = $"₱{gross.ToString("0.00")}";
+                        textBox15.Text = $"₱{deduction.ToString("0.00")}";
+
+                        //Gross Pay
+                        textBox13.Text = $"₱{totalSalary.ToString("0.00")}";
+                        textBox12.Text = $"₱{allowance.ToString("0.00")}";
+
+                        //Total Salary
+                        textBox2.Text = totalHours.ToString();
+                        textBox9.Text = overtimeHours.ToString();
+                        textBox1.Text = $"₱{hourlyRate.ToString("0.00")}";
+                        textBox11.Text = $"₱{totalJobSalary.ToString("0.00")}";
+                        textBox3.Text = $"₱{totalSalary.ToString("0.00")}";
+
+                    }
+                }
 
 
             }
@@ -210,14 +341,15 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
 
                 int selectedRowIndex = dataGridView1.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = dataGridView1.Rows[selectedRowIndex];
-                string selectedCellValue1 = selectedRow.Cells[0].Value.ToString();
-                string selectedCellValue2 = selectedRow.Cells[1].Value.ToString();
-                string selectedCellValue3 = selectedRow.Cells[3].Value.ToString();
-                string selectedCellValue4 = selectedRow.Cells[2].Value.ToString();
+                string employeenum = selectedRow.Cells[0].Value.ToString();
+                string name = selectedRow.Cells[1].Value.ToString();
+                string department = selectedRow.Cells[3].Value.ToString();
+                string occupation = selectedRow.Cells[2].Value.ToString();
                 string selectedCellValue5 = selectedRow.Cells[10].Value.ToString();
                 string selectedCellValue6 = selectedRow.Cells[20].Value.ToString();
-                string selectedCellValue7 = selectedRow.Cells[27].Value.ToString();
-                string selectedCellValue8 = selectedRow.Cells[19].Value.ToString();
+                string jobsalary = selectedRow.Cells[27].Value.ToString();
+                string accountnum = selectedRow.Cells[19].Value.ToString();
+                string image = selectedRow.Cells[23].Value.ToString();
 
                 DateTime dob = DateTime.Parse(selectedCellValue5);
                 string dobFormatted = dob.ToString("yyyy-MM-dd");
@@ -227,25 +359,36 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
 
 
 
-                string query = "INSERT INTO emp_payroll (employeenum, name, department, occupation, dob, hiredate, gross, deduction, net, accountnum, jobsalary, hourlyrate, date) VALUES (@employeenum, @name, @department, @occupation, @dob, @hiredate, @gross, @deduction, @net, @accountnum, @jobsalary, @hourlyrate, @date)";
+                string query = "INSERT INTO emp_payroll (employeenum, name, department, occupation, dob, hiredate, gross, deduction, net, accountnum, jobsalary, hourlyrate, date, " +
+                    "payrolltype, overtimehours, undertime, late, totalhours, salary, allowance, totalsalary, contributions) VALUES (@employeenum, @name, @department, @occupation, @dob, @hiredate, " +
+                    "@gross, @deduction, @net, @accountnum, @jobsalary, @hourlyrate, @date, @payrolltype, @overtimehours, @undertime, @late, @totalhours, @salary, @allowance, @totalsalary, @contributions)";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
 
 
-                cmd.Parameters.AddWithValue("@employeenum", selectedCellValue1); //textbox
-                cmd.Parameters.AddWithValue("@name", selectedCellValue2); //textbox
-                cmd.Parameters.AddWithValue("@department", selectedCellValue3); //textbox
-                cmd.Parameters.AddWithValue("@occupation", selectedCellValue4); //textbox
+                cmd.Parameters.AddWithValue("@employeenum", employeenum); //textbox
+                cmd.Parameters.AddWithValue("@name", name); //textbox
+                cmd.Parameters.AddWithValue("@department", department); //textbox
+                cmd.Parameters.AddWithValue("@occupation", occupation); //textbox
                 cmd.Parameters.AddWithValue("@dob", dobFormatted); //textbox
                 cmd.Parameters.AddWithValue("@hiredate", dobFormatted2); //textbox
                 cmd.Parameters.AddWithValue("@hourlyrate", textBox1.Text); //textbox
-                cmd.Parameters.AddWithValue("@accountnum", selectedCellValue8); //textbox
+                cmd.Parameters.AddWithValue("@accountnum", accountnum); //textbox
                 cmd.Parameters.AddWithValue("@deduction", textBox5.Text); //textbox
                 cmd.Parameters.AddWithValue("@net", textBox4.Text); //textbox
                 cmd.Parameters.AddWithValue("@gross", textBox6.Text); //textbox
-                cmd.Parameters.AddWithValue("@jobsalary", selectedCellValue7); //textbox
+                cmd.Parameters.AddWithValue("@jobsalary", jobsalary); //textbox
+                cmd.Parameters.AddWithValue("@overtimehours", textBox9.Text); //textbox
+                cmd.Parameters.AddWithValue("@undertime", textBox7.Text); //textbox
+                cmd.Parameters.AddWithValue("@late", textBox8.Text); //textbox
+                cmd.Parameters.AddWithValue("@totalhours", textBox2.Text); //textbox
+                cmd.Parameters.AddWithValue("@salary", textBox11.Text); //textbox
+                cmd.Parameters.AddWithValue("@allowance", textBox12.Text); //textbox
+                cmd.Parameters.AddWithValue("@totalsalary", textBox3.Text); //textbox
+                cmd.Parameters.AddWithValue("@contributions", textBox16.Text); //textbox
+                cmd.Parameters.AddWithValue("@payrolltype", filterComboBox.Text); //textbox
+
+
                 cmd.Parameters.AddWithValue("@date", DateTime.Today);
-
-
 
 
                 cmd.ExecuteNonQuery();
@@ -266,10 +409,195 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
 
         }
 
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void filterComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void textBox8_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void textBox9_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void label6_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+        }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
+        }
 
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click_1(object sender, EventArgs e)
+        {
+        }
+
+        private void label6_Click_2(object sender, EventArgs e)
+        {
+        }
+
+        private void label7_Click_1(object sender, EventArgs e)
+        {
+        }
+
+        private void textBox3_TextChanged_1(object sender, EventArgs e)
+        {
+        }
+
+        private void textBox2_TextChanged_1(object sender, EventArgs e)
+        {
+        }
+
+        private void textBox4_TextChanged_1(object sender, EventArgs e)
+        {
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void textBox10_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label18_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox13_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label13_Click_1(object sender, EventArgs e)
+        {
+        }
+
+        private void textBox11_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void textBox12_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void textBox14_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label19_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void textBox15_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void textBox16_TextChanged(object sender, EventArgs e)
+        {
         }
     }
 }

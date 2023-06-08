@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using SCTAttendanceSystemUI.Forms;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace SCTAttendanceSystemUI
@@ -27,24 +28,25 @@ namespace SCTAttendanceSystemUI
         private void buttonLogin_Click(object sender, EventArgs e)
         {
 
-            string username = textBoxIDNum.Text;
-            string password = textBoxPassword.Text;
+            /*            string username = textBoxIDNum.Text;
+                        string password = textBoxPassword.Text;
 
-            try
-            {
-                connection.Open();
+                        try
+                        {
+                            connection.Open();
 
-                // Create a query to check the username and password against the adminlogin table
-                string query = "SELECT COUNT(*) FROM adminlogin WHERE username = @Username AND password = @Password";
+                            // Create a query to check the username and password against the adminlogin table
+                            string query = "SELECT COUNT(*) FROM adminlogin WHERE username = @Username AND password = @Password";
 
-                using (MySqlCommand command = new MySqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@Username", username);
-                    command.Parameters.AddWithValue("@Password", password);
+                            using (MySqlCommand command = new MySqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@Username", username);
+                                command.Parameters.AddWithValue("@Password", password);
 
-                    // Execute the query and retrieve the result
-                    int result = Convert.ToInt32(command.ExecuteScalar());
+                                // Execute the query and retrieve the result
+                                int result = Convert.ToInt32(command.ExecuteScalar());
 
+<<<<<<< Updated upstream
                     if (result > 0)
                     {
                         this.Hide();
@@ -62,11 +64,28 @@ namespace SCTAttendanceSystemUI
             {
                 MessageBox.Show("An error occurred: " + ex.Message);
             }
+=======
+                                if (result > 0)
+                                {
+                                    Home1 form_home = new Home1();
+                                    form_home.ShowDialog();
+                                    this.Close();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Invalid username or password. Please try again.");
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("An error occurred: " + ex.Message);
+                        }*/
 
-            /*this.Hide();
+            this.Hide();
             Home1 form_home1 = new Home1();
             form_home1.ShowDialog();
-            this.Close();*/
+            this.Close();
 
         }
 

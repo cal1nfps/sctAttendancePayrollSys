@@ -36,6 +36,28 @@
             label1 = new Label();
             label12 = new Label();
             panel2 = new Panel();
+            textBox16 = new TextBox();
+            label20 = new Label();
+            textBox15 = new TextBox();
+            label19 = new Label();
+            textBox14 = new TextBox();
+            filterComboBox = new ComboBox();
+            label11 = new Label();
+            label18 = new Label();
+            textBox12 = new TextBox();
+            label16 = new Label();
+            label17 = new Label();
+            textBox13 = new TextBox();
+            textBox11 = new TextBox();
+            label13 = new Label();
+            label15 = new Label();
+            textBox10 = new TextBox();
+            label14 = new Label();
+            textBox9 = new TextBox();
+            label10 = new Label();
+            label9 = new Label();
+            textBox8 = new TextBox();
+            textBox7 = new TextBox();
             textBox4 = new TextBox();
             textBox5 = new TextBox();
             label6 = new Label();
@@ -116,8 +138,9 @@
             panel1.Controls.Add(dataGridView1);
             panel1.Location = new Point(-1, 40);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1036, 346);
+            panel1.Size = new Size(1212, 346);
             panel1.TabIndex = 10;
+            panel1.Paint += panel1_Paint;
             // 
             // label2
             // 
@@ -155,6 +178,28 @@
             // panel2
             // 
             panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Controls.Add(textBox16);
+            panel2.Controls.Add(label20);
+            panel2.Controls.Add(textBox15);
+            panel2.Controls.Add(label19);
+            panel2.Controls.Add(textBox14);
+            panel2.Controls.Add(filterComboBox);
+            panel2.Controls.Add(label11);
+            panel2.Controls.Add(label18);
+            panel2.Controls.Add(textBox12);
+            panel2.Controls.Add(label16);
+            panel2.Controls.Add(label17);
+            panel2.Controls.Add(textBox13);
+            panel2.Controls.Add(textBox11);
+            panel2.Controls.Add(label13);
+            panel2.Controls.Add(label15);
+            panel2.Controls.Add(textBox10);
+            panel2.Controls.Add(label14);
+            panel2.Controls.Add(textBox9);
+            panel2.Controls.Add(label10);
+            panel2.Controls.Add(label9);
+            panel2.Controls.Add(textBox8);
+            panel2.Controls.Add(textBox7);
             panel2.Controls.Add(textBox4);
             panel2.Controls.Add(textBox5);
             panel2.Controls.Add(label6);
@@ -169,129 +214,400 @@
             panel2.Controls.Add(textBox1);
             panel2.Location = new Point(592, 36);
             panel2.Name = "panel2";
-            panel2.Size = new Size(429, 293);
+            panel2.Size = new Size(606, 293);
             panel2.TabIndex = 56;
+            panel2.Paint += panel2_Paint;
+            // 
+            // textBox16
+            // 
+            textBox16.Enabled = false;
+            textBox16.Location = new Point(456, 192);
+            textBox16.Name = "textBox16";
+            textBox16.ReadOnly = true;
+            textBox16.Size = new Size(107, 23);
+            textBox16.TabIndex = 92;
+            textBox16.TextAlign = HorizontalAlignment.Right;
+            textBox16.TextChanged += textBox16_TextChanged;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label20.ForeColor = SystemColors.ControlDarkDark;
+            label20.Location = new Point(482, 175);
+            label20.Name = "label20";
+            label20.Size = new Size(81, 14);
+            label20.TabIndex = 91;
+            label20.Text = "Contributions";
+            label20.Click += label20_Click;
+            // 
+            // textBox15
+            // 
+            textBox15.Enabled = false;
+            textBox15.Location = new Point(311, 144);
+            textBox15.Name = "textBox15";
+            textBox15.ReadOnly = true;
+            textBox15.Size = new Size(107, 23);
+            textBox15.TabIndex = 90;
+            textBox15.TextAlign = HorizontalAlignment.Right;
+            textBox15.TextChanged += textBox15_TextChanged;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label19.ForeColor = SystemColors.ControlDarkDark;
+            label19.Location = new Point(356, 127);
+            label19.Name = "label19";
+            label19.Size = new Size(61, 14);
+            label19.TabIndex = 89;
+            label19.Text = "Deduction";
+            label19.Click += label19_Click;
+            // 
+            // textBox14
+            // 
+            textBox14.Enabled = false;
+            textBox14.Location = new Point(314, 192);
+            textBox14.Name = "textBox14";
+            textBox14.ReadOnly = true;
+            textBox14.Size = new Size(107, 23);
+            textBox14.TabIndex = 88;
+            textBox14.TextAlign = HorizontalAlignment.Right;
+            textBox14.TextChanged += textBox14_TextChanged;
+            // 
+            // filterComboBox
+            // 
+            filterComboBox.BackColor = Color.WhiteSmoke;
+            filterComboBox.Cursor = Cursors.Hand;
+            filterComboBox.FlatStyle = FlatStyle.Flat;
+            filterComboBox.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            filterComboBox.FormattingEnabled = true;
+            filterComboBox.Items.AddRange(new object[] { "MONTHLY", "SEMI-MONTHLY" });
+            filterComboBox.Location = new Point(254, 46);
+            filterComboBox.Name = "filterComboBox";
+            filterComboBox.Size = new Size(107, 23);
+            filterComboBox.TabIndex = 63;
+            filterComboBox.Text = "MONTHLY";
+            filterComboBox.SelectedIndexChanged += filterComboBox_SelectedIndexChanged;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label11.ForeColor = SystemColors.ControlDarkDark;
+            label11.Location = new Point(272, 29);
+            label11.Name = "label11";
+            label11.Size = new Size(72, 14);
+            label11.TabIndex = 75;
+            label11.Text = "Payroll Type";
+            label11.Click += label11_Click;
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label18.ForeColor = SystemColors.ControlDarkDark;
+            label18.Location = new Point(359, 175);
+            label18.Name = "label18";
+            label18.Size = new Size(61, 14);
+            label18.TabIndex = 87;
+            label18.Text = "Gross Pay";
+            label18.Click += label18_Click;
+            // 
+            // textBox12
+            // 
+            textBox12.Enabled = false;
+            textBox12.Location = new Point(174, 187);
+            textBox12.Name = "textBox12";
+            textBox12.ReadOnly = true;
+            textBox12.Size = new Size(107, 23);
+            textBox12.TabIndex = 86;
+            textBox12.TextAlign = HorizontalAlignment.Right;
+            textBox12.TextChanged += textBox12_TextChanged;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label16.ForeColor = SystemColors.ControlDarkDark;
+            label16.Location = new Point(219, 170);
+            label16.Name = "label16";
+            label16.Size = new Size(62, 14);
+            label16.TabIndex = 85;
+            label16.Text = "Allowance";
+            label16.Click += label16_Click;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label17.ForeColor = SystemColors.ControlDarkDark;
+            label17.Location = new Point(241, 127);
+            label17.Name = "label17";
+            label17.Size = new Size(40, 14);
+            label17.TabIndex = 84;
+            label17.Text = "Salary";
+            label17.Click += label17_Click;
+            // 
+            // textBox13
+            // 
+            textBox13.Enabled = false;
+            textBox13.Location = new Point(174, 144);
+            textBox13.Name = "textBox13";
+            textBox13.ReadOnly = true;
+            textBox13.Size = new Size(107, 23);
+            textBox13.TabIndex = 83;
+            textBox13.TextAlign = HorizontalAlignment.Right;
+            textBox13.TextChanged += textBox13_TextChanged;
+            // 
+            // textBox11
+            // 
+            textBox11.Enabled = false;
+            textBox11.Location = new Point(38, 180);
+            textBox11.Name = "textBox11";
+            textBox11.ReadOnly = true;
+            textBox11.Size = new Size(107, 23);
+            textBox11.TabIndex = 82;
+            textBox11.TextAlign = HorizontalAlignment.Right;
+            textBox11.TextChanged += textBox11_TextChanged;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label13.ForeColor = SystemColors.ControlDarkDark;
+            label13.Location = new Point(105, 163);
+            label13.Name = "label13";
+            label13.Size = new Size(40, 14);
+            label13.TabIndex = 81;
+            label13.Text = "Salary";
+            label13.Click += label13_Click_1;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label15.ForeColor = SystemColors.ControlDarkDark;
+            label15.Location = new Point(482, 41);
+            label15.Name = "label15";
+            label15.Size = new Size(81, 14);
+            label15.TabIndex = 80;
+            label15.Text = "Absent Hours";
+            label15.Click += label15_Click;
+            // 
+            // textBox10
+            // 
+            textBox10.Enabled = false;
+            textBox10.Location = new Point(456, 58);
+            textBox10.Name = "textBox10";
+            textBox10.ReadOnly = true;
+            textBox10.Size = new Size(107, 23);
+            textBox10.TabIndex = 79;
+            textBox10.TextAlign = HorizontalAlignment.Right;
+            textBox10.TextChanged += textBox10_TextChanged;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label14.ForeColor = SystemColors.ControlDarkDark;
+            label14.Location = new Point(88, 72);
+            label14.Name = "label14";
+            label14.Size = new Size(57, 14);
+            label14.TabIndex = 78;
+            label14.Text = "OT Hours";
+            label14.Click += label14_Click;
+            // 
+            // textBox9
+            // 
+            textBox9.Enabled = false;
+            textBox9.Location = new Point(38, 91);
+            textBox9.Name = "textBox9";
+            textBox9.ReadOnly = true;
+            textBox9.Size = new Size(107, 23);
+            textBox9.TabIndex = 77;
+            textBox9.TextAlign = HorizontalAlignment.Right;
+            textBox9.TextChanged += textBox9_TextChanged;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.ForeColor = SystemColors.ControlDarkDark;
+            label10.Location = new Point(465, 84);
+            label10.Name = "label10";
+            label10.Size = new Size(98, 14);
+            label10.TabIndex = 74;
+            label10.Text = "Undertime Hours";
+            label10.Click += label10_Click;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.ForeColor = SystemColors.ControlDarkDark;
+            label9.Location = new Point(497, 127);
+            label9.Name = "label9";
+            label9.Size = new Size(66, 14);
+            label9.TabIndex = 73;
+            label9.Text = "Late Hours";
+            label9.Click += label9_Click;
+            // 
+            // textBox8
+            // 
+            textBox8.Enabled = false;
+            textBox8.Location = new Point(456, 144);
+            textBox8.Name = "textBox8";
+            textBox8.ReadOnly = true;
+            textBox8.Size = new Size(107, 23);
+            textBox8.TabIndex = 72;
+            textBox8.TextAlign = HorizontalAlignment.Right;
+            textBox8.TextChanged += textBox8_TextChanged;
+            // 
+            // textBox7
+            // 
+            textBox7.Enabled = false;
+            textBox7.Location = new Point(456, 101);
+            textBox7.Name = "textBox7";
+            textBox7.ReadOnly = true;
+            textBox7.Size = new Size(107, 23);
+            textBox7.TabIndex = 71;
+            textBox7.TextAlign = HorizontalAlignment.Right;
+            textBox7.TextChanged += textBox7_TextChanged;
             // 
             // textBox4
             // 
             textBox4.Enabled = false;
-            textBox4.Location = new Point(218, 141);
+            textBox4.Location = new Point(314, 235);
             textBox4.Name = "textBox4";
             textBox4.ReadOnly = true;
             textBox4.Size = new Size(107, 23);
             textBox4.TabIndex = 70;
+            textBox4.TextChanged += textBox4_TextChanged_1;
             // 
             // textBox5
             // 
             textBox5.Enabled = false;
-            textBox5.Location = new Point(218, 89);
+            textBox5.Location = new Point(456, 235);
             textBox5.Name = "textBox5";
             textBox5.ReadOnly = true;
             textBox5.Size = new Size(107, 23);
             textBox5.TabIndex = 69;
+            textBox5.TextChanged += textBox5_TextChanged;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.ForeColor = SystemColors.ControlDarkDark;
-            label6.Location = new Point(218, 72);
+            label6.ForeColor = Color.Black;
+            label6.Location = new Point(456, 218);
             label6.Name = "label6";
             label6.Size = new Size(61, 14);
             label6.TabIndex = 68;
             label6.Text = "Deduction";
+            label6.Click += label6_Click_2;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.ForeColor = SystemColors.ControlDarkDark;
-            label7.Location = new Point(218, 124);
+            label7.ForeColor = SystemColors.ActiveCaptionText;
+            label7.Location = new Point(314, 218);
             label7.Name = "label7";
             label7.Size = new Size(47, 14);
             label7.TabIndex = 67;
             label7.Text = "Net Pay";
+            label7.Click += label7_Click_1;
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.ForeColor = SystemColors.ControlDarkDark;
-            label8.Location = new Point(218, 19);
+            label8.ForeColor = Color.Black;
+            label8.Location = new Point(174, 218);
             label8.Name = "label8";
             label8.Size = new Size(61, 14);
             label8.TabIndex = 66;
             label8.Text = "Gross Pay";
+            label8.Click += label8_Click;
             // 
             // textBox6
             // 
             textBox6.Enabled = false;
-            textBox6.Location = new Point(218, 36);
+            textBox6.Location = new Point(174, 235);
             textBox6.Name = "textBox6";
             textBox6.ReadOnly = true;
             textBox6.Size = new Size(107, 23);
             textBox6.TabIndex = 65;
+            textBox6.TextChanged += textBox6_TextChanged;
             // 
             // textBox3
             // 
             textBox3.Enabled = false;
-            textBox3.Location = new Point(36, 141);
+            textBox3.Location = new Point(38, 235);
             textBox3.Name = "textBox3";
             textBox3.ReadOnly = true;
             textBox3.Size = new Size(107, 23);
             textBox3.TabIndex = 64;
-            textBox3.TextChanged += textBox3_TextChanged;
+            textBox3.TextChanged += textBox3_TextChanged_1;
             // 
             // textBox2
             // 
             textBox2.Enabled = false;
-            textBox2.Location = new Point(36, 89);
+            textBox2.Location = new Point(38, 46);
             textBox2.Name = "textBox2";
             textBox2.ReadOnly = true;
             textBox2.Size = new Size(107, 23);
             textBox2.TabIndex = 63;
+            textBox2.TextAlign = HorizontalAlignment.Right;
+            textBox2.TextChanged += textBox2_TextChanged_1;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = SystemColors.ControlDarkDark;
-            label5.Location = new Point(36, 72);
+            label5.Location = new Point(77, 29);
             label5.Name = "label5";
             label5.Size = new Size(68, 14);
             label5.TabIndex = 62;
             label5.Text = "Total Hours";
+            label5.Click += label5_Click;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.ForeColor = SystemColors.ControlDarkDark;
-            label4.Location = new Point(36, 124);
+            label4.ForeColor = Color.Black;
+            label4.Location = new Point(38, 218);
             label4.Name = "label4";
-            label4.Size = new Size(40, 14);
+            label4.Size = new Size(68, 14);
             label4.TabIndex = 61;
-            label4.Text = "Salary";
+            label4.Text = "Total Salary";
+            label4.Click += label4_Click_1;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = SystemColors.ControlDarkDark;
-            label3.Location = new Point(36, 19);
+            label3.Location = new Point(102, 117);
             label3.Name = "label3";
             label3.Size = new Size(43, 14);
             label3.TabIndex = 60;
             label3.Text = "Hourly";
+            label3.Click += label3_Click;
             // 
             // textBox1
             // 
             textBox1.Enabled = false;
-            textBox1.Location = new Point(36, 36);
+            textBox1.Location = new Point(38, 137);
             textBox1.Name = "textBox1";
             textBox1.ReadOnly = true;
             textBox1.Size = new Size(107, 23);
             textBox1.TabIndex = 1;
+            textBox1.TextAlign = HorizontalAlignment.Right;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // dataGridView1
             // 
@@ -317,7 +633,7 @@
             // Payroll
             // 
             AutoScaleMode = AutoScaleMode.Inherit;
-            ClientSize = new Size(1034, 450);
+            ClientSize = new Size(1211, 450);
             Controls.Add(panel1);
             Controls.Add(personalButton);
             Controls.Add(button1);
@@ -359,5 +675,27 @@
         public TextBox textBox4;
         public TextBox textBox5;
         public TextBox textBox6;
+        public TextBox textBox8;
+        public TextBox textBox7;
+        private Label label10;
+        private Label label9;
+        public ComboBox filterComboBox;
+        private Label label11;
+        private Label label14;
+        public TextBox textBox9;
+        private Label label15;
+        public TextBox textBox10;
+        private Label label13;
+        public TextBox textBox11;
+        public TextBox textBox12;
+        private Label label16;
+        private Label label17;
+        public TextBox textBox13;
+        public TextBox textBox15;
+        private Label label19;
+        public TextBox textBox14;
+        private Label label18;
+        public TextBox textBox16;
+        private Label label20;
     }
 }

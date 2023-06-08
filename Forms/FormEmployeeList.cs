@@ -129,138 +129,6 @@ namespace SCTAttendanceSystemUI.Forms
             textBox2.Text = data;
         }
 
-
-        private void FormEmployeeList_Load_1(object sender, EventArgs e)
-        {
-            LoadImageData();
-
-            {
-
-                adapter = new MySqlDataAdapter("SELECT * FROM employee", connection);
-
-
-                // Create a DataTable to hold the data
-                table = new DataTable();
-
-                // Fill the DataTable with the data retrieved by the adapter
-                adapter.Fill(table);
-
-
-                // Set the DataSource of the DataGridView to the DataTable
-                dataGridView1.DataSource = table;
-
-                dataGridView1.Columns[3].Width = 70;
-                dataGridView1.Columns[4].Width = 70;
-                dataGridView1.Columns[11].Width = 80;
-                dataGridView1.Columns[15].Width = 80;
-
-                try
-                {
-                    connection.Open();
-
-                    // Loop through each row in the DataGridView
-                    foreach (DataGridViewRow row in dataGridView1.Rows)
-                    {
-                        // Retrieve the occupation value from the "occupation" column
-                        string occupation = row.Cells["occupation"].Value.ToString();
-
-                        // Assign job hours based on the matched occupation
-                        TimeSpan jobHours;
-                        DateTime jobTimeIn, jobTimeOut;
-                        switch (occupation)
-                        {
-                            case "Teacher":
-                                jobTimeIn = DateTime.ParseExact("07:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
-                                jobTimeOut = DateTime.ParseExact("17:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
-                                break;
-                            case "Sports Coach":
-                                jobTimeIn = DateTime.ParseExact("07:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
-                                jobTimeOut = DateTime.ParseExact("16:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
-                                break;
-                            case "School Nurse":
-                                jobTimeIn = DateTime.ParseExact("08:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
-                                jobTimeOut = DateTime.ParseExact("16:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
-                                break;
-                            case "Maintenance Technician":
-                                jobTimeIn = DateTime.ParseExact("09:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
-                                jobTimeOut = DateTime.ParseExact("17:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
-                                break;
-                            case "Registrar":
-                                jobTimeIn = DateTime.ParseExact("07:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
-                                jobTimeOut = DateTime.ParseExact("17:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
-                                break;
-                            case "Guidance Counselor":
-                                jobTimeIn = DateTime.ParseExact("07:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
-                                jobTimeOut = DateTime.ParseExact("16:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
-                                break;
-                            case "Guard":
-                                jobTimeIn = DateTime.ParseExact("07:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
-                                jobTimeOut = DateTime.ParseExact("18:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
-                                break;
-                            case "Chairperson":
-                                jobTimeIn = DateTime.ParseExact("07:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
-                                jobTimeOut = DateTime.ParseExact("18:00:00", "HH:mm:ss", CultureInfo.InvariantCulture);
-                                break;
-                            default:
-                                jobTimeIn = DateTime.MinValue;
-                                jobTimeOut = DateTime.MinValue;
-                                break;
-                        }
-
-                        // Update the jobtimein, jobtimeout, and jobhours columns in the MySQL table for the current row
-                        string updateQuery = "UPDATE employee SET jobtimein = @jobtimein, jobtimeout = @jobtimeout, jobhours = SEC_TO_TIME(TIME_TO_SEC(@jobtimeout) - TIME_TO_SEC(@jobtimein)) WHERE occupation = @occupation";
-                        MySqlCommand command = new MySqlCommand(updateQuery, connection);
-                        command.Parameters.AddWithValue("@jobtimein", jobTimeIn);
-                        command.Parameters.AddWithValue("@jobtimeout", jobTimeOut);
-                        command.Parameters.AddWithValue("@occupation", occupation);
-                        command.ExecuteNonQuery();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("An error occurred: " + ex.Message);
-                }
-                finally
-                {
-                    connection.Close();
-                }
-
-                // Set the format of the jobtimein and jobtimeout columns in the DataGridView
-                DataGridViewColumn jobTimeInColumn = dataGridView1.Columns["jobtimein"];
-                DataGridViewColumn jobTimeOutColumn = dataGridView1.Columns["jobtimeout"];
-                jobTimeInColumn.DefaultCellStyle.Format = "hh:mm:ss tt";
-                jobTimeOutColumn.DefaultCellStyle.Format = "hh:mm:ss tt";
-
-
-
-                dataGridView1.Columns["employeenum"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["firstname"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["middle"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["lastname"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["gender"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["suffix"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["homenum"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["phonenum"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["email"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["address"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["postal"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["accountnum"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["hiredate"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["timein"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["timeout"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["image_data"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["jobhours"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["jobtimein"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["jobtimeout"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["jobsalary"].Visible = false;    //Hide a specific column
-
-
-
-                //reader.Close();
-                connection.Close();
-            }
-        }
-
         private void LoadImageData()
         {
             try
@@ -472,10 +340,6 @@ namespace SCTAttendanceSystemUI.Forms
                 }
             }
         }
-
-        /// <summary>
-        /// with reference
-        /// </summary>
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -794,6 +658,28 @@ namespace SCTAttendanceSystemUI.Forms
                     (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = filter;
                 }
             }
+        }
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
         }
     }
 }

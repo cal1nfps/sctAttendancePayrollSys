@@ -32,12 +32,20 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
         private string transferredData10;
         private string transferredData11;
         private string transferredData12;
+        private string transferredData13;
+        private string transferredData14;
+        private string transferredData15;
+        private string transferredData16;
+        private string transferredData17;
+        private string transferredData18;
+        private string transferredData19;
+        private string transferredData20;
 
 
 
 
-
-        public PayrollCheques(string department, string occupation, string jobsalary, string accountnum, string hiredate, string dob, string hourlyrate, string date, string deduction, string gross, string net, string name)
+        public PayrollCheques(string department, string occupation, string jobsalary, string accountnum, string hiredate, string dob, string hourlyrate, string date, string deduction,
+            string gross, string net, string name, string payrolltype, string overtimehours, string undertime, string late, string totalhours, string allowance, string totalsalary, string contributions)
         {
             InitializeComponent();
             transferredData1 = department;
@@ -52,72 +60,14 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
             transferredData10 = gross;
             transferredData11 = net;
             transferredData12 = name;
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox8_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox9_TextChanged(object sender, EventArgs e)
-        {
+            transferredData13 = payrolltype;
+            transferredData14 = overtimehours;
+            transferredData15 = undertime;
+            transferredData16 = late;
+            transferredData17 = totalhours;
+            transferredData18 = allowance;
+            transferredData19 = totalsalary;
+            transferredData20 = contributions;
 
         }
 
@@ -142,14 +92,30 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
                 document.Open();
 
                 // Set up fonts
-                iTextSharp.text.Font headerFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 30, iTextSharp.text.Font.BOLDITALIC);
+                iTextSharp.text.Font headerFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 25, iTextSharp.text.Font.BOLDITALIC);
+                iTextSharp.text.Font headerFont2 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 20, iTextSharp.text.Font.BOLDITALIC);
                 iTextSharp.text.Font dataFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 12, iTextSharp.text.Font.BOLD);
                 iTextSharp.text.Font dataFont2 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 12);
 
                 // Add the header
-                iTextSharp.text.Paragraph header = new iTextSharp.text.Paragraph("Siena College of Taytay", headerFont);
-                header.Alignment = iTextSharp.text.Element.ALIGN_CENTER;
+                iTextSharp.text.Paragraph header = new iTextSharp.text.Paragraph("Siena College of Taytay                   PAYSLIP", headerFont);
+
+                header.Alignment = iTextSharp.text.Element.ALIGN_LEFT;
+                header.Font.Color = new BaseColor(128, 0, 0); // RGB values for maroon
                 document.Add(header);
+
+                // Create the subheader text
+                Chunk subHeaderText = new Chunk("Subheader Text", dataFont); 
+                subHeaderText.SetBackground(new BaseColor(128, 0, 0)); // Set the background color
+
+
+                // Create the subheader paragraph
+                Paragraph subHeader = new Paragraph(subHeaderText);
+                subHeader.Font.Color = new BaseColor(Color.White); // RGB values for maroon
+                subHeader.Alignment = Element.ALIGN_LEFT;
+
+                // Add the subheader to the document
+                document.Add(subHeader);
 
                 // Add spacing between header and table
                 document.Add(new iTextSharp.text.Paragraph(" "));
@@ -233,7 +199,7 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
         private void PayrollCheques_Load(object sender, EventArgs e)
         {
 
-
+            textBox1.Text = transferredData13; // payrolltype
             textBox2.Text = transferredData1; // department
             textBox6.Text = transferredData2; // occupation
             textBox7.Text = transferredData3; // salary
@@ -256,29 +222,22 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
 
         }
 
-        private void label13_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox10_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-        }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void textBox8_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void label3_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label7_Click(object sender, EventArgs e)
         {
 
         }
@@ -292,23 +251,85 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
         {
         }
 
-        private void textBox13_TextChanged(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void textBox10_TextChanged(object sender, EventArgs e)
         {
 
         }
 
         private void textBox11_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void label10_Click(object sender, EventArgs e)
         {
+
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void textBox13_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void textBox9_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
         }
     }
 }

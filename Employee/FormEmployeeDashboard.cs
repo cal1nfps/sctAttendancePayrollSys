@@ -56,7 +56,7 @@ namespace SCTAttendanceSystemUI.Employee
                     // A record already exists, meaning the user has already time-in for the day
                     MessageBox.Show("You have already time-in for today.");
                     this.Hide();
-                    FormRequestLeave form_form1 = new FormRequestLeave();
+                    WelcomePage form_form1 = new WelcomePage();
                     form_form1.ShowDialog();
                 }
                 else
@@ -92,7 +92,7 @@ namespace SCTAttendanceSystemUI.Employee
 
                         MessageBox.Show("Attendance Time-In successfully!");
                         this.Hide();
-                        FormRequestLeave form_form1 = new FormRequestLeave();
+                        WelcomePage form_form1 = new WelcomePage();
                         form_form1.ShowDialog();
                     }
                     else
@@ -117,7 +117,6 @@ namespace SCTAttendanceSystemUI.Employee
         {
             // Get the label text
             string name = label1.Text;
-            int id = 123;
             DateTime timeout = Convert.ToDateTime(labelTime.Text);
 
 
@@ -127,7 +126,7 @@ namespace SCTAttendanceSystemUI.Employee
                 connection.Open();
 
                 // Update the empty column based on label text name
-                string query = "UPDATE empattendance SET timeout = @timeout, totalhours = TIMEDIFF(timeout, timein), late = TIMEDIFF(timein, jobtimein), undertime = TIMEDIFF(jobtimeout, timeout) WHERE name = @name AND timeout IS NULL";
+                string query = "UPDATE empattendance SET timeout = @timeout, totalhours = TIMEDIFF(timeout, timein), late = IF(TIMEDIFF(timein, jobtimein) >= '00:00:00', TIMEDIFF(timein, jobtimein), '00:00:00'), undertime = IF(TIMEDIFF(jobtimeout, timeout) >= '00:00:00', TIMEDIFF(jobtimeout, timeout), '00:00:00') WHERE name = @name AND timeout IS NULL";
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.Parameters.AddWithValue("@timeout", timeout);
                 command.Parameters.AddWithValue("@name", name);
@@ -155,7 +154,7 @@ namespace SCTAttendanceSystemUI.Employee
 
 
             this.Hide();
-            FormRequestLeave form_form1 = new FormRequestLeave();
+            WelcomePage form_form1 = new WelcomePage();
             form_form1.ShowDialog();
             this.Close();
         }
