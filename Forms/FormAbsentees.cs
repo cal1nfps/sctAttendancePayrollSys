@@ -281,15 +281,17 @@ namespace SCTAttendanceSystemUI.Forms
                     string dep = row["department"].ToString();
                     string occupation = row["occupation"].ToString();
                     string jobstatus = row["jobstatus"].ToString();
+                    DateTime currentDate = DateTime.Now;
 
 
-                    string insertQuery = "INSERT INTO emp_absents (empnum, name, department, occupation, jobstatus) VALUES (@empnum, @name, @department, @occupation, @jobstatus)";
+                    string insertQuery = "INSERT INTO emp_absents (empnum, name, department, occupation, jobstatus, date) VALUES (@empnum, @name, @department, @occupation, @jobstatus, @date)";
                     MySqlCommand insertCommand = new MySqlCommand(insertQuery, connection);
                     insertCommand.Parameters.AddWithValue("@empnum", empnum);
                     insertCommand.Parameters.AddWithValue("@name", name);
                     insertCommand.Parameters.AddWithValue("@department", dep);
                     insertCommand.Parameters.AddWithValue("@occupation", occupation);
                     insertCommand.Parameters.AddWithValue("@jobstatus", jobstatus);
+                    insertCommand.Parameters.AddWithValue("@date", currentDate);
 
 
 

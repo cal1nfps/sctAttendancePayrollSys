@@ -165,7 +165,7 @@
             ClientSize = new Size(216, 335);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Location = new Point(1355, 325);
+            Location = new Point(1280, 305);
             Name = "sort";
             StartPosition = FormStartPosition.Manual;
             Text = "sort";

@@ -222,7 +222,7 @@
             ClientSize = new Size(216, 335);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Location = new Point(1407, 325);
+            Location = new Point(1330, 305);
             Name = "filterAttendanceButton";
             StartPosition = FormStartPosition.Manual;
             Text = "filterAttendanceButton";

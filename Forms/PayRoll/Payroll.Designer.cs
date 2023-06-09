@@ -50,8 +50,6 @@
             textBox13 = new TextBox();
             textBox11 = new TextBox();
             label13 = new Label();
-            label15 = new Label();
-            textBox10 = new TextBox();
             label14 = new Label();
             textBox9 = new TextBox();
             label10 = new Label();
@@ -192,8 +190,6 @@
             panel2.Controls.Add(textBox13);
             panel2.Controls.Add(textBox11);
             panel2.Controls.Add(label13);
-            panel2.Controls.Add(label15);
-            panel2.Controls.Add(textBox10);
             panel2.Controls.Add(label14);
             panel2.Controls.Add(textBox9);
             panel2.Controls.Add(label10);
@@ -382,29 +378,6 @@
             label13.TabIndex = 81;
             label13.Text = "Salary";
             label13.Click += label13_Click_1;
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label15.ForeColor = SystemColors.ControlDarkDark;
-            label15.Location = new Point(482, 41);
-            label15.Name = "label15";
-            label15.Size = new Size(81, 14);
-            label15.TabIndex = 80;
-            label15.Text = "Absent Hours";
-            label15.Click += label15_Click;
-            // 
-            // textBox10
-            // 
-            textBox10.Enabled = false;
-            textBox10.Location = new Point(456, 58);
-            textBox10.Name = "textBox10";
-            textBox10.ReadOnly = true;
-            textBox10.Size = new Size(107, 23);
-            textBox10.TabIndex = 79;
-            textBox10.TextAlign = HorizontalAlignment.Right;
-            textBox10.TextChanged += textBox10_TextChanged;
             // 
             // label14
             // 
@@ -683,8 +656,6 @@
         private Label label11;
         private Label label14;
         public TextBox textBox9;
-        private Label label15;
-        public TextBox textBox10;
         private Label label13;
         public TextBox textBox11;
         public TextBox textBox12;
