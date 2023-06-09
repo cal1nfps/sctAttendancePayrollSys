@@ -9,15 +9,22 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
 using System.Reflection.Metadata.Ecma335;
+using MySql.Data.MySqlClient;
 using ExcelDataReader;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace SCTAttendanceSystemUI.Forms
 {
     public partial class FormAbsentees : Form
     {
+        private MySqlConnection connection;
+        private MySqlDataAdapter adapter;
+        private DataTable table;
         public FormAbsentees()
         {
             InitializeComponent();
+            string connectionString = "server=localhost;user=root;password=root;database=payrollsys";
+            connection = new MySqlConnection(connectionString);
         }
 
         /*private void FormAbsentees_Load(object sender, EventArgs e)
@@ -233,11 +240,93 @@ namespace SCTAttendanceSystemUI.Forms
         private void FormAbsentees_Load_1(object sender, EventArgs e)
         {
             labelAbsenteesDate.Text = DateTime.Now.ToLongDateString();
+            LoadAbsentEmployees();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
 
+
+        }
+
+        // Method to load absent employees and display them in the DataGridView
+        private void LoadAbsentEmployees()
+        {
+            try
+            {
+                // Open the connection
+                connection.Open();
+
+                // Retrieve employees who are not present in empattendance today
+                string selectQuery = "SELECT employeenum, name, department, occupation, jobstatus FROM employee WHERE employeenum NOT IN (SELECT empnum FROM empattendance WHERE DATE(date) = @today)";
+                MySqlCommand selectCommand = new MySqlCommand(selectQuery, connection);
+                selectCommand.Parameters.AddWithValue("@today", DateTime.Today);
+                adapter = new MySqlDataAdapter(selectCommand);
+
+                // Create a DataTable to hold the data
+                table = new DataTable();
+
+                // Fill the DataTable with the data retrieved by the adapter
+                adapter.Fill(table);
+
+                // Set the DataSource of the DataGridView to the DataTable
+                dataGridView2.DataSource = table;
+
+                // Insert the absent employees into emp_absent table
+                foreach (DataRow row in table.Rows)
+                {
+                    string empnum = row["employeenum"].ToString();
+                    string name = row["name"].ToString();
+                    string dep = row["department"].ToString();
+                    string occupation = row["occupation"].ToString();
+                    string jobstatus = row["jobstatus"].ToString();
+
+
+                    string insertQuery = "INSERT INTO emp_absents (empnum, name, department, occupation, jobstatus) VALUES (@empnum, @name, @department, @occupation, @jobstatus)";
+                    MySqlCommand insertCommand = new MySqlCommand(insertQuery, connection);
+                    insertCommand.Parameters.AddWithValue("@empnum", empnum);
+                    insertCommand.Parameters.AddWithValue("@name", name);
+                    insertCommand.Parameters.AddWithValue("@department", dep);
+                    insertCommand.Parameters.AddWithValue("@occupation", occupation);
+                    insertCommand.Parameters.AddWithValue("@jobstatus", jobstatus);
+
+
+
+                    insertCommand.ExecuteNonQuery();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
+            finally
+            {
+                // Close the connection
+                connection.Close();
+            }
+        }
+
+        private DataView dataView;
+        private DataTable originalDataTable;
+
+        private void SearchData(string searchText)
+        {
+            if (dataView == null)
+            {
+                originalDataTable = (DataTable)dataGridView2.DataSource;
+                dataView = new DataView(originalDataTable);
+            }
+
+            dataView.RowFilter = $"name LIKE '%{searchText}%' OR Convert(employeenum, 'System.String') LIKE '%{searchText}%'";
+            dataGridView2.DataSource = dataView;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = textBox1.Text;
+            SearchData(searchText);
         }
     }
 }

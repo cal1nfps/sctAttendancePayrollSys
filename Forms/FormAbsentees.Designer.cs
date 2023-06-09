@@ -36,15 +36,7 @@
             button1 = new Button();
             button4 = new Button();
             panelAbsenteesForToday = new Panel();
-            label2 = new Label();
-            label1 = new Label();
-            labelStatus = new Label();
-            labelOvertimeHours = new Label();
-            labelTimeOut = new Label();
             labelOccupation = new Label();
-            labelTotalHours = new Label();
-            labelTimeIn = new Label();
-            labelDate = new Label();
             labelJobStatus = new Label();
             labelDep = new Label();
             labelName = new Label();
@@ -80,12 +72,22 @@
             // 
             dataGridView2.AllowUserToAddRows = false;
             dataGridView2.AllowUserToDeleteRows = false;
+            dataGridView2.AllowUserToResizeColumns = false;
+            dataGridView2.AllowUserToResizeRows = false;
             dataGridView2.BackgroundColor = Color.White;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.ColumnHeadersVisible = false;
             dataGridView2.Location = new Point(38, 127);
+            dataGridView2.MultiSelect = false;
             dataGridView2.Name = "dataGridView2";
             dataGridView2.ReadOnly = true;
+            dataGridView2.RowHeadersVisible = false;
+            dataGridView2.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridView2.RowTemplate.Height = 25;
+            dataGridView2.ShowCellErrors = false;
+            dataGridView2.ShowCellToolTips = false;
+            dataGridView2.ShowEditingIcon = false;
+            dataGridView2.ShowRowErrors = false;
             dataGridView2.Size = new Size(951, 392);
             dataGridView2.TabIndex = 33;
             // 
@@ -93,9 +95,10 @@
             // 
             textBox1.Location = new Point(687, 62);
             textBox1.Name = "textBox1";
+            textBox1.PlaceholderText = "Search Name or Employee Number";
             textBox1.Size = new Size(196, 23);
             textBox1.TabIndex = 72;
-            textBox1.Text = "Search Employee Number or Name";
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // button1
             // 
@@ -138,15 +141,7 @@
             // 
             panelAbsenteesForToday.BackColor = Color.White;
             panelAbsenteesForToday.BorderStyle = BorderStyle.FixedSingle;
-            panelAbsenteesForToday.Controls.Add(label2);
-            panelAbsenteesForToday.Controls.Add(label1);
-            panelAbsenteesForToday.Controls.Add(labelStatus);
-            panelAbsenteesForToday.Controls.Add(labelOvertimeHours);
-            panelAbsenteesForToday.Controls.Add(labelTimeOut);
             panelAbsenteesForToday.Controls.Add(labelOccupation);
-            panelAbsenteesForToday.Controls.Add(labelTotalHours);
-            panelAbsenteesForToday.Controls.Add(labelTimeIn);
-            panelAbsenteesForToday.Controls.Add(labelDate);
             panelAbsenteesForToday.Controls.Add(labelJobStatus);
             panelAbsenteesForToday.Controls.Add(labelDep);
             panelAbsenteesForToday.Controls.Add(labelName);
@@ -156,111 +151,23 @@
             panelAbsenteesForToday.Size = new Size(951, 30);
             panelAbsenteesForToday.TabIndex = 75;
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.ForeColor = SystemColors.ControlDarkDark;
-            label2.Location = new Point(859, 7);
-            label2.Name = "label2";
-            label2.Size = new Size(66, 14);
-            label2.TabIndex = 71;
-            label2.Text = "Late Hours";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.ControlDarkDark;
-            label1.Location = new Point(780, 7);
-            label1.Name = "label1";
-            label1.Size = new Size(62, 14);
-            label1.TabIndex = 71;
-            label1.Text = "Undertime";
-            // 
-            // labelStatus
-            // 
-            labelStatus.AutoSize = true;
-            labelStatus.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            labelStatus.ForeColor = SystemColors.ControlDarkDark;
-            labelStatus.Location = new Point(721, 7);
-            labelStatus.Name = "labelStatus";
-            labelStatus.Size = new Size(41, 14);
-            labelStatus.TabIndex = 70;
-            labelStatus.Text = "Status";
-            // 
-            // labelOvertimeHours
-            // 
-            labelOvertimeHours.AutoSize = true;
-            labelOvertimeHours.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            labelOvertimeHours.ForeColor = SystemColors.ControlDarkDark;
-            labelOvertimeHours.Location = new Point(646, 7);
-            labelOvertimeHours.Name = "labelOvertimeHours";
-            labelOvertimeHours.Size = new Size(57, 14);
-            labelOvertimeHours.TabIndex = 69;
-            labelOvertimeHours.Text = "OT Hours";
-            // 
-            // labelTimeOut
-            // 
-            labelTimeOut.AutoSize = true;
-            labelTimeOut.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            labelTimeOut.ForeColor = SystemColors.ControlDarkDark;
-            labelTimeOut.Location = new Point(488, 7);
-            labelTimeOut.Name = "labelTimeOut";
-            labelTimeOut.Size = new Size(57, 14);
-            labelTimeOut.TabIndex = 68;
-            labelTimeOut.Text = "Time-Out";
-            // 
             // labelOccupation
             // 
             labelOccupation.AutoSize = true;
             labelOccupation.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             labelOccupation.ForeColor = SystemColors.ControlDarkDark;
-            labelOccupation.Location = new Point(204, 7);
+            labelOccupation.Location = new Point(309, 7);
             labelOccupation.Name = "labelOccupation";
             labelOccupation.Size = new Size(68, 14);
             labelOccupation.TabIndex = 67;
             labelOccupation.Text = "Occupation";
-            // 
-            // labelTotalHours
-            // 
-            labelTotalHours.AutoSize = true;
-            labelTotalHours.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            labelTotalHours.ForeColor = SystemColors.ControlDarkDark;
-            labelTotalHours.Location = new Point(560, 7);
-            labelTotalHours.Name = "labelTotalHours";
-            labelTotalHours.Size = new Size(68, 14);
-            labelTotalHours.TabIndex = 66;
-            labelTotalHours.Text = "Total Hours";
-            // 
-            // labelTimeIn
-            // 
-            labelTimeIn.AutoSize = true;
-            labelTimeIn.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            labelTimeIn.ForeColor = SystemColors.ControlDarkDark;
-            labelTimeIn.Location = new Point(425, 7);
-            labelTimeIn.Name = "labelTimeIn";
-            labelTimeIn.Size = new Size(48, 14);
-            labelTimeIn.TabIndex = 65;
-            labelTimeIn.Text = "Time-In";
-            // 
-            // labelDate
-            // 
-            labelDate.AutoSize = true;
-            labelDate.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            labelDate.ForeColor = SystemColors.ControlDarkDark;
-            labelDate.Location = new Point(375, 7);
-            labelDate.Name = "labelDate";
-            labelDate.Size = new Size(31, 14);
-            labelDate.TabIndex = 64;
-            labelDate.Text = "Date";
             // 
             // labelJobStatus
             // 
             labelJobStatus.AutoSize = true;
             labelJobStatus.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             labelJobStatus.ForeColor = SystemColors.ControlDarkDark;
-            labelJobStatus.Location = new Point(290, 7);
+            labelJobStatus.Location = new Point(392, 7);
             labelJobStatus.Name = "labelJobStatus";
             labelJobStatus.Size = new Size(64, 14);
             labelJobStatus.TabIndex = 62;
@@ -271,7 +178,7 @@
             labelDep.AutoSize = true;
             labelDep.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             labelDep.ForeColor = SystemColors.ControlDarkDark;
-            labelDep.Location = new Point(112, 7);
+            labelDep.Location = new Point(216, 7);
             labelDep.Name = "labelDep";
             labelDep.Size = new Size(70, 14);
             labelDep.TabIndex = 61;
@@ -282,7 +189,7 @@
             labelName.AutoSize = true;
             labelName.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             labelName.ForeColor = SystemColors.ControlDarkDark;
-            labelName.Location = new Point(42, 7);
+            labelName.Location = new Point(124, 7);
             labelName.Name = "labelName";
             labelName.Size = new Size(37, 14);
             labelName.TabIndex = 60;
@@ -337,15 +244,7 @@
         private Button button1;
         private Button button4;
         private Panel panelAbsenteesForToday;
-        private Label label2;
-        private Label label1;
-        private Label labelStatus;
-        private Label labelOvertimeHours;
-        private Label labelTimeOut;
         private Label labelOccupation;
-        private Label labelTotalHours;
-        private Label labelTimeIn;
-        private Label labelDate;
         private Label labelJobStatus;
         private Label labelDep;
         private Label labelName;
