@@ -1,6 +1,6 @@
-﻿namespace SCTAttendanceSystemUI.Forms.filterAttendance
+﻿namespace SCTAttendanceSystemUI.Employee.filterOnLeave
 {
-    partial class filterAttendanceButton
+    partial class filteronleave
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(filterAttendanceButton));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(filteronleave));
             panel1 = new Panel();
-            comboBox4 = new ComboBox();
             comboBox3 = new ComboBox();
-            comboBox1 = new ComboBox();
             button2 = new Button();
             panel4 = new Panel();
             panel2 = new Panel();
@@ -47,9 +45,7 @@
             // 
             panel1.BackColor = Color.White;
             panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(comboBox4);
             panel1.Controls.Add(comboBox3);
-            panel1.Controls.Add(comboBox1);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(panel4);
             panel1.Controls.Add(panel2);
@@ -60,23 +56,8 @@
             panel1.Location = new Point(2, 1);
             panel1.Name = "panel1";
             panel1.Size = new Size(213, 332);
-            panel1.TabIndex = 8;
+            panel1.TabIndex = 9;
             panel1.Paint += panel1_Paint;
-            // 
-            // comboBox4
-            // 
-            comboBox4.BackColor = Color.WhiteSmoke;
-            comboBox4.Cursor = Cursors.Hand;
-            comboBox4.FlatStyle = FlatStyle.Flat;
-            comboBox4.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Items.AddRange(new object[] { "None", "2023", "2022", "2021", "2020", "2019" });
-            comboBox4.Location = new Point(36, 152);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(142, 23);
-            comboBox4.TabIndex = 71;
-            comboBox4.Text = "YEAR";
-            comboBox4.SelectedIndexChanged += comboBox4_SelectedIndexChanged;
             // 
             // comboBox3
             // 
@@ -86,27 +67,12 @@
             comboBox3.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox3.FormattingEnabled = true;
             comboBox3.Items.AddRange(new object[] { "FULL-TIME", "PART-TIME" });
-            comboBox3.Location = new Point(36, 123);
+            comboBox3.Location = new Point(36, 167);
             comboBox3.Name = "comboBox3";
             comboBox3.Size = new Size(142, 23);
             comboBox3.TabIndex = 70;
             comboBox3.Text = "JOB STATUS";
             comboBox3.SelectedIndexChanged += comboBox3_SelectedIndexChanged;
-            // 
-            // comboBox1
-            // 
-            comboBox1.BackColor = Color.WhiteSmoke;
-            comboBox1.Cursor = Cursors.Hand;
-            comboBox1.FlatStyle = FlatStyle.Flat;
-            comboBox1.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "None", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" });
-            comboBox1.Location = new Point(36, 181);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(142, 23);
-            comboBox1.TabIndex = 69;
-            comboBox1.Text = "MONTH";
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // button2
             // 
@@ -153,7 +119,7 @@
             comboBox2.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox2.FormattingEnabled = true;
             comboBox2.Items.AddRange(new object[] { "IBED", "SED", "ASP" });
-            comboBox2.Location = new Point(36, 94);
+            comboBox2.Location = new Point(36, 117);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(142, 23);
             comboBox2.TabIndex = 65;
@@ -215,7 +181,7 @@
             cancelButton.UseVisualStyleBackColor = false;
             cancelButton.Click += cancelButton_Click;
             // 
-            // filterAttendanceButton
+            // filteronleave
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -223,9 +189,9 @@
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Location = new Point(1407, 325);
-            Name = "filterAttendanceButton";
+            Name = "filteronleave";
             StartPosition = FormStartPosition.Manual;
-            Text = "filterAttendanceButton";
+            Text = "filteronleave";
             panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -233,6 +199,7 @@
         #endregion
 
         private Panel panel1;
+        public ComboBox comboBox3;
         private Button button2;
         private Panel panel4;
         private Panel panel2;
@@ -240,8 +207,5 @@
         private Button button1;
         public ComboBox filterComboBox;
         private Button cancelButton;
-        public ComboBox comboBox1;
-        public ComboBox comboBox3;
-        public ComboBox comboBox4;
     }
 }

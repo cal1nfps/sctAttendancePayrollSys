@@ -55,6 +55,26 @@ namespace SCTAttendanceSystemUI.Forms.AddLeaveButton
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
+
+            try
+            {
+                connection.Open();
+                // Delete the selected row from emp_leaverequests table
+                string deleteQuery = "DELETE FROM emp_leaverequests WHERE empnum = @empnum";
+                MySqlCommand deleteCommand = new MySqlCommand(deleteQuery, connection);
+                deleteCommand.Parameters.AddWithValue("@empnum", textBoxEmployeeNo.Text);
+                deleteCommand.ExecuteNonQuery();
+
+                MessageBox.Show("Request Rejected!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
             this.Close();
         }
 

@@ -56,7 +56,6 @@ namespace SCTAttendanceSystemUI.Forms
             dataGridView1.Columns["hiredate"].Visible = false;    //Hide a specific column
             dataGridView1.Columns["accountnum"].Visible = false;    //Hide a specific column
             dataGridView1.Columns["jobsalary"].Visible = false;    //Hide a specific column
-            dataGridView1.Columns["date"].Visible = false;    //Hide a specific column
             dataGridView1.Columns["payrolltype"].Visible = false;    //Hide a specific column
             dataGridView1.Columns["hourlyrate"].Visible = false;    //Hide a specific column
             dataGridView1.Columns["overtimehours"].Visible = false;    //Hide a specific column

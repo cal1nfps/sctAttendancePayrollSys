@@ -11,8 +11,12 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using SCTAttendanceSystemUI.Employee.sortOnLeave;
 using SCTAttendanceSystemUI.Employee.sortRequest;
+using SCTAttendanceSystemUI.Employee.filterOnLeave;
+using SCTAttendanceSystemUI.Employee.filterLeaveReq;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using SCTAttendanceSystemUI.Forms.PayRoll;
+using SCTAttendanceSystemUI.Forms.filterAttendance;
+using System.Globalization;
 
 namespace SCTAttendanceSystemUI.Forms
 {
@@ -91,7 +95,69 @@ namespace SCTAttendanceSystemUI.Forms
 
         private void button4_Click(object sender, EventArgs e)
         {
+            {
+                // APPLY FILTER
+                // Create an instance of the second form
+                filterleaverequests filterForm = new filterleaverequests();
 
+                // Show the second form as a dialog and wait for it to close
+                DialogResult result = filterForm.ShowDialog();
+
+                // Check if the user clicked the OK button
+                if (result == DialogResult.OK)
+                {
+                    // Get the selected values from the comboboxes in the second form
+                    string occupation = filterForm.filterComboBox.SelectedItem?.ToString();
+                    string department = filterForm.comboBox2.SelectedItem?.ToString();
+                    string jobstatus = filterForm.comboBox3.SelectedItem?.ToString();
+
+
+
+                    // Check if at least one combobox is selected
+                    if (string.IsNullOrWhiteSpace(occupation) && string.IsNullOrWhiteSpace(department) && string.IsNullOrWhiteSpace(jobstatus))
+                    {
+                        MessageBox.Show("Please select at least one filter option.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        // Apply the filters to the datagridview
+                        string filter = "";
+
+                        if (!string.IsNullOrWhiteSpace(occupation))
+                        {
+                            filter += $"[occupation] = '{occupation}'";
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(department))
+                        {
+                            if (!string.IsNullOrWhiteSpace(filter))
+                            {
+                                filter += " AND ";
+
+                            }
+                            filter += $"[department] = '{department}'";
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(jobstatus))
+                        {
+                            if (!string.IsNullOrWhiteSpace(filter))
+                            {
+                                filter += " AND ";
+
+                            }
+                            filter += $"[jobstatus] = '{jobstatus}'";
+                        }
+
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        dataGridView1.DataSource = dataTable;
+
+                        (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = filter;
+
+                    }
+
+                }
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -284,7 +350,74 @@ namespace SCTAttendanceSystemUI.Forms
 
         private void label2_Click(object sender, EventArgs e)
         {
+            
+        }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            {
+                // APPLY FILTER
+                // Create an instance of the second form
+                filteronleave filterForm = new filteronleave();
+
+                // Show the second form as a dialog and wait for it to close
+                DialogResult result = filterForm.ShowDialog();
+
+                // Check if the user clicked the OK button
+                if (result == DialogResult.OK)
+                {
+                    // Get the selected values from the comboboxes in the second form
+                    string occupation = filterForm.filterComboBox.SelectedItem?.ToString();
+                    string department = filterForm.comboBox2.SelectedItem?.ToString();
+                    string jobstatus = filterForm.comboBox3.SelectedItem?.ToString();
+
+
+
+                    // Check if at least one combobox is selected
+                    if (string.IsNullOrWhiteSpace(occupation) && string.IsNullOrWhiteSpace(department) && string.IsNullOrWhiteSpace(jobstatus))
+                    {
+                        MessageBox.Show("Please select at least one filter option.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        // Apply the filters to the datagridview
+                        string filter = "";
+
+                        if (!string.IsNullOrWhiteSpace(occupation))
+                        {
+                            filter += $"[occupation] = '{occupation}'";
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(department))
+                        {
+                            if (!string.IsNullOrWhiteSpace(filter))
+                            {
+                                filter += " AND ";
+
+                            }
+                            filter += $"[department] = '{department}'";
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(jobstatus))
+                        {
+                            if (!string.IsNullOrWhiteSpace(filter))
+                            {
+                                filter += " AND ";
+
+                            }
+                            filter += $"[jobstatus] = '{jobstatus}'";
+                        }
+
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        dataGridViewLeave.DataSource = dataTable;
+
+                        (dataGridViewLeave.DataSource as DataTable).DefaultView.RowFilter = filter;
+
+                    }
+
+                }
+            }
         }
     }
 }

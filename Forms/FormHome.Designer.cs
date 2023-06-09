@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHome));
             labelDashboard = new Label();
             labelDashboardDate = new Label();
@@ -50,6 +50,7 @@
             labelDep = new Label();
             labelName = new Label();
             labelEmpNum = new Label();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panelAttendanceForToday.SuspendLayout();
             SuspendLayout();
@@ -86,15 +87,15 @@
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.ColumnHeadersVisible = false;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.NullValue = null;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.NullValue = null;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.Location = new Point(38, 131);
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
@@ -114,7 +115,7 @@
             button4.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             button4.Image = (Image)resources.GetObject("button4.Image");
             button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.Location = new Point(1168, 54);
+            button4.Location = new Point(1115, 59);
             button4.Name = "button4";
             button4.Padding = new Padding(10, 0, 0, 0);
             button4.Size = new Size(47, 30);
@@ -126,7 +127,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(913, 59);
+            textBox1.Location = new Point(860, 64);
             textBox1.Name = "textBox1";
             textBox1.PlaceholderText = "Search Name or Employee Number";
             textBox1.Size = new Size(196, 23);
@@ -142,7 +143,7 @@
             button1.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             button1.Image = (Image)resources.GetObject("button1.Image");
             button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(1115, 54);
+            button1.Location = new Point(1062, 59);
             button1.Name = "button1";
             button1.Padding = new Padding(10, 0, 0, 0);
             button1.Size = new Size(47, 30);
@@ -317,6 +318,25 @@
             labelEmpNum.TabIndex = 58;
             labelEmpNum.Text = "#";
             // 
+            // button2
+            // 
+            button2.BackColor = Color.Green;
+            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.Image = (Image)resources.GetObject("button2.Image");
+            button2.ImageAlign = ContentAlignment.MiddleLeft;
+            button2.Location = new Point(1168, 59);
+            button2.Name = "button2";
+            button2.Padding = new Padding(10, 0, 0, 0);
+            button2.Size = new Size(47, 30);
+            button2.TabIndex = 71;
+            button2.TextAlign = ContentAlignment.MiddleLeft;
+            button2.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
             // FormHome
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -325,6 +345,7 @@
             BackgroundImage = Properties.Resources.BG_LOW_OPACITY;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1666, 822);
+            Controls.Add(button2);
             Controls.Add(panelAttendanceForToday);
             Controls.Add(button1);
             Controls.Add(textBox1);
@@ -368,5 +389,6 @@
         private Label labelEmpNum;
         private Label label2;
         private Label label1;
+        private Button button2;
     }
 }

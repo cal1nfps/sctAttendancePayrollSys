@@ -47,13 +47,13 @@
             button5 = new Button();
             button6 = new Button();
             panel1 = new Panel();
+            label3 = new Label();
             label2 = new Label();
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
             textBox2 = new TextBox();
-            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewLeave).BeginInit();
             panelLeaveForToday.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -302,6 +302,7 @@
             button5.TextAlign = ContentAlignment.MiddleLeft;
             button5.TextImageRelation = TextImageRelation.ImageBeforeText;
             button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // button6
             // 
@@ -336,6 +337,17 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(508, 30);
             panel1.TabIndex = 73;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.ForeColor = SystemColors.ControlDarkDark;
+            label3.Location = new Point(356, 7);
+            label3.Name = "label3";
+            label3.Size = new Size(31, 14);
+            label3.TabIndex = 68;
+            label3.Text = "Date";
             // 
             // label2
             // 
@@ -401,17 +413,6 @@
             textBox2.Size = new Size(196, 23);
             textBox2.TabIndex = 82;
             textBox2.TextChanged += textBox2_TextChanged;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.ForeColor = SystemColors.ControlDarkDark;
-            label3.Location = new Point(356, 7);
-            label3.Name = "label3";
-            label3.Size = new Size(31, 14);
-            label3.TabIndex = 68;
-            label3.Text = "Date";
             // 
             // FormLeave
             // 
