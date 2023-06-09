@@ -1,6 +1,6 @@
-﻿namespace SCTAttendanceSystemUI.Employee.filterOnLeave
+﻿namespace SCTAttendanceSystemUI.Employee.filterAbsent
 {
-    partial class filteronleave
+    partial class filterabsent
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(filteronleave));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(filterabsent));
             panel1 = new Panel();
             comboBox3 = new ComboBox();
             button2 = new Button();
@@ -56,8 +56,7 @@
             panel1.Location = new Point(2, 1);
             panel1.Name = "panel1";
             panel1.Size = new Size(213, 332);
-            panel1.TabIndex = 9;
-            panel1.Paint += panel1_Paint;
+            panel1.TabIndex = 10;
             // 
             // comboBox3
             // 
@@ -72,7 +71,6 @@
             comboBox3.Size = new Size(142, 23);
             comboBox3.TabIndex = 70;
             comboBox3.Text = "JOB STATUS";
-            comboBox3.SelectedIndexChanged += comboBox3_SelectedIndexChanged;
             // 
             // button2
             // 
@@ -91,7 +89,6 @@
             button2.Text = "Clear";
             button2.UseMnemonic = false;
             button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
             // 
             // panel4
             // 
@@ -100,7 +97,6 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(212, 2);
             panel4.TabIndex = 67;
-            panel4.Paint += panel4_Paint;
             // 
             // panel2
             // 
@@ -109,7 +105,6 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(212, 2);
             panel2.TabIndex = 66;
-            panel2.Paint += panel2_Paint;
             // 
             // comboBox2
             // 
@@ -124,7 +119,6 @@
             comboBox2.Size = new Size(142, 23);
             comboBox2.TabIndex = 65;
             comboBox2.Text = "DEPARTMENT";
-            comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
             // 
             // button1
             // 
@@ -158,7 +152,6 @@
             filterComboBox.Size = new Size(142, 23);
             filterComboBox.TabIndex = 62;
             filterComboBox.Text = "OCCUPATION";
-            filterComboBox.SelectedIndexChanged += filterComboBox_SelectedIndexChanged;
             // 
             // cancelButton
             // 
@@ -181,17 +174,17 @@
             cancelButton.UseVisualStyleBackColor = false;
             cancelButton.Click += cancelButton_Click;
             // 
-            // filteronleave
+            // filterabsent
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(216, 335);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Location = new Point(750, 380);
-            Name = "filteronleave";
+            Location = new Point(1100, 350);
+            Name = "filterabsent";
             StartPosition = FormStartPosition.Manual;
-            Text = "filteronleave";
+            Text = "filterabsent";
             panel1.ResumeLayout(false);
             ResumeLayout(false);
         }

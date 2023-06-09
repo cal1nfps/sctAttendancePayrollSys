@@ -41,6 +41,7 @@
             labelDep = new Label();
             labelName = new Label();
             labelEmpNum = new Label();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             panelAbsenteesForToday.SuspendLayout();
             SuspendLayout();
@@ -93,7 +94,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(687, 62);
+            textBox1.Location = new Point(634, 62);
             textBox1.Name = "textBox1";
             textBox1.PlaceholderText = "Search Name or Employee Number";
             textBox1.Size = new Size(196, 23);
@@ -109,7 +110,7 @@
             button1.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             button1.Image = (Image)resources.GetObject("button1.Image");
             button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(889, 55);
+            button1.Location = new Point(836, 55);
             button1.Name = "button1";
             button1.Padding = new Padding(10, 0, 0, 0);
             button1.Size = new Size(47, 30);
@@ -128,7 +129,7 @@
             button4.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             button4.Image = (Image)resources.GetObject("button4.Image");
             button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.Location = new Point(942, 55);
+            button4.Location = new Point(889, 55);
             button4.Name = "button4";
             button4.Padding = new Padding(10, 0, 0, 0);
             button4.Size = new Size(47, 30);
@@ -136,6 +137,7 @@
             button4.TextAlign = ContentAlignment.MiddleLeft;
             button4.TextImageRelation = TextImageRelation.ImageBeforeText;
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // panelAbsenteesForToday
             // 
@@ -206,6 +208,25 @@
             labelEmpNum.TabIndex = 58;
             labelEmpNum.Text = "#";
             // 
+            // button2
+            // 
+            button2.BackColor = Color.Green;
+            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.Image = (Image)resources.GetObject("button2.Image");
+            button2.ImageAlign = ContentAlignment.MiddleLeft;
+            button2.Location = new Point(942, 55);
+            button2.Name = "button2";
+            button2.Padding = new Padding(10, 0, 0, 0);
+            button2.Size = new Size(47, 30);
+            button2.TabIndex = 76;
+            button2.TextAlign = ContentAlignment.MiddleLeft;
+            button2.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
             // FormAbsentees
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -214,6 +235,7 @@
             BackgroundImage = Properties.Resources.BG_LOW_OPACITY;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1264, 681);
+            Controls.Add(button2);
             Controls.Add(panelAbsenteesForToday);
             Controls.Add(button4);
             Controls.Add(button1);
@@ -249,5 +271,6 @@
         private Label labelDep;
         private Label labelName;
         private Label labelEmpNum;
+        private Button button2;
     }
 }

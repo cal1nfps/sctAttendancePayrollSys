@@ -54,6 +54,8 @@
             label6 = new Label();
             label7 = new Label();
             textBox2 = new TextBox();
+            button7 = new Button();
+            button8 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewLeave).BeginInit();
             panelLeaveForToday.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -414,6 +416,44 @@
             textBox2.TabIndex = 82;
             textBox2.TextChanged += textBox2_TextChanged;
             // 
+            // button7
+            // 
+            button7.BackColor = Color.Green;
+            button7.BackgroundImage = (Image)resources.GetObject("button7.BackgroundImage");
+            button7.FlatAppearance.BorderSize = 0;
+            button7.FlatStyle = FlatStyle.Flat;
+            button7.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button7.Image = (Image)resources.GetObject("button7.Image");
+            button7.ImageAlign = ContentAlignment.MiddleLeft;
+            button7.Location = new Point(595, 292);
+            button7.Name = "button7";
+            button7.Padding = new Padding(10, 0, 0, 0);
+            button7.Size = new Size(47, 30);
+            button7.TabIndex = 83;
+            button7.TextAlign = ContentAlignment.MiddleLeft;
+            button7.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button7.UseVisualStyleBackColor = false;
+            button7.Click += button7_Click;
+            // 
+            // button8
+            // 
+            button8.BackColor = Color.Green;
+            button8.BackgroundImage = (Image)resources.GetObject("button8.BackgroundImage");
+            button8.FlatAppearance.BorderSize = 0;
+            button8.FlatStyle = FlatStyle.Flat;
+            button8.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button8.Image = (Image)resources.GetObject("button8.Image");
+            button8.ImageAlign = ContentAlignment.MiddleLeft;
+            button8.Location = new Point(1203, 292);
+            button8.Name = "button8";
+            button8.Padding = new Padding(10, 0, 0, 0);
+            button8.Size = new Size(47, 30);
+            button8.TabIndex = 84;
+            button8.TextAlign = ContentAlignment.MiddleLeft;
+            button8.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button8.UseVisualStyleBackColor = false;
+            button8.Click += button8_Click;
+            // 
             // FormLeave
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -422,6 +462,8 @@
             BackgroundImage = Properties.Resources.BG_LOW_OPACITY;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1264, 681);
+            Controls.Add(button8);
+            Controls.Add(button7);
             Controls.Add(textBox2);
             Controls.Add(panel1);
             Controls.Add(button2);
@@ -480,5 +522,7 @@
         private Label label7;
         private TextBox textBox2;
         private Label label3;
+        private Button button7;
+        private Button button8;
     }
 }

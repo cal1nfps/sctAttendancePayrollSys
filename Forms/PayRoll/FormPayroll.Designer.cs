@@ -40,6 +40,7 @@
             labelEmployeeNo = new Label();
             dataGridView1 = new DataGridView();
             button1 = new Button();
+            button3 = new Button();
             panelFormOvertime.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -196,7 +197,7 @@
             button1.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             button1.Image = (Image)resources.GetObject("button1.Image");
             button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(962, 54);
+            button1.Location = new Point(909, 54);
             button1.Name = "button1";
             button1.Padding = new Padding(10, 0, 0, 0);
             button1.Size = new Size(47, 30);
@@ -206,6 +207,25 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click_1;
             // 
+            // button3
+            // 
+            button3.BackColor = Color.Green;
+            button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button3.Image = (Image)resources.GetObject("button3.Image");
+            button3.ImageAlign = ContentAlignment.MiddleLeft;
+            button3.Location = new Point(962, 54);
+            button3.Name = "button3";
+            button3.Padding = new Padding(10, 0, 0, 0);
+            button3.Size = new Size(47, 30);
+            button3.TabIndex = 72;
+            button3.TextAlign = ContentAlignment.MiddleLeft;
+            button3.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
+            // 
             // FormPayroll
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -214,6 +234,7 @@
             BackgroundImage = Properties.Resources.BG_LOW_OPACITY;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1264, 681);
+            Controls.Add(button3);
             Controls.Add(button1);
             Controls.Add(dataGridView1);
             Controls.Add(panelFormOvertime);
@@ -245,5 +266,6 @@
         private Label labelFullName;
         private DataGridView dataGridView1;
         private Button button1;
+        private Button button3;
     }
 }

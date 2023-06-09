@@ -681,5 +681,66 @@ namespace SCTAttendanceSystemUI.Forms
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            {
+                // Create a SaveFileDialog to choose the file path and name
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Excel Files|*.xlsx";
+                saveFileDialog.Title = "Save Excel File";
+                saveFileDialog.FileName = "Employee-List-Output.xlsx"; // Default file name
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Get the selected file path and name
+                    string filePath = saveFileDialog.FileName;
+
+                    // Creating Excel Application
+                    Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
+
+                    // Creating new Workbook within Excel application
+                    Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
+
+                    // Creating new Excel sheet in workbook
+                    Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+
+                    // See the Excel sheet behind the program
+                    app.Visible = true;
+
+                    // Get the reference of the first sheet. By default, its name is Sheet1.
+                    // Store its reference to the worksheet
+                    worksheet = workbook.Sheets["Sheet1"];
+                    worksheet = workbook.ActiveSheet;
+
+                    // Changing the name of the active sheet
+                    worksheet.Name = "Sheet 1 Exported";
+
+                    // Storing header part in Excel
+                    for (int i = 1; i < dataGridView1.Columns.Count + 1; i++)
+                    {
+                        worksheet.Cells[1, i] = dataGridView1.Columns[i - 1].HeaderText;
+                    }
+
+                    // Storing each row and column value to the Excel sheet
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    {
+                        for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                        {
+                            worksheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                        }
+                    }
+
+                    // Save the Excel file
+                    workbook.SaveAs(filePath, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+
+                    // Close the workbook and Excel application
+                    workbook.Close();
+                    app.Quit();
+
+                    MessageBox.Show("Data exported to Excel successfully!");
+                }
+            }
+        }
     }
 }
