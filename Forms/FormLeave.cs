@@ -270,9 +270,9 @@ namespace SCTAttendanceSystemUI.Forms
                 string selectedCellValue = dataGridViewLeave.SelectedCells[0].Value.ToString();
 
                 // Delete selected cell value from MySQL database
-                string query = "DELETE FROM emp_onleave WHERE name = @name";
+                string query = "DELETE FROM emp_onleave WHERE empnum = @empnum";
                 MySqlCommand command = new MySqlCommand(query, connection);
-                command.Parameters.AddWithValue("@name", selectedCellValue);
+                command.Parameters.AddWithValue("@empnum", selectedCellValue);
                 command.ExecuteNonQuery();
 
                 // Display message box to confirm deletion

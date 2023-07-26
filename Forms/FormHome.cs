@@ -546,7 +546,6 @@ namespace SCTAttendanceSystemUI.Forms
                     dataGridView1.Columns[11].Width = 80;
                     dataGridView1.Columns[12].Width = 80;
                     dataGridView1.Columns[13].Width = 80;
-                    dataGridView1.Columns["id"].Visible = false;    // Hide a specific column
                     dataGridView1.Columns["jobhours"].Visible = false;    // Hide a specific column
                     dataGridView1.Columns["jobtimein"].Visible = false;    // Hide a specific column
                     dataGridView1.Columns["jobtimeout"].Visible = false;    // Hide a specific column
@@ -596,14 +595,14 @@ namespace SCTAttendanceSystemUI.Forms
                     e.Value = dateValue.ToString("hh:mm:ss tt");
                     e.FormattingApplied = true;
                 }
-                // Check if the current cell belongs to the "DateColumn" and has a datetime value
+/*                // Check if the current cell belongs to the "DateColumn" and has a datetime value
                 if (dataGridView1.Columns[e.ColumnIndex].Name == "totalhours" && e.Value != null && e.Value is DateTime)
                 {
                     // Format the datetime value to the desired format
                     DateTime dateValue = (DateTime)e.Value;
                     e.Value = dateValue.ToString("hh:mm:ss");
                     e.FormattingApplied = true;
-                }
+                }*/
 
                 if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
                 {

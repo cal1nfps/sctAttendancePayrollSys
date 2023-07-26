@@ -104,19 +104,6 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
                 header.Font.Color = new BaseColor(128, 0, 0); // RGB values for maroon
                 document.Add(header);
 
-                // Create the subheader text
-                Chunk subHeaderText = new Chunk("Subheader Text", dataFont); 
-                subHeaderText.SetBackground(new BaseColor(128, 0, 0)); // Set the background color
-
-
-                // Create the subheader paragraph
-                Paragraph subHeader = new Paragraph(subHeaderText);
-                subHeader.Font.Color = new BaseColor(Color.White); // RGB values for maroon
-                subHeader.Alignment = Element.ALIGN_LEFT;
-
-                // Add the subheader to the document
-                document.Add(subHeader);
-
                 // Add spacing between header and table
                 document.Add(new iTextSharp.text.Paragraph(" "));
                 document.Add(new iTextSharp.text.Paragraph(" "));
