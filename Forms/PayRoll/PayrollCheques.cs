@@ -71,6 +71,29 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
 
         }
 
+
+        public void AddImageToPDF(Document document, PdfWriter writer, string imagePath)
+        {
+            try
+            {
+                // Load the image
+                iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(imagePath);
+
+                // Set image position and size
+                image.SetAbsolutePosition(20, 730); // Adjust the X and Y coordinates as needed
+                image.ScaleToFit(100, 100); // Adjust the width and height as needed
+
+                // Add the image to the document
+                document.Add(image);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
+        }
+
+
+
         private void button1_Click(object sender, EventArgs e)
         {
             // Create a save file dialog to get the file path to save the PDF
@@ -91,14 +114,18 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
                 // Open the document
                 document.Open();
 
+                string imagePath = "siena-college-of-taytay-logo.png"; // Replace with the actual image path
+                AddImageToPDF(document, writer, imagePath);
+
                 // Set up fonts
                 iTextSharp.text.Font headerFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 25, iTextSharp.text.Font.BOLDITALIC);
-                iTextSharp.text.Font headerFont2 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 20, iTextSharp.text.Font.BOLDITALIC);
                 iTextSharp.text.Font dataFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 12, iTextSharp.text.Font.BOLD);
                 iTextSharp.text.Font dataFont2 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 12);
+                    iTextSharp.text.Font dataFont3 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 12, iTextSharp.text.Font.BOLD);
+
 
                 // Add the header
-                iTextSharp.text.Paragraph header = new iTextSharp.text.Paragraph("Siena College of Taytay                   PAYSLIP", headerFont);
+                iTextSharp.text.Paragraph header = new iTextSharp.text.Paragraph("            Siena College of Taytay            PAYSLIP", headerFont);
 
                 header.Alignment = iTextSharp.text.Element.ALIGN_LEFT;
                 header.Font.Color = new BaseColor(128, 0, 0); // RGB values for maroon
@@ -117,22 +144,47 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
 
                 // Create a table with 2 columns
                 PdfPTable table = new PdfPTable(4);
-
                 // Set table properties
                 table.WidthPercentage = 100;
                 table.DefaultCell.Padding = 10;
                 table.DefaultCell.Border = PdfPCell.NO_BORDER;
+
+                // Create a table with 2 columns
+                PdfPTable table2 = new PdfPTable(1);
+                // Set table properties
+                table2.WidthPercentage = 100;
+
+                // Create a cell with background color
+                PdfPCell cell = new PdfPCell(new Phrase("PAYROLL", new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 12, iTextSharp.text.Font.BOLDITALIC, BaseColor.WHITE)));
+                cell.BackgroundColor = new BaseColor(128, 0, 0); // Set your desired background color here
+                cell.Padding = 10; // Add padding for content
+                cell.Border = PdfPCell.NO_BORDER; // Remove cell border
+                cell.HorizontalAlignment = Element.ALIGN_CENTER; // Center the content horizontally
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE; // Center the content vertically
+
+                PdfPTable table3 = new PdfPTable(1);
+                // Set table properties
+                table3.WidthPercentage = 100;
+
+                // Create a cell with background color
+                PdfPCell cell2 = new PdfPCell(new Phrase("EMPLOYEE INFORMATION", new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 12, iTextSharp.text.Font.BOLDITALIC, BaseColor.WHITE)));
+                cell2.BackgroundColor = new BaseColor(128, 0, 0); // Set your desired background color here
+                cell2.Padding = 10; // Add padding for content
+                cell2.Border = PdfPCell.NO_BORDER; // Remove cell border
+                cell2.HorizontalAlignment = Element.ALIGN_CENTER; // Center the content horizontally
+                cell2.VerticalAlignment = Element.ALIGN_MIDDLE; // Center the content vertically
+
 
                 // Add employee name cell
                 table.AddCell(new PdfPCell(new Phrase("Employee Name:", dataFont)));
                 table.AddCell(new PdfPCell(new Phrase(transferredData12, dataFont2)));
 
                 // Add deductions cell
-                table.AddCell(new PdfPCell(new Phrase("Date of Birth:", dataFont)));
+                table.AddCell(new PdfPCell(new Phrase("Birth Date:", dataFont)));
                 table.AddCell(new PdfPCell(new Phrase(dob, dataFont2)));
 
                 // Add deductions cell
-                table.AddCell(new PdfPCell(new Phrase("Hire Date:", dataFont)));
+                table.AddCell(new PdfPCell(new Phrase("Date Hired:", dataFont)));
                 table.AddCell(new PdfPCell(new Phrase(hod, dataFont2)));
 
                 // Add department cell
@@ -144,7 +196,7 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
                 table.AddCell(new PdfPCell(new Phrase(transferredData2, dataFont2)));
 
                 // Add date cell
-                table.AddCell(new PdfPCell(new Phrase("Date:", dataFont)));
+                table.AddCell(new PdfPCell(new Phrase("Payroll Date:", dataFont)));
                 table.AddCell(new PdfPCell(new Phrase(DateTime.Now.ToString("MMMM dd, yyyy"), dataFont2)));
 
                 // Add account number cell
@@ -172,8 +224,18 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
                 table.AddCell(new PdfPCell(new Phrase("Net Pay:", dataFont)));
                 table.AddCell(new PdfPCell(new Phrase(transferredData11, dataFont2)));
 
+                table2.AddCell(cell);
+                table3.AddCell(cell2);
+
+
                 // Add the table to the document
+                document.Add(table3);
                 document.Add(table);
+
+                document.Add(new iTextSharp.text.Paragraph(" "));
+                document.Add(new iTextSharp.text.Paragraph(" "));
+    
+                document.Add(table2);
 
                 // Close the document
                 document.Close();
