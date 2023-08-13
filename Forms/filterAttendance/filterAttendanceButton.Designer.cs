@@ -32,7 +32,6 @@
             panel1 = new Panel();
             comboBox4 = new ComboBox();
             comboBox3 = new ComboBox();
-            comboBox1 = new ComboBox();
             button2 = new Button();
             panel4 = new Panel();
             panel2 = new Panel();
@@ -49,7 +48,6 @@
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(comboBox4);
             panel1.Controls.Add(comboBox3);
-            panel1.Controls.Add(comboBox1);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(panel4);
             panel1.Controls.Add(panel2);
@@ -71,7 +69,7 @@
             comboBox4.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox4.FormattingEnabled = true;
             comboBox4.Items.AddRange(new object[] { "None", "2023", "2022", "2021", "2020", "2019" });
-            comboBox4.Location = new Point(36, 152);
+            comboBox4.Location = new Point(36, 168);
             comboBox4.Name = "comboBox4";
             comboBox4.Size = new Size(142, 23);
             comboBox4.TabIndex = 71;
@@ -86,27 +84,12 @@
             comboBox3.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox3.FormattingEnabled = true;
             comboBox3.Items.AddRange(new object[] { "FULL-TIME", "PART-TIME" });
-            comboBox3.Location = new Point(36, 123);
+            comboBox3.Location = new Point(36, 139);
             comboBox3.Name = "comboBox3";
             comboBox3.Size = new Size(142, 23);
             comboBox3.TabIndex = 70;
             comboBox3.Text = "JOB STATUS";
             comboBox3.SelectedIndexChanged += comboBox3_SelectedIndexChanged;
-            // 
-            // comboBox1
-            // 
-            comboBox1.BackColor = Color.WhiteSmoke;
-            comboBox1.Cursor = Cursors.Hand;
-            comboBox1.FlatStyle = FlatStyle.Flat;
-            comboBox1.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "None", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" });
-            comboBox1.Location = new Point(36, 181);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(142, 23);
-            comboBox1.TabIndex = 69;
-            comboBox1.Text = "MONTH";
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // button2
             // 
@@ -153,7 +136,7 @@
             comboBox2.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox2.FormattingEnabled = true;
             comboBox2.Items.AddRange(new object[] { "IBED", "SED", "ASP" });
-            comboBox2.Location = new Point(36, 94);
+            comboBox2.Location = new Point(36, 110);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(142, 23);
             comboBox2.TabIndex = 65;
@@ -187,7 +170,7 @@
             filterComboBox.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
             filterComboBox.FormattingEnabled = true;
             filterComboBox.Items.AddRange(new object[] { "Teacher", "Sports Coach", "School Nurse", "Maintenance Technician", "Registrar", "Guidance Counselor", "Guard", "Chairperson" });
-            filterComboBox.Location = new Point(36, 65);
+            filterComboBox.Location = new Point(36, 81);
             filterComboBox.Name = "filterComboBox";
             filterComboBox.Size = new Size(142, 23);
             filterComboBox.TabIndex = 62;
@@ -222,7 +205,7 @@
             ClientSize = new Size(216, 335);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Location = new Point(1330, 305);
+            Location = new Point(1162, 225);
             Name = "filterAttendanceButton";
             StartPosition = FormStartPosition.Manual;
             Text = "filterAttendanceButton";
@@ -240,7 +223,6 @@
         private Button button1;
         public ComboBox filterComboBox;
         private Button cancelButton;
-        public ComboBox comboBox1;
         public ComboBox comboBox3;
         public ComboBox comboBox4;
     }

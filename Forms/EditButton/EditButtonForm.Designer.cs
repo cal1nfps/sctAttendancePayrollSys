@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditButtonForm));
             personalButton = new Button();
             panel1 = new Panel();
+            comboBox9 = new ComboBox();
             textBox10 = new TextBox();
             cancelButton = new Button();
             button1 = new Button();
@@ -74,7 +75,6 @@
             textBox5 = new TextBox();
             textBox7 = new TextBox();
             textBox8 = new TextBox();
-            textBox9 = new TextBox();
             textBox2 = new TextBox();
             dateTimePicker1 = new DateTimePicker();
             comboBox1 = new ComboBox();
@@ -111,6 +111,7 @@
             // 
             panel1.BackColor = Color.White;
             panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Controls.Add(comboBox9);
             panel1.Controls.Add(textBox10);
             panel1.Controls.Add(cancelButton);
             panel1.Controls.Add(button1);
@@ -128,7 +129,6 @@
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(panel2);
-            panel1.Controls.Add(textBox9);
             panel1.Controls.Add(textBox2);
             panel1.Controls.Add(dateTimePicker1);
             panel1.Controls.Add(comboBox1);
@@ -141,6 +141,15 @@
             panel1.Size = new Size(1160, 712);
             panel1.TabIndex = 3;
             // 
+            // comboBox9
+            // 
+            comboBox9.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox9.FormattingEnabled = true;
+            comboBox9.Location = new Point(264, 179);
+            comboBox9.Name = "comboBox9";
+            comboBox9.Size = new Size(105, 23);
+            comboBox9.TabIndex = 10;
+            // 
             // textBox10
             // 
             textBox10.ForeColor = Color.Black;
@@ -148,7 +157,7 @@
             textBox10.Name = "textBox10";
             textBox10.PlaceholderText = "SUFFIX";
             textBox10.Size = new Size(67, 23);
-            textBox10.TabIndex = 56;
+            textBox10.TabIndex = 4;
             // 
             // cancelButton
             // 
@@ -238,7 +247,7 @@
             textBox14.Name = "textBox14";
             textBox14.PlaceholderText = "Salary";
             textBox14.Size = new Size(147, 23);
-            textBox14.TabIndex = 67;
+            textBox14.TabIndex = 23;
             // 
             // label19
             // 
@@ -259,7 +268,7 @@
             comboBox8.Location = new Point(103, 192);
             comboBox8.Name = "comboBox8";
             comboBox8.Size = new Size(147, 23);
-            comboBox8.TabIndex = 67;
+            comboBox8.TabIndex = 20;
             // 
             // label18
             // 
@@ -280,7 +289,7 @@
             comboBox7.Location = new Point(371, 82);
             comboBox7.Name = "comboBox7";
             comboBox7.Size = new Size(147, 23);
-            comboBox7.TabIndex = 63;
+            comboBox7.TabIndex = 22;
             // 
             // label17
             // 
@@ -301,7 +310,7 @@
             comboBox6.Location = new Point(371, 43);
             comboBox6.Name = "comboBox6";
             comboBox6.Size = new Size(147, 23);
-            comboBox6.TabIndex = 61;
+            comboBox6.TabIndex = 21;
             // 
             // label16
             // 
@@ -322,7 +331,7 @@
             comboBox4.Location = new Point(103, 134);
             comboBox4.Name = "comboBox4";
             comboBox4.Size = new Size(147, 23);
-            comboBox4.TabIndex = 57;
+            comboBox4.TabIndex = 18;
             // 
             // comboBox5
             // 
@@ -332,7 +341,7 @@
             comboBox5.Location = new Point(103, 163);
             comboBox5.Name = "comboBox5";
             comboBox5.Size = new Size(147, 23);
-            comboBox5.TabIndex = 59;
+            comboBox5.TabIndex = 19;
             // 
             // label13
             // 
@@ -373,7 +382,7 @@
             textBox11.Location = new Point(103, 76);
             textBox11.Name = "textBox11";
             textBox11.Size = new Size(147, 23);
-            textBox11.TabIndex = 22;
+            textBox11.TabIndex = 16;
             // 
             // label9
             // 
@@ -394,7 +403,7 @@
             textBox12.Name = "textBox12";
             textBox12.ReadOnly = true;
             textBox12.Size = new Size(147, 23);
-            textBox12.TabIndex = 20;
+            textBox12.TabIndex = 15;
             // 
             // label10
             // 
@@ -458,7 +467,7 @@
             comboBox2.Location = new Point(404, 134);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(147, 23);
-            comboBox2.TabIndex = 29;
+            comboBox2.TabIndex = 8;
             // 
             // label3
             // 
@@ -478,7 +487,7 @@
             textBox4.Name = "textBox4";
             textBox4.PlaceholderText = "POSTAL CODE";
             textBox4.Size = new Size(105, 23);
-            textBox4.TabIndex = 28;
+            textBox4.TabIndex = 11;
             // 
             // label2
             // 
@@ -510,7 +519,8 @@
             comboBox3.Location = new Point(93, 179);
             comboBox3.Name = "comboBox3";
             comboBox3.Size = new Size(105, 23);
-            comboBox3.TabIndex = 30;
+            comboBox3.TabIndex = 9;
+            comboBox3.SelectedIndexChanged += comboBox3_SelectedIndexChanged;
             // 
             // textBox6
             // 
@@ -519,7 +529,7 @@
             textBox6.Name = "textBox6";
             textBox6.PlaceholderText = "ADDRESS";
             textBox6.Size = new Size(216, 23);
-            textBox6.TabIndex = 27;
+            textBox6.TabIndex = 7;
             // 
             // label4
             // 
@@ -611,7 +621,7 @@
             textBox5.Name = "textBox5";
             textBox5.PlaceholderText = "Phone Number";
             textBox5.Size = new Size(206, 23);
-            textBox5.TabIndex = 13;
+            textBox5.TabIndex = 12;
             textBox5.KeyPress += textBox5_KeyPress_1;
             // 
             // textBox7
@@ -621,7 +631,7 @@
             textBox7.Name = "textBox7";
             textBox7.PlaceholderText = "Email";
             textBox7.Size = new Size(206, 23);
-            textBox7.TabIndex = 21;
+            textBox7.TabIndex = 14;
             // 
             // textBox8
             // 
@@ -630,17 +640,8 @@
             textBox8.Name = "textBox8";
             textBox8.PlaceholderText = "Home Number";
             textBox8.Size = new Size(206, 23);
-            textBox8.TabIndex = 20;
+            textBox8.TabIndex = 13;
             textBox8.KeyPress += textBox8_KeyPress_1;
-            // 
-            // textBox9
-            // 
-            textBox9.ForeColor = Color.Black;
-            textBox9.Location = new Point(264, 179);
-            textBox9.Name = "textBox9";
-            textBox9.PlaceholderText = "CITY";
-            textBox9.Size = new Size(105, 23);
-            textBox9.TabIndex = 34;
             // 
             // textBox2
             // 
@@ -649,7 +650,7 @@
             textBox2.Name = "textBox2";
             textBox2.PlaceholderText = "FIRST NAME";
             textBox2.Size = new Size(207, 23);
-            textBox2.TabIndex = 17;
+            textBox2.TabIndex = 1;
             // 
             // dateTimePicker1
             // 
@@ -661,7 +662,7 @@
             dateTimePicker1.MinDate = new DateTime(1970, 1, 1, 0, 0, 0, 0);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(147, 23);
-            dateTimePicker1.TabIndex = 16;
+            dateTimePicker1.TabIndex = 6;
             // 
             // comboBox1
             // 
@@ -672,7 +673,7 @@
             comboBox1.Location = new Point(102, 88);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(147, 23);
-            comboBox1.TabIndex = 15;
+            comboBox1.TabIndex = 5;
             comboBox1.Tag = "";
             // 
             // textBox3
@@ -682,7 +683,7 @@
             textBox3.Name = "textBox3";
             textBox3.PlaceholderText = "LAST NAME";
             textBox3.Size = new Size(212, 23);
-            textBox3.TabIndex = 14;
+            textBox3.TabIndex = 2;
             // 
             // textBox1
             // 
@@ -691,7 +692,7 @@
             textBox1.Name = "textBox1";
             textBox1.PlaceholderText = "M.I.";
             textBox1.Size = new Size(46, 23);
-            textBox1.TabIndex = 13;
+            textBox1.TabIndex = 3;
             // 
             // doblbl
             // 
@@ -763,7 +764,6 @@
         private TextBox textBox7;
         private TextBox textBox8;
         private TextBox textBox5;
-        private TextBox textBox9;
         private Label label7;
         private Panel panel3;
         private Label label8;
@@ -791,5 +791,6 @@
         private Label label18;
         private TextBox textBox14;
         private Label label19;
+        private ComboBox comboBox9;
     }
 }

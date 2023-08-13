@@ -89,6 +89,7 @@
             button2.Text = "Clear";
             button2.UseMnemonic = false;
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // panel4
             // 
@@ -181,7 +182,7 @@
             ClientSize = new Size(216, 335);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Location = new Point(1100, 350);
+            Location = new Point(938, 220);
             Name = "filterabsent";
             StartPosition = FormStartPosition.Manual;
             Text = "filterabsent";

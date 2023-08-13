@@ -33,6 +33,10 @@
             buttonOvertimeAdd = new Button();
             button2 = new Button();
             panelFormOvertime = new Panel();
+            label4 = new Label();
+            label3 = new Label();
+            label1 = new Label();
+            label2 = new Label();
             labelCashAdvance = new Label();
             labelDeduction = new Label();
             labelGrossPay = new Label();
@@ -41,6 +45,7 @@
             dataGridView1 = new DataGridView();
             button1 = new Button();
             button3 = new Button();
+            button5 = new Button();
             panelFormOvertime.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -64,7 +69,7 @@
             buttonOvertimeAdd.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             buttonOvertimeAdd.Image = Properties.Resources.export;
             buttonOvertimeAdd.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonOvertimeAdd.Location = new Point(726, 26);
+            buttonOvertimeAdd.Location = new Point(848, 54);
             buttonOvertimeAdd.Name = "buttonOvertimeAdd";
             buttonOvertimeAdd.Padding = new Padding(10, 0, 0, 0);
             buttonOvertimeAdd.Size = new Size(100, 30);
@@ -83,7 +88,7 @@
             button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button2.Image = Properties.Resources.export;
             button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(832, 26);
+            button2.Location = new Point(954, 54);
             button2.Name = "button2";
             button2.Padding = new Padding(10, 0, 0, 0);
             button2.Size = new Size(100, 30);
@@ -97,17 +102,67 @@
             // panelFormOvertime
             // 
             panelFormOvertime.BackColor = Color.White;
+            panelFormOvertime.Controls.Add(label4);
+            panelFormOvertime.Controls.Add(label3);
+            panelFormOvertime.Controls.Add(label1);
+            panelFormOvertime.Controls.Add(label2);
             panelFormOvertime.Controls.Add(labelCashAdvance);
             panelFormOvertime.Controls.Add(labelDeduction);
             panelFormOvertime.Controls.Add(labelGrossPay);
-            panelFormOvertime.Controls.Add(button2);
-            panelFormOvertime.Controls.Add(buttonOvertimeAdd);
             panelFormOvertime.Controls.Add(labelFullName);
             panelFormOvertime.Controls.Add(labelEmployeeNo);
             panelFormOvertime.Location = new Point(51, 90);
             panelFormOvertime.Name = "panelFormOvertime";
-            panelFormOvertime.Size = new Size(958, 80);
+            panelFormOvertime.Size = new Size(1162, 80);
             panelFormOvertime.TabIndex = 47;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
+            label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.ForeColor = Color.Gray;
+            label4.Location = new Point(1059, 29);
+            label4.Name = "label4";
+            label4.Size = new Size(50, 21);
+            label4.TabIndex = 31;
+            label4.Text = "DATE";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.ForeColor = Color.Gray;
+            label3.Location = new Point(915, 29);
+            label3.Name = "label3";
+            label3.Size = new Size(119, 21);
+            label3.TabIndex = 30;
+            label3.Text = "PAYROLL TYPE";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.Gray;
+            label1.Location = new Point(451, 29);
+            label1.Name = "label1";
+            label1.Size = new Size(112, 21);
+            label1.TabIndex = 29;
+            label1.Text = "OCCUPATION";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.ForeColor = Color.Gray;
+            label2.Location = new Point(314, 29);
+            label2.Name = "label2";
+            label2.Size = new Size(116, 21);
+            label2.TabIndex = 28;
+            label2.Text = "DEPARTMENT";
             // 
             // labelCashAdvance
             // 
@@ -115,7 +170,7 @@
             labelCashAdvance.BackColor = Color.Transparent;
             labelCashAdvance.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             labelCashAdvance.ForeColor = Color.Gray;
-            labelCashAdvance.Location = new Point(608, 29);
+            labelCashAdvance.Location = new Point(819, 29);
             labelCashAdvance.Name = "labelCashAdvance";
             labelCashAdvance.Size = new Size(74, 21);
             labelCashAdvance.TabIndex = 27;
@@ -127,7 +182,7 @@
             labelDeduction.BackColor = Color.Transparent;
             labelDeduction.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             labelDeduction.ForeColor = Color.Gray;
-            labelDeduction.Location = new Point(466, 29);
+            labelDeduction.Location = new Point(696, 29);
             labelDeduction.Name = "labelDeduction";
             labelDeduction.Size = new Size(104, 21);
             labelDeduction.TabIndex = 26;
@@ -139,7 +194,7 @@
             labelGrossPay.BackColor = Color.Transparent;
             labelGrossPay.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             labelGrossPay.ForeColor = Color.Gray;
-            labelGrossPay.Location = new Point(329, 29);
+            labelGrossPay.Location = new Point(583, 29);
             labelGrossPay.Name = "labelGrossPay";
             labelGrossPay.Size = new Size(94, 21);
             labelGrossPay.TabIndex = 25;
@@ -184,7 +239,7 @@
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(958, 353);
+            dataGridView1.Size = new Size(1162, 353);
             dataGridView1.TabIndex = 54;
             dataGridView1.CellFormatting += dataGridView1_CellFormatting;
             // 
@@ -197,7 +252,7 @@
             button1.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             button1.Image = (Image)resources.GetObject("button1.Image");
             button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(909, 54);
+            button1.Location = new Point(1113, 54);
             button1.Name = "button1";
             button1.Padding = new Padding(10, 0, 0, 0);
             button1.Size = new Size(47, 30);
@@ -216,7 +271,7 @@
             button3.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             button3.Image = (Image)resources.GetObject("button3.Image");
             button3.ImageAlign = ContentAlignment.MiddleLeft;
-            button3.Location = new Point(962, 54);
+            button3.Location = new Point(1166, 54);
             button3.Name = "button3";
             button3.Padding = new Padding(10, 0, 0, 0);
             button3.Size = new Size(47, 30);
@@ -226,6 +281,25 @@
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
+            // button5
+            // 
+            button5.BackColor = Color.Green;
+            button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button5.Image = (Image)resources.GetObject("button5.Image");
+            button5.ImageAlign = ContentAlignment.MiddleLeft;
+            button5.Location = new Point(1060, 54);
+            button5.Name = "button5";
+            button5.Padding = new Padding(10, 0, 0, 0);
+            button5.Size = new Size(47, 30);
+            button5.TabIndex = 81;
+            button5.TextAlign = ContentAlignment.MiddleLeft;
+            button5.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
+            // 
             // FormPayroll
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -234,9 +308,12 @@
             BackgroundImage = Properties.Resources.BG_LOW_OPACITY;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1264, 681);
+            Controls.Add(button5);
             Controls.Add(button3);
             Controls.Add(button1);
             Controls.Add(dataGridView1);
+            Controls.Add(button2);
+            Controls.Add(buttonOvertimeAdd);
             Controls.Add(panelFormOvertime);
             Controls.Add(labelPayroll);
             DoubleBuffered = true;
@@ -267,5 +344,10 @@
         private DataGridView dataGridView1;
         private Button button1;
         private Button button3;
+        private Label label1;
+        private Label label2;
+        private Label label4;
+        private Label label3;
+        private Button button5;
     }
 }

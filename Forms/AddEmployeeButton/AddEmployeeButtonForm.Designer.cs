@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEmployeeButtonForm));
             personalButton = new Button();
             panel1 = new Panel();
+            comboBox1 = new ComboBox();
             JobStatus = new ComboBox();
             textBox14 = new TextBox();
             label18 = new Label();
@@ -67,7 +68,6 @@
             PostalCode = new TextBox();
             label2 = new Label();
             Suffix = new TextBox();
-            City = new TextBox();
             label1 = new Label();
             Confirm = new Button();
             Province = new ComboBox();
@@ -113,6 +113,7 @@
             panel1.BackColor = Color.White;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
             panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Controls.Add(comboBox1);
             panel1.Controls.Add(JobStatus);
             panel1.Controls.Add(textBox14);
             panel1.Controls.Add(label18);
@@ -149,7 +150,6 @@
             panel1.Controls.Add(PostalCode);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(Suffix);
-            panel1.Controls.Add(City);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(Confirm);
             panel1.Controls.Add(Province);
@@ -171,7 +171,16 @@
             panel1.Size = new Size(1160, 710);
             panel1.TabIndex = 0;
             panel1.TabStop = true;
-            panel1.Paint += panel1_Paint;
+            // 
+            // comboBox1
+            // 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.ForeColor = Color.Black;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(482, 215);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(136, 23);
+            comboBox1.TabIndex = 10;
             // 
             // JobStatus
             // 
@@ -231,7 +240,7 @@
             label19.AutoSize = true;
             label19.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label19.ForeColor = SystemColors.ControlDarkDark;
-            label19.Location = new Point(848, 500);
+            label19.Location = new Point(857, 516);
             label19.Name = "label19";
             label19.Size = new Size(51, 14);
             label19.TabIndex = 70;
@@ -264,7 +273,7 @@
             label13.AutoSize = true;
             label13.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label13.ForeColor = SystemColors.ControlDarkDark;
-            label13.Location = new Point(332, 518);
+            label13.Location = new Point(335, 518);
             label13.Name = "label13";
             label13.Size = new Size(80, 14);
             label13.TabIndex = 58;
@@ -380,7 +389,7 @@
             label17.AutoSize = true;
             label17.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label17.ForeColor = SystemColors.ControlDarkDark;
-            label17.Location = new Point(848, 446);
+            label17.Location = new Point(851, 446);
             label17.Name = "label17";
             label17.Size = new Size(57, 14);
             label17.TabIndex = 62;
@@ -446,7 +455,7 @@
             label11.AutoSize = true;
             label11.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label11.ForeColor = SystemColors.ControlDarkDark;
-            label11.Location = new Point(848, 313);
+            label11.Location = new Point(848, 321);
             label11.Name = "label11";
             label11.Size = new Size(87, 14);
             label11.TabIndex = 18;
@@ -534,7 +543,7 @@
             // 
             PostalCode.BackColor = Color.Gainsboro;
             PostalCode.ForeColor = Color.Black;
-            PostalCode.Location = new Point(627, 212);
+            PostalCode.Location = new Point(630, 216);
             PostalCode.Name = "PostalCode";
             PostalCode.Size = new Size(77, 23);
             PostalCode.TabIndex = 11;
@@ -558,15 +567,6 @@
             Suffix.Name = "Suffix";
             Suffix.Size = new Size(57, 23);
             Suffix.TabIndex = 4;
-            // 
-            // City
-            // 
-            City.BackColor = Color.Gainsboro;
-            City.ForeColor = Color.Black;
-            City.Location = new Point(488, 214);
-            City.Name = "City";
-            City.Size = new Size(123, 23);
-            City.TabIndex = 10;
             // 
             // label1
             // 
@@ -600,11 +600,11 @@
             Province.DropDownStyle = ComboBoxStyle.DropDownList;
             Province.ForeColor = Color.Black;
             Province.FormattingEnabled = true;
-            Province.Items.AddRange(new object[] { "Abra", "Agusan del Norte", "Agusan del Sur", "Aklan", "Albay", "Antique", "Apayao", "Aurora", "Basilan", "Bataan", "Batanes", "Batangas", "Benguet", "Biliran", "Bohol", "Bukidnon", "Bulacan", "Cagayan", "Camarines Norte", "Camarines Sur", "Camiguin", "Capiz", "Catanduanes", "Cavite", "Cebu", "Cotabato", "Davao de Oro", "Davao del Norte", "Davao del Sur", "Davao Occidental", "Davao Oriental", "Dinagat Islands", "Eastern Samar", "Guimaras", "Ifugao", "Ilocos Norte", "Ilocos Sur", "Iloilo", "Isabela", "Kalinga", "La Union", "Laguna", "Lanao del Norte", "Lanao del Sur", "Leyte", "Maguindanao del Norte", "Maguindanao del Sur", "Marinduque", "Masbate", "Misamis Occidental", "Misamis Oriental", "Mountain Province", "Negros Occidental", "Negros Oriental", "Northern Samar", "Nueva Ecija", "Nueva Vizcaya", "Occidental Mindoro", "Oriental Mindoro", "Palawan", "Pampanga", "Pangasinan", "Quezon", "Quirino", "Rizal", "Romblon", "Samar", "Sarangani", "Siquijor", "Sorsogon", "South Cotabato", "Southern Leyte", "Sultan Kudarat", "Sulu", "Surigao del Norte", "Surigao del Sur", "Tarlac", "Tawi-Tawi", "Zambales", "Zamboanga del Norte", "Zamboanga del Sur", "Zamboanga Sibugay" });
             Province.Location = new Point(333, 215);
             Province.Name = "Province";
             Province.Size = new Size(136, 23);
             Province.TabIndex = 9;
+            Province.SelectedIndexChanged += Province_SelectedIndexChanged;
             // 
             // label3
             // 
@@ -779,6 +779,7 @@
             Location = new Point(537, 324);
             Name = "AddEmployeeButtonForm";
             StartPosition = FormStartPosition.CenterScreen;
+            Load += AddEmployeeButtonForm_Load;
             KeyDown += AddEmployeeButtonForm_KeyDown;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -808,7 +809,6 @@
         private TextBox Email;
         private TextBox Telephone;
         private TextBox MobilePhone;
-        private TextBox City;
         private Label label7;
         private TextBox EmployeeNum;
         private Label label11;
@@ -843,5 +843,6 @@
         private Label label9;
         private Label label10;
         private DateTimePicker HireDate;
+        private ComboBox comboBox1;
     }
 }

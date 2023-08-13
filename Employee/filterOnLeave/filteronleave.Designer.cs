@@ -67,7 +67,7 @@
             comboBox3.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox3.FormattingEnabled = true;
             comboBox3.Items.AddRange(new object[] { "FULL-TIME", "PART-TIME" });
-            comboBox3.Location = new Point(36, 167);
+            comboBox3.Location = new Point(40, 152);
             comboBox3.Name = "comboBox3";
             comboBox3.Size = new Size(142, 23);
             comboBox3.TabIndex = 70;
@@ -119,7 +119,7 @@
             comboBox2.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox2.FormattingEnabled = true;
             comboBox2.Items.AddRange(new object[] { "IBED", "SED", "ASP" });
-            comboBox2.Location = new Point(36, 117);
+            comboBox2.Location = new Point(40, 123);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(142, 23);
             comboBox2.TabIndex = 65;
@@ -153,7 +153,7 @@
             filterComboBox.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
             filterComboBox.FormattingEnabled = true;
             filterComboBox.Items.AddRange(new object[] { "Teacher", "Sports Coach", "School Nurse", "Maintenance Technician", "Registrar", "Guidance Counselor", "Guard", "Chairperson" });
-            filterComboBox.Location = new Point(36, 65);
+            filterComboBox.Location = new Point(40, 94);
             filterComboBox.Name = "filterComboBox";
             filterComboBox.Size = new Size(142, 23);
             filterComboBox.TabIndex = 62;
@@ -188,7 +188,7 @@
             ClientSize = new Size(216, 335);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Location = new Point(750, 380);
+            Location = new Point(640, 385);
             Name = "filteronleave";
             StartPosition = FormStartPosition.Manual;
             Text = "filteronleave";

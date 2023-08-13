@@ -654,14 +654,13 @@ namespace SCTAttendanceSystemUI.Forms
                     // Get the selected values from the comboboxes in the second form
                     string occupation = filterForm.filterComboBox.SelectedItem?.ToString();
                     string department = filterForm.comboBox2.SelectedItem?.ToString();
-                    string filtermonth = filterForm.comboBox1.SelectedItem?.ToString();
                     string filteryear = filterForm.comboBox4.SelectedItem?.ToString();
                     string jobstatus = filterForm.comboBox3.SelectedItem?.ToString();
 
 
 
                     // Check if at least one combobox is selected
-                    if (string.IsNullOrWhiteSpace(occupation) && string.IsNullOrWhiteSpace(department) && string.IsNullOrWhiteSpace(filteryear) && string.IsNullOrWhiteSpace(filtermonth) && string.IsNullOrWhiteSpace(jobstatus))
+                    if (string.IsNullOrWhiteSpace(occupation) && string.IsNullOrWhiteSpace(department) && string.IsNullOrWhiteSpace(filteryear) && string.IsNullOrWhiteSpace(jobstatus))
                     {
                         MessageBox.Show("Please select at least one filter option.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -706,7 +705,7 @@ namespace SCTAttendanceSystemUI.Forms
 
                         }
 
-                        string query2 = "SELECT * FROM empattendance WHERE 1 = 1";
+/*                        string query2 = "SELECT * FROM empattendance WHERE 1 = 1";
 
                         if (!string.IsNullOrWhiteSpace(filtermonth))
                         {
@@ -715,7 +714,7 @@ namespace SCTAttendanceSystemUI.Forms
                             // Modify the SQL query to filter based on the month
                             query2 += $" AND MONTH(date) = {DateTime.ParseExact(selectedMonth, "MMMM", CultureInfo.CurrentCulture).Month}";
 
-                        }
+                        }*/
 
                         // Execute the query and bind the result to the DataGridView
 

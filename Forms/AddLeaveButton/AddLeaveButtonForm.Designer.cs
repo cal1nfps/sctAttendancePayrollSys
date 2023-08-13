@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddLeaveButtonForm));
             personalButton = new Button();
             panel1 = new Panel();
             textBoxSuffix = new TextBox();
@@ -53,6 +54,7 @@
             textBoxFirstName = new TextBox();
             textBoxLastName = new TextBox();
             textBoxMiddleInitial = new TextBox();
+            button2 = new Button();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             SuspendLayout();
@@ -366,12 +368,30 @@
             textBoxMiddleInitial.Size = new Size(46, 23);
             textBoxMiddleInitial.TabIndex = 3;
             // 
+            // button2
+            // 
+            button2.BackColor = Color.Transparent;
+            button2.BackgroundImageLayout = ImageLayout.None;
+            button2.FlatAppearance.BorderColor = Color.DimGray;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.ForeColor = SystemColors.ControlText;
+            button2.Image = (Image)resources.GetObject("button2.Image");
+            button2.Location = new Point(653, 9);
+            button2.Name = "button2";
+            button2.Size = new Size(25, 23);
+            button2.TabIndex = 35;
+            button2.UseMnemonic = false;
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
             // AddLeaveButtonForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gainsboro;
             ClientSize = new Size(690, 457);
+            Controls.Add(button2);
             Controls.Add(panel1);
             Controls.Add(personalButton);
             FormBorderStyle = FormBorderStyle.None;
@@ -413,5 +433,6 @@
         private Label label1;
         private ComboBox comboBox1;
         private Label label2;
+        private Button button2;
     }
 }

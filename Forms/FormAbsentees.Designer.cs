@@ -33,7 +33,6 @@
             labelAbsenteesDate = new Label();
             dataGridView2 = new DataGridView();
             textBox1 = new TextBox();
-            button1 = new Button();
             button4 = new Button();
             panelAbsenteesForToday = new Panel();
             labelOccupation = new Label();
@@ -94,31 +93,12 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(634, 62);
+            textBox1.Location = new Point(687, 60);
             textBox1.Name = "textBox1";
             textBox1.PlaceholderText = "Search Name or Employee Number";
             textBox1.Size = new Size(196, 23);
             textBox1.TabIndex = 72;
             textBox1.TextChanged += textBox1_TextChanged;
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.Green;
-            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(836, 55);
-            button1.Name = "button1";
-            button1.Padding = new Padding(10, 0, 0, 0);
-            button1.Size = new Size(47, 30);
-            button1.TabIndex = 73;
-            button1.TextAlign = ContentAlignment.MiddleLeft;
-            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
             // 
             // button4
             // 
@@ -238,7 +218,6 @@
             Controls.Add(button2);
             Controls.Add(panelAbsenteesForToday);
             Controls.Add(button4);
-            Controls.Add(button1);
             Controls.Add(textBox1);
             Controls.Add(dataGridView2);
             Controls.Add(labelAbsenteesDate);
@@ -263,7 +242,6 @@
         private Label labelAbsenteesDate;
         private DataGridView dataGridView2;
         private TextBox textBox1;
-        private Button button1;
         private Button button4;
         private Panel panelAbsenteesForToday;
         private Label labelOccupation;

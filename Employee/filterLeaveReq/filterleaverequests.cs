@@ -37,22 +37,10 @@ namespace SCTAttendanceSystemUI.Employee.filterLeaveReq
         private void button2_Click(object sender, EventArgs e)
         {
             //CLEAR BUTTON
-            string query = "SELECT * FROM emp_leaverequests WHERE 1 = 1";
-
-            DataGridView dataGridView1 = System.Windows.Forms.Application.OpenForms["FormLeave"].Controls["dataGridView1"] as DataGridView;
-            MySqlCommand command = new MySqlCommand(query, connection);
-            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-            System.Data.DataTable dataTable = new System.Data.DataTable();
-            adapter.Fill(dataTable);
-            dataGridView1.DataSource = dataTable;
-            if (dataGridView1 != null)
+            DataGridView dataGridView2 = System.Windows.Forms.Application.OpenForms["FormLeave"].Controls["dataGridView1"] as DataGridView;
+            if (dataGridView2 != null)
             {
-
-
-                (dataGridView1.DataSource as System.Data.DataTable).DefaultView.RowFilter = string.Empty;
-                dataTable.DefaultView.RowFilter = string.Empty;
-
-
+                (dataGridView2.DataSource as System.Data.DataTable).DefaultView.RowFilter = string.Empty;
             }
         }
     }

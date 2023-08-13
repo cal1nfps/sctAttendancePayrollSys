@@ -419,7 +419,7 @@
             label17.AutoSize = true;
             label17.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label17.ForeColor = SystemColors.ControlDarkDark;
-            label17.Location = new Point(449, 8);
+            label17.Location = new Point(634, 7);
             label17.Name = "label17";
             label17.Size = new Size(27, 14);
             label17.TabIndex = 66;
@@ -430,7 +430,7 @@
             label16.AutoSize = true;
             label16.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label16.ForeColor = SystemColors.ControlDarkDark;
-            label16.Location = new Point(389, 8);
+            label16.Location = new Point(545, 8);
             label16.Name = "label16";
             label16.Size = new Size(54, 14);
             label16.TabIndex = 65;
@@ -441,7 +441,7 @@
             label15.AutoSize = true;
             label15.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label15.ForeColor = SystemColors.ControlDarkDark;
-            label15.Location = new Point(333, 8);
+            label15.Location = new Point(448, 7);
             label15.Name = "label15";
             label15.Size = new Size(50, 14);
             label15.TabIndex = 64;
@@ -452,7 +452,7 @@
             label14.AutoSize = true;
             label14.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label14.ForeColor = SystemColors.ControlDarkDark;
-            label14.Location = new Point(266, 8);
+            label14.Location = new Point(359, 7);
             label14.Name = "label14";
             label14.Size = new Size(61, 14);
             label14.TabIndex = 63;
@@ -463,7 +463,7 @@
             label13.AutoSize = true;
             label13.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label13.ForeColor = SystemColors.ControlDarkDark;
-            label13.Location = new Point(196, 8);
+            label13.Location = new Point(270, 8);
             label13.Name = "label13";
             label13.Size = new Size(64, 14);
             label13.TabIndex = 62;
@@ -474,7 +474,7 @@
             label11.AutoSize = true;
             label11.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label11.ForeColor = SystemColors.ControlDarkDark;
-            label11.Location = new Point(120, 8);
+            label11.Location = new Point(194, 7);
             label11.Name = "label11";
             label11.Size = new Size(70, 14);
             label11.TabIndex = 61;
@@ -485,7 +485,7 @@
             label10.AutoSize = true;
             label10.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label10.ForeColor = SystemColors.ControlDarkDark;
-            label10.Location = new Point(46, 8);
+            label10.Location = new Point(111, 7);
             label10.Name = "label10";
             label10.Size = new Size(68, 14);
             label10.TabIndex = 60;

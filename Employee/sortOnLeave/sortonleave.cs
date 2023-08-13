@@ -23,23 +23,6 @@ namespace SCTAttendanceSystemUI.Employee.sortOnLeave
 
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //Sort DGV from FormHome
-            DataGridView dataGridView1 = System.Windows.Forms.Application.OpenForms["FormLeave"].Controls["dataGridViewLeave"] as DataGridView;
-
-            string selectedItem = comboBox1.SelectedItem.ToString();   //Selected combobox item
-
-            if (selectedItem == "Recent - Oldest")
-            {
-                dataGridView1.Sort(dataGridView1.Columns["start"], ListSortDirection.Descending);
-            }
-            if (selectedItem == "Oldest - Recent")
-            {
-                dataGridView1.Sort(dataGridView1.Columns["start"], ListSortDirection.Ascending);
-            }
-        }
-
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedItem = comboBox2.SelectedItem.ToString();   //Selected combobox item

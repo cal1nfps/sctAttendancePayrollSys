@@ -121,7 +121,9 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
                 iTextSharp.text.Font headerFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 25, iTextSharp.text.Font.BOLDITALIC);
                 iTextSharp.text.Font dataFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 12, iTextSharp.text.Font.BOLD);
                 iTextSharp.text.Font dataFont2 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 12);
-                    iTextSharp.text.Font dataFont3 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 12, iTextSharp.text.Font.BOLD);
+                iTextSharp.text.Font dataFont3 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 12, iTextSharp.text.Font.BOLDITALIC, BaseColor.BLACK);
+                iTextSharp.text.Font dataFont4 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 12, iTextSharp.text.Font.BOLDITALIC, BaseColor.BLACK);
+
 
 
                 // Add the header
@@ -132,8 +134,6 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
                 document.Add(header);
 
                 // Add spacing between header and table
-                document.Add(new iTextSharp.text.Paragraph(" "));
-                document.Add(new iTextSharp.text.Paragraph(" "));
                 document.Add(new iTextSharp.text.Paragraph(" "));
                 document.Add(new iTextSharp.text.Paragraph(" "));
 
@@ -174,6 +174,44 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
                 cell2.HorizontalAlignment = Element.ALIGN_CENTER; // Center the content horizontally
                 cell2.VerticalAlignment = Element.ALIGN_MIDDLE; // Center the content vertically
 
+                PdfPTable table4 = new PdfPTable(1);
+                // Set table properties
+                table4.WidthPercentage = 100;
+
+                // Create a cell with background color
+                PdfPCell cell3 = new PdfPCell(new Phrase("DETAILS                                                                       AMOUNT", new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 12, iTextSharp.text.Font.BOLDITALIC, BaseColor.BLACK)));
+                cell3.Padding = 10; // Add padding for content
+                cell3.Border = PdfPCell.NO_BORDER; // Remove cell border
+
+                // Create a table with 4 columns
+                PdfPTable table5 = new PdfPTable(2);
+
+                // Set table properties
+                table5.WidthPercentage = 100;
+                table5.DefaultCell.Padding = 10;
+
+                // Create a table with 4 columns
+                PdfPTable table6 = new PdfPTable(2);
+
+                // Set table properties
+                table6.WidthPercentage = 100;
+                table6.DefaultCell.Padding = 10;
+
+                // Create a table with 4 columns
+                PdfPTable table7 = new PdfPTable(2);
+
+                // Set table properties
+                table7.WidthPercentage = 100;
+                table7.DefaultCell.Padding = 10;
+
+
+                // Create a table with 4 columns
+                PdfPTable table8 = new PdfPTable(2);
+
+                // Set table properties
+                table8.WidthPercentage = 100;
+                table8.DefaultCell.Padding = 10;
+
 
                 // Add employee name cell
                 table.AddCell(new PdfPCell(new Phrase("Employee Name:", dataFont)));
@@ -204,6 +242,10 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
                 table.AddCell(new PdfPCell(new Phrase(transferredData4, dataFont2)));
 
                 // Add hourly rate cell
+                table.AddCell(new PdfPCell(new Phrase("Payroll Type:", dataFont)));
+                table.AddCell(new PdfPCell(new Phrase(transferredData13, dataFont2)));
+
+                // Add hourly rate cell
                 table.AddCell(new PdfPCell(new Phrase("Hourly Rate:", dataFont)));
                 table.AddCell(new PdfPCell(new Phrase(transferredData7, dataFont2)));
 
@@ -212,35 +254,74 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
                 table.AddCell(new PdfPCell(new Phrase("Basic Salary:", dataFont)));
                 table.AddCell(new PdfPCell(new Phrase(transferredData3, dataFont2)));
 
-                // Add deductions cell
-                table.AddCell(new PdfPCell(new Phrase("Deductions:", dataFont)));
-                table.AddCell(new PdfPCell(new Phrase(transferredData9, dataFont2)));
+                //CONTRIBUTIONS
+                table5.AddCell(new PdfPCell(new Phrase("SSS", dataFont3)));
+                table5.AddCell(new PdfPCell(new Phrase("675.00", dataFont2)));
+                table5.AddCell(new PdfPCell(new Phrase("Philhealth", dataFont3)));
+                table5.AddCell(new PdfPCell(new Phrase("300.00", dataFont2)));
+                table5.AddCell(new PdfPCell(new Phrase("Pag-IBIG", dataFont3)));
+                table5.AddCell(new PdfPCell(new Phrase("100.00", dataFont2)));
+                table5.AddCell(new PdfPCell(new Phrase("CONTRIBUTIONS TOTAL", dataFont3)));
+                table5.AddCell(new PdfPCell(new Phrase(transferredData20, dataFont3)));
 
-                // Add deductions cell
-                table.AddCell(new PdfPCell(new Phrase("Gross Salary:", dataFont)));
-                table.AddCell(new PdfPCell(new Phrase(transferredData10, dataFont2)));
+                //DEDUCTION
+                table6.AddCell(new PdfPCell(new Phrase("Late Hours", dataFont3)));
+                table6.AddCell(new PdfPCell(new Phrase(transferredData16, dataFont2)));
+                table6.AddCell(new PdfPCell(new Phrase("Undertime Hours", dataFont3)));
+                table6.AddCell(new PdfPCell(new Phrase(transferredData15, dataFont2)));
+                table6.AddCell(new PdfPCell(new Phrase("Contribution", dataFont3)));
+                table6.AddCell(new PdfPCell(new Phrase(transferredData20, dataFont2)));
+                table6.AddCell(new PdfPCell(new Phrase("DEDUCTIONS TOTAL", dataFont3)));
+                table6.AddCell(new PdfPCell(new Phrase(transferredData9, dataFont3)));
 
-                // Add deductions cell
-                table.AddCell(new PdfPCell(new Phrase("Net Pay:", dataFont)));
-                table.AddCell(new PdfPCell(new Phrase(transferredData11, dataFont2)));
+                //Gross
+                table7.AddCell(new PdfPCell(new Phrase("Total Salary", dataFont3)));
+                table7.AddCell(new PdfPCell(new Phrase(transferredData19, dataFont2)));
+                table7.AddCell(new PdfPCell(new Phrase("Allowance", dataFont3)));
+                table7.AddCell(new PdfPCell(new Phrase(transferredData18, dataFont2)));
+                table7.AddCell(new PdfPCell(new Phrase("GROSS SALARY", dataFont3)));
+                table7.AddCell(new PdfPCell(new Phrase(transferredData10, dataFont3)));
+
+                //NET PAY
+                table8.AddCell(new PdfPCell(new Phrase("Gross Salary", dataFont3)));
+                table8.AddCell(new PdfPCell(new Phrase(transferredData10, dataFont2)));
+                table8.AddCell(new PdfPCell(new Phrase("Deductions", dataFont3)));
+                table8.AddCell(new PdfPCell(new Phrase(transferredData9, dataFont2)));
+                table8.AddCell(new PdfPCell(new Phrase("NET PAY", dataFont3)));
+                table8.AddCell(new PdfPCell(new Phrase(transferredData11, dataFont3)));
 
                 table2.AddCell(cell);
                 table3.AddCell(cell2);
+                table4.AddCell(cell3);
+
 
 
                 // Add the table to the document
                 document.Add(table3);
                 document.Add(table);
+                document.Add(new iTextSharp.text.Paragraph(" "));
+
+                document.Add(table2);
+
+                document.Add(table4);
+                document.Add(table5);
 
                 document.Add(new iTextSharp.text.Paragraph(" "));
+                document.Add(table6);
+
                 document.Add(new iTextSharp.text.Paragraph(" "));
-    
-                document.Add(table2);
+                document.Add(table7);
+
+                document.Add(new iTextSharp.text.Paragraph(" "));
+                document.Add(table8);
+
 
                 // Close the document
                 document.Close();
 
                 MessageBox.Show("Payslip exported to PDF successfully!");
+                this.Close();
+
             }
         }
 
@@ -261,7 +342,11 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
             textBox11.Text = transferredData11; // net
             textBox12.Text = transferredData12; // name
             textBox13.Text = transferredData9; // deduction
-
+            textBox17.Text = transferredData18; // allowance
+            textBox14.Text = transferredData15; // undertime
+            textBox15.Text = transferredData16; // late
+            textBox16.Text = transferredData20; // contributions
+            textBox18.Text = transferredData19; // totalsalary
 
         }
 
@@ -269,116 +354,6 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
         {
             this.Close();
 
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox8_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox12_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void textBox10_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox11_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox13_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void label13_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void textBox9_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
         }
     }
 }

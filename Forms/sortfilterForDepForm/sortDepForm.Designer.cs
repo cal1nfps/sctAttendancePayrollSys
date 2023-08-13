@@ -147,7 +147,7 @@
             ClientSize = new Size(216, 335);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Location = new Point(1410, 365);
+            Location = new Point(930, 260);
             Name = "sortDepForm";
             StartPosition = FormStartPosition.Manual;
             Text = "sortDepForm";

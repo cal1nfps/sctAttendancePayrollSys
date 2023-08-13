@@ -97,13 +97,13 @@ namespace SCTAttendanceSystemUI.Forms.AddLeaveButton
         private void button1_Click(object sender, EventArgs e)
         {
 
-                string textBoxDurationValue = textBoxDuration.Text;
-                DateTime startDateTime = DateTime.ParseExact(textBoxDurationValue, "MMMM dd, yyyy", CultureInfo.InvariantCulture);
-                string formattedStartDateTime = startDateTime.ToString("yyyy-MM-dd HH:mm:ss");
+            string textBoxDurationValue = textBoxDuration.Text;
+            DateTime startDateTime = DateTime.ParseExact(textBoxDurationValue, "MMMM dd, yyyy", CultureInfo.InvariantCulture);
+            string formattedStartDateTime = startDateTime.ToString("yyyy-MM-dd HH:mm:ss");
 
-                string textBoxEndValue = textBox1.Text;
-                DateTime endDateTime = DateTime.ParseExact(textBoxEndValue, "MMMM dd, yyyy", CultureInfo.InvariantCulture);
-                string formattedEndDateTime = endDateTime.ToString("yyyy-MM-dd HH:mm:ss");
+            string textBoxEndValue = textBox1.Text;
+            DateTime endDateTime = DateTime.ParseExact(textBoxEndValue, "MMMM dd, yyyy", CultureInfo.InvariantCulture);
+            string formattedEndDateTime = endDateTime.ToString("yyyy-MM-dd HH:mm:ss");
 
             try
             {
@@ -137,6 +137,7 @@ namespace SCTAttendanceSystemUI.Forms.AddLeaveButton
                 deleteCommand.ExecuteNonQuery();
 
                 MessageBox.Show("Request Approved!");
+                this.Close();
             }
             catch (Exception ex)
             {
@@ -151,6 +152,10 @@ namespace SCTAttendanceSystemUI.Forms.AddLeaveButton
 
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
 

@@ -35,7 +35,6 @@
             panel3 = new Panel();
             panel2 = new Panel();
             comboBox2 = new ComboBox();
-            comboBox1 = new ComboBox();
             filterComboBox = new ComboBox();
             mySqlCommand1 = new MySqlConnector.MySqlCommand();
             panel1.SuspendLayout();
@@ -69,7 +68,6 @@
             panel1.Controls.Add(panel3);
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(comboBox2);
-            panel1.Controls.Add(comboBox1);
             panel1.Controls.Add(filterComboBox);
             panel1.Controls.Add(cancelButton);
             panel1.Location = new Point(2, 1);
@@ -116,21 +114,6 @@
             comboBox2.Text = "NAME";
             comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
             // 
-            // comboBox1
-            // 
-            comboBox1.BackColor = Color.WhiteSmoke;
-            comboBox1.Cursor = Cursors.Hand;
-            comboBox1.FlatStyle = FlatStyle.Flat;
-            comboBox1.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "None", "Recent - Oldest", "Oldest - Recent" });
-            comboBox1.Location = new Point(25, 194);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(153, 23);
-            comboBox1.TabIndex = 64;
-            comboBox1.Text = "DATE";
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
-            // 
             // filterComboBox
             // 
             filterComboBox.BackColor = Color.WhiteSmoke;
@@ -160,7 +143,7 @@
             ClientSize = new Size(216, 335);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Location = new Point(755, 390);
+            Location = new Point(640, 350);
             Name = "sortonleave";
             StartPosition = FormStartPosition.Manual;
             Text = "sortonleave";
@@ -176,7 +159,6 @@
         private Panel panel3;
         private Panel panel2;
         public ComboBox comboBox2;
-        public ComboBox comboBox1;
         public ComboBox filterComboBox;
         private MySqlConnector.MySqlCommand mySqlCommand1;
     }

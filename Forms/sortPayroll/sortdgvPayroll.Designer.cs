@@ -160,7 +160,7 @@
             ClientSize = new Size(216, 335);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Location = new Point(1355, 325);
+            Location = new Point(1160, 218);
             Name = "sortdgvPayroll";
             StartPosition = FormStartPosition.Manual;
             Text = "sortdgvPayroll";

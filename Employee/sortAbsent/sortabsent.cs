@@ -27,18 +27,18 @@ namespace SCTAttendanceSystemUI.Employee.sortAbsent
             string selectedItem = filterComboBox.SelectedItem.ToString();   //Selected combobox item
 
             //Sort DGV from FormHome
-            DataGridView dataGridView1 = System.Windows.Forms.Application.OpenForms["FormAbsentees"].Controls["dataGridView2"] as DataGridView;
+            DataGridView dataGridView2 = System.Windows.Forms.Application.OpenForms["FormAbsentees"].Controls["dataGridView2"] as DataGridView;
 
             //SORTS THE COLUMN 'EMPLOYEE_NUMBER'
             if (selectedItem == "Lowest - Highest")
             {
-                dataGridView1.Sort(dataGridView1.Columns["empnum"], ListSortDirection.Descending);    //Sorts the selected column 'Employee_Number' to Ascending    
+                dataGridView2.Sort(dataGridView2.Columns["empnum"], ListSortDirection.Descending);    //Sorts the selected column 'Employee_Number' to Ascending    
             }
 
 
             if (selectedItem == "Highest - Lowest")
             {
-                dataGridView1.Sort(dataGridView1.Columns["empnum"], ListSortDirection.Ascending);   //Sorts the selected column 'Employee_Number' to Descending
+                dataGridView2.Sort(dataGridView2.Columns["empnum"], ListSortDirection.Ascending);   //Sorts the selected column 'Employee_Number' to Descending
             }
         }
 

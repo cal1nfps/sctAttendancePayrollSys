@@ -32,6 +32,7 @@
             cancelButton = new Button();
             personalButton = new Button();
             panel1 = new Panel();
+            label15 = new Label();
             label2 = new Label();
             label1 = new Label();
             label12 = new Label();
@@ -129,6 +130,7 @@
             // 
             panel1.BackColor = Color.White;
             panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Controls.Add(label15);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(label12);
@@ -138,14 +140,24 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1212, 346);
             panel1.TabIndex = 10;
-            panel1.Paint += panel1_Paint;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label15.ForeColor = SystemColors.ControlDarkDark;
+            label15.Location = new Point(416, 19);
+            label15.Name = "label15";
+            label15.Size = new Size(55, 14);
+            label15.TabIndex = 60;
+            label15.Text = "Job Type";
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = SystemColors.ControlDarkDark;
-            label2.Location = new Point(430, 19);
+            label2.Location = new Point(322, 19);
             label2.Name = "label2";
             label2.Size = new Size(68, 14);
             label2.TabIndex = 59;
@@ -156,7 +168,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.ControlDarkDark;
-            label1.Location = new Point(259, 19);
+            label1.Location = new Point(190, 19);
             label1.Name = "label1";
             label1.Size = new Size(37, 14);
             label1.TabIndex = 58;
@@ -167,7 +179,7 @@
             label12.AutoSize = true;
             label12.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label12.ForeColor = SystemColors.ControlDarkDark;
-            label12.Location = new Point(58, 19);
+            label12.Location = new Point(26, 19);
             label12.Name = "label12";
             label12.Size = new Size(105, 14);
             label12.TabIndex = 57;
@@ -212,7 +224,6 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(606, 293);
             panel2.TabIndex = 56;
-            panel2.Paint += panel2_Paint;
             // 
             // textBox16
             // 
@@ -223,7 +234,6 @@
             textBox16.Size = new Size(107, 23);
             textBox16.TabIndex = 92;
             textBox16.TextAlign = HorizontalAlignment.Right;
-            textBox16.TextChanged += textBox16_TextChanged;
             // 
             // label20
             // 
@@ -235,7 +245,6 @@
             label20.Size = new Size(81, 14);
             label20.TabIndex = 91;
             label20.Text = "Contributions";
-            label20.Click += label20_Click;
             // 
             // textBox15
             // 
@@ -246,7 +255,6 @@
             textBox15.Size = new Size(107, 23);
             textBox15.TabIndex = 90;
             textBox15.TextAlign = HorizontalAlignment.Right;
-            textBox15.TextChanged += textBox15_TextChanged;
             // 
             // label19
             // 
@@ -258,7 +266,6 @@
             label19.Size = new Size(61, 14);
             label19.TabIndex = 89;
             label19.Text = "Deduction";
-            label19.Click += label19_Click;
             // 
             // textBox14
             // 
@@ -269,7 +276,6 @@
             textBox14.Size = new Size(107, 23);
             textBox14.TabIndex = 88;
             textBox14.TextAlign = HorizontalAlignment.Right;
-            textBox14.TextChanged += textBox14_TextChanged;
             // 
             // filterComboBox
             // 
@@ -284,7 +290,6 @@
             filterComboBox.Size = new Size(107, 23);
             filterComboBox.TabIndex = 63;
             filterComboBox.Text = "MONTHLY";
-            filterComboBox.SelectedIndexChanged += filterComboBox_SelectedIndexChanged;
             // 
             // label11
             // 
@@ -296,7 +301,6 @@
             label11.Size = new Size(72, 14);
             label11.TabIndex = 75;
             label11.Text = "Payroll Type";
-            label11.Click += label11_Click;
             // 
             // label18
             // 
@@ -308,7 +312,6 @@
             label18.Size = new Size(61, 14);
             label18.TabIndex = 87;
             label18.Text = "Gross Pay";
-            label18.Click += label18_Click;
             // 
             // textBox12
             // 
@@ -319,7 +322,6 @@
             textBox12.Size = new Size(107, 23);
             textBox12.TabIndex = 86;
             textBox12.TextAlign = HorizontalAlignment.Right;
-            textBox12.TextChanged += textBox12_TextChanged;
             // 
             // label16
             // 
@@ -331,7 +333,6 @@
             label16.Size = new Size(62, 14);
             label16.TabIndex = 85;
             label16.Text = "Allowance";
-            label16.Click += label16_Click;
             // 
             // label17
             // 
@@ -343,7 +344,6 @@
             label17.Size = new Size(40, 14);
             label17.TabIndex = 84;
             label17.Text = "Salary";
-            label17.Click += label17_Click;
             // 
             // textBox13
             // 
@@ -354,7 +354,6 @@
             textBox13.Size = new Size(107, 23);
             textBox13.TabIndex = 83;
             textBox13.TextAlign = HorizontalAlignment.Right;
-            textBox13.TextChanged += textBox13_TextChanged;
             // 
             // textBox11
             // 
@@ -365,7 +364,6 @@
             textBox11.Size = new Size(107, 23);
             textBox11.TabIndex = 82;
             textBox11.TextAlign = HorizontalAlignment.Right;
-            textBox11.TextChanged += textBox11_TextChanged;
             // 
             // label13
             // 
@@ -377,7 +375,6 @@
             label13.Size = new Size(40, 14);
             label13.TabIndex = 81;
             label13.Text = "Salary";
-            label13.Click += label13_Click_1;
             // 
             // label14
             // 
@@ -389,7 +386,6 @@
             label14.Size = new Size(57, 14);
             label14.TabIndex = 78;
             label14.Text = "OT Hours";
-            label14.Click += label14_Click;
             // 
             // textBox9
             // 
@@ -400,7 +396,6 @@
             textBox9.Size = new Size(107, 23);
             textBox9.TabIndex = 77;
             textBox9.TextAlign = HorizontalAlignment.Right;
-            textBox9.TextChanged += textBox9_TextChanged;
             // 
             // label10
             // 
@@ -412,7 +407,6 @@
             label10.Size = new Size(98, 14);
             label10.TabIndex = 74;
             label10.Text = "Undertime Hours";
-            label10.Click += label10_Click;
             // 
             // label9
             // 
@@ -424,7 +418,6 @@
             label9.Size = new Size(66, 14);
             label9.TabIndex = 73;
             label9.Text = "Late Hours";
-            label9.Click += label9_Click;
             // 
             // textBox8
             // 
@@ -435,7 +428,6 @@
             textBox8.Size = new Size(107, 23);
             textBox8.TabIndex = 72;
             textBox8.TextAlign = HorizontalAlignment.Right;
-            textBox8.TextChanged += textBox8_TextChanged;
             // 
             // textBox7
             // 
@@ -446,7 +438,6 @@
             textBox7.Size = new Size(107, 23);
             textBox7.TabIndex = 71;
             textBox7.TextAlign = HorizontalAlignment.Right;
-            textBox7.TextChanged += textBox7_TextChanged;
             // 
             // textBox4
             // 
@@ -456,7 +447,6 @@
             textBox4.ReadOnly = true;
             textBox4.Size = new Size(107, 23);
             textBox4.TabIndex = 70;
-            textBox4.TextChanged += textBox4_TextChanged_1;
             // 
             // textBox5
             // 
@@ -466,7 +456,6 @@
             textBox5.ReadOnly = true;
             textBox5.Size = new Size(107, 23);
             textBox5.TabIndex = 69;
-            textBox5.TextChanged += textBox5_TextChanged;
             // 
             // label6
             // 
@@ -478,7 +467,6 @@
             label6.Size = new Size(61, 14);
             label6.TabIndex = 68;
             label6.Text = "Deduction";
-            label6.Click += label6_Click_2;
             // 
             // label7
             // 
@@ -490,7 +478,6 @@
             label7.Size = new Size(47, 14);
             label7.TabIndex = 67;
             label7.Text = "Net Pay";
-            label7.Click += label7_Click_1;
             // 
             // label8
             // 
@@ -502,7 +489,6 @@
             label8.Size = new Size(61, 14);
             label8.TabIndex = 66;
             label8.Text = "Gross Pay";
-            label8.Click += label8_Click;
             // 
             // textBox6
             // 
@@ -512,7 +498,6 @@
             textBox6.ReadOnly = true;
             textBox6.Size = new Size(107, 23);
             textBox6.TabIndex = 65;
-            textBox6.TextChanged += textBox6_TextChanged;
             // 
             // textBox3
             // 
@@ -522,7 +507,6 @@
             textBox3.ReadOnly = true;
             textBox3.Size = new Size(107, 23);
             textBox3.TabIndex = 64;
-            textBox3.TextChanged += textBox3_TextChanged_1;
             // 
             // textBox2
             // 
@@ -533,7 +517,6 @@
             textBox2.Size = new Size(107, 23);
             textBox2.TabIndex = 63;
             textBox2.TextAlign = HorizontalAlignment.Right;
-            textBox2.TextChanged += textBox2_TextChanged_1;
             // 
             // label5
             // 
@@ -545,7 +528,6 @@
             label5.Size = new Size(68, 14);
             label5.TabIndex = 62;
             label5.Text = "Total Hours";
-            label5.Click += label5_Click;
             // 
             // label4
             // 
@@ -557,7 +539,6 @@
             label4.Size = new Size(68, 14);
             label4.TabIndex = 61;
             label4.Text = "Total Salary";
-            label4.Click += label4_Click_1;
             // 
             // label3
             // 
@@ -569,7 +550,6 @@
             label3.Size = new Size(43, 14);
             label3.TabIndex = 60;
             label3.Text = "Hourly";
-            label3.Click += label3_Click;
             // 
             // textBox1
             // 
@@ -580,7 +560,6 @@
             textBox1.Size = new Size(107, 23);
             textBox1.TabIndex = 1;
             textBox1.TextAlign = HorizontalAlignment.Right;
-            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // dataGridView1
             // 
@@ -668,5 +647,6 @@
         private Label label18;
         public TextBox textBox16;
         private Label label20;
+        private Label label15;
     }
 }

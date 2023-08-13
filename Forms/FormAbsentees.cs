@@ -248,13 +248,13 @@ namespace SCTAttendanceSystemUI.Forms
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+/*        private void button1_Click(object sender, EventArgs e)
         {
             sortabsent sortDgvForm = new sortabsent();
 
             sortDgvForm.Show();
 
-        }
+        }*/
 
         // Method to load absent employees and display them in the DataGridView
         private void LoadAbsentEmployees()

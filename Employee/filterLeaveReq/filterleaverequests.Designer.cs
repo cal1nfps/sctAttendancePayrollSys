@@ -182,7 +182,7 @@
             ClientSize = new Size(216, 335);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Location = new Point(1407, 380);
+            Location = new Point(1250, 385);
             Name = "filterleaverequests";
             StartPosition = FormStartPosition.Manual;
             Text = "filterleaverequests";

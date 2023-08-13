@@ -35,55 +35,30 @@ namespace SCTAttendanceSystemUI.Forms
         private void button3_Click(object sender, EventArgs e)
         {
 
-            int selectedRowIndex = dataGridView1.SelectedCells[0].RowIndex;
-            DataGridViewRow selectedRow = dataGridView1.Rows[selectedRowIndex];
+            if (dataGridView1.SelectedCells.Count > 0)
+            {
+                int selectedRowIndex = dataGridView1.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = dataGridView1.Rows[selectedRowIndex];
 
-            string empnum = selectedRow.Cells["empnum"].Value.ToString(); // Replace "ColumnName" with the actual column name
-            string firstname = selectedRow.Cells["firstname"].Value.ToString(); // Replace "ColumnName" with the actual column name
-            string middlename = selectedRow.Cells["middlename"].Value.ToString(); // Replace "ColumnName" with the actual column name
-            string lastname = selectedRow.Cells["lastname"].Value.ToString(); // Replace "ColumnName" with the actual column name
-            string suffix = selectedRow.Cells["suffix"].Value.ToString(); // Replace "ColumnName" with the actual column name
-            string dep = selectedRow.Cells["department"].Value.ToString(); // Replace "ColumnName" with the actual column name
-            string occupation = selectedRow.Cells["occupation"].Value.ToString(); // Replace "ColumnName" with the actual column name
-            string jobstatus = selectedRow.Cells["jobstatus"].Value.ToString(); // Replace "ColumnName" with the actual column name
-            string start = selectedRow.Cells["start"].Value.ToString(); // Replace "ColumnName" with the actual column name
-            string end = selectedRow.Cells["end"].Value.ToString(); // Replace "ColumnName" with the actual column name
-            string leavestatus = selectedRow.Cells["leavestatus"].Value.ToString(); // Replace "ColumnName" with the actual column name
+                string empnum = selectedRow.Cells["empnum"].Value.ToString();
+                string firstname = selectedRow.Cells["firstname"].Value.ToString();
+                string middlename = selectedRow.Cells["middlename"].Value.ToString();
+                string lastname = selectedRow.Cells["lastname"].Value.ToString();
+                string suffix = selectedRow.Cells["suffix"].Value.ToString();
+                string dep = selectedRow.Cells["department"].Value.ToString();
+                string occupation = selectedRow.Cells["occupation"].Value.ToString();
+                string jobstatus = selectedRow.Cells["jobstatus"].Value.ToString();
+                string start = selectedRow.Cells["start"].Value.ToString();
+                string end = selectedRow.Cells["end"].Value.ToString();
+                string leavestatus = selectedRow.Cells["leavestatus"].Value.ToString();
 
-
-
-            AddLeaveButtonForm form2 = new AddLeaveButtonForm(empnum, firstname, middlename, lastname, suffix, dep, occupation, jobstatus, start, end, leavestatus);
-            form2.Show();
-        }
-
-        private void dataGridViewLeave_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void panelLeaveForToday_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void labelDep_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FormLeave_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+                AddLeaveButtonForm form2 = new AddLeaveButtonForm(empnum, firstname, middlename, lastname, suffix, dep, occupation, jobstatus, start, end, leavestatus);
+                form2.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please select a cell in the DataGridView first.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -218,9 +193,6 @@ namespace SCTAttendanceSystemUI.Forms
             dataGridView1.Columns["end"].Visible = false;    // Hide a specific column
             dataGridView1.Columns["leavestatus"].Visible = false;    // Hide a specific column
 
-
-
-
         }
 
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -259,29 +231,48 @@ namespace SCTAttendanceSystemUI.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // DELETE EMPLOYEE INFORMATION
-            DialogResult result = MessageBox.Show("Are you sure you want to delete this Employee?", "Confirmation", MessageBoxButtons.YesNo);
-
-            if (result == DialogResult.Yes)
+            try
             {
-                connection.Open();
+                // DELETE EMPLOYEE INFORMATION
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this Employee?", "Confirmation", MessageBoxButtons.YesNo);
 
-                // Get selected cell value from DataGridView
-                string selectedCellValue = dataGridViewLeave.SelectedCells[0].Value.ToString();
+                if (result == DialogResult.Yes)
+                {
+                    // Check if any cell is selected
+                    if (dataGridViewLeave.SelectedCells.Count == 0)
+                    {
+                        MessageBox.Show("Please select a cell to delete an employee.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return; // Exit the method
+                    }
 
-                // Delete selected cell value from MySQL database
-                string query = "DELETE FROM emp_onleave WHERE empnum = @empnum";
-                MySqlCommand command = new MySqlCommand(query, connection);
-                command.Parameters.AddWithValue("@empnum", selectedCellValue);
-                command.ExecuteNonQuery();
+                    connection.Open();
 
-                // Display message box to confirm deletion
-                MessageBox.Show("Employee deleted successfully.");
+                    // Get selected cell value from DataGridView
+                    string selectedCellValue = dataGridViewLeave.SelectedCells[0].Value.ToString();
 
-                // Refresh DataGridView to show updated data
-                dataGridView1.Update();
-                dataGridView1.Refresh();
+                    // Delete selected cell value from MySQL database
+                    string query = "DELETE FROM emp_onleave WHERE empnum = @empnum";
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@empnum", selectedCellValue);
+                    command.ExecuteNonQuery();
+
+                    // Display message box to confirm deletion
+                    MessageBox.Show("Employee deleted successfully.");
+
+                    // Refresh DataGridView to show updated data
+                    dataGridView1.Update();
+                    dataGridView1.Refresh();
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
         }
 
         private void dataGridViewLeave_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

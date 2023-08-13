@@ -166,7 +166,7 @@
             ClientSize = new Size(216, 335);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Location = new Point(1460, 365);
+            Location = new Point(985, 260);
             Name = "filterDepForm";
             StartPosition = FormStartPosition.Manual;
             Text = "filterDepForm";

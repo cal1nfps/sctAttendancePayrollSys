@@ -32,7 +32,10 @@
             labelLeave = new Label();
             dataGridViewLeave = new DataGridView();
             panelLeaveForToday = new Panel();
+            label10 = new Label();
+            label9 = new Label();
             labelOccupation = new Label();
+            label8 = new Label();
             labelDuration = new Label();
             labelDep = new Label();
             labelName = new Label();
@@ -95,14 +98,16 @@
             dataGridViewLeave.ShowRowErrors = false;
             dataGridViewLeave.Size = new Size(555, 392);
             dataGridViewLeave.TabIndex = 16;
-            dataGridViewLeave.CellContentClick += dataGridViewLeave_CellContentClick;
             dataGridViewLeave.CellFormatting += dataGridViewLeave_CellFormatting;
             // 
             // panelLeaveForToday
             // 
             panelLeaveForToday.BackColor = Color.White;
             panelLeaveForToday.BorderStyle = BorderStyle.FixedSingle;
+            panelLeaveForToday.Controls.Add(label10);
+            panelLeaveForToday.Controls.Add(label9);
             panelLeaveForToday.Controls.Add(labelOccupation);
+            panelLeaveForToday.Controls.Add(label8);
             panelLeaveForToday.Controls.Add(labelDuration);
             panelLeaveForToday.Controls.Add(labelDep);
             panelLeaveForToday.Controls.Add(labelName);
@@ -111,41 +116,72 @@
             panelLeaveForToday.Name = "panelLeaveForToday";
             panelLeaveForToday.Size = new Size(555, 30);
             panelLeaveForToday.TabIndex = 72;
-            panelLeaveForToday.Paint += panelLeaveForToday_Paint;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.ForeColor = SystemColors.ControlDarkDark;
+            label10.Location = new Point(494, 7);
+            label10.Name = "label10";
+            label10.Size = new Size(32, 14);
+            label10.TabIndex = 86;
+            label10.Text = "Type";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.ForeColor = SystemColors.ControlDarkDark;
+            label9.Location = new Point(414, 7);
+            label9.Name = "label9";
+            label9.Size = new Size(27, 14);
+            label9.TabIndex = 85;
+            label9.Text = "End";
             // 
             // labelOccupation
             // 
             labelOccupation.AutoSize = true;
             labelOccupation.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             labelOccupation.ForeColor = SystemColors.ControlDarkDark;
-            labelOccupation.Location = new Point(305, 7);
+            labelOccupation.Location = new Point(112, 7);
             labelOccupation.Name = "labelOccupation";
             labelOccupation.Size = new Size(68, 14);
             labelOccupation.TabIndex = 67;
             labelOccupation.Text = "Occupation";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.ForeColor = SystemColors.ControlDarkDark;
+            label8.Location = new Point(325, 7);
+            label8.Name = "label8";
+            label8.Size = new Size(33, 14);
+            label8.TabIndex = 68;
+            label8.Text = "Start";
             // 
             // labelDuration
             // 
             labelDuration.AutoSize = true;
             labelDuration.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             labelDuration.ForeColor = SystemColors.ControlDarkDark;
-            labelDuration.Location = new Point(453, 7);
+            labelDuration.Location = new Point(221, 7);
             labelDuration.Name = "labelDuration";
-            labelDuration.Size = new Size(54, 14);
+            labelDuration.Size = new Size(64, 14);
             labelDuration.TabIndex = 64;
-            labelDuration.Text = "Duration";
+            labelDuration.Text = "Job Status";
             // 
             // labelDep
             // 
             labelDep.AutoSize = true;
             labelDep.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             labelDep.ForeColor = SystemColors.ControlDarkDark;
-            labelDep.Location = new Point(171, 7);
+            labelDep.Location = new Point(186, 7);
             labelDep.Name = "labelDep";
-            labelDep.Size = new Size(70, 14);
+            labelDep.Size = new Size(29, 14);
             labelDep.TabIndex = 61;
-            labelDep.Text = "Department";
-            labelDep.Click += labelDep_Click;
+            labelDep.Text = "DEP";
             // 
             // labelName
             // 
@@ -253,7 +289,6 @@
             dataGridView1.ShowEditingIcon = false;
             dataGridView1.Size = new Size(508, 392);
             dataGridView1.TabIndex = 77;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             dataGridView1.CellFormatting += dataGridView1_CellFormatting;
             // 
             // label1
@@ -266,7 +301,6 @@
             label1.Size = new Size(255, 31);
             label1.TabIndex = 78;
             label1.Text = "LEAVE REQUESTS";
-            label1.Click += label1_Click;
             // 
             // button2
             // 
@@ -524,5 +558,8 @@
         private Label label3;
         private Button button7;
         private Button button8;
+        private Label label9;
+        private Label label8;
+        private Label label10;
     }
 }

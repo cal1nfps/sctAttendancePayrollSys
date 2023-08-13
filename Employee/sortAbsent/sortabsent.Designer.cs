@@ -143,7 +143,7 @@
             ClientSize = new Size(216, 335);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Location = new Point(1200, 180);
+            Location = new Point(885, 220);
             Name = "sortabsent";
             StartPosition = FormStartPosition.Manual;
             Text = "sortabsent";

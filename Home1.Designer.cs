@@ -34,7 +34,6 @@
             labelSiena = new Label();
             panelMenu = new Panel();
             buttonLogout = new Button();
-            buttonSettings = new Button();
             buttonPayroll = new Button();
             buttonLeave = new Button();
             buttonAbsentees = new Button();
@@ -55,21 +54,13 @@
             // 
             // panelHeader
             // 
-            this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(16)))), ((int)(((byte)(48)))));
-            this.panelHeader.Controls.Add(this.pictureBoxLogo);
-            this.panelHeader.Controls.Add(this.labelSiena);
-            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelHeader.Location = new System.Drawing.Point(0, 0);
-            this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1264, 110);
-            this.panelHeader.TabIndex = 3;
             panelHeader.BackColor = Color.FromArgb(164, 16, 48);
             panelHeader.Controls.Add(pictureBoxLogo);
             panelHeader.Controls.Add(labelSiena);
             panelHeader.Dock = DockStyle.Top;
             panelHeader.Location = new Point(0, 0);
             panelHeader.Name = "panelHeader";
-            panelHeader.Size = new Size(1584, 110);
+            panelHeader.Size = new Size(1904, 110);
             panelHeader.TabIndex = 3;
             // 
             // pictureBoxLogo
@@ -97,184 +88,9 @@
             // 
             // panelMenu
             // 
-            this.panelMenu.AutoScroll = true;
-            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(16)))), ((int)(((byte)(48)))));
-            this.panelMenu.Controls.Add(this.buttonLogout);
-            this.panelMenu.Controls.Add(this.buttonSettings);
-            this.panelMenu.Controls.Add(this.buttonPayroll);
-            this.panelMenu.Controls.Add(this.buttonLeave);
-            this.panelMenu.Controls.Add(this.buttonAbsentees);
-            this.panelMenu.Controls.Add(this.buttonEmployeeList);
-            this.panelMenu.Controls.Add(this.buttonDepartment);
-            this.panelMenu.Controls.Add(this.buttonAttendance);
-            this.panelMenu.Controls.Add(this.labelMenu);
-            this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelMenu.Location = new System.Drawing.Point(0, 110);
-            this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(214, 571);
-            this.panelMenu.TabIndex = 4;
-            // 
-            // buttonLogout
-            // 
-            this.buttonLogout.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonLogout.FlatAppearance.BorderSize = 0;
-            this.buttonLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonLogout.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonLogout.ForeColor = System.Drawing.Color.Gainsboro;
-            this.buttonLogout.Image = global::SCTAttendanceSystemUI.Properties.Resources.logout;
-            this.buttonLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonLogout.Location = new System.Drawing.Point(0, 512);
-            this.buttonLogout.Name = "buttonLogout";
-            this.buttonLogout.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.buttonLogout.Size = new System.Drawing.Size(197, 65);
-            this.buttonLogout.TabIndex = 25;
-            this.buttonLogout.Text = "     LOGOUT";
-            this.buttonLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonLogout.UseVisualStyleBackColor = true;
-            this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
-            // 
-            // buttonSettings
-            // 
-            this.buttonSettings.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonSettings.FlatAppearance.BorderSize = 0;
-            this.buttonSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSettings.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonSettings.ForeColor = System.Drawing.Color.Gainsboro;
-            this.buttonSettings.Image = global::SCTAttendanceSystemUI.Properties.Resources.settings1;
-            this.buttonSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSettings.Location = new System.Drawing.Point(0, 447);
-            this.buttonSettings.Name = "buttonSettings";
-            this.buttonSettings.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.buttonSettings.Size = new System.Drawing.Size(197, 65);
-            this.buttonSettings.TabIndex = 25;
-            this.buttonSettings.Text = "     SETTINGS";
-            this.buttonSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonSettings.UseVisualStyleBackColor = true;
-            this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
-            // 
-            // buttonPayroll
-            // 
-            this.buttonPayroll.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonPayroll.FlatAppearance.BorderSize = 0;
-            this.buttonPayroll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonPayroll.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonPayroll.ForeColor = System.Drawing.Color.Gainsboro;
-            this.buttonPayroll.Image = global::SCTAttendanceSystemUI.Properties.Resources.payroll;
-            this.buttonPayroll.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonPayroll.Location = new System.Drawing.Point(0, 382);
-            this.buttonPayroll.Name = "buttonPayroll";
-            this.buttonPayroll.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.buttonPayroll.Size = new System.Drawing.Size(197, 65);
-            this.buttonPayroll.TabIndex = 25;
-            this.buttonPayroll.Text = "     PAYROLL";
-            this.buttonPayroll.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonPayroll.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonPayroll.UseVisualStyleBackColor = true;
-            this.buttonPayroll.Click += new System.EventHandler(this.buttonPayroll_Click);
-            // 
-            // buttonLeave
-            // 
-            this.buttonLeave.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonLeave.FlatAppearance.BorderSize = 0;
-            this.buttonLeave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonLeave.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonLeave.ForeColor = System.Drawing.Color.Gainsboro;
-            this.buttonLeave.Image = global::SCTAttendanceSystemUI.Properties.Resources.leave;
-            this.buttonLeave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonLeave.Location = new System.Drawing.Point(0, 317);
-            this.buttonLeave.Name = "buttonLeave";
-            this.buttonLeave.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.buttonLeave.Size = new System.Drawing.Size(197, 65);
-            this.buttonLeave.TabIndex = 25;
-            this.buttonLeave.Text = "     LEAVE";
-            this.buttonLeave.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonLeave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonLeave.UseVisualStyleBackColor = true;
-            this.buttonLeave.Click += new System.EventHandler(this.buttonLeave_Click_1);
-            // 
-            // buttonAbsentees
-            // 
-            this.buttonAbsentees.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonAbsentees.FlatAppearance.BorderSize = 0;
-            this.buttonAbsentees.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAbsentees.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonAbsentees.ForeColor = System.Drawing.Color.Gainsboro;
-            this.buttonAbsentees.Image = global::SCTAttendanceSystemUI.Properties.Resources.absentees;
-            this.buttonAbsentees.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAbsentees.Location = new System.Drawing.Point(0, 252);
-            this.buttonAbsentees.Name = "buttonAbsentees";
-            this.buttonAbsentees.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.buttonAbsentees.Size = new System.Drawing.Size(197, 65);
-            this.buttonAbsentees.TabIndex = 25;
-            this.buttonAbsentees.Text = "     ABSENTEES";
-            this.buttonAbsentees.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAbsentees.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonAbsentees.UseVisualStyleBackColor = true;
-            this.buttonAbsentees.Click += new System.EventHandler(this.buttonAbsentees_Click_1);
-            // 
-            // buttonEmployeeList
-            // 
-            this.buttonEmployeeList.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonEmployeeList.FlatAppearance.BorderSize = 0;
-            this.buttonEmployeeList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEmployeeList.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonEmployeeList.ForeColor = System.Drawing.Color.Gainsboro;
-            this.buttonEmployeeList.Image = global::SCTAttendanceSystemUI.Properties.Resources.employees;
-            this.buttonEmployeeList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonEmployeeList.Location = new System.Drawing.Point(0, 187);
-            this.buttonEmployeeList.Name = "buttonEmployeeList";
-            this.buttonEmployeeList.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.buttonEmployeeList.Size = new System.Drawing.Size(197, 65);
-            this.buttonEmployeeList.TabIndex = 25;
-            this.buttonEmployeeList.Text = "    EMPLOYEE LIST";
-            this.buttonEmployeeList.UseVisualStyleBackColor = true;
-            this.buttonEmployeeList.Click += new System.EventHandler(this.buttonEmployeeList_Click);
-            // 
-            // buttonDepartment
-            // 
-            this.buttonDepartment.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonDepartment.FlatAppearance.BorderSize = 0;
-            this.buttonDepartment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDepartment.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonDepartment.ForeColor = System.Drawing.Color.Gainsboro;
-            this.buttonDepartment.Image = global::SCTAttendanceSystemUI.Properties.Resources.department;
-            this.buttonDepartment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDepartment.Location = new System.Drawing.Point(0, 122);
-            this.buttonDepartment.Name = "buttonDepartment";
-            this.buttonDepartment.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.buttonDepartment.Size = new System.Drawing.Size(197, 65);
-            this.buttonDepartment.TabIndex = 25;
-            this.buttonDepartment.Text = "DEPARTMENTS";
-            this.buttonDepartment.UseVisualStyleBackColor = true;
-            this.buttonDepartment.Click += new System.EventHandler(this.buttonDepartment_Click_1);
-            // 
-            // buttonAttendance
-            // 
-            this.buttonAttendance.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonAttendance.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonAttendance.FlatAppearance.BorderSize = 0;
-            this.buttonAttendance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAttendance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonAttendance.ForeColor = System.Drawing.Color.Gainsboro;
-            this.buttonAttendance.Image = global::SCTAttendanceSystemUI.Properties.Resources.dashboard;
-            this.buttonAttendance.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAttendance.Location = new System.Drawing.Point(0, 57);
-            this.buttonAttendance.Name = "buttonAttendance";
-            this.buttonAttendance.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.buttonAttendance.Size = new System.Drawing.Size(197, 65);
-            this.buttonAttendance.TabIndex = 25;
-            this.buttonAttendance.Text = "     ATTENDANCE";
-            this.buttonAttendance.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAttendance.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonAttendance.UseVisualStyleBackColor = true;
-            this.buttonAttendance.Click += new System.EventHandler(this.buttonAttendance_Click_1);
-
             panelMenu.AutoScroll = true;
             panelMenu.BackColor = Color.FromArgb(164, 16, 48);
             panelMenu.Controls.Add(buttonLogout);
-            panelMenu.Controls.Add(buttonSettings);
             panelMenu.Controls.Add(buttonPayroll);
             panelMenu.Controls.Add(buttonLeave);
             panelMenu.Controls.Add(buttonAbsentees);
@@ -285,7 +101,7 @@
             panelMenu.Dock = DockStyle.Left;
             panelMenu.Location = new Point(0, 110);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(214, 751);
+            panelMenu.Size = new Size(214, 931);
             panelMenu.TabIndex = 4;
             // 
             // buttonLogout
@@ -297,7 +113,7 @@
             buttonLogout.ForeColor = Color.Gainsboro;
             buttonLogout.Image = Properties.Resources.logout;
             buttonLogout.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonLogout.Location = new Point(0, 512);
+            buttonLogout.Location = new Point(0, 447);
             buttonLogout.Name = "buttonLogout";
             buttonLogout.Padding = new Padding(10, 0, 0, 0);
             buttonLogout.Size = new Size(214, 65);
@@ -307,26 +123,6 @@
             buttonLogout.TextImageRelation = TextImageRelation.ImageBeforeText;
             buttonLogout.UseVisualStyleBackColor = true;
             buttonLogout.Click += buttonLogout_Click;
-            // 
-            // buttonSettings
-            // 
-            buttonSettings.Dock = DockStyle.Top;
-            buttonSettings.FlatAppearance.BorderSize = 0;
-            buttonSettings.FlatStyle = FlatStyle.Flat;
-            buttonSettings.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonSettings.ForeColor = Color.Gainsboro;
-            buttonSettings.Image = Properties.Resources.settings1;
-            buttonSettings.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonSettings.Location = new Point(0, 447);
-            buttonSettings.Name = "buttonSettings";
-            buttonSettings.Padding = new Padding(10, 0, 0, 0);
-            buttonSettings.Size = new Size(214, 65);
-            buttonSettings.TabIndex = 25;
-            buttonSettings.Text = "     SETTINGS";
-            buttonSettings.TextAlign = ContentAlignment.MiddleLeft;
-            buttonSettings.TextImageRelation = TextImageRelation.ImageBeforeText;
-            buttonSettings.UseVisualStyleBackColor = true;
-            buttonSettings.Click += buttonSettings_Click;
             // 
             // buttonPayroll
             // 
@@ -461,21 +257,14 @@
             // 
             // panelDesktopPane
             // 
-            this.panelDesktopPane.AutoScroll = true;
-            this.panelDesktopPane.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelDesktopPane.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktopPane.Location = new System.Drawing.Point(214, 110);
-            this.panelDesktopPane.Name = "panelDesktopPane";
-            this.panelDesktopPane.Size = new System.Drawing.Size(1050, 571);
-            this.panelDesktopPane.TabIndex = 5;
-
+            panelDesktopPane.AutoScroll = true;
             panelDesktopPane.BorderStyle = BorderStyle.FixedSingle;
             panelDesktopPane.Dock = DockStyle.Fill;
             panelDesktopPane.Location = new Point(214, 110);
             panelDesktopPane.MaximumSize = new Size(1920, 1080);
             panelDesktopPane.MinimumSize = new Size(1454, 712);
             panelDesktopPane.Name = "panelDesktopPane";
-            panelDesktopPane.Size = new Size(1454, 751);
+            panelDesktopPane.Size = new Size(1690, 931);
             panelDesktopPane.TabIndex = 5;
             // 
             // tableLayoutPanel2
@@ -524,38 +313,11 @@
             // 
             // Home1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
-            this.Controls.Add(this.panelDesktopPane);
-            this.Controls.Add(this.panelMenu);
-            this.Controls.Add(this.panelHeader);
-            this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1920, 1080);
-            this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(800, 600);
-            this.Name = "Home1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SCT ATTENDANCE SYSTEM";
-            this.panelHeader.ResumeLayout(false);
-            this.panelHeader.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
-            this.panelMenu.ResumeLayout(false);
-            this.panelMenu.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.ResumeLayout(false);
-
-
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1584, 861);
+            ClientSize = new Size(1904, 1041);
             Controls.Add(panelDesktopPane);
             Controls.Add(panelMenu);
             Controls.Add(panelHeader);
@@ -568,6 +330,7 @@
             Name = "Home1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SCT ATTENDANCE SYSTEM";
+            WindowState = FormWindowState.Maximized;
             panelHeader.ResumeLayout(false);
             panelHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
@@ -595,7 +358,6 @@
         private Label labelMenu;
         private Button buttonLeave;
         private Button buttonPayroll;
-        private Button buttonSettings;
         private Button buttonLogout;
     }
 }

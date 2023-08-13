@@ -33,5 +33,15 @@ namespace SCTAttendanceSystemUI.Employee.filterAbsent
             this.DialogResult = DialogResult.OK;
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //CLEAR BUTTON
+            DataGridView dataGridView2 = System.Windows.Forms.Application.OpenForms["FormAbsentees"].Controls["dataGridView2"] as DataGridView;
+            if (dataGridView2 != null)
+            {
+                (dataGridView2.DataSource as System.Data.DataTable).DefaultView.RowFilter = string.Empty;
+            }
+        }
     }
 }

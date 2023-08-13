@@ -9,9 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using SCTAttendanceSystemUI.Forms.PayRoll;
+using SCTAttendanceSystemUI.Employee.filterPayroll;
 using SCTAttendanceSystemUI.Forms.sortdgvFormHome;
 using SCTAttendanceSystemUI.Forms.sortPayroll;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using System.Globalization;
 
 namespace SCTAttendanceSystemUI.Forms
 {
@@ -44,19 +46,23 @@ namespace SCTAttendanceSystemUI.Forms
             dataGridView1.DataSource = table;
 
             dataGridView1.Columns[0].Width = 215;
-            dataGridView1.Columns[1].Width = 190;
-            dataGridView1.Columns[2].Width = 215;
-            dataGridView1.Columns[3].Width = 190;
-            dataGridView1.Columns[4].Width = 215;
+            dataGridView1.Columns[1].Width = 165;
+            dataGridView1.Columns[2].Width = 135;
+            dataGridView1.Columns[3].Width = 140;
+            dataGridView1.Columns[4].Width = 140;
+            dataGridView1.Columns[7].Width = 110;
+            dataGridView1.Columns[8].Width = 120;
+            dataGridView1.Columns[12].Width = 130;
+            dataGridView1.Columns[14].Width = 118;
+
+
+
 
             dataGridView1.Columns["id"].Visible = false;    //Hide a specific column
-            dataGridView1.Columns["department"].Visible = false;    //Hide a specific column
-            dataGridView1.Columns["occupation"].Visible = false;    //Hide a specific column
             dataGridView1.Columns["dob"].Visible = false;    //Hide a specific column
             dataGridView1.Columns["hiredate"].Visible = false;    //Hide a specific column
             dataGridView1.Columns["accountnum"].Visible = false;    //Hide a specific column
             dataGridView1.Columns["jobsalary"].Visible = false;    //Hide a specific column
-            dataGridView1.Columns["payrolltype"].Visible = false;    //Hide a specific column
             dataGridView1.Columns["hourlyrate"].Visible = false;    //Hide a specific column
             dataGridView1.Columns["overtimehours"].Visible = false;    //Hide a specific column
             dataGridView1.Columns["undertime"].Visible = false;    //Hide a specific column
@@ -102,9 +108,6 @@ namespace SCTAttendanceSystemUI.Forms
             string allowance = selectedRow.Cells["allowance"].Value.ToString(); // Replace "ColumnName" with the actual column name
             string totalsalary = selectedRow.Cells["totalsalary"].Value.ToString(); // Replace "ColumnName" with the actual column name
             string contributions = selectedRow.Cells["contributions"].Value.ToString(); // Replace "ColumnName" with the actual column name
-
-
-
 
 
 
@@ -204,6 +207,85 @@ namespace SCTAttendanceSystemUI.Forms
                     app.Quit();
 
                     MessageBox.Show("Data exported to Excel successfully!");
+                }
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            {
+                // APPLY FILTER
+                // Create an instance of the second form
+                filterpayroll filterForm = new filterpayroll();
+
+                // Show the second form as a dialog and wait for it to close
+                DialogResult result = filterForm.ShowDialog();
+
+                // Check if the user clicked the OK button
+                if (result == DialogResult.OK)
+                {
+                    // Get the selected values from the comboboxes in the second form
+                    string occupation = filterForm.filterComboBox.SelectedItem?.ToString();
+                    string department = filterForm.comboBox2.SelectedItem?.ToString();
+                    string payrolltype = filterForm.comboBox3.SelectedItem?.ToString();
+                    string filteryear = filterForm.comboBox4.SelectedItem?.ToString();
+
+
+
+                    // Check if at least one combobox is selected
+                    if (string.IsNullOrWhiteSpace(occupation) && string.IsNullOrWhiteSpace(department) && string.IsNullOrWhiteSpace(filteryear) && string.IsNullOrWhiteSpace(payrolltype))
+                    {
+                        MessageBox.Show("Please select at least one filter option.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        // Apply the filters to the datagridview
+                        string filter = "";
+
+                        if (!string.IsNullOrWhiteSpace(occupation))
+                        {
+                            filter += $"[occupation] = '{occupation}'";
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(department))
+                        {
+                            if (!string.IsNullOrWhiteSpace(filter))
+                            {
+                                filter += " AND ";
+
+                            }
+                            filter += $"[department] = '{department}'";
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(payrolltype))
+                        {
+                            if (!string.IsNullOrWhiteSpace(filter))
+                            {
+                                filter += " AND ";
+
+                            }
+                            filter += $"[payrolltype] = '{payrolltype}'";
+                        }
+
+                        string query = "SELECT * FROM emp_payroll WHERE 1 = 1";
+
+                        if (!string.IsNullOrWhiteSpace(filteryear))
+                        {
+                            string selectedYear = DateTime.ParseExact(filteryear, "yyyy", CultureInfo.InvariantCulture).ToString("yyyy");
+
+                            // Modify the SQL query to filter based on the month
+                            query += $" AND YEAR(date) = {DateTime.ParseExact(selectedYear, "yyyy", CultureInfo.CurrentCulture).Year}";
+
+                        }
+
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        dataGridView1.DataSource = dataTable;
+
+                        (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = filter;
+
+                    }
+
                 }
             }
         }
