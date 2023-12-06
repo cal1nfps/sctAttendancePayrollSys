@@ -53,7 +53,6 @@
             label8 = new Label();
             textBox11 = new TextBox();
             label9 = new Label();
-            textBox12 = new TextBox();
             label10 = new Label();
             label11 = new Label();
             dateTimePicker2 = new DateTimePicker();
@@ -82,6 +81,7 @@
             textBox1 = new TextBox();
             doblbl = new Label();
             genderlbl = new Label();
+            textBox9 = new TextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel3.SuspendLayout();
@@ -215,6 +215,7 @@
             // 
             panel3.BackColor = Color.White;
             panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(textBox9);
             panel3.Controls.Add(textBox14);
             panel3.Controls.Add(label19);
             panel3.Controls.Add(comboBox8);
@@ -230,7 +231,6 @@
             panel3.Controls.Add(label8);
             panel3.Controls.Add(textBox11);
             panel3.Controls.Add(label9);
-            panel3.Controls.Add(textBox12);
             panel3.Controls.Add(label10);
             panel3.Controls.Add(label11);
             panel3.Controls.Add(dateTimePicker2);
@@ -394,16 +394,6 @@
             label9.Size = new Size(65, 14);
             label9.TabIndex = 21;
             label9.Text = "HIRE DATE";
-            // 
-            // textBox12
-            // 
-            textBox12.Enabled = false;
-            textBox12.ForeColor = Color.Black;
-            textBox12.Location = new Point(103, 47);
-            textBox12.Name = "textBox12";
-            textBox12.ReadOnly = true;
-            textBox12.Size = new Size(147, 23);
-            textBox12.TabIndex = 15;
             // 
             // label10
             // 
@@ -716,6 +706,14 @@
             genderlbl.TabIndex = 11;
             genderlbl.Text = "GENDER";
             // 
+            // textBox9
+            // 
+            textBox9.ForeColor = Color.Black;
+            textBox9.Location = new Point(103, 47);
+            textBox9.Name = "textBox9";
+            textBox9.Size = new Size(147, 23);
+            textBox9.TabIndex = 69;
+            // 
             // EditButtonForm
             // 
             BackColor = Color.Gainsboro;
@@ -769,7 +767,6 @@
         private Label label8;
         private TextBox textBox11;
         private Label label9;
-        private TextBox textBox12;
         private Label label10;
         private Label label11;
         private DateTimePicker dateTimePicker2;
@@ -792,5 +789,6 @@
         private TextBox textBox14;
         private Label label19;
         private ComboBox comboBox9;
+        private TextBox textBox9;
     }
 }

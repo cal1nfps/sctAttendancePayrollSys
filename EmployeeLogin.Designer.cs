@@ -33,9 +33,9 @@
             backBtn = new Button();
             button1 = new Button();
             buttonLogin = new Button();
-            textBoxIDNum = new TextBox();
             labelIdNo = new Label();
             labelGreet = new Label();
+            textBoxIDNum = new TextBox();
             panelLogo = new Panel();
             labelTaytay = new Label();
             labelSiena = new Label();
@@ -48,9 +48,9 @@
             panelColorBg.Controls.Add(backBtn);
             panelColorBg.Controls.Add(button1);
             panelColorBg.Controls.Add(buttonLogin);
-            panelColorBg.Controls.Add(textBoxIDNum);
             panelColorBg.Controls.Add(labelIdNo);
             panelColorBg.Controls.Add(labelGreet);
+            panelColorBg.Controls.Add(textBoxIDNum);
             panelColorBg.Dock = DockStyle.Right;
             panelColorBg.Font = new Font("Tahoma", 16F, FontStyle.Regular, GraphicsUnit.Point);
             panelColorBg.Location = new Point(659, 0);
@@ -67,7 +67,7 @@
             backBtn.Font = new Font("Times New Roman", 16F, FontStyle.Bold, GraphicsUnit.Point);
             backBtn.Image = (Image)resources.GetObject("backBtn.Image");
             backBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            backBtn.Location = new Point(30, 25);
+            backBtn.Location = new Point(45, 30);
             backBtn.Name = "backBtn";
             backBtn.Size = new Size(43, 32);
             backBtn.TabIndex = 13;
@@ -103,18 +103,8 @@
             buttonLogin.TabIndex = 5;
             buttonLogin.Text = "LOGIN";
             buttonLogin.UseVisualStyleBackColor = false;
+            buttonLogin.Visible = false;
             buttonLogin.Click += buttonLogin_Click;
-            // 
-            // textBoxIDNum
-            // 
-            textBoxIDNum.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxIDNum.Location = new Point(141, 401);
-            textBoxIDNum.MaxLength = 100;
-            textBoxIDNum.Multiline = true;
-            textBoxIDNum.Name = "textBoxIDNum";
-            textBoxIDNum.PlaceholderText = "EMPLOYEE ID";
-            textBoxIDNum.Size = new Size(290, 40);
-            textBoxIDNum.TabIndex = 3;
             // 
             // labelIdNo
             // 
@@ -140,6 +130,21 @@
             labelGreet.Size = new Size(503, 45);
             labelGreet.TabIndex = 0;
             labelGreet.Text = "WELCOME, EMPLOYEE!";
+            // 
+            // textBoxIDNum
+            // 
+            textBoxIDNum.BackColor = Color.FromArgb(164, 16, 52);
+            textBoxIDNum.BorderStyle = BorderStyle.None;
+            textBoxIDNum.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxIDNum.ForeColor = Color.FromArgb(164, 16, 52);
+            textBoxIDNum.Location = new Point(136, 405);
+            textBoxIDNum.MaxLength = 100;
+            textBoxIDNum.Name = "textBoxIDNum";
+            textBoxIDNum.Size = new Size(290, 27);
+            textBoxIDNum.TabIndex = 3;
+            textBoxIDNum.Enter += textBoxIDNum_Enter;
+            textBoxIDNum.KeyDown += textBoxIDNum_KeyDown;
+            textBoxIDNum.Leave += textBoxIDNum_Leave;
             // 
             // panelLogo
             // 
@@ -192,6 +197,7 @@
             Name = "EmployeeLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SCT ATTENDANCE SYSTEM EMPLOYEE";
+            Load += EmployeeLogin_Load;
             panelColorBg.ResumeLayout(false);
             panelColorBg.PerformLayout();
             ResumeLayout(false);

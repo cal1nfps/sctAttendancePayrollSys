@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using SCTAttendanceSystemUI.Forms;
+using Microsoft.Office.Interop.Excel;
 
 namespace SCTAttendanceSystemUI
 {
@@ -31,6 +32,62 @@ namespace SCTAttendanceSystemUI
             WelcomePage form_form1 = new WelcomePage();
             form_form1.ShowDialog();
             this.Close();
+        }
+
+        private void LookupEmployee(string scannedRFID)
+        {
+            try
+            {
+                connection.Open();
+
+                // Use a parameterized query to avoid SQL injection
+                string query = "SELECT name FROM employee WHERE employeenum = @employeeNumber";
+                MySqlCommand command = new MySqlCommand(query, connection);
+
+                // Replace textBoxIDNum.Text with the actual value from your RFID scanner
+                command.Parameters.AddWithValue("@employeeNumber", textBoxIDNum.Text);
+                string name = (string)command.ExecuteScalar();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                {
+                    System.Data.DataTable dataTable = new System.Data.DataTable(); // Specify the namespace
+                    adapter.Fill(dataTable);
+
+                    if (dataTable.Rows.Count > 0)
+                    {
+
+                        this.Hide();
+                        FormEmployeeDashboard empDashboard = new FormEmployeeDashboard(name);
+                        empDashboard.ShowDialog();
+                    }
+                    else
+                    {
+                        // Handle the case where no match is found
+                        MessageBox.Show("Employee not found.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        private void textBoxIDNum_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Check if the Enter key was pressed
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Handle RFID input here
+                string scannedRFID = textBoxIDNum.Text;
+
+                // Call a method to look for the matched employeenum in the database
+                LookupEmployee(scannedRFID);
+            }
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -58,7 +115,6 @@ namespace SCTAttendanceSystemUI
                     {
                         if (reader.Read())
                         {
-
                             this.Hide();
                             FormEmployeeDashboard empDashboard = new FormEmployeeDashboard(name);
                             empDashboard.ShowDialog();
@@ -103,5 +159,21 @@ namespace SCTAttendanceSystemUI
         {
             backBtn.BackColor = Color.FromArgb(164, 16, 48);
         }
+
+        private void textBoxIDNum_Enter(object sender, EventArgs e)
+        {
+            textBoxIDNum.HideSelection = false;
+        }
+
+        private void textBoxIDNum_Leave(object sender, EventArgs e)
+        {
+            textBoxIDNum.HideSelection = true;
+        }
+
+        private void EmployeeLogin_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

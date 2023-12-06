@@ -420,11 +420,9 @@
             // EmployeeNum
             // 
             EmployeeNum.BackColor = Color.Gainsboro;
-            EmployeeNum.Enabled = false;
             EmployeeNum.ForeColor = Color.Silver;
             EmployeeNum.Location = new Point(848, 338);
             EmployeeNum.Name = "EmployeeNum";
-            EmployeeNum.ReadOnly = true;
             EmployeeNum.Size = new Size(169, 23);
             EmployeeNum.TabIndex = 20;
             // 

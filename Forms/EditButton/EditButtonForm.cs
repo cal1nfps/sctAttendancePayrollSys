@@ -49,7 +49,7 @@ namespace SCTAttendanceSystemUI.Forms
         public string phone { get { return textBox5.Text; } set { textBox5.Text = value; } }
         public string telephone { get { return textBox8.Text; } set { textBox8.Text = value; } }
         public string email { get { return textBox7.Text; } set { textBox7.Text = value; } }
-        public string empnum { get { return textBox12.Text; } set { textBox12.Text = value; } }
+        public string empnum { get { return textBox9.Text; } set { textBox9.Text = value; } }
         public string account { get { return textBox11.Text; } set { textBox11.Text = value; } }
         public string hdate { get { return dateTimePicker2.Text; } set { dateTimePicker2.Text = value; } }
         public string occupation { get { return comboBox4.Text; } set { comboBox4.Text = value; } }
@@ -65,14 +65,40 @@ namespace SCTAttendanceSystemUI.Forms
             get
             {
                 ImageConverter converter = new ImageConverter();
-                return (byte[])converter.ConvertTo(pictureBox1.Image, typeof(byte[]));
+
+                if (pictureBox1.Image != null)
+                {
+                    try
+                    {
+                        return (byte[])converter.ConvertTo(pictureBox1.Image, typeof(byte[]));
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        // Handle the case where the image data is not a valid format
+                        MessageBox.Show("Error converting image to byte array: " + ex.Message);
+                        return null;
+                    }
+                }
+                else
+                {
+                    return null;
+                }
             }
             set
             {
-                if (value != null)
+                if (value != null && value.Length > 0)
                 {
-                    ImageConverter converter = new ImageConverter();
-                    pictureBox1.Image = (Image)converter.ConvertFrom(value);
+                    try
+                    {
+                        ImageConverter converter = new ImageConverter();
+                        pictureBox1.Image = (Image)converter.ConvertFrom(value);
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        // Handle the case where the image data is not a valid format
+                        MessageBox.Show("Error converting byte array to image: " + ex.Message);
+                        pictureBox1.Image = null;
+                    }
                 }
                 else
                 {
@@ -97,7 +123,7 @@ namespace SCTAttendanceSystemUI.Forms
             {
                 connection.Open();
 
-                string query = "UPDATE employee SET occupation = @occupation, department = @department, jobstatus = @jobstatus, name = @name, firstname = @firstname, middle = @middlename, lastname = @lastname, suffix = @suffix, homenum = @homenum, " +
+                string query = "UPDATE employee SET occupation = @occupation, department = @department, jobstatus = @jobstatus, firstname = @firstname, middle = @middlename, lastname = @lastname, suffix = @suffix, homenum = @homenum, " +
                     "phonenum = @phonenum, email = @email, address = @address, province = @province, city = @city, postal = @postal, accountnum = @accountnum, timein = @timein, timeout = @timeout, image_data = @imageData, jobsalary = @jobsalary" +
                     " WHERE employeenum = @employeenum";
                 MySqlCommand command = new MySqlCommand(query, connection);
@@ -121,7 +147,7 @@ namespace SCTAttendanceSystemUI.Forms
                 command.Parameters.AddWithValue("@accountnum", textBox11.Text);
                 command.Parameters.AddWithValue("@timein", comboBox6.Text);
                 command.Parameters.AddWithValue("@timeout", comboBox7.Text);
-                command.Parameters.AddWithValue("@employeenum", textBox12.Text);
+                command.Parameters.AddWithValue("@employeenum", textBox9.Text);
                 command.Parameters.AddWithValue("@imageData", imageData);
                 command.Parameters.AddWithValue("@jobsalary", textBox14.Text);
 
@@ -167,10 +193,26 @@ namespace SCTAttendanceSystemUI.Forms
 
         private byte[] ImageToByteArray(Image image)
         {
-            using (MemoryStream memoryStream = new MemoryStream())
+            if (image != null)
             {
-                image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
-                return memoryStream.ToArray();
+                try
+                {
+                    using (MemoryStream memoryStream = new MemoryStream())
+                    {
+                        image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        return memoryStream.ToArray();
+                    }
+                }
+                catch (ArgumentException ex)
+                {
+                    // Handle the case where the image data is not a valid format
+                    MessageBox.Show("Error converting image to byte array: " + ex.Message);
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
             }
         }
 

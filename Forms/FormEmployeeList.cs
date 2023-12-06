@@ -101,13 +101,45 @@ namespace SCTAttendanceSystemUI.Forms
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-                byte[] imageBytes = (byte[])row.Cells["image_data"].Value;
 
-                using (MemoryStream memoryStream = new MemoryStream(imageBytes))
+                // Check if the "image_data" cell value is not null
+                if (row.Cells["image_data"].Value != DBNull.Value && row.Cells["image_data"].Value != null)
                 {
-                    pictureBox1.Image = Image.FromStream(memoryStream);
+                    byte[] imageBytes = (byte[])row.Cells["image_data"].Value;
+
+                    // Check if the imageBytes array is not empty
+                    if (imageBytes.Length > 0)
+                    {
+                        try
+                        {
+                            using (MemoryStream memoryStream = new MemoryStream(imageBytes))
+                            {
+                                // Attempt to create the Image object
+                                pictureBox1.Image = Image.FromStream(memoryStream);
+                            }
+                        }
+                        catch (ArgumentException ex)
+                        {
+                            // Handle the case where the image data is not a valid format
+                            MessageBox.Show("Error loading image: " + ex.Message);
+                            pictureBox1.Image = null; // Set a default image or clear the PictureBox.
+                        }
+                    }
+                    else
+                    {
+                        // Handle the case where the imageBytes array is empty
+                        pictureBox1.Image = null; // Set a default image or clear the PictureBox.
+                    }
+                }
+                else
+                {
+                    // Handle the case where the "image_data" is null (optional)
+                    // For example, set a default image or clear the PictureBox.
+                    pictureBox1.Image = null; // Set a default image or null
                 }
             }
+
+
 
             //Stores multiple cell values
             string data = "";
@@ -135,14 +167,13 @@ namespace SCTAttendanceSystemUI.Forms
             {
                 connection.Open();
 
-                string query = "SELECT employeenum, image_data FROM employee";
+                string query = "SELECT employeenum, IFNULL(image_data, NULL) AS image_data FROM employee";
                 MySqlCommand command = new MySqlCommand(query, connection);
 
                 DataTable dataTable = new DataTable();
                 MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command);
                 dataAdapter.Fill(dataTable);
                 pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-
 
                 dataGridView1.DataSource = dataTable;
             }
@@ -155,6 +186,7 @@ namespace SCTAttendanceSystemUI.Forms
                 connection.Close();
             }
         }
+
 
         private void sortComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
