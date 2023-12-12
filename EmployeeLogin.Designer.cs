@@ -141,7 +141,7 @@
             textBoxIDNum.MaxLength = 100;
             textBoxIDNum.Name = "textBoxIDNum";
             textBoxIDNum.Size = new Size(290, 27);
-            textBoxIDNum.TabIndex = 3;
+            textBoxIDNum.TabIndex = 1;
             textBoxIDNum.Enter += textBoxIDNum_Enter;
             textBoxIDNum.KeyDown += textBoxIDNum_KeyDown;
             textBoxIDNum.Leave += textBoxIDNum_Leave;

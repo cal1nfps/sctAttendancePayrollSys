@@ -30,9 +30,43 @@ namespace SCTAttendanceSystemUI.Forms
             InitializeComponent();
             string connectionString = "server=localhost;user=root;password=root;database=payrollsys";
             connection = new MySqlConnection(connectionString);
+            SetDataGridViewStyle(dataGridViewIBED, new Padding(10, 5, 10, 5), 30, 10); // Adjust the Padding values, cell height, and font size as needed
 
         }
+        private void ApplyColumnStyles()
+        {
+            // Dynamic Column Color Changer
+            foreach (DataGridViewColumn column in dataGridViewIBED.Columns)
+            {
+                // Check if the column index is even
+                if (column.Index % 2 == 0)
+                {
+                    column.DefaultCellStyle.BackColor = Color.LightGray;
+                }
+            }
+        }
 
+        private void SetDataGridViewStyle(DataGridView dataGridView, Padding cellPadding, int cellHeight, float fontSize)
+        {
+            // Set the cell padding, height, and font size for the default cell style
+            dataGridView.DefaultCellStyle.Padding = cellPadding;
+            dataGridView.RowTemplate.Height = cellHeight;
+            dataGridView.DefaultCellStyle.Font = new System.Drawing.Font("Arial", fontSize);
+
+            // Set the height and font size for the column headers
+            dataGridView.ColumnHeadersHeight = cellHeight;
+            dataGridView.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Arial", fontSize);
+
+
+            // If you want to set the font size for the header cells as well, uncomment the following line
+            // dataGridView.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Arial", fontSize);
+        }
+
+        // Define a public method to get the DataGridView
+        public DataGridView GetDataGridView()
+        {
+            return dataGridViewIBED; // Replace "dataGridView1" with the actual name of your DataGridView control
+        }
         private void DisableButton()
         {
             foreach (Control previousButton in panel1.Controls)
@@ -100,7 +134,7 @@ namespace SCTAttendanceSystemUI.Forms
         {
             // APPLY FILTER
             // Create an instance of the second form
-            filterDepForm filterForm = new filterDepForm(dataGridView1);
+            filterDepForm filterForm = new filterDepForm(dataGridViewIBED);
 
             // Show the second form as a dialog and wait for it to close
             DialogResult result = filterForm.ShowDialog();
@@ -140,7 +174,7 @@ namespace SCTAttendanceSystemUI.Forms
                         filter += $"[jobstatus] = '{jobstatus}'";
                     }
 
-                    (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = filter;
+                    (dataGridViewIBED.DataSource as DataTable).DefaultView.RowFilter = filter;
 
                 }
 
@@ -149,7 +183,7 @@ namespace SCTAttendanceSystemUI.Forms
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            sortDepForm sortDgv = new sortDepForm(dataGridView1);
+            sortDepForm sortDgv = new sortDepForm(dataGridViewIBED);
 
             sortDgv.Show();
         }
@@ -190,7 +224,7 @@ namespace SCTAttendanceSystemUI.Forms
                 dt.Load(command.ExecuteReader());
 
                 // Set the DataTable as the data source for the DataGridView
-                dataGridView1.DataSource = dt;
+                dataGridViewIBED.DataSource = dt;
             }
             catch (Exception ex)
             {
@@ -215,7 +249,7 @@ namespace SCTAttendanceSystemUI.Forms
         {
             // APPLY FILTER
             // Create an instance of the second form
-            filterDepForm filterForm = new filterDepForm(dataGridView1);
+            filterDepForm filterForm = new filterDepForm(dataGridViewIBED);
 
             // Show the second form as a dialog and wait for it to close
             DialogResult result = filterForm.ShowDialog();
@@ -255,7 +289,7 @@ namespace SCTAttendanceSystemUI.Forms
                         filter += $"[jobstatus] = '{jobstatus}'";
                     }
 
-                    (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = filter;
+                    (dataGridViewIBED.DataSource as DataTable).DefaultView.RowFilter = filter;
 
                 }
 
@@ -264,12 +298,13 @@ namespace SCTAttendanceSystemUI.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            sortDepForm sortDgv = new sortDepForm(dataGridView1);
+            sortDepForm sortDgv = new sortDepForm(dataGridViewIBED);
 
             sortDgv.Show();
         }
 
-        private void FormIBED1_Load(object sender, EventArgs e)
+
+        private void LoadIBED()
         {
             string specificDepartment = "IBED"; // Replace with the specific department name
             DateTime currentDate = DateTime.Now.Date; // Get the current date
@@ -287,7 +322,7 @@ namespace SCTAttendanceSystemUI.Forms
 
 
                 // Query to retrieve the present employees in the specific department who have time-in today
-                string query = "SELECT empnum, name, occupation, jobstatus FROM empattendance WHERE department = @department AND DATE(timein) = @currentDate";
+                string query = "SELECT id, empnum, name, occupation, jobstatus FROM empattendance WHERE department = @department AND DATE(timein) = @currentDate";
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.Parameters.AddWithValue("@department", specificDepartment);
                 command.Parameters.AddWithValue("@currentDate", currentDate);
@@ -300,7 +335,7 @@ namespace SCTAttendanceSystemUI.Forms
                 dt.Load(command.ExecuteReader());
 
                 // Set the DataTable as the data source for the DataGridView
-                dataGridView1.DataSource = dt;
+                dataGridViewIBED.DataSource = dt;
             }
             catch (Exception ex)
             {
@@ -310,6 +345,143 @@ namespace SCTAttendanceSystemUI.Forms
             {
                 connection.Close();
             }
+
+            if (dataGridViewIBED.Columns.Contains("id"))
+                dataGridViewIBED.Columns["id"].HeaderText = "ID";
+
+            if (dataGridViewIBED.Columns.Contains("empnum"))
+                dataGridViewIBED.Columns["empnum"].HeaderText = "Employee Number";
+
+            if (dataGridViewIBED.Columns.Contains("name"))
+                dataGridViewIBED.Columns["name"].HeaderText = "Name";
+
+            if (dataGridViewIBED.Columns.Contains("department"))
+                dataGridViewIBED.Columns["department"].HeaderText = "Department";
+
+            if (dataGridViewIBED.Columns.Contains("occupation"))
+                dataGridViewIBED.Columns["occupation"].HeaderText = "Occupation";
+
+            if (dataGridViewIBED.Columns.Contains("jobstatus"))
+                dataGridViewIBED.Columns["jobstatus"].HeaderText = "Job Status";
+        }
+            private void FormIBED1_Load(object sender, EventArgs e)
+        {
+            ApplyColumnStyles();
+            LoadIBED();
+        }
+        private DataView dataView;
+        private System.Data.DataTable originalDataTable;
+        private void SearchData(string searchText)
+        {
+            if (dataView == null)
+            {
+                originalDataTable = (System.Data.DataTable)dataGridViewIBED.DataSource;
+                dataView = new DataView(originalDataTable);
+            }
+
+            dataView.RowFilter = $"name LIKE '%{searchText}%' OR Convert(empnum, 'System.String') LIKE '%{searchText}%'";
+            dataGridViewIBED.DataSource = dataView;
+        }
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = searchBox.Text;
+            SearchData(searchText);
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            string connectionString2 = "server=localhost;user=root;password=root;database=payrollsys";
+
+            if (dataGridViewIBED.SelectedRows.Count > 0)
+            {
+                try
+                {
+                    // DELETE ITEM
+                    DialogResult result = MessageBox.Show("Are you sure you want to delete the selected data?", "Confirmation", MessageBoxButtons.YesNo);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        using (MySqlConnection checkConnection = new MySqlConnection(connectionString2))
+                        {
+                            checkConnection.Open();
+
+                            foreach (DataGridViewRow selectedRow in dataGridViewIBED.SelectedRows)
+                            {
+                                // Get the value from the selected row that you want to use for deletion.
+                                string selectedValue = selectedRow.Cells["id"].Value.ToString();
+
+                                // Delete from UserAct table
+                                string deleteQuery = "DELETE FROM empattendance WHERE id = @id;";
+                                using (MySqlCommand deleteCommand = new MySqlCommand(deleteQuery, checkConnection))
+                                {
+                                    deleteCommand.Parameters.AddWithValue("@id", selectedValue);
+                                    int rowsAffected = deleteCommand.ExecuteNonQuery();
+                                    if (rowsAffected > 0)
+                                    {
+                                        // If deletion is successful, remove the row from the DataGridView
+                                        dataGridViewIBED.Rows.Remove(selectedRow);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show($"Delete failed. Row with ID {selectedValue} not found.");
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+                finally
+                {
+                }
+            }
+            else
+            {
+                MessageBox.Show("No rows selected for deletion.");
+            }
+        }
+
+        private void clearLabel_Click(object sender, EventArgs e)
+        {
+            string connectionString2 = "server=localhost;user=root;password=root;database=payrollsys";
+
+            try
+            {
+                // Confirm with the user before deleting data
+                DialogResult result = MessageBox.Show("Are you sure you want to delete data for department 'IBED'?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                using (MySqlConnection checkConnection = new MySqlConnection(connectionString2))
+                {
+                    if (result == DialogResult.Yes)
+                    {
+                        // Clear the DataGridView
+                        dataGridViewIBED.DataSource = null;
+
+                        // Delete rows from the MySQL database where department is 'IBED'
+                        checkConnection.Open();
+
+                        string deleteQuery = "DELETE FROM empattendance WHERE department = 'IBED'";
+
+                        using (MySqlCommand cmd = new MySqlCommand(deleteQuery, checkConnection))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        MessageBox.Show("Data for department 'IBED' deleted successfully.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                // Close any open resources if needed
+            }
+
         }
     }
 }

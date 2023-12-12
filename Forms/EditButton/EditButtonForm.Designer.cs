@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditButtonForm));
             personalButton = new Button();
             panel1 = new Panel();
+            button2 = new Button();
             comboBox9 = new ComboBox();
             textBox10 = new TextBox();
             cancelButton = new Button();
@@ -38,6 +39,7 @@
             label7 = new Label();
             pictureBox1 = new PictureBox();
             panel3 = new Panel();
+            textBox9 = new TextBox();
             textBox14 = new TextBox();
             label19 = new Label();
             comboBox8 = new ComboBox();
@@ -56,7 +58,6 @@
             label10 = new Label();
             label11 = new Label();
             dateTimePicker2 = new DateTimePicker();
-            button2 = new Button();
             comboBox2 = new ComboBox();
             label3 = new Label();
             textBox4 = new TextBox();
@@ -81,7 +82,6 @@
             textBox1 = new TextBox();
             doblbl = new Label();
             genderlbl = new Label();
-            textBox9 = new TextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel3.SuspendLayout();
@@ -110,7 +110,10 @@
             // panel1
             // 
             panel1.BackColor = Color.White;
+            panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
+            panel1.BackgroundImageLayout = ImageLayout.Stretch;
             panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Controls.Add(button2);
             panel1.Controls.Add(comboBox9);
             panel1.Controls.Add(textBox10);
             panel1.Controls.Add(cancelButton);
@@ -118,7 +121,6 @@
             panel1.Controls.Add(label7);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(panel3);
-            panel1.Controls.Add(button2);
             panel1.Controls.Add(comboBox2);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(textBox4);
@@ -140,6 +142,25 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1160, 712);
             panel1.TabIndex = 3;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.Transparent;
+            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
+            button2.BackgroundImageLayout = ImageLayout.Zoom;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Popup;
+            button2.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.ImageAlign = ContentAlignment.MiddleLeft;
+            button2.Location = new Point(955, 203);
+            button2.Name = "button2";
+            button2.Padding = new Padding(10, 0, 0, 0);
+            button2.Size = new Size(43, 37);
+            button2.TabIndex = 55;
+            button2.TextAlign = ContentAlignment.MiddleLeft;
+            button2.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // comboBox9
             // 
@@ -166,7 +187,7 @@
             cancelButton.FlatAppearance.BorderColor = Color.DimGray;
             cancelButton.FlatStyle = FlatStyle.Flat;
             cancelButton.ForeColor = SystemColors.ControlText;
-            cancelButton.Location = new Point(998, 633);
+            cancelButton.Location = new Point(1026, 633);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(88, 34);
             cancelButton.TabIndex = 5;
@@ -182,7 +203,7 @@
             button1.FlatAppearance.BorderColor = Color.DimGray;
             button1.FlatStyle = FlatStyle.Flat;
             button1.ForeColor = SystemColors.ControlText;
-            button1.Location = new Point(904, 633);
+            button1.Location = new Point(932, 633);
             button1.Name = "button1";
             button1.Size = new Size(88, 34);
             button1.TabIndex = 6;
@@ -205,9 +226,10 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.WhiteSmoke;
+            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
             pictureBox1.Location = new Point(806, 50);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(242, 212);
+            pictureBox1.Size = new Size(200, 200);
             pictureBox1.TabIndex = 36;
             pictureBox1.TabStop = false;
             // 
@@ -240,14 +262,23 @@
             panel3.Size = new Size(607, 235);
             panel3.TabIndex = 34;
             // 
+            // textBox9
+            // 
+            textBox9.ForeColor = Color.Black;
+            textBox9.Location = new Point(103, 47);
+            textBox9.Name = "textBox9";
+            textBox9.Size = new Size(147, 23);
+            textBox9.TabIndex = 69;
+            // 
             // textBox14
             // 
-            textBox14.ForeColor = Color.Silver;
+            textBox14.ForeColor = Color.Black;
             textBox14.Location = new Point(371, 131);
             textBox14.Name = "textBox14";
             textBox14.PlaceholderText = "Salary";
             textBox14.Size = new Size(147, 23);
             textBox14.TabIndex = 23;
+            textBox14.TextChanged += textBox14_TextChanged;
             // 
             // label19
             // 
@@ -428,25 +459,6 @@
             dateTimePicker2.Name = "dateTimePicker2";
             dateTimePicker2.Size = new Size(147, 23);
             dateTimePicker2.TabIndex = 17;
-            // 
-            // button2
-            // 
-            button2.BackColor = Color.FromArgb(145, 221, 132);
-            button2.BackgroundImageLayout = ImageLayout.None;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Popup;
-            button2.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(1054, 50);
-            button2.Name = "button2";
-            button2.Padding = new Padding(10, 0, 0, 0);
-            button2.Size = new Size(47, 30);
-            button2.TabIndex = 55;
-            button2.TextAlign = ContentAlignment.MiddleLeft;
-            button2.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
             // 
             // comboBox2
             // 
@@ -706,17 +718,9 @@
             genderlbl.TabIndex = 11;
             genderlbl.Text = "GENDER";
             // 
-            // textBox9
-            // 
-            textBox9.ForeColor = Color.Black;
-            textBox9.Location = new Point(103, 47);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(147, 23);
-            textBox9.TabIndex = 69;
-            // 
             // EditButtonForm
             // 
-            BackColor = Color.Gainsboro;
+            BackColor = Color.FromArgb(164, 16, 48);
             BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(1159, 746);
             Controls.Add(panel1);

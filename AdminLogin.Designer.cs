@@ -46,6 +46,8 @@
             // panelColorBg
             // 
             panelColorBg.BackColor = Color.FromArgb(164, 16, 52);
+            panelColorBg.BackgroundImage = (Image)resources.GetObject("panelColorBg.BackgroundImage");
+            panelColorBg.BackgroundImageLayout = ImageLayout.Stretch;
             panelColorBg.Controls.Add(button1);
             panelColorBg.Controls.Add(buttonLogin);
             panelColorBg.Controls.Add(textBoxPassword);
@@ -155,8 +157,8 @@
             // panelLogo
             // 
             panelLogo.BackColor = Color.Transparent;
-            panelLogo.BackgroundImage = Properties.Resources.logo1;
-            panelLogo.BackgroundImageLayout = ImageLayout.Zoom;
+            panelLogo.BackgroundImage = (Image)resources.GetObject("panelLogo.BackgroundImage");
+            panelLogo.BackgroundImageLayout = ImageLayout.Center;
             panelLogo.Location = new Point(240, 190);
             panelLogo.Name = "panelLogo";
             panelLogo.Size = new Size(200, 169);
@@ -188,7 +190,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.BG_LOW_OPACITY;
+            BackColor = Color.White;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1264, 681);
             Controls.Add(panelLogo);

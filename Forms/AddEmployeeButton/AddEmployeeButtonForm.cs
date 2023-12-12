@@ -13,6 +13,8 @@ using System.Windows.Forms;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace SCTAttendanceSystemUI.Forms
 {
@@ -53,9 +55,42 @@ namespace SCTAttendanceSystemUI.Forms
             }
         }
 
+        private bool IsValidMobilePhone(string mphone)
+        {
+            // Use regular expression to validate 11-digit number
+            return System.Text.RegularExpressions.Regex.IsMatch(mphone, @"^\d{11}$");
+        }
 
+        private bool IsValidTelephone(string telephone)
+        {
+            // Use regular expression to validate 11-digit number
+            return System.Text.RegularExpressions.Regex.IsMatch(telephone, @"^\d{8}$");
+        }
         private void button1_Click_1(object sender, EventArgs e)
         {
+            // Validate empcon_HN.Text
+            string mphone = MobilePhone.Text.Trim();
+            if (!IsValidMobilePhone(mphone))
+            {
+                MessageBox.Show("Phone Number must be an 11-digit number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Validate empcon_HN.Text
+            string telephone = Telephone.Text.Trim();
+            if (!IsValidTelephone(telephone))
+            {
+                MessageBox.Show("Telephone Number must be an 8-digit number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Validate itemCostTB.Text as a number
+            if (!Regex.IsMatch(PostalCode.Text, @"^[\d\.,₱]+$"))
+            {
+                MessageBox.Show("Postal must be a valid number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if (string.IsNullOrEmpty(EmployeeNum.Text) || string.IsNullOrEmpty(FirstName.Text) || string.IsNullOrEmpty(MiddleName.Text) || string.IsNullOrEmpty(LastName.Text)
                 || Gender.SelectedIndex == -1 || string.IsNullOrEmpty(Telephone.Text) || string.IsNullOrEmpty(MobilePhone.Text) || string.IsNullOrEmpty(Email.Text) ||
                 string.IsNullOrEmpty(Address.Text) || Country.SelectedIndex == -1 || Province.SelectedIndex == -1 || comboBox1.SelectedIndex == -1 ||
@@ -63,6 +98,12 @@ namespace SCTAttendanceSystemUI.Forms
                 ProfilePic.Image == null || JobStatus.SelectedIndex == -1 || string.IsNullOrWhiteSpace(textBox14.Text))
             {
                 MessageBox.Show("Please fill in all the required fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            // Validate itemCostTB.Text as a number
+            if (!Regex.IsMatch(textBox14.Text, @"^[\d\.,₱]+$"))
+            {
+                MessageBox.Show("Salary must be a valid number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             else
             {
@@ -130,11 +171,6 @@ namespace SCTAttendanceSystemUI.Forms
                 }
             }
 
-        }
-
-        private void cancelButton_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void textBox8_KeyPress(object sender, KeyPressEventArgs e)
@@ -645,6 +681,47 @@ namespace SCTAttendanceSystemUI.Forms
             Province.Items.Add("Zamboanga del Norte");
             Province.Items.Add("Zamboanga del Sur");
             Province.Items.Add("Zamboanga Sibugay");
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+        }
+
+        private void textBox14_TextChanged(object sender, EventArgs e)
+        {
+            // Remove previous formatting, or the decimal check will fail including leading zeros
+            string value = textBox14.Text.Replace(",", "")
+                .Replace("₱", "").Replace(".", "").TrimStart('0');
+            decimal ul;
+
+            // Check we are indeed handling a number
+            if (decimal.TryParse(value, out ul))
+            {
+                ul /= 100;
+
+                // Unsub the event so we don't enter a loop
+                textBox14.TextChanged -= textBox14_TextChanged;
+
+                // Format the text as currency
+                textBox14.Text = string.Format(CultureInfo.CreateSpecificCulture("en-PH"), "{0:C2}", ul);
+
+                textBox14.TextChanged += textBox14_TextChanged;
+                textBox14.Select(textBox14.Text.Length, 0);
+            }
+
+            bool goodToGo = TextisValid(textBox14.Text);
+            if (!goodToGo)
+            {
+                textBox14.Text = "₱0.00";
+                textBox14.Select(textBox14.Text.Length, 0);
+            }
+        }
+        private bool TextisValid(string text)
+        {
+            Regex money = new Regex(@"^₱(\d{1,3}(\,\d{3})*|(\d+))(\.\d{2})?$");
+            return money.IsMatch(text);
         }
     }
 }

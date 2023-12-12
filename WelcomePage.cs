@@ -1,4 +1,5 @@
 using MySql.Data.MySqlClient;
+using SCTAttendanceSystemUI.Employee;
 
 namespace SCTAttendanceSystemUI
 {
@@ -92,8 +93,8 @@ namespace SCTAttendanceSystemUI
         private void buttonEmployee_Click(object sender, EventArgs e)
         {
             this.Hide();
-            EmployeeLogin form_home2 = new EmployeeLogin();
-            form_home2.ShowDialog();
+            FormEmployeeDashboard formEmployeeDashboard = new FormEmployeeDashboard();
+            formEmployeeDashboard.ShowDialog();
             this.Close();
         }
     }

@@ -36,7 +36,7 @@ namespace SCTAttendanceSystemUI.Forms.filterAttendance
             //CLEAR BUTTON
             string query = "SELECT * FROM empattendance WHERE 1 = 1";
 
-            DataGridView dataGridView1 = System.Windows.Forms.Application.OpenForms["FormHome"].Controls["dataGridView1"] as DataGridView;
+            DataGridView dataGridView1 = System.Windows.Forms.Application.OpenForms["FormHome"].Controls["dataGridViewAttendance"] as DataGridView;
             MySqlCommand command = new MySqlCommand(query, connection);
             MySqlDataAdapter adapter = new MySqlDataAdapter(command);
             System.Data.DataTable dataTable = new System.Data.DataTable();

@@ -31,6 +31,43 @@ namespace SCTAttendanceSystemUI.Forms
             InitializeComponent();
             string connectionString = "server=localhost;user=root;password=root;database=payrollsys";
             connection = new MySqlConnection(connectionString);
+
+            SetDataGridViewStyle(dataGridViewEmployeeList, new Padding(10, 5, 10, 5), 30, 10); // Adjust the Padding values, cell height, and font size as needed
+
+        }
+        private void ApplyColumnStyles()
+        {
+            // Dynamic Column Color Changer
+            foreach (DataGridViewColumn column in dataGridViewEmployeeList.Columns)
+            {
+                // Check if the column index is even
+                if (column.Index % 2 == 0)
+                {
+                    column.DefaultCellStyle.BackColor = Color.LightGray;
+                }
+            }
+        }
+
+        private void SetDataGridViewStyle(DataGridView dataGridView, Padding cellPadding, int cellHeight, float fontSize)
+        {
+            // Set the cell padding, height, and font size for the default cell style
+            dataGridView.DefaultCellStyle.Padding = cellPadding;
+            dataGridView.RowTemplate.Height = cellHeight;
+            dataGridView.DefaultCellStyle.Font = new System.Drawing.Font("Arial", fontSize);
+
+            // Set the height and font size for the column headers
+            dataGridView.ColumnHeadersHeight = cellHeight;
+            dataGridView.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Arial", fontSize);
+
+
+            // If you want to set the font size for the header cells as well, uncomment the following line
+            // dataGridView.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Arial", fontSize);
+        }
+
+        // Define a public method to get the DataGridView
+        public DataGridView GetDataGridView()
+        {
+            return dataGridViewEmployeeList; // Replace "dataGridView1" with the actual name of your DataGridView control
         }
 
         private void button3_Click_1(object sender, EventArgs e)
@@ -43,13 +80,13 @@ namespace SCTAttendanceSystemUI.Forms
         private void dataGridView1_CellFormatting_1(object sender, DataGridViewCellFormattingEventArgs e)
         {
 
-            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            foreach (DataGridViewColumn column in dataGridViewEmployeeList.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
 
             // Check if the current cell belongs to the "DateColumn" and has a datetime value
-            if (dataGridView1.Columns[e.ColumnIndex].Name == "dob" && e.Value != null && e.Value is DateTime)
+            if (dataGridViewEmployeeList.Columns[e.ColumnIndex].Name == "dob" && e.Value != null && e.Value is DateTime)
             {
                 // Format the datetime value to the desired format
                 DateTime dateValue = (DateTime)e.Value;
@@ -67,7 +104,7 @@ namespace SCTAttendanceSystemUI.Forms
             {
 
                 // Get the value of the selected cell
-                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                DataGridViewRow row = dataGridViewEmployeeList.Rows[e.RowIndex];
 
                 string value1 = row.Cells[0].Value.ToString();
                 string value4 = row.Cells[19].Value.ToString();
@@ -100,7 +137,7 @@ namespace SCTAttendanceSystemUI.Forms
             // Displays store image from a cell to a PictureBox
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                DataGridViewRow row = dataGridViewEmployeeList.Rows[e.RowIndex];
 
                 // Check if the "image_data" cell value is not null
                 if (row.Cells["image_data"].Value != DBNull.Value && row.Cells["image_data"].Value != null)
@@ -146,7 +183,7 @@ namespace SCTAttendanceSystemUI.Forms
             if (e.RowIndex >= 0)
             {
                 //Displays multiple cell values in a textbox
-                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                DataGridViewRow row = dataGridViewEmployeeList.Rows[e.RowIndex];
 
                 string firstname = row.Cells[5].Value.ToString();
                 string middle = row.Cells[6].Value.ToString();
@@ -175,7 +212,7 @@ namespace SCTAttendanceSystemUI.Forms
                 dataAdapter.Fill(dataTable);
                 pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
 
-                dataGridView1.DataSource = dataTable;
+                dataGridViewEmployeeList.DataSource = dataTable;
             }
             catch (Exception ex)
             {
@@ -188,22 +225,6 @@ namespace SCTAttendanceSystemUI.Forms
         }
 
 
-        private void sortComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string selectedItem = sortComboBox.SelectedItem.ToString();     //Selected combobox item
-
-            //SORTS THE COLUMN 'NAME'
-            if (selectedItem == "A - Z")
-            {
-                this.dataGridView1.Sort(this.dataGridView1.Columns["name"], ListSortDirection.Ascending);   //Sorts the selected column 'Name' to Ascending
-            }
-
-            if (selectedItem == "Z - A")
-            {
-                this.dataGridView1.Sort(this.dataGridView1.Columns["name"], ListSortDirection.Descending);  //Sorts the selected column 'Name' to Descending
-            }
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             // DELETE EMPLOYEE INFORMATION
@@ -214,20 +235,20 @@ namespace SCTAttendanceSystemUI.Forms
                 connection.Open();
 
                 // Get selected cell value from DataGridView
-                string selectedCellValue = dataGridView1.SelectedCells[0].Value.ToString();
+                string selectedCellValue = dataGridViewEmployeeList.SelectedCells[0].Value.ToString();
 
                 // Delete selected cell value from MySQL database
-                string query = "DELETE FROM employee WHERE name = @name";
+                string query = "DELETE FROM employee WHERE employeenum = @employeenum";
                 MySqlCommand command = new MySqlCommand(query, connection);
-                command.Parameters.AddWithValue("@name", selectedCellValue);
+                command.Parameters.AddWithValue("@employeenum", selectedCellValue);
                 command.ExecuteNonQuery();
 
                 // Display message box to confirm deletion
                 MessageBox.Show("Employee deleted successfully.");
 
                 // Refresh DataGridView to show updated data
-                dataGridView1.Update();
-                dataGridView1.Refresh();
+                dataGridViewEmployeeList.Update();
+                dataGridViewEmployeeList.Refresh();
             }
 
         }
@@ -237,39 +258,39 @@ namespace SCTAttendanceSystemUI.Forms
         {
             //EDIT BUTTON
 
-            if (dataGridView1.SelectedCells.Count > 0)
+            if (dataGridViewEmployeeList.SelectedCells.Count > 0)
             {
                 // Get the selected row index
-                int rowIndex = dataGridView1.SelectedCells[0].RowIndex;
+                int rowIndex = dataGridViewEmployeeList.SelectedCells[0].RowIndex;
 
                 //create an instance of the second form
                 EditButtonForm edit = new EditButtonForm();
 
                 // Get the data from the selected row
-                string firstname = dataGridView1.Rows[rowIndex].Cells[5].Value.ToString();
-                string middlename = dataGridView1.Rows[rowIndex].Cells[6].Value.ToString();
-                string lastname = dataGridView1.Rows[rowIndex].Cells[7].Value.ToString();
-                string suffix = dataGridView1.Rows[rowIndex].Cells[8].Value.ToString();
-                string gender = dataGridView1.Rows[rowIndex].Cells[9].Value.ToString();
-                string dob = dataGridView1.Rows[rowIndex].Cells[10].Value.ToString();
-                string country = dataGridView1.Rows[rowIndex].Cells[15].Value.ToString();
-                string address = dataGridView1.Rows[rowIndex].Cells[14].Value.ToString();
-                string province = dataGridView1.Rows[rowIndex].Cells[16].Value.ToString();
-                string city = dataGridView1.Rows[rowIndex].Cells[17].Value.ToString();
-                string postal = dataGridView1.Rows[rowIndex].Cells[18].Value.ToString();
-                string phone = dataGridView1.Rows[rowIndex].Cells[12].Value.ToString();
-                string telephone = dataGridView1.Rows[rowIndex].Cells[11].Value.ToString();
-                string email = dataGridView1.Rows[rowIndex].Cells[13].Value.ToString();
-                string empnum = dataGridView1.Rows[rowIndex].Cells[0].Value.ToString();
-                string account = dataGridView1.Rows[rowIndex].Cells[19].Value.ToString();
-                string hdate = dataGridView1.Rows[rowIndex].Cells[20].Value.ToString();
-                string occupation = dataGridView1.Rows[rowIndex].Cells[2].Value.ToString();
-                string department = dataGridView1.Rows[rowIndex].Cells[3].Value.ToString();
-                string jobstatus = dataGridView1.Rows[rowIndex].Cells[4].Value.ToString();
-                string timein = dataGridView1.Rows[rowIndex].Cells[21].Value.ToString();
-                string timeout = dataGridView1.Rows[rowIndex].Cells[22].Value.ToString();
-                byte[] imageData = (byte[])dataGridView1.Rows[rowIndex].Cells[23].Value;
-                string jobsalary = dataGridView1.Rows[rowIndex].Cells[27].Value.ToString();
+                string firstname = dataGridViewEmployeeList.Rows[rowIndex].Cells[5].Value.ToString();
+                string middlename = dataGridViewEmployeeList.Rows[rowIndex].Cells[6].Value.ToString();
+                string lastname = dataGridViewEmployeeList.Rows[rowIndex].Cells[7].Value.ToString();
+                string suffix = dataGridViewEmployeeList.Rows[rowIndex].Cells[8].Value.ToString();
+                string gender = dataGridViewEmployeeList.Rows[rowIndex].Cells[9].Value.ToString();
+                string dob = dataGridViewEmployeeList.Rows[rowIndex].Cells[10].Value.ToString();
+                string country = dataGridViewEmployeeList.Rows[rowIndex].Cells[15].Value.ToString();
+                string address = dataGridViewEmployeeList.Rows[rowIndex].Cells[14].Value.ToString();
+                string province = dataGridViewEmployeeList.Rows[rowIndex].Cells[16].Value.ToString();
+                string city = dataGridViewEmployeeList.Rows[rowIndex].Cells[17].Value.ToString();
+                string postal = dataGridViewEmployeeList.Rows[rowIndex].Cells[18].Value.ToString();
+                string phone = dataGridViewEmployeeList.Rows[rowIndex].Cells[12].Value.ToString();
+                string telephone = dataGridViewEmployeeList.Rows[rowIndex].Cells[11].Value.ToString();
+                string email = dataGridViewEmployeeList.Rows[rowIndex].Cells[13].Value.ToString();
+                string empnum = dataGridViewEmployeeList.Rows[rowIndex].Cells[0].Value.ToString();
+                string account = dataGridViewEmployeeList.Rows[rowIndex].Cells[19].Value.ToString();
+                string hdate = dataGridViewEmployeeList.Rows[rowIndex].Cells[20].Value.ToString();
+                string occupation = dataGridViewEmployeeList.Rows[rowIndex].Cells[2].Value.ToString();
+                string department = dataGridViewEmployeeList.Rows[rowIndex].Cells[3].Value.ToString();
+                string jobstatus = dataGridViewEmployeeList.Rows[rowIndex].Cells[4].Value.ToString();
+                string timein = dataGridViewEmployeeList.Rows[rowIndex].Cells[21].Value.ToString();
+                string timeout = dataGridViewEmployeeList.Rows[rowIndex].Cells[22].Value.ToString();
+                byte[] imageData = (byte[])dataGridViewEmployeeList.Rows[rowIndex].Cells[23].Value;
+                string jobsalary = dataGridViewEmployeeList.Rows[rowIndex].Cells[27].Value.ToString();
 
 
                 //set the public properties of the textboxes on the second form
@@ -368,7 +389,7 @@ namespace SCTAttendanceSystemUI.Forms
                         filter += $"[jobstatus] = '{jobstatus}'";
                     }
 
-                    (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = filter;
+                    (dataGridViewEmployeeList.DataSource as DataTable).DefaultView.RowFilter = filter;
                 }
             }
         }
@@ -382,6 +403,7 @@ namespace SCTAttendanceSystemUI.Forms
         private void FormEmployeeList_Load(object sender, EventArgs e)
         {
             LoadImageData();
+            ApplyColumnStyles();
 
             {
 
@@ -396,19 +418,14 @@ namespace SCTAttendanceSystemUI.Forms
 
 
                 // Set the DataSource of the DataGridView to the DataTable
-                dataGridView1.DataSource = table;
-
-                dataGridView1.Columns[3].Width = 70;
-                dataGridView1.Columns[4].Width = 70;
-                dataGridView1.Columns[11].Width = 80;
-                dataGridView1.Columns[15].Width = 80;
+                dataGridViewEmployeeList.DataSource = table;
 
                 try
                 {
                     connection.Open();
 
                     // Loop through each row in the DataGridView
-                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    foreach (DataGridViewRow row in dataGridViewEmployeeList.Rows)
                     {
                         // Retrieve the occupation value from the "occupation" column
                         string occupation = row.Cells["occupation"].Value.ToString();
@@ -475,54 +492,47 @@ namespace SCTAttendanceSystemUI.Forms
                 }
 
                 // Set the format of the jobtimein and jobtimeout columns in the DataGridView
-                DataGridViewColumn jobTimeInColumn = dataGridView1.Columns["jobtimein"];
-                DataGridViewColumn jobTimeOutColumn = dataGridView1.Columns["jobtimeout"];
+                DataGridViewColumn jobTimeInColumn = dataGridViewEmployeeList.Columns["jobtimein"];
+                DataGridViewColumn jobTimeOutColumn = dataGridViewEmployeeList.Columns["jobtimeout"];
                 jobTimeInColumn.DefaultCellStyle.Format = "hh:mm:ss tt";
                 jobTimeOutColumn.DefaultCellStyle.Format = "hh:mm:ss tt";
 
+                dataGridViewEmployeeList.Columns["name"].HeaderText = "Name";
+                dataGridViewEmployeeList.Columns["occupation"].HeaderText = "Occupation";
+                dataGridViewEmployeeList.Columns["department"].HeaderText = "Department";
+                dataGridViewEmployeeList.Columns["jobstatus"].HeaderText = "Job Status";
+                dataGridViewEmployeeList.Columns["dob"].HeaderText = "Date Of Birth";
+                dataGridViewEmployeeList.Columns["country"].HeaderText = "Country";
+                dataGridViewEmployeeList.Columns["province"].HeaderText = "Province";
+                dataGridViewEmployeeList.Columns["city"].HeaderText = "City";
 
 
-                dataGridView1.Columns["employeenum"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["firstname"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["middle"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["lastname"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["gender"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["suffix"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["homenum"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["phonenum"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["email"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["address"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["postal"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["accountnum"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["hiredate"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["timein"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["timeout"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["image_data"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["jobhours"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["jobtimein"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["jobtimeout"].Visible = false;    //Hide a specific column
-                dataGridView1.Columns["jobsalary"].Visible = false;    //Hide a specific column
+
+                dataGridViewEmployeeList.Columns["employeenum"].Visible = false;    //Hide a specific column
+                dataGridViewEmployeeList.Columns["firstname"].Visible = false;    //Hide a specific column
+                dataGridViewEmployeeList.Columns["middle"].Visible = false;    //Hide a specific column
+                dataGridViewEmployeeList.Columns["lastname"].Visible = false;    //Hide a specific column
+                dataGridViewEmployeeList.Columns["gender"].Visible = false;    //Hide a specific column
+                dataGridViewEmployeeList.Columns["suffix"].Visible = false;    //Hide a specific column
+                dataGridViewEmployeeList.Columns["homenum"].Visible = false;    //Hide a specific column
+                dataGridViewEmployeeList.Columns["phonenum"].Visible = false;    //Hide a specific column
+                dataGridViewEmployeeList.Columns["email"].Visible = false;    //Hide a specific column
+                dataGridViewEmployeeList.Columns["address"].Visible = false;    //Hide a specific column
+                dataGridViewEmployeeList.Columns["postal"].Visible = false;    //Hide a specific column
+                dataGridViewEmployeeList.Columns["accountnum"].Visible = false;    //Hide a specific column
+                dataGridViewEmployeeList.Columns["hiredate"].Visible = false;    //Hide a specific column
+                dataGridViewEmployeeList.Columns["timein"].Visible = false;    //Hide a specific column
+                dataGridViewEmployeeList.Columns["timeout"].Visible = false;    //Hide a specific column
+                dataGridViewEmployeeList.Columns["image_data"].Visible = false;    //Hide a specific column
+                dataGridViewEmployeeList.Columns["jobhours"].Visible = false;    //Hide a specific column
+                dataGridViewEmployeeList.Columns["jobtimein"].Visible = false;    //Hide a specific column
+                dataGridViewEmployeeList.Columns["jobtimeout"].Visible = false;    //Hide a specific column
+                dataGridViewEmployeeList.Columns["jobsalary"].Visible = false;    //Hide a specific column
 
 
 
                 //reader.Close();
                 connection.Close();
-            }
-        }
-
-        private void sortComboBox_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            string selectedItem = sortComboBox.SelectedItem.ToString();     //Selected combobox item
-
-            //SORTS THE COLUMN 'NAME'
-            if (selectedItem == "A - Z")
-            {
-                this.dataGridView1.Sort(this.dataGridView1.Columns["name"], ListSortDirection.Ascending);   //Sorts the selected column 'Name' to Ascending
-            }
-
-            if (selectedItem == "Z - A")
-            {
-                this.dataGridView1.Sort(this.dataGridView1.Columns["name"], ListSortDirection.Descending);  //Sorts the selected column 'Name' to Descending
             }
         }
 
@@ -536,7 +546,7 @@ namespace SCTAttendanceSystemUI.Forms
                 connection.Open();
 
                 // Get selected cell value from DataGridView
-                string selectedCellValue = dataGridView1.SelectedCells[0].Value.ToString();
+                string selectedCellValue = dataGridViewEmployeeList.SelectedCells[0].Value.ToString();
 
                 // Delete selected cell value from MySQL database
                 string query = "DELETE FROM employee WHERE name = @name";
@@ -548,8 +558,8 @@ namespace SCTAttendanceSystemUI.Forms
                 MessageBox.Show("Employee deleted successfully.");
 
                 // Refresh DataGridView to show updated data
-                dataGridView1.Update();
-                dataGridView1.Refresh();
+                dataGridViewEmployeeList.Update();
+                dataGridViewEmployeeList.Refresh();
             }
         }
 
@@ -557,39 +567,39 @@ namespace SCTAttendanceSystemUI.Forms
         {
             //EDIT BUTTON
 
-            if (dataGridView1.SelectedCells.Count > 0)
+            if (dataGridViewEmployeeList.SelectedCells.Count > 0)
             {
                 // Get the selected row index
-                int rowIndex = dataGridView1.SelectedCells[0].RowIndex;
+                int rowIndex = dataGridViewEmployeeList.SelectedCells[0].RowIndex;
 
                 //create an instance of the second form
                 EditButtonForm edit = new EditButtonForm();
 
                 // Get the data from the selected row
-                string firstname = dataGridView1.Rows[rowIndex].Cells[5].Value.ToString();
-                string middlename = dataGridView1.Rows[rowIndex].Cells[6].Value.ToString();
-                string lastname = dataGridView1.Rows[rowIndex].Cells[7].Value.ToString();
-                string suffix = dataGridView1.Rows[rowIndex].Cells[8].Value.ToString();
-                string gender = dataGridView1.Rows[rowIndex].Cells[9].Value.ToString();
-                string dob = dataGridView1.Rows[rowIndex].Cells[10].Value.ToString();
-                string country = dataGridView1.Rows[rowIndex].Cells[15].Value.ToString();
-                string address = dataGridView1.Rows[rowIndex].Cells[14].Value.ToString();
-                string province = dataGridView1.Rows[rowIndex].Cells[16].Value.ToString();
-                string city = dataGridView1.Rows[rowIndex].Cells[17].Value.ToString();
-                string postal = dataGridView1.Rows[rowIndex].Cells[18].Value.ToString();
-                string phone = dataGridView1.Rows[rowIndex].Cells[12].Value.ToString();
-                string telephone = dataGridView1.Rows[rowIndex].Cells[11].Value.ToString();
-                string email = dataGridView1.Rows[rowIndex].Cells[13].Value.ToString();
-                string empnum = dataGridView1.Rows[rowIndex].Cells[0].Value.ToString();
-                string account = dataGridView1.Rows[rowIndex].Cells[19].Value.ToString();
-                string hdate = dataGridView1.Rows[rowIndex].Cells[20].Value.ToString();
-                string occupation = dataGridView1.Rows[rowIndex].Cells[2].Value.ToString();
-                string department = dataGridView1.Rows[rowIndex].Cells[3].Value.ToString();
-                string jobstatus = dataGridView1.Rows[rowIndex].Cells[4].Value.ToString();
-                string timein = dataGridView1.Rows[rowIndex].Cells[21].Value.ToString();
-                string timeout = dataGridView1.Rows[rowIndex].Cells[22].Value.ToString();
-                byte[] imageData = (byte[])dataGridView1.Rows[rowIndex].Cells[23].Value;
-                string jobsalary = dataGridView1.Rows[rowIndex].Cells[27].Value.ToString();
+                string firstname = dataGridViewEmployeeList.Rows[rowIndex].Cells[5].Value.ToString();
+                string middlename = dataGridViewEmployeeList.Rows[rowIndex].Cells[6].Value.ToString();
+                string lastname = dataGridViewEmployeeList.Rows[rowIndex].Cells[7].Value.ToString();
+                string suffix = dataGridViewEmployeeList.Rows[rowIndex].Cells[8].Value.ToString();
+                string gender = dataGridViewEmployeeList.Rows[rowIndex].Cells[9].Value.ToString();
+                string dob = dataGridViewEmployeeList.Rows[rowIndex].Cells[10].Value.ToString();
+                string country = dataGridViewEmployeeList.Rows[rowIndex].Cells[15].Value.ToString();
+                string address = dataGridViewEmployeeList.Rows[rowIndex].Cells[14].Value.ToString();
+                string province = dataGridViewEmployeeList.Rows[rowIndex].Cells[16].Value.ToString();
+                string city = dataGridViewEmployeeList.Rows[rowIndex].Cells[17].Value.ToString();
+                string postal = dataGridViewEmployeeList.Rows[rowIndex].Cells[18].Value.ToString();
+                string phone = dataGridViewEmployeeList.Rows[rowIndex].Cells[12].Value.ToString();
+                string telephone = dataGridViewEmployeeList.Rows[rowIndex].Cells[11].Value.ToString();
+                string email = dataGridViewEmployeeList.Rows[rowIndex].Cells[13].Value.ToString();
+                string empnum = dataGridViewEmployeeList.Rows[rowIndex].Cells[0].Value.ToString();
+                string account = dataGridViewEmployeeList.Rows[rowIndex].Cells[19].Value.ToString();
+                string hdate = dataGridViewEmployeeList.Rows[rowIndex].Cells[20].Value.ToString();
+                string occupation = dataGridViewEmployeeList.Rows[rowIndex].Cells[2].Value.ToString();
+                string department = dataGridViewEmployeeList.Rows[rowIndex].Cells[3].Value.ToString();
+                string jobstatus = dataGridViewEmployeeList.Rows[rowIndex].Cells[4].Value.ToString();
+                string timein = dataGridViewEmployeeList.Rows[rowIndex].Cells[21].Value.ToString();
+                string timeout = dataGridViewEmployeeList.Rows[rowIndex].Cells[22].Value.ToString();
+                byte[] imageData = (byte[])dataGridViewEmployeeList.Rows[rowIndex].Cells[23].Value;
+                string jobsalary = dataGridViewEmployeeList.Rows[rowIndex].Cells[27].Value.ToString();
 
 
                 //set the public properties of the textboxes on the second form
@@ -687,7 +697,7 @@ namespace SCTAttendanceSystemUI.Forms
                         filter += $"[jobstatus] = '{jobstatus}'";
                     }
 
-                    (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = filter;
+                    (dataGridViewEmployeeList.DataSource as DataTable).DefaultView.RowFilter = filter;
                 }
             }
         }
@@ -749,17 +759,17 @@ namespace SCTAttendanceSystemUI.Forms
                     worksheet.Name = "Sheet 1 Exported";
 
                     // Storing header part in Excel
-                    for (int i = 1; i < dataGridView1.Columns.Count + 1; i++)
+                    for (int i = 1; i < dataGridViewEmployeeList.Columns.Count + 1; i++)
                     {
-                        worksheet.Cells[1, i] = dataGridView1.Columns[i - 1].HeaderText;
+                        worksheet.Cells[1, i] = dataGridViewEmployeeList.Columns[i - 1].HeaderText;
                     }
 
                     // Storing each row and column value to the Excel sheet
-                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    for (int i = 0; i < dataGridViewEmployeeList.Rows.Count; i++)
                     {
-                        for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                        for (int j = 0; j < dataGridViewEmployeeList.Columns.Count; j++)
                         {
-                            worksheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                            worksheet.Cells[i + 2, j + 1] = dataGridViewEmployeeList.Rows[i].Cells[j].Value.ToString();
                         }
                     }
 
@@ -772,6 +782,64 @@ namespace SCTAttendanceSystemUI.Forms
 
                     MessageBox.Show("Data exported to Excel successfully!");
                 }
+            }
+        }
+
+        private DataView dataView;
+        private System.Data.DataTable originalDataTable;
+        private void SearchData(string searchText)
+        {
+            if (dataView == null)
+            {
+                originalDataTable = (System.Data.DataTable)dataGridViewEmployeeList.DataSource;
+                dataView = new DataView(originalDataTable);
+            }
+
+            dataView.RowFilter = $"name LIKE '%{searchText}%' OR Convert(employeenum, 'System.String') LIKE '%{searchText}%'";
+            dataGridViewEmployeeList.DataSource = dataView;
+        }
+
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = searchBox.Text;
+            SearchData(searchText);
+        }
+
+        private void clearLabel_Click(object sender, EventArgs e)
+        {
+            string connectionString2 = "server=localhost;user=root;password=root;database=payrollsys";
+
+            try
+            {
+                // Confirm with the user before deleting all data
+                DialogResult result = MessageBox.Show("Are you sure you want to delete all data?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                using (MySqlConnection checkConnection = new MySqlConnection(connectionString2))
+                {
+                    if (result == DialogResult.Yes)
+                    {
+                        // Clear the DataGridView
+                        dataGridViewEmployeeList.DataSource = null;
+
+                        // Delete all rows from the MySQL database
+                        checkConnection.Open();
+
+                        string deleteAllQuery = "DELETE FROM employee"; // Remove the WHERE clause
+
+                        using (MySqlCommand cmd = new MySqlCommand(deleteAllQuery, checkConnection))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        MessageBox.Show("All data deleted successfully.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
             }
         }
     }

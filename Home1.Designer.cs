@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home1));
             panelHeader = new Panel();
+            Title = new Label();
+            logo2Label = new Label();
             pictureBoxLogo = new PictureBox();
             labelSiena = new Label();
             panelMenu = new Panel();
@@ -55,6 +57,9 @@
             // panelHeader
             // 
             panelHeader.BackColor = Color.FromArgb(164, 16, 48);
+            panelHeader.BackgroundImage = (Image)resources.GetObject("panelHeader.BackgroundImage");
+            panelHeader.Controls.Add(Title);
+            panelHeader.Controls.Add(logo2Label);
             panelHeader.Controls.Add(pictureBoxLogo);
             panelHeader.Controls.Add(labelSiena);
             panelHeader.Dock = DockStyle.Top;
@@ -63,14 +68,38 @@
             panelHeader.Size = new Size(1904, 110);
             panelHeader.TabIndex = 3;
             // 
+            // Title
+            // 
+            Title.AutoSize = true;
+            Title.BackColor = Color.Transparent;
+            Title.Font = new Font("Times New Roman", 35F, FontStyle.Bold, GraphicsUnit.Point);
+            Title.ForeColor = Color.White;
+            Title.Location = new Point(1340, 30);
+            Title.Name = "Title";
+            Title.Size = new Size(552, 53);
+            Title.TabIndex = 27;
+            Title.Text = "ATTENDANCE SYSTEM";
+            // 
+            // logo2Label
+            // 
+            logo2Label.AutoSize = true;
+            logo2Label.BackColor = Color.Transparent;
+            logo2Label.Font = new Font("Times New Roman", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            logo2Label.ForeColor = Color.Transparent;
+            logo2Label.Location = new Point(303, 62);
+            logo2Label.Name = "logo2Label";
+            logo2Label.Size = new Size(215, 31);
+            logo2Label.TabIndex = 26;
+            logo2Label.Text = "TAYTAY, RIZAL";
+            logo2Label.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // pictureBoxLogo
             // 
-            pictureBoxLogo.BackgroundImage = Properties.Resources.logo1;
+            pictureBoxLogo.BackgroundImage = (Image)resources.GetObject("pictureBoxLogo.BackgroundImage");
             pictureBoxLogo.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBoxLogo.Dock = DockStyle.Left;
-            pictureBoxLogo.Location = new Point(0, 0);
+            pictureBoxLogo.Location = new Point(30, 12);
             pictureBoxLogo.Name = "pictureBoxLogo";
-            pictureBoxLogo.Size = new Size(214, 110);
+            pictureBoxLogo.Size = new Size(128, 89);
             pictureBoxLogo.TabIndex = 25;
             pictureBoxLogo.TabStop = false;
             // 
@@ -80,16 +109,17 @@
             labelSiena.BackColor = Color.Transparent;
             labelSiena.Font = new Font("Times New Roman", 35F, FontStyle.Bold, GraphicsUnit.Point);
             labelSiena.ForeColor = Color.White;
-            labelSiena.Location = new Point(220, 28);
+            labelSiena.Location = new Point(214, 9);
             labelSiena.Name = "labelSiena";
-            labelSiena.Size = new Size(520, 53);
+            labelSiena.Size = new Size(407, 53);
             labelSiena.TabIndex = 3;
-            labelSiena.Text = "SCT Attendance  System";
+            labelSiena.Text = "SIENA COLLEGE";
             // 
             // panelMenu
             // 
             panelMenu.AutoScroll = true;
             panelMenu.BackColor = Color.FromArgb(164, 16, 48);
+            panelMenu.BackgroundImage = (Image)resources.GetObject("panelMenu.BackgroundImage");
             panelMenu.Controls.Add(buttonLogout);
             panelMenu.Controls.Add(buttonPayroll);
             panelMenu.Controls.Add(buttonLeave);
@@ -142,6 +172,7 @@
             buttonPayroll.TextAlign = ContentAlignment.MiddleLeft;
             buttonPayroll.TextImageRelation = TextImageRelation.ImageBeforeText;
             buttonPayroll.UseVisualStyleBackColor = true;
+            buttonPayroll.Visible = false;
             buttonPayroll.Click += buttonPayroll_Click;
             // 
             // buttonLeave
@@ -162,6 +193,7 @@
             buttonLeave.TextAlign = ContentAlignment.MiddleLeft;
             buttonLeave.TextImageRelation = TextImageRelation.ImageBeforeText;
             buttonLeave.UseVisualStyleBackColor = true;
+            buttonLeave.Visible = false;
             buttonLeave.Click += buttonLeave_Click_1;
             // 
             // buttonAbsentees
@@ -322,11 +354,7 @@
             Controls.Add(panelMenu);
             Controls.Add(panelHeader);
             DoubleBuffered = true;
-            FormBorderStyle = FormBorderStyle.FixedSingle;
-            MaximizeBox = false;
             MaximumSize = new Size(1920, 1080);
-            MinimizeBox = false;
-            MinimumSize = new Size(1364, 726);
             Name = "Home1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SCT ATTENDANCE SYSTEM";
@@ -359,5 +387,7 @@
         private Button buttonLeave;
         private Button buttonPayroll;
         private Button buttonLogout;
+        private Label logo2Label;
+        private Label Title;
     }
 }

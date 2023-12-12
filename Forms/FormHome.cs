@@ -3,6 +3,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Globalization;
 using System.Windows.Forms;
+using Microsoft.Graph.Models.Security;
+using Microsoft.Office.Interop.Excel;
 using MySql.Data.MySqlClient;
 using SCTAttendanceSystemUI.Forms.filterAttendance;
 using SCTAttendanceSystemUI.Forms.sortdgvFormHome;
@@ -16,7 +18,8 @@ namespace SCTAttendanceSystemUI.Forms
     {
         private MySqlConnection connection;
         private MySqlDataAdapter adapter;
-        private DataTable table;
+        private System.Data.DataSet dataSet;
+        private System.Data.DataTable table;
 
         public FormHome()
         {
@@ -24,416 +27,66 @@ namespace SCTAttendanceSystemUI.Forms
             string connectionString = "server=localhost;user=root;password=root;database=payrollsys";
             connection = new MySqlConnection(connectionString);
             //MessageBox.Show("Please enter your chosen excel file and choose a sheet. Thank you!", "To proceed to Home", MessageBoxButtons.OK);
-        }
 
-        public void BindDataGridView(DataTable dataTable)
-        {
-            dataGridView1.DataSource = dataTable;
-        }
+            filterComboBox.Items.Add("Department");
+            //sortCB.Items.Add("itemPrice");
+            filterComboBox.Items.Add("Occupation");
+            filterComboBox.Items.Add("Job Status");
+            filterComboBox.Items.Add("Status");
 
+            filterComboBox.KeyPress += ComboBox_KeyPress;
+            filterApplyCMB.KeyPress += ComboBox_KeyPress;
 
-        private void FormHome_Load(object sender, EventArgs e)
-        {
-            labelDashboardDate.Text = DateTime.Now.ToLongDateString();
-            //MessageBox.Show("Please enter your chosen excel file and choose a sheet. Thank you!", "Confirmation", MessageBoxButtons.OK);
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
+            SetDataGridViewStyle(dataGridViewAttendance, new Padding(10, 5, 10, 5), 30, 10); // Adjust the Padding values, cell height, and font size as needed
 
         }
 
-        private void labelDashboardDate_Click(object sender, EventArgs e)
+        private void ComboBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            // Block any keypress event to prevent user input in the comboboxes
+            e.Handled = true;
         }
 
-        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void ApplyColumnStyles()
         {
-            /*DataGridViewColumn column2 = dataGridView1.Columns[1];   //Sets Width size of a column
-            column2.Width = 200;*/
-
-            /*            dataGridView1.Columns[4].DefaultCellStyle.Format = "HH:mm:ss tt";   //Setting the format of Time column on excel
-                        dataGridView1.Columns[8].DefaultCellStyle.Format = @"hh\:mm\:ss tt";   //Setting the format of Time column on excel
-                        dataGridView1.Columns[3].DefaultCellStyle.Format = "MM/dd/yyyy";    //Setting the format of Date column on excel
-                        dataGridView1.Columns["ID Number"].Visible = false;     //Hide a specific column
-                        dataGridView1.Columns["VerifyCode"].Visible = false;    //Hide a specific column    
-                        dataGridView1.Columns["CardNo"].Visible = false;    //Hide a specific column
-                        dataGridView1.Columns["Location ID"].Visible = false;   //Hide a specific column
-                        dataGridView1.Columns["LateTime"].Visible = false;  //Hide a specific column
-                        dataGridView1.Columns["AbsentTime"].Visible = false;    //Hide a specific column
-                        dataGridView1.Columns["Overtime"].Visible = false;    //Hide a specific column*/
-
-            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            // Dynamic Column Color Changer
+            foreach (DataGridViewColumn column in dataGridViewAttendance.Columns)
             {
-                column.SortMode = DataGridViewColumnSortMode.NotSortable;
-            }
-
-            //DataTable dt = new DataTable();   //Selected excel sheet
-            //DataView dv = dt.DefaultView;   //Setting the selected excel file or sheet into DataTable
-            DataTable dt = dataGridView1.DataSource as DataTable;
-
-            dataGridView1.Columns["No."].Visible = false;    //Hide a specific column
-            dataGridView1.Columns["On Duty"].Visible = false;    //Hide a specific column
-            dataGridView1.Columns["Off Duty"].Visible = false;    //Hide a specific column
-            dataGridView1.Columns["Before OT"].Visible = false;    //Hide a specific column
-            dataGridView1.Columns["After OT"].Visible = false;    //Hide a specific column
-            dataGridView1.Columns["NDays_OT"].Visible = false;    //Hide a specific column
-            dataGridView1.Columns["Work Time"].Visible = false;    //Hide a specific column
-            dataGridView1.Columns["Holiday_OT"].Visible = false;    //Hide a specific column
-            dataGridView1.Columns["Total OT"].Visible = false;    //Hide a specific column
-            dataGridView1.Columns["Memo"].Visible = false;    //Hide a specific column
-            dataGridView1.Columns["WeekEnd_OT"].Visible = false;    //Hide a specific column
-
-            foreach (DataGridViewColumn column in dataGridView1.Columns)
-            {
-                column.SortMode = DataGridViewColumnSortMode.NotSortable;
-            }
-
-            var buffer = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells["Clock In"].Value);
-            //string onTime = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells["Time-In"].Value);
-            string onTime = buffer.ToString("hh:mm:ss tt");
-            TimeSpan timeSpan = DateTime.Parse(onTime).TimeOfDay;
-            TimeSpan arrival = DateTime.Parse("08:00:00 AM").TimeOfDay;
-            int result = TimeSpan.Compare(timeSpan, arrival);
-
-            if (this.dataGridView1.Columns[e.ColumnIndex].DataPropertyName == "TimeIn-Status")
-            {
-                if (result <= 0)
+                // Check if the column index is even
+                if (column.Index % 2 == 0)
                 {
-                    e.CellStyle.BackColor = Color.Green;
-                    e.CellStyle.ForeColor = Color.White;
-                }
-                if (result > 0)
-                {
-                    e.CellStyle.BackColor = Color.Yellow;
-
+                    column.DefaultCellStyle.BackColor = Color.LightGray;
                 }
             }
-
-            var buffer2 = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells["Clock Out"].Value);
-            string outTime = buffer2.ToString("hh:mm:ss tt");
-            TimeSpan timeSpan2 = DateTime.Parse(outTime).TimeOfDay;
-            TimeSpan arrival2 = DateTime.Parse("05:00:00 PM").TimeOfDay;
-            int result2 = TimeSpan.Compare(timeSpan2, arrival2);
-
-
-            if (this.dataGridView1.Columns[e.ColumnIndex].DataPropertyName == "TimeOut-Status")
-            {
-                if (result2 <= 0)
-                {
-                    e.CellStyle.BackColor = Color.Orange;
-                }
-                if (result2 > 0)
-                {
-                    e.CellStyle.BackColor = Color.Red;
-
-                }
-            }
-
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                if (result <= 0)
-                {
-                    dr["TimeIn-Status"] = "On-Time/Present";
-                }
-                if (result > 0)
-                {
-                    dr["TimeIn-Status"] = "Late/Present";
-                }
-
-                if (result2 <= 0)
-                {
-                    dr["TimeOut-Status"] = "Time-Out";
-
-                }
-                if (result2 > 0)
-                {
-                    dr["TimeOut-Status"] = "Time-Out/Overtime";
-
-                }
-
-            }
-
-
-
-            //SETS AND CHANGE ROWS BACKGROUND COLOR OR FOREGROUND COLOR
-            /* if (this.dataGridView1.Columns[e.ColumnIndex].DataPropertyName == "Status")
-             {
-                 //GREEN IS PRESENT
-                 //YELLOW IS LATE
-                 //RED IS ABSENT
-
-                 var onTime = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells["Time-In"].Value);    //Arrival Time of staff
-                 var lateTime = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells["LateTime"].Value);  //Late time is set to 8:08 AM
-                 var absentTime = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells["AbsentTime"].Value);  //Late time is set to 12:00 AM in excel but when the program is executed in
-                                                                                                                 //DataGridView it'll be set to 00:00 AM which means the staff is absent
-
-                 if (onTime <= lateTime)
-                 {
-                     e.CellStyle.BackColor = Color.Green;
-                     e.CellStyle.ForeColor = Color.White;
-                 }
-                 if (onTime > lateTime)
-                 {
-                     e.CellStyle.BackColor = Color.Yellow;
-                 }
-                 if (onTime == absentTime)
-                 {
-                     e.CellStyle.BackColor = Color.Red;
-
-                 }
-             }*/
-
-            //SETS AND CHANGE ROWS BACKGROUND COLOR OR FOREGROUND COLOR
-            /*  if (this.dataGridView1.Columns[e.ColumnIndex].DataPropertyName == "Time-Out-Status")
-              {
-                  //GREEN IS PRESENT
-                  //YELLOW IS LATE
-                  //RED IS ABSENT
-
-                  var outTime = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells["Time-Out"].Value);    //Arrival Time of staff
-                  var logoutTime = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells["Overtime"].Value);  //Late time is set to 12:00 AM in excel but when the program is executed in
-                  var absentTime = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells["AbsentTime"].Value);   //DataGridView it'll be set to 00:00 AM which means the staff is absent
-
-                  if (outTime < logoutTime)
-                  {
-                      e.CellStyle.BackColor = Color.Orange;
-                      e.CellStyle.ForeColor = Color.White;
-                  }
-                  if (outTime >= logoutTime)
-                  {
-                      e.CellStyle.BackColor = Color.Orange;
-                  }
-                  if (outTime == absentTime)
-                  {
-                      e.CellStyle.BackColor = Color.Red;
-                      e.CellStyle.ForeColor = Color.White;
-
-                  }
-
-              }*/
-
         }
 
-        private void btnBrowse_Click(object sender, EventArgs e)
+        private void SetDataGridViewStyle(DataGridView dataGridView, Padding cellPadding, int cellHeight, float fontSize)
         {
-            /*using (OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "Excel 97-2003 Workbook|*.xls|Excel Workbook|*.xlsx" })  //Filter for excel file
-            {
-                //RETRIEVING EXCEL FILE  AND ITS DATA
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-                    txtFilename.Text = openFileDialog.FileName; // 'txtFilename.Text' is the selected excel file
-                    using (var stream = System.IO.File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read)) //Opens and Read access to the excel file
-                    {
-                        using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
-                        {
-                            DataSet result = reader.AsDataSet(new ExcelDataSetConfiguration()   //Converts selected sheet into DataSet
-                            {
-                                ConfigureDataTable = (_) => new ExcelDataTableConfiguration() { UseHeaderRow = true }   //Gets or sets data of selected of excel file
-                            });
-                            tableCollection = result.Tables;    //Gets the collection of tables
-                            foreach (DataTable table in tableCollection)
-                                cboSheet.Items.Add(table.TableName);    //Adds the sheet to combobox
+            // Set the cell padding, height, and font size for the default cell style
+            dataGridView.DefaultCellStyle.Padding = cellPadding;
+            dataGridView.RowTemplate.Height = cellHeight;
+            dataGridView.DefaultCellStyle.Font = new System.Drawing.Font("Arial", fontSize);
 
-                        }
-                    }
-                }
-            }*/
-        }
-
-        private void cboSheet_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            /*DataTable dt = tableCollection[cboSheet.SelectedItem.ToString()];   //Selected excel sheet
-            dt.Columns.Add(new DataColumn("TimeIn-Status", typeof(string)));
-            dt.Columns.Add(new DataColumn("TimeOut-Status", typeof(string)));
-
-            dataGridView1.DataSource = dt;   //Gets or sets data that the DataGridView displays*/
-        }
-        DataTableCollection tableCollection;    //Collection of tables for the DataSet
+            // Set the height and font size for the column headers
+            dataGridView.ColumnHeadersHeight = cellHeight;
+            dataGridView.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Arial", fontSize);
 
 
-        private void sortCombBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            /*string selectedItem = sortComboBox.SelectedItem.ToString();     //Selected combobox item
-            DataTable dt = tableCollection[cboSheet.SelectedItem.ToString()];   //Selected sheet
-
-
-            DataView dv = dt.DefaultView;   //Setting the selected excel file or sheet into DataTable
-
-            //SORTS THE COLUMN 'NAME'
-            if (selectedItem == "A - Z")
-            {
-                this.dataGridView1.Sort(this.dataGridView1.Columns["Name"], ListSortDirection.Ascending);   //Sorts the selected column 'Name' to Ascending
-                dataGridView1.DataSource = dv.ToTable(); //Creates and returns a new DataTable base on rows in DataView
-            }
-            else
-            {
-                dataGridView1.DataSource = dt;  //Gets or sets data that the DataGridView displays
-            }
-
-            if (selectedItem == "Z - A")
-            {
-                this.dataGridView1.Sort(this.dataGridView1.Columns["Name"], ListSortDirection.Descending);  //Sorts the selected column 'Name' to Descending
-                dataGridView1.DataSource = dv.ToTable();
-            }
-            else
-            {
-                dataGridView1.DataSource = dt;
-
-            }*/
-
-        }
-
-        private void sortENcomboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            /*string selectedItem = sortENcomboBox.SelectedItem.ToString();   //Selected combobox item
-            DataTable dt = tableCollection[cboSheet.SelectedItem.ToString()];   //Selected sheet
-
-
-            DataView dv = dt.DefaultView;   //Setting the selected excel file or sheet into DataTable
-
-            //SORTS THE COLUMN 'EMPLOYEE_NUMBER'
-            if (selectedItem == "Lowest")
-            {
-                this.dataGridView1.Sort(this.dataGridView1.Columns["AC-No."], ListSortDirection.Ascending);    //Sorts the selected column 'Employee_Number' to Ascending    
-                dataGridView1.DataSource = dv.ToTable();    //Creates and returns a new DataTable base on rows in DataView
-            }
-            else
-            {
-                dataGridView1.DataSource = dt;  //Gets or sets data that the DataGridView displays
-            }
-
-            if (selectedItem == "Highest")
-            {
-                this.dataGridView1.Sort(this.dataGridView1.Columns["AC-No."], ListSortDirection.Descending);   //Sorts the selected column 'Employee_Number' to Descending
-                dataGridView1.DataSource = dv.ToTable();
-            }
-            else
-            {
-                dataGridView1.DataSource = dt;
-
-            }*/
-
-
-        }
-
-
-        private void buttonDateTimePicker_Click(object sender, EventArgs e)
-        {
-            /*DataTable dt = tableCollection[cboSheet.SelectedItem.ToString()];   //Selected sheet
-
-            DataView dv = dt.DefaultView;   //Setting the selected excel file or sheet into DataTable
-
-            DateTime Date1 = fromDateTimePicker.Value.Date; //From DateTimePicker
-            DateTime Date2 = toDateTimePicker.Value.Date;   //To DateTimePicker
-
-            dv.RowFilter = String.Format("Date >= '{0:MM/dd/yyyy}' AND Date <= '{1:MM/dd/yyyy}'", Date1, Date2);//Filters and displays all the data between the selected date on 'Date' column
-            dataGridView1.DataSource = dt;  //Gets or sets data that the DataGridView displays */
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            /*DataTable dt = tableCollection[cboSheet.SelectedItem.ToString()];   //Selected sheet
-
-            DataView dv = dt.DefaultView;   //Setting the selected excel file or sheet into DataTable
-
-            DateTime Date1 = fromDateTimePicker.Value.Date; //From DateTimePicker
-            DateTime Date2 = toDateTimePicker.Value.Date;   //To DateTimePicker
-
-            dv.RowFilter = String.Format(" ", Date1, Date2); //Filters and displays all the data between the selected date on 'Date' column
-            dataGridView1.DataSource = dt;  //Gets or sets data that the DataGridView displays*/
-        }
-
-        private void buttonExport_Click(object sender, EventArgs e)
-        {
-            // get the name of the user in local disk c and store it in a variable
-            // this is to save the excel file in the local disk c Downloads folder
-            string serverName = Environment.UserName;
-
-            // creating Excel Application  
-            Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
-
-            // creating new WorkBook within Excel application  
-            Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
-
-            // creating new Excelsheet in workbook  
-            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
-
-            // see the excel sheet behind the program  
-            app.Visible = true;
-
-            // get the reference of first sheet. By default its name is Sheet1.  
-            // store its reference to worksheet  
-            worksheet = workbook.Sheets["Sheet1"];
-            worksheet = workbook.ActiveSheet;
-
-            // changing the name of active sheet  
-            worksheet.Name = "Sheet 1 Exported";
-
-            // storing header part in Excel
-            // export all column header
-            /*for (int i = 1; i < dataGridView1.Columns.Count + 1; i++)
-            {
-                worksheet.Cells[1, i] = dataGridView1.Columns[i - 1].HeaderText;
-            }*/
-
-            // export only the column header visible
-            for (int i = 1; i < 7; i++)
-            {
-                worksheet.Cells[1, i] = dataGridView1.Columns[i - 1].HeaderText;
-            }
-
-            // export only the visible columns
-            List<DataGridViewColumn> listVisible = new List<DataGridViewColumn>();
-
-            foreach (DataGridViewColumn col in dataGridView1.Columns)
-            {
-                if (col.Visible)
-                    listVisible.Add(col);
-            }
-
-            for (int i = 0; i < listVisible.Count; i++)
-            {
-                worksheet.Cells[1, i + 1] = listVisible[i].HeaderText;
-            }
-
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                for (int j = 0; j < listVisible.Count; j++)
-                {
-                    worksheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[listVisible[j].Name].Value.ToString();
-                }
-            }
-
-            /* storing Each row and column value to excel sheet and printing all columns
-            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
-            {
-                for (int j = 0; j < dataGridView1.Columns.Count; j++)
-                {
-                    worksheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
-                }
-            }*/
-            DateTime localDate = DateTime.Now;
-            string date = localDate.ToString("dd/MM/yyyy");
-            // save the excel file
-            workbook.SaveAs("C:\\Users\\" + serverName + "\\Downloads\\Attendance-System-Output.xlsx", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-
+            // If you want to set the font size for the header cells as well, uncomment the following line
+            // dataGridView.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Arial", fontSize);
         }
 
         // Define a public method to get the DataGridView
         public DataGridView GetDataGridView()
         {
-            return dataGridView1; // Replace "dataGridView1" with the actual name of your DataGridView control
+            return dataGridViewAttendance; // Replace "dataGridView1" with the actual name of your DataGridView control
         }
 
         private void FormHome_Load_1(object sender, EventArgs e)
         {
-
+            ApplyColumnStyles();
             {
-                labelDashboardDate.Text = DateTime.Now.ToString("MMMM dd, yyyy");
+                labelDashboardDate.Text = DateTime.Now.ToString("dddd, MMMM dd, yyyy, h:mm:ss tt").ToUpper();
 
                 string today = DateTime.Now.ToString("yyyy-MM-dd");
                 string query = "SELECT * FROM empattendance WHERE DATE(date) = @today";
@@ -442,13 +95,13 @@ namespace SCTAttendanceSystemUI.Forms
                 adapter = new MySqlDataAdapter(command);
 
                 // Create a DataTable to hold the data
-                table = new DataTable();
+                table = new System.Data.DataTable();
 
                 // Fill the DataTable with the data retrieved by the adapter
                 adapter.Fill(table);
 
                 // Set the DataSource of the DataGridView to the DataTable
-                dataGridView1.DataSource = table;
+                dataGridViewAttendance.DataSource = table;
 
 
                 try
@@ -459,7 +112,7 @@ namespace SCTAttendanceSystemUI.Forms
                     string occupationQuery = "SELECT occupation, jobtimein FROM employee";
                     MySqlCommand occupationCommand = new MySqlCommand(occupationQuery, connection);
                     {
-                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                        foreach (DataGridViewRow row in dataGridViewAttendance.Rows)
                         {
 
                             string occupation = row.Cells["occupation"].Value.ToString();
@@ -469,11 +122,31 @@ namespace SCTAttendanceSystemUI.Forms
 
                             DateTime jobtimein = Convert.ToDateTime(row.Cells["jobtimein"].Value);
 
-                            string totalHoursString = row.Cells["totalhours"].Value.ToString();
-                            TimeSpan totalHours = TimeSpan.Parse(totalHoursString);
+                            string totalHoursString = row.Cells["totalhours"].Value?.ToString();
+                            TimeSpan totalHours;
+                            if (TimeSpan.TryParse(totalHoursString, out totalHours))
+                            {
+                                // Successfully parsed, you can use 'totalHours' now
+                            }
+                            else
+                            {
+                                // Handle the case where parsing failed or the value is null
+                                // You may want to assign a default value or show an error message
+                                totalHours = TimeSpan.Zero; // For example, set a default value
+                            }
 
-                            string jobHoursString = row.Cells["jobhours"].Value.ToString();
-                            TimeSpan jobHours = TimeSpan.Parse(jobHoursString);
+                            string jobHoursString = row.Cells["jobhours"].Value?.ToString();
+                            TimeSpan jobHours;
+                            if (TimeSpan.TryParse(jobHoursString, out jobHours))
+                            {
+                                // Successfully parsed, you can use 'jobHours' now
+                            }
+                            else
+                            {
+                                // Handle the case where parsing failed or the value is null
+                                // You may want to assign a default value or show an error message
+                                jobHours = TimeSpan.Zero; // For example, set a default value
+                            }
 
 
                             // Calculate the expected time-in based on occupation
@@ -526,30 +199,53 @@ namespace SCTAttendanceSystemUI.Forms
                             {
                                 overtimeHours = TimeSpan.Zero;
                             }
-                            // Update the overtimehours column in the employee table for the current occupation
-                            string updateOvertimeQuery = "UPDATE empattendance SET overtimehours = @overtimehours WHERE occupation = @occupation";
-                            MySqlCommand updateOvertimeCommand = new MySqlCommand(updateOvertimeQuery, connection);
-                            updateOvertimeCommand.Parameters.AddWithValue("@overtimehours", overtimeHours.ToString(@"hh\:mm\:ss"));
-                            updateOvertimeCommand.Parameters.AddWithValue("@occupation", occupation);
-                            updateOvertimeCommand.ExecuteNonQuery();
+
+                            // Check if there is a value in the timeout column
+                            if (row.Cells["timeout"].Value != null)
+                            {
+                                // Update the overtimehours column in the empattendance table
+                                string updateOvertimeQuery = "UPDATE empattendance SET overtimehours = @overtimehours WHERE occupation = @occupation";
+                                MySqlCommand updateOvertimeCommand = new MySqlCommand(updateOvertimeQuery, connection);
+                                updateOvertimeCommand.Parameters.AddWithValue("@overtimehours", overtimeHours.ToString(@"hh\:mm\:ss"));
+                                updateOvertimeCommand.Parameters.AddWithValue("@occupation", occupation);
+                                updateOvertimeCommand.ExecuteNonQuery();
+                            }
+
 
                         }
 
                     }
 
+                    dataGridViewAttendance.Columns["empnum"].HeaderText = "Employee Number";
+                    dataGridViewAttendance.Columns["name"].HeaderText = "Name";
+                    dataGridViewAttendance.Columns["department"].HeaderText = "Department";
+                    dataGridViewAttendance.Columns["occupation"].HeaderText = "Occupation";
+                    dataGridViewAttendance.Columns["jobstatus"].HeaderText = "Job Status";
+                    dataGridViewAttendance.Columns["date"].HeaderText = "Date";
+                    dataGridViewAttendance.Columns["timein"].HeaderText = "Time-In";
+                    dataGridViewAttendance.Columns["timeout"].HeaderText = "Time-Out";
+                    dataGridViewAttendance.Columns["totalhours"].HeaderText = "Total Hours";
+                    dataGridViewAttendance.Columns["overtimehours"].HeaderText = "OT Hours";
+                    dataGridViewAttendance.Columns["undertime"].HeaderText = "Undertime";
+                    dataGridViewAttendance.Columns["late"].HeaderText = "Late";
+                    dataGridViewAttendance.Columns["status"].HeaderText = "Status";
 
-                    dataGridView1.Columns["id"].Visible = false;    // Hide a specific column
-                    dataGridView1.Columns[1].Width = 40;
-                    dataGridView1.Columns[2].Width = 125;
-                    dataGridView1.Columns[3].Width = 80;
-                    dataGridView1.Columns[10].Width = 80;
-                    dataGridView1.Columns[11].Width = 80;
-                    dataGridView1.Columns[12].Width = 80;
-                    dataGridView1.Columns[13].Width = 80;
-                    dataGridView1.Columns["jobhours"].Visible = false;    // Hide a specific column
-                    dataGridView1.Columns["jobtimein"].Visible = false;    // Hide a specific column
-                    dataGridView1.Columns["jobtimeout"].Visible = false;    // Hide a specific column
-                    dataGridView1.Columns["absences"].Visible = false;    // Hide a specific column
+
+
+                    dataGridViewAttendance.Columns["id"].Visible = false;    // Hide a specific column
+                    dataGridViewAttendance.Columns[1].Width = 40;
+                    dataGridViewAttendance.Columns[2].Width = 125;
+                    dataGridViewAttendance.Columns[3].Width = 80;
+                    dataGridViewAttendance.Columns[10].Width = 80;
+                    dataGridViewAttendance.Columns[11].Width = 80;
+                    dataGridViewAttendance.Columns[12].Width = 80;
+                    dataGridViewAttendance.Columns[13].Width = 80;
+                    dataGridViewAttendance.Columns["jobhours"].Visible = false;    // Hide a specific column
+                    dataGridViewAttendance.Columns["jobtimein"].Visible = false;    // Hide a specific column
+                    dataGridViewAttendance.Columns["jobtimeout"].Visible = false;    // Hide a specific column
+                    dataGridViewAttendance.Columns["absences"].Visible = false;    // Hide a specific column
+
+
 
 
                 }
@@ -565,12 +261,12 @@ namespace SCTAttendanceSystemUI.Forms
 
         private void dataGridView1_CellFormatting_1(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            DataTable dt = dataGridView1.DataSource as DataTable;
+            System.Data.DataTable dt = dataGridViewAttendance.DataSource as System.Data.DataTable;
 
             {
 
                 // Check if the current cell belongs to the "DateColumn" and has a datetime value
-                if (dataGridView1.Columns[e.ColumnIndex].Name == "date" && e.Value != null && e.Value is DateTime)
+                if (dataGridViewAttendance.Columns[e.ColumnIndex].Name == "date" && e.Value != null && e.Value is DateTime)
                 {
                     // Format the datetime value to the desired format
                     DateTime dateValue = (DateTime)e.Value;
@@ -579,7 +275,7 @@ namespace SCTAttendanceSystemUI.Forms
                 }
 
                 // Check if the current cell belongs to the "DateColumn" and has a datetime value
-                if (dataGridView1.Columns[e.ColumnIndex].Name == "timein" && e.Value != null && e.Value is DateTime)
+                if (dataGridViewAttendance.Columns[e.ColumnIndex].Name == "timein" && e.Value != null && e.Value is DateTime)
                 {
                     // Format the datetime value to the desired format
                     DateTime dateValue = (DateTime)e.Value;
@@ -588,28 +284,28 @@ namespace SCTAttendanceSystemUI.Forms
                 }
 
                 // Check if the current cell belongs to the "DateColumn" and has a datetime value
-                if (dataGridView1.Columns[e.ColumnIndex].Name == "timeout" && e.Value != null && e.Value is DateTime)
+                if (dataGridViewAttendance.Columns[e.ColumnIndex].Name == "timeout" && e.Value != null && e.Value is DateTime)
                 {
                     // Format the datetime value to the desired format
                     DateTime dateValue = (DateTime)e.Value;
                     e.Value = dateValue.ToString("hh:mm:ss tt");
                     e.FormattingApplied = true;
                 }
-/*                // Check if the current cell belongs to the "DateColumn" and has a datetime value
-                if (dataGridView1.Columns[e.ColumnIndex].Name == "totalhours" && e.Value != null && e.Value is DateTime)
-                {
-                    // Format the datetime value to the desired format
-                    DateTime dateValue = (DateTime)e.Value;
-                    e.Value = dateValue.ToString("hh:mm:ss");
-                    e.FormattingApplied = true;
-                }*/
+                /*                // Check if the current cell belongs to the "DateColumn" and has a datetime value
+                                if (dataGridView1.Columns[e.ColumnIndex].Name == "totalhours" && e.Value != null && e.Value is DateTime)
+                                {
+                                    // Format the datetime value to the desired format
+                                    DateTime dateValue = (DateTime)e.Value;
+                                    e.Value = dateValue.ToString("hh:mm:ss");
+                                    e.FormattingApplied = true;
+                                }*/
 
                 if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
                 {
-                    if (dataGridView1.Columns[e.ColumnIndex].DataPropertyName == "status")
+                    if (dataGridViewAttendance.Columns[e.ColumnIndex].DataPropertyName == "status")
                     {
-                        var timeInCellValue = dataGridView1.Rows[e.RowIndex].Cells["timein"].Value;
-                        var jobTimeInCellValue = dataGridView1.Rows[e.RowIndex].Cells["jobtimein"].Value;
+                        var timeInCellValue = dataGridViewAttendance.Rows[e.RowIndex].Cells["timein"].Value;
+                        var jobTimeInCellValue = dataGridViewAttendance.Rows[e.RowIndex].Cells["jobtimein"].Value;
 
                         if (timeInCellValue != null && jobTimeInCellValue != null)
                         {
@@ -705,26 +401,26 @@ namespace SCTAttendanceSystemUI.Forms
 
                         }
 
-/*                        string query2 = "SELECT * FROM empattendance WHERE 1 = 1";
+                        /*                        string query2 = "SELECT * FROM empattendance WHERE 1 = 1";
 
-                        if (!string.IsNullOrWhiteSpace(filtermonth))
-                        {
-                            string selectedMonth = DateTime.ParseExact(filtermonth, "MMMM", CultureInfo.InvariantCulture).ToString("MMMM");
+                                                if (!string.IsNullOrWhiteSpace(filtermonth))
+                                                {
+                                                    string selectedMonth = DateTime.ParseExact(filtermonth, "MMMM", CultureInfo.InvariantCulture).ToString("MMMM");
 
-                            // Modify the SQL query to filter based on the month
-                            query2 += $" AND MONTH(date) = {DateTime.ParseExact(selectedMonth, "MMMM", CultureInfo.CurrentCulture).Month}";
+                                                    // Modify the SQL query to filter based on the month
+                                                    query2 += $" AND MONTH(date) = {DateTime.ParseExact(selectedMonth, "MMMM", CultureInfo.CurrentCulture).Month}";
 
-                        }*/
+                                                }*/
 
                         // Execute the query and bind the result to the DataGridView
 
                         MySqlCommand command = new MySqlCommand(query, connection);
                         MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-                        DataTable dataTable = new DataTable();
+                        System.Data.DataTable dataTable = new System.Data.DataTable();
                         adapter.Fill(dataTable);
-                        dataGridView1.DataSource = dataTable;
+                        dataGridViewAttendance.DataSource = dataTable;
 
-                        (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = filter;
+                        ((System.Data.DataTable)dataGridViewAttendance.DataSource).DefaultView.RowFilter = filter;
 
                     }
 
@@ -733,32 +429,18 @@ namespace SCTAttendanceSystemUI.Forms
         }
 
         private DataView dataView;
-        private DataTable originalDataTable;
+        private System.Data.DataTable originalDataTable;
 
         private void SearchData(string searchText)
         {
             if (dataView == null)
             {
-                originalDataTable = (DataTable)dataGridView1.DataSource;
+                originalDataTable = (System.Data.DataTable)dataGridViewAttendance.DataSource;
                 dataView = new DataView(originalDataTable);
             }
 
             dataView.RowFilter = $"name LIKE '%{searchText}%' OR Convert(empnum, 'System.String') LIKE '%{searchText}%'";
-            dataGridView1.DataSource = dataView;
-        }
-
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            sort sortDgvForm = new sort();
-
-            sortDgvForm.Show();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            string searchText = textBox1.Text;
-            SearchData(searchText);
+            dataGridViewAttendance.DataSource = dataView;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -797,17 +479,17 @@ namespace SCTAttendanceSystemUI.Forms
                     worksheet.Name = "Sheet 1 Exported";
 
                     // Storing header part in Excel
-                    for (int i = 1; i < dataGridView1.Columns.Count + 1; i++)
+                    for (int i = 1; i < dataGridViewAttendance.Columns.Count + 1; i++)
                     {
-                        worksheet.Cells[1, i] = dataGridView1.Columns[i - 1].HeaderText;
+                        worksheet.Cells[1, i] = dataGridViewAttendance.Columns[i - 1].HeaderText;
                     }
 
                     // Storing each row and column value to the Excel sheet
-                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    for (int i = 0; i < dataGridViewAttendance.Rows.Count; i++)
                     {
-                        for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                        for (int j = 0; j < dataGridViewAttendance.Columns.Count; j++)
                         {
-                            worksheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                            worksheet.Cells[i + 2, j + 1] = dataGridViewAttendance.Rows[i].Cells[j].Value.ToString();
                         }
                     }
 
@@ -822,6 +504,197 @@ namespace SCTAttendanceSystemUI.Forms
                 }
             }
 
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            string connectionString2 = "server=localhost;user=root;password=root;database=payrollsys";
+
+            if (dataGridViewAttendance.SelectedRows.Count > 0)
+            {
+                try
+                {
+                    // DELETE ITEM
+                    DialogResult result = MessageBox.Show("Are you sure you want to delete the selected data?", "Confirmation", MessageBoxButtons.YesNo);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        using (MySqlConnection checkConnection = new MySqlConnection(connectionString2))
+                        {
+                            checkConnection.Open();
+
+                            foreach (DataGridViewRow selectedRow in dataGridViewAttendance.SelectedRows)
+                            {
+                                // Get the value from the selected row that you want to use for deletion.
+                                string selectedValue = selectedRow.Cells["id"].Value.ToString();
+
+                                // Delete from UserAct table
+                                string deleteQuery = "DELETE FROM empattendance WHERE id = @id;";
+                                using (MySqlCommand deleteCommand = new MySqlCommand(deleteQuery, checkConnection))
+                                {
+                                    deleteCommand.Parameters.AddWithValue("@id", selectedValue);
+                                    int rowsAffected = deleteCommand.ExecuteNonQuery();
+                                    if (rowsAffected > 0)
+                                    {
+                                        // If deletion is successful, remove the row from the DataGridView
+                                        dataGridViewAttendance.Rows.Remove(selectedRow);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show($"Delete failed. Row with ID {selectedValue} not found.");
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+                finally
+                {
+                }
+            }
+            else
+            {
+                MessageBox.Show("No rows selected for deletion.");
+            }
+        }
+
+        private void clearLabel_Click(object sender, EventArgs e)
+        {
+            string connectionString2 = "server=localhost;user=root;password=root;database=payrollsys";
+
+            try
+            {
+                // Confirm with the user before deleting all data
+                DialogResult result = MessageBox.Show("Are you sure you want to delete all data?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                using (MySqlConnection checkConnection = new MySqlConnection(connectionString2))
+                {
+                    if (result == DialogResult.Yes)
+                    {
+                        // Clear the DataGridView
+                        dataGridViewAttendance.DataSource = null;
+
+                        // Delete all rows from the MySQL database
+                        checkConnection.Open();
+
+                        string deleteAllQuery = "DELETE FROM empattendance"; // Remove the WHERE clause
+
+                        using (MySqlCommand cmd = new MySqlCommand(deleteAllQuery, checkConnection))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        MessageBox.Show("All data deleted successfully.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+            }
+        }
+
+        private void filterComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Clear existing items in ComboBox2
+            filterApplyCMB.Items.Clear();
+
+            // Get the selected sort option from ComboBox1
+            string selectedSort = filterComboBox.SelectedItem?.ToString();
+
+            // Populate ComboBox2 based on the selected sort option
+            switch (selectedSort)
+            {
+                case "Department":
+                    filterApplyCMB.Items.Add("ASP");
+                    filterApplyCMB.Items.Add("IBED");
+                    filterApplyCMB.Items.Add("SED");
+                    break;
+                case "Occupation":
+                    filterApplyCMB.Items.Add("Chairperson");
+                    filterApplyCMB.Items.Add("Guard");
+                    filterApplyCMB.Items.Add("Guidance Counselor");
+                    filterApplyCMB.Items.Add("Maintenance Technician");
+                    filterApplyCMB.Items.Add("Registrar");
+                    filterApplyCMB.Items.Add("School Nurse");
+                    filterApplyCMB.Items.Add("Sports Coach");
+                    filterApplyCMB.Items.Add("Teacher");
+                    break;
+                case "Job Status":
+                    filterApplyCMB.Items.Add("FULL-TIME");
+                    filterApplyCMB.Items.Add("PART-TIME");
+                    break;
+                case "Status":
+                    filterApplyCMB.Items.Add("Present/On-Time");
+                    filterApplyCMB.Items.Add("Late");
+                    break;
+                default:
+                    break;
+            }
+
+            // Apply the filter
+            ApplyFilter();
+        }
+
+        private void ApplyFilter()
+        {
+
+            // exception handling
+            try
+            {
+                string selectedFilter = filterComboBox.SelectedItem?.ToString();
+                string selectedApply = filterApplyCMB.SelectedItem?.ToString();
+
+                // Check if both sort and filter values are selected
+                if (!string.IsNullOrEmpty(selectedFilter) && !string.IsNullOrEmpty(selectedApply))
+                {
+                    // Apply the filter to the DataGridView
+                    if (dataGridViewAttendance.DataSource is System.Data.DataTable dataTable)
+                    {
+                        dataTable.DefaultView.RowFilter = $"{selectedFilter} = '{selectedApply}'";
+                    }
+                }
+                // If only the sort value is selected
+                else if (!string.IsNullOrEmpty(selectedFilter))
+                {
+                    // Remove the filter
+                    if (dataGridViewAttendance.DataSource is System.Data.DataTable dataTable)
+                    {
+                        dataTable.DefaultView.RowFilter = string.Empty;
+                    }
+                }
+                // If neither sort nor filter is selected, show all rows
+                else
+                {
+                    if (dataGridViewAttendance.DataSource is System.Data.DataTable dataTable)
+                    {
+                        dataTable.DefaultView.RowFilter = string.Empty;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception (e.g., display an error message, log the exception)
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = searchBox.Text;
+            SearchData(searchText);
+        }
+
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            dataSet.Tables["empattendance"].Clear();
+            adapter.Fill(dataSet, "empattendance");
         }
     }
 }

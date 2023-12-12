@@ -29,212 +29,44 @@ namespace SCTAttendanceSystemUI.Forms
             InitializeComponent();
             string connectionString = "server=localhost;user=root;password=root;database=payrollsys";
             connection = new MySqlConnection(connectionString);
+            SetDataGridViewStyle(dataGridViewAbsentees, new Padding(10, 5, 10, 5), 30, 10); // Adjust the Padding values, cell height, and font size as needed
+
         }
 
-        /*private void FormAbsentees_Load(object sender, EventArgs e)
+        private void ApplyColumnStyles()
         {
-            labelAbsenteesDate.Text = DateTime.Now.ToLongDateString();
+            // Dynamic Column Color Changer
+            foreach (DataGridViewColumn column in dataGridViewAbsentees.Columns)
+            {
+                // Check if the column index is even
+                if (column.Index % 2 == 0)
+                {
+                    column.DefaultCellStyle.BackColor = Color.LightGray;
+                }
+            }
         }
 
-        private void btnBrowse_Click(object sender, EventArgs e)
+        private void SetDataGridViewStyle(DataGridView dataGridView, Padding cellPadding, int cellHeight, float fontSize)
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "Excel 97-2003 Workbook|*.xls|Excel Workbook|*.xlsx" })  //Filter for excel file
-            {
-                //RETRIEVING EXCEL FILE  AND ITS DATA
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-                    txtFilename.Text = openFileDialog.FileName; // 'txtFilename.Text' is the selected excel file
-                    using (var stream = File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read)) //Opens and Read access to the excel file
-                    {
-                        using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
-                        {
-                            DataSet result = reader.AsDataSet(new ExcelDataSetConfiguration()   //Converts selected sheet into DataSet
-                            {
-                                ConfigureDataTable = (_) => new ExcelDataTableConfiguration() { UseHeaderRow = true }   //Gets or sets data of selected of excel file
-                            });
-                            tableCollection = result.Tables;    //Gets the collection of tables
-                            foreach (DataTable table in tableCollection)
-                                cboSheet.Items.Add(table.TableName);    //Adds the sheet to combobox
+            // Set the cell padding, height, and font size for the default cell style
+            dataGridView.DefaultCellStyle.Padding = cellPadding;
+            dataGridView.RowTemplate.Height = cellHeight;
+            dataGridView.DefaultCellStyle.Font = new System.Drawing.Font("Arial", fontSize);
 
-                        }
-                    }
-                }
-            }
-        }*/
+            // Set the height and font size for the column headers
+            dataGridView.ColumnHeadersHeight = cellHeight;
+            dataGridView.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Arial", fontSize);
 
-        /*private void cboSheet_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            DataTable dt = tableCollection[cboSheet.SelectedItem.ToString()];   //Selected excel sheet
-            DataView dv = dt.DefaultView;   //Setting the selected excel file or sheet into DataTable
 
-            dv.RowFilter = "Date = '" + DateTime.Now.ToString("MM/dd/yyyy") + "'" + "AND Status = 'Absent'";
-            dataGridView2.DataSource = dt;   //Gets or sets data that the DataGridView displays
+            // If you want to set the font size for the header cells as well, uncomment the following line
+            // dataGridView.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Arial", fontSize);
         }
-        DataTableCollection tableCollection;    //Collection of tables for the DataSet
 
-        private void dataGridView2_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        // Define a public method to get the DataGridView
+        public DataGridView GetDataGridView()
         {
-
-            DataGridViewColumn column2 = dataGridView2.Columns[1];   //Sets Width size of a column
-            column2.Width = 200;
-
-            dataGridView2.Columns[4].DefaultCellStyle.Format = "HH:mm:ss tt";   //Setting the format of Time column on excel
-            dataGridView2.Columns[8].DefaultCellStyle.Format = "HH:mm:ss tt";   //Setting the format of Time column on excel
-            dataGridView2.Columns[3].DefaultCellStyle.Format = "MM/dd/yyyy";    //Setting the format of Date column on excel
-            dataGridView2.Columns["ID Number"].Visible = false;     //Hide a specific column
-            dataGridView2.Columns["VerifyCode"].Visible = false;    //Hide a specific column    
-            dataGridView2.Columns["CardNo"].Visible = false;    //Hide a specific column
-            dataGridView2.Columns["Location ID"].Visible = false;   //Hide a specific column
-            dataGridView2.Columns["LateTime"].Visible = false;  //Hide a specific column
-            dataGridView2.Columns["AbsentTime"].Visible = false;    //Hide a specific column
-            dataGridView2.Columns["Time-Out"].Visible = false;    //Hide a specific column
-            dataGridView2.Columns["Time-Out-Status"].Visible = false;    //Hide a specific column
-            dataGridView2.Columns["Overtime"].Visible = false;    //Hide a specific column
-
-
-
-            foreach (DataGridViewColumn column in dataGridView2.Columns)
-            {
-                column.SortMode = DataGridViewColumnSortMode.NotSortable;
-            }
-
-
-            //SETS AND CHANGE ROWS BACKGROUND COLOR OR FOREGROUND COLOR
-            if (this.dataGridView2.Columns[e.ColumnIndex].DataPropertyName == "Status")
-            {
-                //GREEN IS PRESENT
-                //YELLOW IS LATE
-                //RED IS ABSENT
-
-                var onTime = Convert.ToDateTime(dataGridView2.Rows[e.RowIndex].Cells["Time-In"].Value);    //Arrival Time of staff
-                var lateTime = Convert.ToDateTime(dataGridView2.Rows[e.RowIndex].Cells["LateTime"].Value);  //Late time is set to 8:08 AM
-                var absentTime = Convert.ToDateTime(dataGridView2.Rows[e.RowIndex].Cells["AbsentTime"].Value);  //Late time is set to 12:00 AM in excel but when the program is executed in
-                                                                                                                //DataGridView it'll be set to 00:00 AM which means the staff is absent
-
-                if (onTime <= lateTime)
-                {
-                    e.CellStyle.BackColor = Color.Green;
-                    e.CellStyle.ForeColor = Color.White;
-                }
-                if (onTime > lateTime)
-                {
-                    e.CellStyle.BackColor = Color.Yellow;
-                }
-                if (onTime == absentTime)
-                {
-                    e.CellStyle.BackColor = Color.Red;
-
-                }
-            }
-        }*/
-
-        /*private void buttonExport_Click(object sender, EventArgs e)
-        {
-            // get the name of the user in local disk c and store it in a variable
-            // this is to save the excel file in the local disk c Downloads folder
-            string serverName = Environment.UserName;
-
-            // creating Excel Application  
-            Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
-
-            // creating new WorkBook within Excel application  
-            Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
-
-            // creating new Excelsheet in workbook  
-            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
-
-            // see the excel sheet behind the program  
-            app.Visible = true;
-
-            // get the reference of first sheet. By default its name is Sheet1.  
-            // store its reference to worksheet  
-            worksheet = workbook.Sheets["Sheet1"];
-            worksheet = workbook.ActiveSheet;
-
-            // changing the name of active sheet  
-            worksheet.Name = "Sheet 1 Exported";
-
-            // storing header part in Excel
-            /* export all column header
-            for (int i = 1; i < dataGridView1.Columns.Count + 1; i++)
-            {
-                worksheet.Cells[1, i] = dataGridView1.Columns[i - 1].HeaderText;
-            }
-
-            // export only the column header visible
-            for (int i = 1; i < 7; i++)
-            {
-                worksheet.Cells[1, i] = dataGridView2.Columns[i - 1].HeaderText;
-            }
-
-            List<DataGridViewColumn> listVisible = new List<DataGridViewColumn>();
-
-            foreach (DataGridViewColumn col in dataGridView2.Columns)
-            {
-                if (col.Visible)
-                    listVisible.Add(col);
-            }
-
-            for (int i = 0; i < listVisible.Count; i++)
-            {
-                worksheet.Cells[1, i + 1] = listVisible[i].HeaderText;
-            }
-
-            for (int i = 0; i < dataGridView2.Rows.Count; i++)
-            {
-                for (int j = 0; j < listVisible.Count; j++)
-                {
-                    worksheet.Cells[i + 2, j + 1] = dataGridView2.Rows[i].Cells[listVisible[j].Name].Value.ToString();
-                }
-            }
-
-            /* storing Each row and column value to excel sheet and printing all columns
-            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
-            {
-                for (int j = 0; j < dataGridView1.Columns.Count; j++)
-                {
-                    worksheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
-                }
-            }
-
-            DateTime localDate = DateTime.Now;
-            // save the excel file
-            workbook.SaveAs("C:\\Users\\" + serverName + "\\Downloads\\Absentees-Output.xlsx " + " - " + localDate + ".xlsx", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-
-        }*/
-
-        /*private void sortComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string selectedItem = sortComboBox.SelectedItem.ToString();     //Selected combobox item
-            DataTable dt = tableCollection[cboSheet.SelectedItem.ToString()];   //Selected sheet
-
-
-            DataView dv = dt.DefaultView;   //Setting the selected excel file or sheet into DataTable
-
-            //SORTS THE COLUMN 'NAME'
-            if (selectedItem == "All")
-            {
-                dv.RowFilter = "Status = 'Absent'";
-                dataGridView2.DataSource = dv.ToTable(); //Creates and returns a new DataTable base on rows in DataView
-            }
-            else
-            {
-                dataGridView2.DataSource = dt;  //Gets or sets data that the DataGridView displays
-            }
-
-
-        }*/
-
-        /*private void button1_Click(object sender, EventArgs e)
-        {
-            DataTable dt = tableCollection[cboSheet.SelectedItem.ToString()];   //Selected sheet
-
-            DataView dv = dt.DefaultView;   //Setting the selected excel file or sheet into DataTable
-
-            dv.RowFilter = "Date = '" + DateTime.Now.ToString("MM/dd/yyyy") + "'" + "AND Status = 'Absent'"; //Filters and displays all the data between the selected date on 'Date' column
-            dataGridView2.DataSource = dt;  //Gets or sets data that the DataGridView displays
-        }*/
+            return dataGridViewAbsentees; // Replace "dataGridView1" with the actual name of your DataGridView control
+        }
 
         private void labelAbsenteesDate_Click(object sender, EventArgs e)
         {
@@ -245,16 +77,15 @@ namespace SCTAttendanceSystemUI.Forms
         {
             labelAbsenteesDate.Text = DateTime.Now.ToLongDateString();
             LoadAbsentEmployees();
+            ApplyColumnStyles();
+
+            dataGridViewAbsentees.Columns["employeenum"].HeaderText = "Employee Number";
+            dataGridViewAbsentees.Columns["name"].HeaderText = "Name";
+            dataGridViewAbsentees.Columns["department"].HeaderText = "Department";
+            dataGridViewAbsentees.Columns["occupation"].HeaderText = "Occupation";
+            dataGridViewAbsentees.Columns["jobstatus"].HeaderText = "Job Status";
 
         }
-
-/*        private void button1_Click(object sender, EventArgs e)
-        {
-            sortabsent sortDgvForm = new sortabsent();
-
-            sortDgvForm.Show();
-
-        }*/
 
         // Method to load absent employees and display them in the DataGridView
         private void LoadAbsentEmployees()
@@ -277,32 +108,32 @@ namespace SCTAttendanceSystemUI.Forms
                 adapter.Fill(table);
 
                 // Set the DataSource of the DataGridView to the DataTable
-                dataGridView2.DataSource = table;
+                dataGridViewAbsentees.DataSource = table;
 
-                // Insert the absent employees into emp_absent table
-                foreach (DataRow row in table.Rows)
-                {
-                    string empnum = row["employeenum"].ToString();
-                    string name = row["name"].ToString();
-                    string dep = row["department"].ToString();
-                    string occupation = row["occupation"].ToString();
-                    string jobstatus = row["jobstatus"].ToString();
-                    DateTime currentDate = DateTime.Now;
-
-
-                    string insertQuery = "INSERT INTO emp_absents (empnum, name, department, occupation, jobstatus, date) VALUES (@empnum, @name, @department, @occupation, @jobstatus, @date)";
-                    MySqlCommand insertCommand = new MySqlCommand(insertQuery, connection);
-                    insertCommand.Parameters.AddWithValue("@empnum", empnum);
-                    insertCommand.Parameters.AddWithValue("@name", name);
-                    insertCommand.Parameters.AddWithValue("@department", dep);
-                    insertCommand.Parameters.AddWithValue("@occupation", occupation);
-                    insertCommand.Parameters.AddWithValue("@jobstatus", jobstatus);
-                    insertCommand.Parameters.AddWithValue("@date", currentDate);
+                /*                // Insert the absent employees into emp_absent table
+                                foreach (DataRow row in table.Rows)
+                                {
+                                    string empnum = row["employeenum"].ToString();
+                                    string name = row["name"].ToString();
+                                    string dep = row["department"].ToString();
+                                    string occupation = row["occupation"].ToString();
+                                    string jobstatus = row["jobstatus"].ToString();
+                                    DateTime currentDate = DateTime.Now;
 
 
+                                    string insertQuery = "INSERT INTO emp_absents (empnum, name, department, occupation, jobstatus, date) VALUES (@empnum, @name, @department, @occupation, @jobstatus, @date)";
+                                    MySqlCommand insertCommand = new MySqlCommand(insertQuery, connection);
+                                    insertCommand.Parameters.AddWithValue("@empnum", empnum);
+                                    insertCommand.Parameters.AddWithValue("@name", name);
+                                    insertCommand.Parameters.AddWithValue("@department", dep);
+                                    insertCommand.Parameters.AddWithValue("@occupation", occupation);
+                                    insertCommand.Parameters.AddWithValue("@jobstatus", jobstatus);
+                                    insertCommand.Parameters.AddWithValue("@date", currentDate);
 
-                    insertCommand.ExecuteNonQuery();
-                }
+
+
+                                    insertCommand.ExecuteNonQuery();
+                                }*/
 
             }
             catch (Exception ex)
@@ -323,18 +154,17 @@ namespace SCTAttendanceSystemUI.Forms
         {
             if (dataView == null)
             {
-                originalDataTable = (DataTable)dataGridView2.DataSource;
+                originalDataTable = (DataTable)dataGridViewAbsentees.DataSource;
                 dataView = new DataView(originalDataTable);
             }
 
             dataView.RowFilter = $"name LIKE '%{searchText}%' OR Convert(employeenum, 'System.String') LIKE '%{searchText}%'";
-            dataGridView2.DataSource = dataView;
+            dataGridViewAbsentees.DataSource = dataView;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            string searchText = textBox1.Text;
-            SearchData(searchText);
+
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -394,9 +224,9 @@ namespace SCTAttendanceSystemUI.Forms
 
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
-                        dataGridView2.DataSource = dataTable;
+                        dataGridViewAbsentees.DataSource = dataTable;
 
-                        (dataGridView2.DataSource as DataTable).DefaultView.RowFilter = filter;
+                        (dataGridViewAbsentees.DataSource as DataTable).DefaultView.RowFilter = filter;
 
                     }
 
@@ -439,17 +269,17 @@ namespace SCTAttendanceSystemUI.Forms
                     worksheet.Name = "Sheet 1 Exported";
 
                     // Storing header part in Excel
-                    for (int i = 1; i < dataGridView2.Columns.Count + 1; i++)
+                    for (int i = 1; i < dataGridViewAbsentees.Columns.Count + 1; i++)
                     {
-                        worksheet.Cells[1, i] = dataGridView2.Columns[i - 1].HeaderText;
+                        worksheet.Cells[1, i] = dataGridViewAbsentees.Columns[i - 1].HeaderText;
                     }
 
                     // Storing each row and column value to the Excel sheet
-                    for (int i = 0; i < dataGridView2.Rows.Count; i++)
+                    for (int i = 0; i < dataGridViewAbsentees.Rows.Count; i++)
                     {
-                        for (int j = 0; j < dataGridView2.Columns.Count; j++)
+                        for (int j = 0; j < dataGridViewAbsentees.Columns.Count; j++)
                         {
-                            worksheet.Cells[i + 2, j + 1] = dataGridView2.Rows[i].Cells[j].Value.ToString();
+                            worksheet.Cells[i + 2, j + 1] = dataGridViewAbsentees.Rows[i].Cells[j].Value.ToString();
                         }
                     }
 
@@ -463,6 +293,12 @@ namespace SCTAttendanceSystemUI.Forms
                     MessageBox.Show("Data exported to Excel successfully!");
                 }
             }
+        }
+
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = searchBox.Text;
+            SearchData(searchText);
         }
     }
 }

@@ -12,6 +12,7 @@ using MySql.Data.MySqlClient;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using SCTAttendanceSystemUI.Forms;
 using Microsoft.Office.Interop.Excel;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace SCTAttendanceSystemUI
 {
@@ -19,11 +20,14 @@ namespace SCTAttendanceSystemUI
     {
         private MySqlConnection connection;
         private MySqlDataAdapter adapter;
+
         public EmployeeLogin()
         {
             InitializeComponent();
             string connectionString = "server=localhost;user=root;password=root;database=payrollsys";
             connection = new MySqlConnection(connectionString);
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -57,7 +61,7 @@ namespace SCTAttendanceSystemUI
                     {
 
                         this.Hide();
-                        FormEmployeeDashboard empDashboard = new FormEmployeeDashboard(name);
+                        FormEmployeeDashboard empDashboard = new FormEmployeeDashboard();
                         empDashboard.ShowDialog();
                     }
                     else
@@ -116,7 +120,7 @@ namespace SCTAttendanceSystemUI
                         if (reader.Read())
                         {
                             this.Hide();
-                            FormEmployeeDashboard empDashboard = new FormEmployeeDashboard(name);
+                            FormEmployeeDashboard empDashboard = new FormEmployeeDashboard();
                             empDashboard.ShowDialog();
                         }
                         else

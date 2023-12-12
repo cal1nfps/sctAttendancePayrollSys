@@ -55,28 +55,18 @@
             textBox3 = new TextBox();
             textBox2 = new TextBox();
             textBox1 = new TextBox();
-            dataGridView1 = new DataGridView();
-            label12 = new Label();
-            panel4 = new Panel();
-            label17 = new Label();
-            label16 = new Label();
-            label15 = new Label();
-            label14 = new Label();
-            label13 = new Label();
-            label11 = new Label();
-            label10 = new Label();
-            sortComboBox = new ComboBox();
-            label20 = new Label();
+            dataGridViewEmployeeList = new DataGridView();
             button1 = new Button();
             button2 = new Button();
             button4 = new Button();
+            searchBox = new TextBox();
+            clearLabel = new Label();
             button5 = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewEmployeeList).BeginInit();
             SuspendLayout();
             // 
             // labelEmployeeList
@@ -99,7 +89,7 @@
             button3.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             button3.Image = (Image)resources.GetObject("button3.Image");
             button3.ImageAlign = ContentAlignment.MiddleLeft;
-            button3.Location = new Point(767, 93);
+            button3.Location = new Point(1502, 93);
             button3.Name = "button3";
             button3.Padding = new Padding(10, 0, 0, 0);
             button3.Size = new Size(47, 30);
@@ -114,7 +104,7 @@
             panel1.BackColor = Color.FromArgb(164, 16, 48);
             panel1.BorderStyle = BorderStyle.Fixed3D;
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(767, 129);
+            panel1.Location = new Point(997, 129);
             panel1.Name = "panel1";
             panel1.Size = new Size(605, 74);
             panel1.TabIndex = 51;
@@ -150,7 +140,7 @@
             panel2.Controls.Add(textBox3);
             panel2.Controls.Add(textBox2);
             panel2.Controls.Add(textBox1);
-            panel2.Location = new Point(767, 200);
+            panel2.Location = new Point(997, 200);
             panel2.Name = "panel2";
             panel2.Size = new Size(605, 455);
             panel2.TabIndex = 52;
@@ -364,158 +354,24 @@
             textBox1.Size = new Size(174, 23);
             textBox1.TabIndex = 0;
             // 
-            // dataGridView1
+            // dataGridViewEmployeeList
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToResizeColumns = false;
-            dataGridView1.AllowUserToResizeRows = false;
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.BorderStyle = BorderStyle.Fixed3D;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.ColumnHeadersVisible = false;
-            dataGridView1.Location = new Point(38, 129);
-            dataGridView1.MultiSelect = false;
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(723, 526);
-            dataGridView1.TabIndex = 53;
-            dataGridView1.CellClick += dataGridView1_CellClick_1;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            dataGridView1.CellFormatting += dataGridView1_CellFormatting_1;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label12.ForeColor = SystemColors.ControlDarkDark;
-            label12.Location = new Point(3, 8);
-            label12.Name = "label12";
-            label12.Size = new Size(37, 14);
-            label12.TabIndex = 58;
-            label12.Text = "Name";
-            // 
-            // panel4
-            // 
-            panel4.BackColor = Color.White;
-            panel4.BorderStyle = BorderStyle.FixedSingle;
-            panel4.Controls.Add(label17);
-            panel4.Controls.Add(label16);
-            panel4.Controls.Add(label15);
-            panel4.Controls.Add(label14);
-            panel4.Controls.Add(label13);
-            panel4.Controls.Add(label11);
-            panel4.Controls.Add(label10);
-            panel4.Controls.Add(label12);
-            panel4.Location = new Point(38, 93);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(723, 30);
-            panel4.TabIndex = 59;
-            panel4.Paint += panel4_Paint;
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label17.ForeColor = SystemColors.ControlDarkDark;
-            label17.Location = new Point(634, 7);
-            label17.Name = "label17";
-            label17.Size = new Size(27, 14);
-            label17.TabIndex = 66;
-            label17.Text = "City";
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label16.ForeColor = SystemColors.ControlDarkDark;
-            label16.Location = new Point(545, 8);
-            label16.Name = "label16";
-            label16.Size = new Size(54, 14);
-            label16.TabIndex = 65;
-            label16.Text = "Province";
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label15.ForeColor = SystemColors.ControlDarkDark;
-            label15.Location = new Point(448, 7);
-            label15.Name = "label15";
-            label15.Size = new Size(50, 14);
-            label15.TabIndex = 64;
-            label15.Text = "Country";
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label14.ForeColor = SystemColors.ControlDarkDark;
-            label14.Location = new Point(359, 7);
-            label14.Name = "label14";
-            label14.Size = new Size(61, 14);
-            label14.TabIndex = 63;
-            label14.Text = "Birth Date";
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label13.ForeColor = SystemColors.ControlDarkDark;
-            label13.Location = new Point(270, 8);
-            label13.Name = "label13";
-            label13.Size = new Size(64, 14);
-            label13.TabIndex = 62;
-            label13.Text = "Job Status";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label11.ForeColor = SystemColors.ControlDarkDark;
-            label11.Location = new Point(194, 7);
-            label11.Name = "label11";
-            label11.Size = new Size(70, 14);
-            label11.TabIndex = 61;
-            label11.Text = "Department";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.ForeColor = SystemColors.ControlDarkDark;
-            label10.Location = new Point(111, 7);
-            label10.Name = "label10";
-            label10.Size = new Size(68, 14);
-            label10.TabIndex = 60;
-            label10.Text = "Occupation";
-            // 
-            // sortComboBox
-            // 
-            sortComboBox.BackColor = Color.WhiteSmoke;
-            sortComboBox.Cursor = Cursors.Hand;
-            sortComboBox.FlatStyle = FlatStyle.Flat;
-            sortComboBox.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            sortComboBox.FormattingEnabled = true;
-            sortComboBox.Items.AddRange(new object[] { "None", "A - Z", "Z - A" });
-            sortComboBox.Location = new Point(619, 64);
-            sortComboBox.Name = "sortComboBox";
-            sortComboBox.Size = new Size(142, 23);
-            sortComboBox.TabIndex = 61;
-            sortComboBox.Text = "NAME";
-            sortComboBox.SelectedIndexChanged += sortComboBox_SelectedIndexChanged;
-            // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.BackColor = Color.WhiteSmoke;
-            label20.Font = new Font("Times New Roman", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            label20.Location = new Point(575, 64);
-            label20.Name = "label20";
-            label20.Size = new Size(39, 17);
-            label20.TabIndex = 60;
-            label20.Text = "Sort:";
+            dataGridViewEmployeeList.AllowUserToAddRows = false;
+            dataGridViewEmployeeList.AllowUserToResizeRows = false;
+            dataGridViewEmployeeList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewEmployeeList.BackgroundColor = Color.FromArgb(239, 243, 246);
+            dataGridViewEmployeeList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewEmployeeList.Location = new Point(38, 129);
+            dataGridViewEmployeeList.Name = "dataGridViewEmployeeList";
+            dataGridViewEmployeeList.ReadOnly = true;
+            dataGridViewEmployeeList.RowHeadersVisible = false;
+            dataGridViewEmployeeList.RowTemplate.Height = 25;
+            dataGridViewEmployeeList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewEmployeeList.Size = new Size(953, 526);
+            dataGridViewEmployeeList.TabIndex = 53;
+            dataGridViewEmployeeList.CellClick += dataGridView1_CellClick_1;
+            dataGridViewEmployeeList.CellContentClick += dataGridView1_CellContentClick;
+            dataGridViewEmployeeList.CellFormatting += dataGridView1_CellFormatting_1;
             // 
             // button1
             // 
@@ -526,7 +382,7 @@
             button1.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             button1.Image = (Image)resources.GetObject("button1.Image");
             button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(820, 94);
+            button1.Location = new Point(1555, 94);
             button1.Name = "button1";
             button1.Padding = new Padding(10, 0, 0, 0);
             button1.Size = new Size(45, 30);
@@ -545,7 +401,7 @@
             button2.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             button2.Image = (Image)resources.GetObject("button2.Image");
             button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(871, 93);
+            button2.Location = new Point(891, 93);
             button2.Name = "button2";
             button2.Padding = new Padding(10, 0, 0, 0);
             button2.Size = new Size(45, 30);
@@ -564,7 +420,7 @@
             button4.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             button4.Image = (Image)resources.GetObject("button4.Image");
             button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.Location = new Point(714, 28);
+            button4.Location = new Point(838, 93);
             button4.Name = "button4";
             button4.Padding = new Padding(10, 0, 0, 0);
             button4.Size = new Size(47, 30);
@@ -573,6 +429,29 @@
             button4.TextImageRelation = TextImageRelation.ImageBeforeText;
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
+            // 
+            // searchBox
+            // 
+            searchBox.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            searchBox.Location = new Point(38, 91);
+            searchBox.Name = "searchBox";
+            searchBox.PlaceholderText = "Search";
+            searchBox.Size = new Size(310, 32);
+            searchBox.TabIndex = 73;
+            searchBox.TextChanged += searchBox_TextChanged;
+            // 
+            // clearLabel
+            // 
+            clearLabel.AutoSize = true;
+            clearLabel.BackColor = Color.Transparent;
+            clearLabel.Cursor = Cursors.Hand;
+            clearLabel.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            clearLabel.Location = new Point(880, 658);
+            clearLabel.Name = "clearLabel";
+            clearLabel.Size = new Size(111, 15);
+            clearLabel.TabIndex = 74;
+            clearLabel.Text = "CLEAR ALL DATA";
+            clearLabel.Click += clearLabel_Click;
             // 
             // button5
             // 
@@ -583,7 +462,7 @@
             button5.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             button5.Image = (Image)resources.GetObject("button5.Image");
             button5.ImageAlign = ContentAlignment.MiddleLeft;
-            button5.Location = new Point(922, 93);
+            button5.Location = new Point(942, 93);
             button5.Name = "button5";
             button5.Padding = new Padding(10, 0, 0, 0);
             button5.Size = new Size(47, 30);
@@ -597,24 +476,24 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.BG_LOW_OPACITY;
+            BackColor = Color.White;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1264, 681);
+            ClientSize = new Size(1666, 822);
+            Controls.Add(clearLabel);
+            Controls.Add(searchBox);
             Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(button2);
             Controls.Add(button1);
-            Controls.Add(sortComboBox);
-            Controls.Add(label20);
-            Controls.Add(panel4);
-            Controls.Add(dataGridView1);
+            Controls.Add(dataGridViewEmployeeList);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(button3);
             Controls.Add(labelEmployeeList);
             DoubleBuffered = true;
             MaximumSize = new Size(1920, 1080);
-            MinimumSize = new Size(800, 600);
+            MinimumSize = new Size(1598, 821);
             Name = "FormEmployeeList";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormEmployeeList";
@@ -626,9 +505,7 @@
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewEmployeeList).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -656,26 +533,17 @@
         private Label label9;
         private TextBox textBox6;
         private TextBox textBox7;
-        private Label label12;
-        private Panel panel4;
-        private Label label10;
-        private Label label14;
-        private Label label13;
-        private Label label11;
-        private Label label15;
-        private Label label16;
-        private Label label17;
         private Label label19;
         private TextBox textBox9;
         private TextBox textBox8;
         private Label label18;
-        private ComboBox sortComboBox;
-        private Label label20;
         private Button button1;
         private Button button2;
         private Button button4;
-        public DataGridView dataGridView1;
+        public DataGridView dataGridViewEmployeeList;
         public PictureBox pictureBox1;
+        private TextBox searchBox;
+        private Label clearLabel;
         private Button button5;
     }
 }

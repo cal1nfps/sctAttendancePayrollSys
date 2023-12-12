@@ -28,18 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEmployeeDashboard));
             labelLoginAs = new Label();
             labelEmployeeName = new Label();
-            labelDate = new Label();
-            labelTime = new Label();
-            buttonTimeIn = new Button();
-            buttonTimeOut = new Button();
-            panel1 = new Panel();
-            RequestLeaveBtn = new Button();
-            timer1 = new System.Windows.Forms.Timer(components);
-            label1 = new Label();
-            panel1.SuspendLayout();
+            dateLabel = new Label();
+            panelBG = new Panel();
+            tapID = new TextBox();
+            occupationPanel = new Panel();
+            occupationLabel = new Label();
+            departmentPanel = new Panel();
+            departmentLabel = new Label();
+            namePanel = new Panel();
+            empName = new Label();
+            todayLabel = new Label();
+            StatusPanel = new Panel();
+            empStatusLabel = new Label();
+            empNumPanel = new Panel();
+            empNumLabel = new Label();
+            employeePB = new PictureBox();
+            SCTLogoPanel = new Panel();
+            backButton = new Button();
+            domiePB = new PictureBox();
+            logo2Label = new Label();
+            logo1Label = new Label();
+            leaveButton = new Button();
+            sctLogoPB = new PictureBox();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            panelBG.SuspendLayout();
+            occupationPanel.SuspendLayout();
+            departmentPanel.SuspendLayout();
+            namePanel.SuspendLayout();
+            StatusPanel.SuspendLayout();
+            empNumPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)employeePB).BeginInit();
+            SCTLogoPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)domiePB).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)sctLogoPB).BeginInit();
             SuspendLayout();
             // 
             // labelLoginAs
@@ -47,7 +73,7 @@
             labelLoginAs.AutoSize = true;
             labelLoginAs.Font = new Font("Times New Roman", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
             labelLoginAs.ForeColor = Color.White;
-            labelLoginAs.Location = new Point(161, 27);
+            labelLoginAs.Location = new Point(468, 36);
             labelLoginAs.Name = "labelLoginAs";
             labelLoginAs.Size = new Size(258, 31);
             labelLoginAs.TabIndex = 6;
@@ -58,108 +84,328 @@
             labelEmployeeName.AutoSize = true;
             labelEmployeeName.Location = new Point(219, 18);
             labelEmployeeName.Name = "labelEmployeeName";
-            labelEmployeeName.Size = new Size(0, 15);
+            labelEmployeeName.Size = new Size(0, 13);
             labelEmployeeName.TabIndex = 7;
             // 
-            // labelDate
+            // dateLabel
             // 
-            labelDate.AutoSize = true;
-            labelDate.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            labelDate.ForeColor = Color.Black;
-            labelDate.Location = new Point(136, 45);
-            labelDate.Name = "labelDate";
-            labelDate.Size = new Size(73, 23);
-            labelDate.TabIndex = 9;
-            labelDate.Text = "DATE: ";
+            dateLabel.AutoSize = true;
+            dateLabel.Font = new Font("Times New Roman", 13F, FontStyle.Bold, GraphicsUnit.Point);
+            dateLabel.ForeColor = Color.White;
+            dateLabel.Location = new Point(115, 403);
+            dateLabel.Name = "dateLabel";
+            dateLabel.Size = new Size(0, 20);
+            dateLabel.TabIndex = 9;
             // 
-            // labelTime
+            // panelBG
             // 
-            labelTime.AutoSize = true;
-            labelTime.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            labelTime.ForeColor = Color.Black;
-            labelTime.Location = new Point(136, 92);
-            labelTime.Name = "labelTime";
-            labelTime.Size = new Size(70, 23);
-            labelTime.TabIndex = 10;
-            labelTime.Text = "TIME: ";
+            panelBG.BackColor = Color.FromArgb(164, 16, 52);
+            panelBG.BackgroundImage = (Image)resources.GetObject("panelBG.BackgroundImage");
+            panelBG.BackgroundImageLayout = ImageLayout.Stretch;
+            panelBG.Controls.Add(occupationPanel);
+            panelBG.Controls.Add(departmentPanel);
+            panelBG.Controls.Add(namePanel);
+            panelBG.Controls.Add(dateLabel);
+            panelBG.Controls.Add(todayLabel);
+            panelBG.Controls.Add(StatusPanel);
+            panelBG.Controls.Add(empNumPanel);
+            panelBG.Controls.Add(employeePB);
+            panelBG.Controls.Add(SCTLogoPanel);
+            panelBG.Controls.Add(labelEmployeeName);
+            panelBG.Controls.Add(tapID);
+            panelBG.Dock = DockStyle.Fill;
+            panelBG.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            panelBG.Location = new Point(0, 0);
+            panelBG.Name = "panelBG";
+            panelBG.Size = new Size(800, 450);
+            panelBG.TabIndex = 1;
             // 
-            // buttonTimeIn
+            // tapID
             // 
-            buttonTimeIn.BackColor = Color.FromArgb(247, 208, 2);
-            buttonTimeIn.FlatStyle = FlatStyle.Flat;
-            buttonTimeIn.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonTimeIn.Location = new Point(105, 153);
-            buttonTimeIn.Name = "buttonTimeIn";
-            buttonTimeIn.Size = new Size(147, 64);
-            buttonTimeIn.TabIndex = 11;
-            buttonTimeIn.Text = "TIME IN";
-            buttonTimeIn.UseVisualStyleBackColor = false;
-            buttonTimeIn.Click += buttonTimeIn_Click_1;
+            tapID.BackColor = Color.FromArgb(242, 205, 10);
+            tapID.BorderStyle = BorderStyle.None;
+            tapID.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            tapID.ForeColor = Color.FromArgb(164, 16, 52);
+            tapID.Location = new Point(323, 338);
+            tapID.MaxLength = 100;
+            tapID.Name = "tapID";
+            tapID.Size = new Size(290, 27);
+            tapID.TabIndex = 1;
+            tapID.KeyDown += tapID_KeyDown;
             // 
-            // buttonTimeOut
+            // occupationPanel
             // 
-            buttonTimeOut.BackColor = Color.FromArgb(247, 208, 2);
-            buttonTimeOut.FlatStyle = FlatStyle.Flat;
-            buttonTimeOut.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonTimeOut.Location = new Point(309, 153);
-            buttonTimeOut.Name = "buttonTimeOut";
-            buttonTimeOut.Size = new Size(147, 64);
-            buttonTimeOut.TabIndex = 12;
-            buttonTimeOut.Text = "TIME OUT";
-            buttonTimeOut.UseVisualStyleBackColor = false;
-            buttonTimeOut.Click += buttonTimeOut_Click_1;
+            occupationPanel.BackColor = Color.FromArgb(242, 205, 10);
+            occupationPanel.BackgroundImage = (Image)resources.GetObject("occupationPanel.BackgroundImage");
+            occupationPanel.BackgroundImageLayout = ImageLayout.None;
+            occupationPanel.Controls.Add(occupationLabel);
+            occupationPanel.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            occupationPanel.Location = new Point(323, 201);
+            occupationPanel.Name = "occupationPanel";
+            occupationPanel.Size = new Size(403, 42);
+            occupationPanel.TabIndex = 25;
             // 
-            // panel1
+            // occupationLabel
             // 
-            panel1.BackColor = Color.White;
-            panel1.Controls.Add(RequestLeaveBtn);
-            panel1.Controls.Add(buttonTimeOut);
-            panel1.Controls.Add(buttonTimeIn);
-            panel1.Controls.Add(labelTime);
-            panel1.Controls.Add(labelDate);
-            panel1.Controls.Add(labelEmployeeName);
-            panel1.Location = new Point(116, 83);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(564, 323);
-            panel1.TabIndex = 13;
+            occupationLabel.AutoSize = true;
+            occupationLabel.Font = new Font("Times New Roman", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
+            occupationLabel.ForeColor = Color.White;
+            occupationLabel.Location = new Point(3, 4);
+            occupationLabel.Name = "occupationLabel";
+            occupationLabel.Size = new Size(193, 33);
+            occupationLabel.TabIndex = 14;
+            occupationLabel.Text = "OCCUPATION";
+            occupationLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // RequestLeaveBtn
+            // departmentPanel
             // 
-            RequestLeaveBtn.BackColor = Color.FromArgb(255, 121, 0);
-            RequestLeaveBtn.FlatStyle = FlatStyle.Flat;
-            RequestLeaveBtn.Font = new Font("Times New Roman", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            RequestLeaveBtn.Location = new Point(192, 247);
-            RequestLeaveBtn.Name = "RequestLeaveBtn";
-            RequestLeaveBtn.Size = new Size(167, 51);
-            RequestLeaveBtn.TabIndex = 13;
-            RequestLeaveBtn.Text = "REQUEST LEAVE";
-            RequestLeaveBtn.UseVisualStyleBackColor = false;
-            RequestLeaveBtn.Click += RequestLeaveBtn_Click;
+            departmentPanel.BackColor = Color.FromArgb(242, 205, 10);
+            departmentPanel.BackgroundImage = (Image)resources.GetObject("departmentPanel.BackgroundImage");
+            departmentPanel.BackgroundImageLayout = ImageLayout.None;
+            departmentPanel.Controls.Add(departmentLabel);
+            departmentPanel.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            departmentPanel.Location = new Point(323, 269);
+            departmentPanel.Name = "departmentPanel";
+            departmentPanel.Size = new Size(403, 42);
+            departmentPanel.TabIndex = 24;
             // 
-            // timer1
+            // departmentLabel
             // 
-            timer1.Interval = 1000;
-            timer1.Tick += timer1_Tick_1;
+            departmentLabel.AutoSize = true;
+            departmentLabel.Font = new Font("Times New Roman", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
+            departmentLabel.ForeColor = Color.White;
+            departmentLabel.Location = new Point(3, 4);
+            departmentLabel.Name = "departmentLabel";
+            departmentLabel.Size = new Size(205, 33);
+            departmentLabel.TabIndex = 14;
+            departmentLabel.Text = "DEPARTMENT";
+            departmentLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label1
+            // namePanel
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(425, 36);
-            label1.Name = "label1";
-            label1.Size = new Size(0, 21);
-            label1.TabIndex = 14;
+            namePanel.BackColor = Color.FromArgb(242, 205, 10);
+            namePanel.BackgroundImage = (Image)resources.GetObject("namePanel.BackgroundImage");
+            namePanel.BackgroundImageLayout = ImageLayout.None;
+            namePanel.Controls.Add(empName);
+            namePanel.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            namePanel.Location = new Point(323, 133);
+            namePanel.Name = "namePanel";
+            namePanel.Size = new Size(403, 42);
+            namePanel.TabIndex = 23;
+            // 
+            // empName
+            // 
+            empName.AutoSize = true;
+            empName.Font = new Font("Times New Roman", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
+            empName.ForeColor = Color.White;
+            empName.Location = new Point(3, 4);
+            empName.Name = "empName";
+            empName.Size = new Size(100, 33);
+            empName.TabIndex = 14;
+            empName.Text = "NAME";
+            empName.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // todayLabel
+            // 
+            todayLabel.AutoSize = true;
+            todayLabel.Font = new Font("Times New Roman", 12.75F, FontStyle.Bold, GraphicsUnit.Point);
+            todayLabel.ForeColor = Color.White;
+            todayLabel.Location = new Point(30, 403);
+            todayLabel.Name = "todayLabel";
+            todayLabel.Size = new Size(82, 19);
+            todayLabel.TabIndex = 21;
+            todayLabel.Text = "TODAY IS";
+            // 
+            // StatusPanel
+            // 
+            StatusPanel.BackColor = Color.FromArgb(242, 205, 10);
+            StatusPanel.BackgroundImage = (Image)resources.GetObject("StatusPanel.BackgroundImage");
+            StatusPanel.BackgroundImageLayout = ImageLayout.None;
+            StatusPanel.Controls.Add(empStatusLabel);
+            StatusPanel.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            StatusPanel.Location = new Point(30, 341);
+            StatusPanel.Name = "StatusPanel";
+            StatusPanel.Size = new Size(200, 28);
+            StatusPanel.TabIndex = 20;
+            // 
+            // empStatusLabel
+            // 
+            empStatusLabel.AutoSize = true;
+            empStatusLabel.Font = new Font("Times New Roman", 12.75F, FontStyle.Regular, GraphicsUnit.Point);
+            empStatusLabel.ForeColor = Color.White;
+            empStatusLabel.Location = new Point(64, 5);
+            empStatusLabel.Name = "empStatusLabel";
+            empStatusLabel.Size = new Size(50, 19);
+            empStatusLabel.TabIndex = 23;
+            empStatusLabel.Text = "Status";
+            empStatusLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // empNumPanel
+            // 
+            empNumPanel.BackColor = Color.FromArgb(242, 205, 10);
+            empNumPanel.BackgroundImage = (Image)resources.GetObject("empNumPanel.BackgroundImage");
+            empNumPanel.BackgroundImageLayout = ImageLayout.None;
+            empNumPanel.Controls.Add(empNumLabel);
+            empNumPanel.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            empNumPanel.Location = new Point(30, 307);
+            empNumPanel.Name = "empNumPanel";
+            empNumPanel.Size = new Size(200, 28);
+            empNumPanel.TabIndex = 19;
+            // 
+            // empNumLabel
+            // 
+            empNumLabel.AutoSize = true;
+            empNumLabel.Font = new Font("Times New Roman", 12.75F, FontStyle.Regular, GraphicsUnit.Point);
+            empNumLabel.ForeColor = Color.White;
+            empNumLabel.Location = new Point(45, 5);
+            empNumLabel.Name = "empNumLabel";
+            empNumLabel.Size = new Size(137, 19);
+            empNumLabel.TabIndex = 22;
+            empNumLabel.Text = "Employee Number";
+            empNumLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // employeePB
+            // 
+            employeePB.BackColor = Color.WhiteSmoke;
+            employeePB.Location = new Point(30, 101);
+            employeePB.Name = "employeePB";
+            employeePB.Size = new Size(200, 200);
+            employeePB.TabIndex = 16;
+            employeePB.TabStop = false;
+            // 
+            // SCTLogoPanel
+            // 
+            SCTLogoPanel.BackColor = Color.FromArgb(242, 205, 10);
+            SCTLogoPanel.BackgroundImage = (Image)resources.GetObject("SCTLogoPanel.BackgroundImage");
+            SCTLogoPanel.BackgroundImageLayout = ImageLayout.None;
+            SCTLogoPanel.Controls.Add(backButton);
+            SCTLogoPanel.Controls.Add(domiePB);
+            SCTLogoPanel.Controls.Add(logo2Label);
+            SCTLogoPanel.Controls.Add(logo1Label);
+            SCTLogoPanel.Controls.Add(leaveButton);
+            SCTLogoPanel.Controls.Add(sctLogoPB);
+            SCTLogoPanel.Controls.Add(label2);
+            SCTLogoPanel.Controls.Add(label3);
+            SCTLogoPanel.Controls.Add(label4);
+            SCTLogoPanel.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            SCTLogoPanel.Location = new Point(0, 8);
+            SCTLogoPanel.Name = "SCTLogoPanel";
+            SCTLogoPanel.Size = new Size(800, 70);
+            SCTLogoPanel.TabIndex = 15;
+            // 
+            // backButton
+            // 
+            backButton.BackColor = Color.Transparent;
+            backButton.Cursor = Cursors.Hand;
+            backButton.FlatAppearance.BorderSize = 0;
+            backButton.FlatStyle = FlatStyle.Flat;
+            backButton.Font = new Font("Times New Roman", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            backButton.Image = (Image)resources.GetObject("backButton.Image");
+            backButton.ImageAlign = ContentAlignment.MiddleLeft;
+            backButton.Location = new Point(3, 3);
+            backButton.Name = "backButton";
+            backButton.Size = new Size(43, 32);
+            backButton.TabIndex = 7;
+            backButton.UseVisualStyleBackColor = false;
+            backButton.Click += backButton_Click;
+            // 
+            // domiePB
+            // 
+            domiePB.BackColor = Color.Transparent;
+            domiePB.BackgroundImage = (Image)resources.GetObject("domiePB.BackgroundImage");
+            domiePB.BackgroundImageLayout = ImageLayout.Zoom;
+            domiePB.Location = new Point(697, 0);
+            domiePB.Name = "domiePB";
+            domiePB.Size = new Size(98, 69);
+            domiePB.TabIndex = 18;
+            domiePB.TabStop = false;
+            // 
+            // logo2Label
+            // 
+            logo2Label.AutoSize = true;
+            logo2Label.BackColor = Color.Transparent;
+            logo2Label.Font = new Font("Times New Roman", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            logo2Label.ForeColor = Color.Transparent;
+            logo2Label.Location = new Point(323, 39);
+            logo2Label.Name = "logo2Label";
+            logo2Label.Size = new Size(215, 31);
+            logo2Label.TabIndex = 17;
+            logo2Label.Text = "TAYTAY, RIZAL";
+            logo2Label.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // logo1Label
+            // 
+            logo1Label.AutoSize = true;
+            logo1Label.BackColor = Color.Transparent;
+            logo1Label.Font = new Font("Times New Roman", 30F, FontStyle.Bold, GraphicsUnit.Point);
+            logo1Label.ForeColor = Color.Transparent;
+            logo1Label.Location = new Point(262, 1);
+            logo1Label.Name = "logo1Label";
+            logo1Label.Size = new Size(360, 45);
+            logo1Label.TabIndex = 16;
+            logo1Label.Text = "SIENA COLLEGE ";
+            logo1Label.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // leaveButton
+            // 
+            leaveButton.BackColor = Color.FromArgb(255, 121, 0);
+            leaveButton.FlatStyle = FlatStyle.Flat;
+            leaveButton.Font = new Font("Times New Roman", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            leaveButton.Location = new Point(262, 395);
+            leaveButton.Name = "leaveButton";
+            leaveButton.Size = new Size(167, 51);
+            leaveButton.TabIndex = 13;
+            leaveButton.Text = "REQUEST LEAVE";
+            leaveButton.UseVisualStyleBackColor = false;
+            // 
+            // sctLogoPB
+            // 
+            sctLogoPB.BackColor = Color.Transparent;
+            sctLogoPB.BackgroundImage = Properties.Resources.logo;
+            sctLogoPB.BackgroundImageLayout = ImageLayout.Zoom;
+            sctLogoPB.Location = new Point(169, 4);
+            sctLogoPB.Name = "sctLogoPB";
+            sctLogoPB.Size = new Size(105, 62);
+            sctLogoPB.TabIndex = 14;
+            sctLogoPB.TabStop = false;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.ForeColor = Color.Black;
+            label2.Location = new Point(206, 240);
+            label2.Name = "label2";
+            label2.Size = new Size(70, 23);
+            label2.TabIndex = 10;
+            label2.Text = "TIME: ";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.ForeColor = Color.Black;
+            label3.Location = new Point(206, 193);
+            label3.Name = "label3";
+            label3.Size = new Size(73, 23);
+            label3.TabIndex = 9;
+            label3.Text = "DATE: ";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(219, 18);
+            label4.Name = "label4";
+            label4.Size = new Size(0, 13);
+            label4.TabIndex = 7;
             // 
             // FormEmployeeDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(164, 16, 52);
-            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
-            Controls.Add(label1);
-            Controls.Add(panel1);
+            Controls.Add(panelBG);
             Controls.Add(labelLoginAs);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
@@ -169,8 +415,23 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "EMPLOYEE DASHBOARD";
             Load += FormEmployeeDashboard_Load_1;
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            panelBG.ResumeLayout(false);
+            panelBG.PerformLayout();
+            occupationPanel.ResumeLayout(false);
+            occupationPanel.PerformLayout();
+            departmentPanel.ResumeLayout(false);
+            departmentPanel.PerformLayout();
+            namePanel.ResumeLayout(false);
+            namePanel.PerformLayout();
+            StatusPanel.ResumeLayout(false);
+            StatusPanel.PerformLayout();
+            empNumPanel.ResumeLayout(false);
+            empNumPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)employeePB).EndInit();
+            SCTLogoPanel.ResumeLayout(false);
+            SCTLogoPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)domiePB).EndInit();
+            ((System.ComponentModel.ISupportInitialize)sctLogoPB).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -179,14 +440,30 @@
 
         private Label labelLoginAs;
         private Label labelEmployeeName;
-        private Label labelDate;
-        private Label labelTime;
-        private Button buttonTimeIn;
-        private Button buttonTimeOut;
-        private Panel panel1;
-        private System.Windows.Forms.Timer timer1;
-        private Label label1;
-        private Button button1;
-        private Button RequestLeaveBtn;
+        private Label dateLabel;
+        private Panel panelBG;
+        private Label empName;
+        private Panel SCTLogoPanel;
+        private Button leaveButton;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private PictureBox sctLogoPB;
+        private Label logo1Label;
+        private Label logo2Label;
+        private PictureBox domiePB;
+        public PictureBox employeePB;
+        private Panel empNumPanel;
+        private Panel StatusPanel;
+        private Label empStatusLabel;
+        private Label empNumLabel;
+        private Label todayLabel;
+        private Panel namePanel;
+        private Panel occupationPanel;
+        private Label occupationLabel;
+        private Panel departmentPanel;
+        private Label departmentLabel;
+        private TextBox tapID;
+        private Button backButton;
     }
 }

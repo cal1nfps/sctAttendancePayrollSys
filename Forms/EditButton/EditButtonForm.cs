@@ -13,6 +13,10 @@ using System.Windows.Forms;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using System.Xml.Linq;
 using System.Drawing;
+using System.Globalization;
+using System.Text.RegularExpressions;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Diagnostics.Metrics;
 
 
 namespace SCTAttendanceSystemUI.Forms
@@ -116,63 +120,113 @@ namespace SCTAttendanceSystemUI.Forms
 
         }
 
+        private bool IsValidMobilePhone(string mphone)
+        {
+            // Use regular expression to validate 11-digit number
+            return System.Text.RegularExpressions.Regex.IsMatch(mphone, @"^\d{11}$");
+        }
+
+        private bool IsValidTelephone(string telephone)
+        {
+            // Use regular expression to validate 11-digit number
+            return System.Text.RegularExpressions.Regex.IsMatch(telephone, @"^\d{8}$");
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             //UPDATES EMPLOYEE INFORMATION
-            try
+
+            // Validate itemCostTB.Text as a number
+            if (!Regex.IsMatch(textBox4.Text, @"^[\d\.,₱]+$"))
             {
-                connection.Open();
-
-                string query = "UPDATE employee SET occupation = @occupation, department = @department, jobstatus = @jobstatus, firstname = @firstname, middle = @middlename, lastname = @lastname, suffix = @suffix, homenum = @homenum, " +
-                    "phonenum = @phonenum, email = @email, address = @address, province = @province, city = @city, postal = @postal, accountnum = @accountnum, timein = @timein, timeout = @timeout, image_data = @imageData, jobsalary = @jobsalary" +
-                    " WHERE employeenum = @employeenum";
-                MySqlCommand command = new MySqlCommand(query, connection);
-
-                byte[] imageData = ImageToByteArray(pictureBox1.Image);
-
-                command.Parameters.AddWithValue("@occupation", comboBox4.Text);
-                command.Parameters.AddWithValue("@department", comboBox5.Text);
-                command.Parameters.AddWithValue("@jobstatus", comboBox8.Text);
-                command.Parameters.AddWithValue("@firstname", textBox2.Text);
-                command.Parameters.AddWithValue("@middlename", textBox1.Text);
-                command.Parameters.AddWithValue("@lastname", textBox3.Text);
-                command.Parameters.AddWithValue("@suffix", textBox10.Text);
-                command.Parameters.AddWithValue("@homenum", textBox8.Text);
-                command.Parameters.AddWithValue("@phonenum", textBox5.Text);
-                command.Parameters.AddWithValue("@email", textBox7.Text);
-                command.Parameters.AddWithValue("@address", textBox6.Text);
-                command.Parameters.AddWithValue("@province", comboBox3.Text);
-                command.Parameters.AddWithValue("@city", comboBox9.Text);
-                command.Parameters.AddWithValue("@postal", textBox4.Text);
-                command.Parameters.AddWithValue("@accountnum", textBox11.Text);
-                command.Parameters.AddWithValue("@timein", comboBox6.Text);
-                command.Parameters.AddWithValue("@timeout", comboBox7.Text);
-                command.Parameters.AddWithValue("@employeenum", textBox9.Text);
-                command.Parameters.AddWithValue("@imageData", imageData);
-                command.Parameters.AddWithValue("@jobsalary", textBox14.Text);
-
-
-                string first = textBox2.Text;
-                string middle = textBox1.Text;
-                string last = textBox3.Text;
-                string suffix = textBox10.Text;
-                string name = first + " " + middle + " " + last + " " + suffix;
-
-                command.Parameters.AddWithValue("@name", name); //textbox
-
-                command.ExecuteNonQuery();
-
-                MessageBox.Show("Employee Information Updated Successfully!");
+                MessageBox.Show("Postal must be a valid number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            catch (Exception ex)
+            // Validate itemCostTB.Text as a number
+            if (!Regex.IsMatch(textBox14.Text, @"^[\d\.,₱]+$"))
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Salary must be a valid number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            finally
+            // Validate empcon_HN.Text
+            string mphone = textBox5.Text.Trim();
+            if (!IsValidMobilePhone(mphone))
             {
-                connection.Close();
+                MessageBox.Show("Phone Number must be an 11-digit number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            this.Close();
+
+            // Validate empcon_HN.Text
+            string telephone = textBox8.Text.Trim();
+            if (!IsValidTelephone(telephone))
+            {
+                MessageBox.Show("Telephone Number must be an 8-digit number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(textBox9.Text) || string.IsNullOrEmpty(textBox2.Text) || string.IsNullOrEmpty(textBox1.Text) || string.IsNullOrEmpty(textBox3.Text)
+            || string.IsNullOrEmpty(textBox8.Text) || string.IsNullOrEmpty(textBox5.Text) || string.IsNullOrEmpty(textBox7.Text) || string.IsNullOrEmpty(textBox6.Text) ||
+            comboBox3.SelectedIndex == -1 || comboBox1.SelectedIndex == -1 ||string.IsNullOrEmpty(textBox4.Text) || string.IsNullOrEmpty(textBox11.Text) || 
+            string.IsNullOrEmpty(textBox14.Text) || pictureBox1.Image == null || comboBox8.SelectedIndex == -1 || comboBox9.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please fill in all the required fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                try
+                {
+                    connection.Open();
+
+                    string query = "UPDATE employee SET occupation = @occupation, department = @department, jobstatus = @jobstatus, firstname = @firstname, middle = @middlename, lastname = @lastname, suffix = @suffix, homenum = @homenum, " +
+                        "phonenum = @phonenum, email = @email, address = @address, province = @province, city = @city, postal = @postal, accountnum = @accountnum, timein = @timein, timeout = @timeout, image_data = @imageData, jobsalary = @jobsalary" +
+                        " WHERE employeenum = @employeenum";
+                    MySqlCommand command = new MySqlCommand(query, connection);
+
+                    byte[] imageData = ImageToByteArray(pictureBox1.Image);
+
+                    command.Parameters.AddWithValue("@occupation", comboBox4.Text);
+                    command.Parameters.AddWithValue("@department", comboBox5.Text);
+                    command.Parameters.AddWithValue("@jobstatus", comboBox8.Text);
+                    command.Parameters.AddWithValue("@firstname", textBox2.Text);
+                    command.Parameters.AddWithValue("@middlename", textBox1.Text);
+                    command.Parameters.AddWithValue("@lastname", textBox3.Text);
+                    command.Parameters.AddWithValue("@suffix", textBox10.Text);
+                    command.Parameters.AddWithValue("@homenum", textBox8.Text);
+                    command.Parameters.AddWithValue("@phonenum", textBox5.Text);
+                    command.Parameters.AddWithValue("@email", textBox7.Text);
+                    command.Parameters.AddWithValue("@address", textBox6.Text);
+                    command.Parameters.AddWithValue("@province", comboBox3.Text);
+                    command.Parameters.AddWithValue("@city", comboBox9.Text);
+                    command.Parameters.AddWithValue("@postal", textBox4.Text);
+                    command.Parameters.AddWithValue("@accountnum", textBox11.Text);
+                    command.Parameters.AddWithValue("@timein", comboBox6.Text);
+                    command.Parameters.AddWithValue("@timeout", comboBox7.Text);
+                    command.Parameters.AddWithValue("@employeenum", textBox9.Text);
+                    command.Parameters.AddWithValue("@imageData", imageData);
+                    command.Parameters.AddWithValue("@jobsalary", textBox14.Text);
+
+
+                    string first = textBox2.Text;
+                    string middle = textBox1.Text;
+                    string last = textBox3.Text;
+                    string suffix = textBox10.Text;
+                    string name = first + " " + middle + " " + last + " " + suffix;
+
+                    command.Parameters.AddWithValue("@name", name); //textbox
+
+                    command.ExecuteNonQuery();
+
+                    MessageBox.Show("Employee Information Updated Successfully!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+                this.Close();
+            }
 
         }
 
@@ -690,6 +744,42 @@ namespace SCTAttendanceSystemUI.Forms
                         break;
                 }
             }
+        }
+
+        private void textBox14_TextChanged(object sender, EventArgs e)
+        {
+            // Remove previous formatting, or the decimal check will fail including leading zeros
+            string value = textBox14.Text.Replace(",", "")
+                .Replace("₱", "").Replace(".", "").TrimStart('0');
+            decimal ul;
+
+            // Check we are indeed handling a number
+            if (decimal.TryParse(value, out ul))
+            {
+                ul /= 100;
+
+                // Unsub the event so we don't enter a loop
+                textBox14.TextChanged -= textBox14_TextChanged;
+
+                // Format the text as currency
+                textBox14.Text = string.Format(CultureInfo.CreateSpecificCulture("en-PH"), "{0:C2}", ul);
+
+                textBox14.TextChanged += textBox14_TextChanged;
+                textBox14.Select(textBox14.Text.Length, 0);
+            }
+
+            bool goodToGo = TextisValid(textBox14.Text);
+            if (!goodToGo)
+            {
+                textBox14.Text = "₱0.00";
+                textBox14.Select(textBox14.Text.Length, 0);
+            }
+        }
+
+        private bool TextisValid(string text)
+        {
+            Regex money = new Regex(@"^₱(\d{1,3}(\,\d{3})*|(\d+))(\.\d{2})?$");
+            return money.IsMatch(text);
         }
     }
 }

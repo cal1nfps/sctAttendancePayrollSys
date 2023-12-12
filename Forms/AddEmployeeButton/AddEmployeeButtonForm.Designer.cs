@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEmployeeButtonForm));
             personalButton = new Button();
             panel1 = new Panel();
+            cancelButton = new Button();
             comboBox1 = new ComboBox();
             JobStatus = new ComboBox();
             textBox14 = new TextBox();
@@ -39,7 +40,6 @@
             Occupation = new ComboBox();
             label19 = new Label();
             Department = new ComboBox();
-            Randomizer = new Button();
             label13 = new Label();
             label21 = new Label();
             label12 = new Label();
@@ -84,7 +84,6 @@
             doblbl = new Label();
             UploadImage = new Button();
             ProfilePic = new PictureBox();
-            cancelButton = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ProfilePic).BeginInit();
             SuspendLayout();
@@ -111,8 +110,10 @@
             // panel1
             // 
             panel1.BackColor = Color.White;
+            panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
             panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Controls.Add(cancelButton);
             panel1.Controls.Add(comboBox1);
             panel1.Controls.Add(JobStatus);
             panel1.Controls.Add(textBox14);
@@ -121,7 +122,6 @@
             panel1.Controls.Add(Occupation);
             panel1.Controls.Add(label19);
             panel1.Controls.Add(Department);
-            panel1.Controls.Add(Randomizer);
             panel1.Controls.Add(label13);
             panel1.Controls.Add(label21);
             panel1.Controls.Add(label12);
@@ -172,6 +172,22 @@
             panel1.TabIndex = 0;
             panel1.TabStop = true;
             // 
+            // cancelButton
+            // 
+            cancelButton.BackColor = Color.WhiteSmoke;
+            cancelButton.BackgroundImageLayout = ImageLayout.None;
+            cancelButton.FlatAppearance.BorderColor = Color.DimGray;
+            cancelButton.FlatStyle = FlatStyle.Flat;
+            cancelButton.ForeColor = SystemColors.ControlText;
+            cancelButton.Location = new Point(1036, 637);
+            cancelButton.Name = "cancelButton";
+            cancelButton.Size = new Size(88, 34);
+            cancelButton.TabIndex = 71;
+            cancelButton.Text = "Cancel";
+            cancelButton.UseMnemonic = false;
+            cancelButton.UseVisualStyleBackColor = false;
+            cancelButton.Click += cancelButton_Click;
+            // 
             // comboBox1
             // 
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -195,12 +211,13 @@
             // 
             // textBox14
             // 
-            textBox14.BackColor = Color.Gainsboro;
+            textBox14.BackColor = Color.White;
             textBox14.ForeColor = Color.Black;
             textBox14.Location = new Point(851, 533);
             textBox14.Name = "textBox14";
             textBox14.Size = new Size(147, 23);
             textBox14.TabIndex = 69;
+            textBox14.TextChanged += textBox14_TextChanged;
             // 
             // label18
             // 
@@ -257,17 +274,6 @@
             Department.Size = new Size(147, 23);
             Department.TabIndex = 18;
             // 
-            // Randomizer
-            // 
-            Randomizer.BackColor = Color.Gainsboro;
-            Randomizer.FlatStyle = FlatStyle.Flat;
-            Randomizer.Location = new Point(1023, 338);
-            Randomizer.Name = "Randomizer";
-            Randomizer.Size = new Size(25, 23);
-            Randomizer.TabIndex = 23;
-            Randomizer.UseVisualStyleBackColor = false;
-            Randomizer.Click += button3_Click;
-            // 
             // label13
             // 
             label13.AutoSize = true;
@@ -303,7 +309,7 @@
             // 
             // Email
             // 
-            Email.BackColor = Color.Gainsboro;
+            Email.BackColor = Color.White;
             Email.ForeColor = Color.Black;
             Email.Location = new Point(333, 347);
             Email.Name = "Email";
@@ -334,7 +340,7 @@
             // 
             // AccNum
             // 
-            AccNum.BackColor = Color.Gainsboro;
+            AccNum.BackColor = Color.White;
             AccNum.ForeColor = Color.Black;
             AccNum.Location = new Point(72, 480);
             AccNum.Name = "AccNum";
@@ -365,7 +371,7 @@
             // 
             // Telephone
             // 
-            Telephone.BackColor = Color.Gainsboro;
+            Telephone.BackColor = Color.White;
             Telephone.ForeColor = Color.Black;
             Telephone.Location = new Point(559, 281);
             Telephone.Name = "Telephone";
@@ -419,11 +425,11 @@
             // 
             // EmployeeNum
             // 
-            EmployeeNum.BackColor = Color.Gainsboro;
-            EmployeeNum.ForeColor = Color.Silver;
+            EmployeeNum.BackColor = Color.White;
+            EmployeeNum.ForeColor = Color.Black;
             EmployeeNum.Location = new Point(848, 338);
             EmployeeNum.Name = "EmployeeNum";
-            EmployeeNum.Size = new Size(169, 23);
+            EmployeeNum.Size = new Size(150, 23);
             EmployeeNum.TabIndex = 20;
             // 
             // TimeIn
@@ -472,7 +478,7 @@
             // 
             // MobilePhone
             // 
-            MobilePhone.BackColor = Color.Gainsboro;
+            MobilePhone.BackColor = Color.White;
             MobilePhone.ForeColor = Color.Black;
             MobilePhone.Location = new Point(384, 281);
             MobilePhone.Name = "MobilePhone";
@@ -539,7 +545,7 @@
             // 
             // PostalCode
             // 
-            PostalCode.BackColor = Color.Gainsboro;
+            PostalCode.BackColor = Color.White;
             PostalCode.ForeColor = Color.Black;
             PostalCode.Location = new Point(630, 216);
             PostalCode.Name = "PostalCode";
@@ -559,7 +565,7 @@
             // 
             // Suffix
             // 
-            Suffix.BackColor = Color.Gainsboro;
+            Suffix.BackColor = Color.White;
             Suffix.ForeColor = Color.Black;
             Suffix.Location = new Point(645, 82);
             Suffix.Name = "Suffix";
@@ -584,9 +590,9 @@
             Confirm.FlatAppearance.BorderColor = Color.DimGray;
             Confirm.FlatStyle = FlatStyle.Flat;
             Confirm.ForeColor = SystemColors.ControlText;
-            Confirm.Location = new Point(958, 638);
+            Confirm.Location = new Point(942, 637);
             Confirm.Name = "Confirm";
-            Confirm.Size = new Size(116, 34);
+            Confirm.Size = new Size(88, 34);
             Confirm.TabIndex = 25;
             Confirm.Text = "Confirm";
             Confirm.UseMnemonic = false;
@@ -639,7 +645,7 @@
             // 
             // Address
             // 
-            Address.BackColor = Color.Gainsboro;
+            Address.BackColor = Color.White;
             Address.ForeColor = Color.Black;
             Address.Location = new Point(72, 216);
             Address.Multiline = true;
@@ -671,7 +677,7 @@
             // 
             // FirstName
             // 
-            FirstName.BackColor = Color.Gainsboro;
+            FirstName.BackColor = Color.White;
             FirstName.ForeColor = Color.Black;
             FirstName.Location = new Point(70, 82);
             FirstName.Name = "FirstName";
@@ -691,7 +697,7 @@
             // 
             // LastName
             // 
-            LastName.BackColor = Color.Gainsboro;
+            LastName.BackColor = Color.White;
             LastName.ForeColor = Color.Black;
             LastName.Location = new Point(333, 82);
             LastName.Name = "LastName";
@@ -700,7 +706,7 @@
             // 
             // MiddleName
             // 
-            MiddleName.BackColor = Color.Gainsboro;
+            MiddleName.BackColor = Color.White;
             MiddleName.ForeColor = Color.Black;
             MiddleName.Location = new Point(572, 82);
             MiddleName.Name = "MiddleName";
@@ -720,18 +726,19 @@
             // 
             // UploadImage
             // 
-            UploadImage.BackColor = Color.FromArgb(128, 255, 128);
-            UploadImage.BackgroundImageLayout = ImageLayout.None;
+            UploadImage.AutoSize = true;
+            UploadImage.BackColor = Color.Transparent;
+            UploadImage.BackgroundImage = (Image)resources.GetObject("UploadImage.BackgroundImage");
+            UploadImage.BackgroundImageLayout = ImageLayout.Zoom;
             UploadImage.FlatAppearance.BorderSize = 0;
             UploadImage.FlatStyle = FlatStyle.Flat;
             UploadImage.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             UploadImage.ForeColor = SystemColors.ControlDarkDark;
-            UploadImage.Image = (Image)resources.GetObject("UploadImage.Image");
-            UploadImage.Location = new Point(848, 257);
+            UploadImage.Location = new Point(995, 202);
             UploadImage.Name = "UploadImage";
             UploadImage.Padding = new Padding(10, 0, 0, 0);
             UploadImage.RightToLeft = RightToLeft.No;
-            UploadImage.Size = new Size(49, 24);
+            UploadImage.Size = new Size(43, 37);
             UploadImage.TabIndex = 24;
             UploadImage.TextAlign = ContentAlignment.MiddleRight;
             UploadImage.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -741,37 +748,20 @@
             // ProfilePic
             // 
             ProfilePic.BackColor = Color.WhiteSmoke;
+            ProfilePic.BorderStyle = BorderStyle.FixedSingle;
             ProfilePic.Location = new Point(848, 50);
             ProfilePic.Name = "ProfilePic";
             ProfilePic.Size = new Size(200, 200);
             ProfilePic.TabIndex = 36;
             ProfilePic.TabStop = false;
             // 
-            // cancelButton
-            // 
-            cancelButton.BackColor = Color.Transparent;
-            cancelButton.BackgroundImageLayout = ImageLayout.None;
-            cancelButton.FlatAppearance.BorderColor = Color.DimGray;
-            cancelButton.FlatAppearance.BorderSize = 0;
-            cancelButton.FlatStyle = FlatStyle.Flat;
-            cancelButton.ForeColor = SystemColors.ControlText;
-            cancelButton.Image = (Image)resources.GetObject("cancelButton.Image");
-            cancelButton.Location = new Point(1103, 4);
-            cancelButton.Name = "cancelButton";
-            cancelButton.Size = new Size(44, 34);
-            cancelButton.TabIndex = 5;
-            cancelButton.UseMnemonic = false;
-            cancelButton.UseVisualStyleBackColor = false;
-            cancelButton.Click += cancelButton_Click_1;
-            // 
             // AddEmployeeButtonForm
             // 
-            BackColor = Color.Gainsboro;
+            BackColor = Color.FromArgb(164, 16, 48);
             BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(1159, 746);
             Controls.Add(panel1);
             Controls.Add(personalButton);
-            Controls.Add(cancelButton);
             FormBorderStyle = FormBorderStyle.None;
             KeyPreview = true;
             Location = new Point(537, 324);
@@ -786,7 +776,6 @@
         }
 
         #endregion
-        private Button cancelButton;
         private Button personalButton;
         private Panel panel1;
         private Button Confirm;
@@ -812,7 +801,6 @@
         private Label label11;
         private Button UploadImage;
         private PictureBox ProfilePic;
-        private Button Randomizer;
         private TextBox textBox13;
         private Label label15;
         private Label label14;
@@ -842,5 +830,6 @@
         private Label label10;
         private DateTimePicker HireDate;
         private ComboBox comboBox1;
+        private Button cancelButton;
     }
 }

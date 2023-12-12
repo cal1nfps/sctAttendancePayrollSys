@@ -135,7 +135,7 @@ namespace SCTAttendanceSystemUI.Employee
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            FormEmployeeDashboard form_form1 = new FormEmployeeDashboard(name);
+            FormEmployeeDashboard form_form1 = new FormEmployeeDashboard();
             form_form1.ShowDialog();
             this.Close();
         }
