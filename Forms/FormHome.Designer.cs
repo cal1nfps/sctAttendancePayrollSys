@@ -52,18 +52,18 @@
             labelDashboard.ForeColor = Color.Black;
             labelDashboard.Location = new Point(38, 32);
             labelDashboard.Name = "labelDashboard";
-            labelDashboard.Size = new Size(370, 31);
+            labelDashboard.Size = new Size(267, 31);
             labelDashboard.TabIndex = 3;
-            labelDashboard.Text = "ATTENDANCE FOR TODAY";
+            labelDashboard.Text = "ATTENDANCE FOR";
             // 
             // labelDashboardDate
             // 
             labelDashboardDate.AutoSize = true;
             labelDashboardDate.BackColor = Color.Transparent;
-            labelDashboardDate.Font = new Font("Times New Roman", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            labelDashboardDate.Location = new Point(1135, 38);
+            labelDashboardDate.Font = new Font("Times New Roman", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            labelDashboardDate.Location = new Point(296, 32);
             labelDashboardDate.Name = "labelDashboardDate";
-            labelDashboardDate.Size = new Size(71, 25);
+            labelDashboardDate.Size = new Size(87, 31);
             labelDashboardDate.TabIndex = 17;
             labelDashboardDate.Text = "DATE";
             // 
@@ -107,7 +107,7 @@
             filterButton.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             filterButton.Image = (Image)resources.GetObject("filterButton.Image");
             filterButton.ImageAlign = ContentAlignment.MiddleLeft;
-            filterButton.Location = new Point(1525, 95);
+            filterButton.Location = new Point(354, 94);
             filterButton.Name = "filterButton";
             filterButton.Padding = new Padding(10, 0, 0, 0);
             filterButton.Size = new Size(47, 30);
@@ -155,7 +155,7 @@
             deleteButton.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             deleteButton.Image = (Image)resources.GetObject("deleteButton.Image");
             deleteButton.ImageAlign = ContentAlignment.MiddleLeft;
-            deleteButton.Location = new Point(1472, 95);
+            deleteButton.Location = new Point(1525, 95);
             deleteButton.Name = "deleteButton";
             deleteButton.Padding = new Padding(10, 0, 0, 0);
             deleteButton.Size = new Size(47, 30);

@@ -50,7 +50,7 @@
             cancelButton.FlatAppearance.BorderColor = Color.White;
             cancelButton.FlatAppearance.BorderSize = 0;
             cancelButton.FlatStyle = FlatStyle.Flat;
-            cancelButton.Font = new Font("Roboto Mono", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            cancelButton.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             cancelButton.ForeColor = Color.Gray;
             cancelButton.Image = (Image)resources.GetObject("cancelButton.Image");
             cancelButton.ImageAlign = ContentAlignment.MiddleLeft;
@@ -111,7 +111,7 @@
             button2.FlatAppearance.BorderColor = Color.DimGray;
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Roboto Mono", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button2.ForeColor = Color.DimGray;
             button2.ImageAlign = ContentAlignment.MiddleLeft;
             button2.Location = new Point(130, 292);
@@ -166,7 +166,7 @@
             button1.FlatAppearance.BorderColor = Color.DimGray;
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Roboto Mono", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button1.ForeColor = Color.Black;
             button1.ImageAlign = ContentAlignment.MiddleLeft;
             button1.Location = new Point(53, 292);
@@ -207,7 +207,7 @@
             ClientSize = new Size(216, 335);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Location = new Point(760, 200);
+            Location = new Point(400, 260);
             Name = "filterForm";
             StartPosition = FormStartPosition.Manual;
             Text = "filterForm";

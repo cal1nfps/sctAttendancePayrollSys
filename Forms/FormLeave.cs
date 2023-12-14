@@ -9,8 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using SCTAttendanceSystemUI.Employee.sortOnLeave;
-using SCTAttendanceSystemUI.Employee.sortRequest;
 using SCTAttendanceSystemUI.Employee.filterOnLeave;
 using SCTAttendanceSystemUI.Employee.filterLeaveReq;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
@@ -63,9 +61,7 @@ namespace SCTAttendanceSystemUI.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            sortrequests sortForm = new sortrequests();
 
-            sortForm.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -137,8 +133,7 @@ namespace SCTAttendanceSystemUI.Forms
 
         private void button6_Click(object sender, EventArgs e)
         {
-            sortonleave sortForm = new sortonleave();
-            sortForm.Show();
+
         }
 
         private void FormLeave_Load_1(object sender, EventArgs e)

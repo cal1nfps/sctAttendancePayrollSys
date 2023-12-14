@@ -93,17 +93,10 @@ namespace SCTAttendanceSystemUI.Forms
 
             if (string.IsNullOrEmpty(EmployeeNum.Text) || string.IsNullOrEmpty(FirstName.Text) || string.IsNullOrEmpty(MiddleName.Text) || string.IsNullOrEmpty(LastName.Text)
                 || Gender.SelectedIndex == -1 || string.IsNullOrEmpty(Telephone.Text) || string.IsNullOrEmpty(MobilePhone.Text) || string.IsNullOrEmpty(Email.Text) ||
-                string.IsNullOrEmpty(Address.Text) || Country.SelectedIndex == -1 || Province.SelectedIndex == -1 || comboBox1.SelectedIndex == -1 ||
-                string.IsNullOrEmpty(PostalCode.Text) || string.IsNullOrEmpty(AccNum.Text) || Occupation.SelectedIndex == -1 || string.IsNullOrEmpty(textBox14.Text) ||
-                ProfilePic.Image == null || JobStatus.SelectedIndex == -1 || string.IsNullOrWhiteSpace(textBox14.Text))
+                string.IsNullOrEmpty(Address.Text) || barangay.SelectedIndex == -1 || Province.SelectedIndex == -1 || comboBox1.SelectedIndex == -1 ||
+                string.IsNullOrEmpty(PostalCode.Text) || Occupation.SelectedIndex == -1 ||ProfilePic.Image == null || JobStatus.SelectedIndex == -1)
             {
                 MessageBox.Show("Please fill in all the required fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            // Validate itemCostTB.Text as a number
-            if (!Regex.IsMatch(textBox14.Text, @"^[\d\.,₱]+$"))
-            {
-                MessageBox.Show("Salary must be a valid number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
             }
             else
             {
@@ -112,9 +105,9 @@ namespace SCTAttendanceSystemUI.Forms
                     //STORES EMPLOYEE DATA
                     connection.Open();
 
-                    string query = "INSERT INTO employee (employeenum, name, occupation, department, jobstatus, firstname, middle, lastname, suffix, gender, dob, homenum, phonenum, email, address, country, province, city, postal, " +
-                        "accountnum, hiredate, timein, timeout, image_data, jobsalary) VALUES (@employeenum, @name, @occupation, @department, @jobstatus, @firstname, @middle, @lastname, @suffix, @gender, @dob, @homenum, @phonenum, @email, @address, " +
-                        "@country, @province, @city, @postal, @accountnum, @hiredate, @timein, @timeout, @imageData, @jobsalary)";
+                    string query = "INSERT INTO employee (employeenum, name, occupation, department, jobstatus, firstname, middle, lastname, suffix, gender, dob, homenum, phonenum, email, address, barangay, province, city, postal, " +
+                        "hiredate, timein, timeout, image_data) VALUES (@employeenum, @name, @occupation, @department, @jobstatus, @firstname, @middle, @lastname, @suffix, @gender, @dob, @homenum, @phonenum, @email, @address, " +
+                        "@barangay, @province, @city, @postal, @hiredate, @timein, @timeout, @imageData)";
                     MySqlCommand cmd = new MySqlCommand(query, connection);
 
                     byte[] imageData = ImageToByteArray(ProfilePic.Image);
@@ -131,11 +124,10 @@ namespace SCTAttendanceSystemUI.Forms
                     cmd.Parameters.AddWithValue("@phonenum", MobilePhone.Text); //textbox
                     cmd.Parameters.AddWithValue("@email", Email.Text); //textbox
                     cmd.Parameters.AddWithValue("@address", Address.Text); //textbox
-                    cmd.Parameters.AddWithValue("@country", Country.Text); //combobox
+                    cmd.Parameters.AddWithValue("@barangay", barangay.Text); //combobox
                     cmd.Parameters.AddWithValue("@province", Province.Text); //combobox
                     cmd.Parameters.AddWithValue("@city", comboBox1.Text); //textbox
                     cmd.Parameters.AddWithValue("@postal", PostalCode.Text); //textbox
-                    cmd.Parameters.AddWithValue("@accountnum", AccNum.Text); //textbox
                     cmd.Parameters.AddWithValue("@hiredate", HireDate.Value); //datetimepicker
                     cmd.Parameters.AddWithValue("@occupation", Occupation.Text); //combobox
                     cmd.Parameters.AddWithValue("@department", Department.Text); //combobox
@@ -143,7 +135,6 @@ namespace SCTAttendanceSystemUI.Forms
                     cmd.Parameters.AddWithValue("@timein", TimeIn.Text); //combobox
                     cmd.Parameters.AddWithValue("@timeout", TimeOut.Text); //combobox
                     cmd.Parameters.AddWithValue("@imageData", imageData);
-                    cmd.Parameters.AddWithValue("@jobsalary", textBox14.Text); //combobox
 
 
 
@@ -687,41 +678,6 @@ namespace SCTAttendanceSystemUI.Forms
         {
             this.Close();
 
-        }
-
-        private void textBox14_TextChanged(object sender, EventArgs e)
-        {
-            // Remove previous formatting, or the decimal check will fail including leading zeros
-            string value = textBox14.Text.Replace(",", "")
-                .Replace("₱", "").Replace(".", "").TrimStart('0');
-            decimal ul;
-
-            // Check we are indeed handling a number
-            if (decimal.TryParse(value, out ul))
-            {
-                ul /= 100;
-
-                // Unsub the event so we don't enter a loop
-                textBox14.TextChanged -= textBox14_TextChanged;
-
-                // Format the text as currency
-                textBox14.Text = string.Format(CultureInfo.CreateSpecificCulture("en-PH"), "{0:C2}", ul);
-
-                textBox14.TextChanged += textBox14_TextChanged;
-                textBox14.Select(textBox14.Text.Length, 0);
-            }
-
-            bool goodToGo = TextisValid(textBox14.Text);
-            if (!goodToGo)
-            {
-                textBox14.Text = "₱0.00";
-                textBox14.Select(textBox14.Text.Length, 0);
-            }
-        }
-        private bool TextisValid(string text)
-        {
-            Regex money = new Regex(@"^₱(\d{1,3}(\,\d{3})*|(\d+))(\.\d{2})?$");
-            return money.IsMatch(text);
         }
     }
 }

@@ -181,61 +181,6 @@ namespace SCTAttendanceSystemUI.Forms
             }
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            sortDepForm sortDgv = new sortDepForm(dataGridViewIBED);
-
-            sortDgv.Show();
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            OpenChildForm(new Forms.FormDepartment(), sender);
-        }
-
-        private void FormIBED1_Load_1(object sender, EventArgs e)
-        {
-            string specificDepartment = "IBED"; // Replace with the specific department name
-            DateTime currentDate = DateTime.Now.Date; // Get the current date
-
-            try
-            {
-                connection.Open();
-                //Query to Retrieve present employees today and displays in a label counter 
-                string query2 = "SELECT COUNT(*) FROM empattendance WHERE DATE(timein) = @currentDate AND department = @department";
-                MySqlCommand command2 = new MySqlCommand(query2, connection);
-                command2.Parameters.AddWithValue("@currentDate", currentDate);
-                command2.Parameters.AddWithValue("@department", specificDepartment);
-
-                int employeeCount = Convert.ToInt32(command2.ExecuteScalar());
-
-
-                // Query to retrieve the present employees in the specific department who have time-in today
-                string query = "SELECT empnum, name, occupation, jobstatus FROM empattendance WHERE department = @department AND DATE(timein) = @currentDate";
-                MySqlCommand command = new MySqlCommand(query, connection);
-                command.Parameters.AddWithValue("@department", specificDepartment);
-                command.Parameters.AddWithValue("@currentDate", currentDate);
-
-                // Display the count in a label
-                label1.Text = employeeCount.ToString();
-
-                // Create a DataTable to store the retrieved data
-                DataTable dt = new DataTable();
-                dt.Load(command.ExecuteReader());
-
-                // Set the DataTable as the data source for the DataGridView
-                dataGridViewIBED.DataSource = dt;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred: " + ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
-        }
-
         /// <summary>
         /// with reference
         /// </summary>
@@ -294,13 +239,6 @@ namespace SCTAttendanceSystemUI.Forms
                 }
 
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            sortDepForm sortDgv = new sortDepForm(dataGridViewIBED);
-
-            sortDgv.Show();
         }
 
 

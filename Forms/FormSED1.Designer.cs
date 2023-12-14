@@ -142,10 +142,10 @@
             deleteButton.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             deleteButton.Image = (Image)resources.GetObject("deleteButton.Image");
             deleteButton.ImageAlign = ContentAlignment.MiddleLeft;
-            deleteButton.Location = new Point(1522, 130);
+            deleteButton.Location = new Point(1573, 128);
             deleteButton.Name = "deleteButton";
             deleteButton.Padding = new Padding(10, 0, 0, 0);
-            deleteButton.Size = new Size(45, 30);
+            deleteButton.Size = new Size(47, 32);
             deleteButton.TabIndex = 76;
             deleteButton.TextAlign = ContentAlignment.MiddleLeft;
             deleteButton.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -171,10 +171,10 @@
             button4.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             button4.Image = (Image)resources.GetObject("button4.Image");
             button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.Location = new Point(1573, 130);
+            button4.Location = new Point(349, 128);
             button4.Name = "button4";
             button4.Padding = new Padding(10, 0, 0, 0);
-            button4.Size = new Size(47, 30);
+            button4.Size = new Size(47, 32);
             button4.TabIndex = 73;
             button4.TextAlign = ContentAlignment.MiddleLeft;
             button4.TextImageRelation = TextImageRelation.ImageBeforeText;

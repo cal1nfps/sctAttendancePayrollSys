@@ -35,6 +35,8 @@
             searchBox = new TextBox();
             button4 = new Button();
             button2 = new Button();
+            deleteButton = new Button();
+            clearLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAbsentees).BeginInit();
             SuspendLayout();
             // 
@@ -45,18 +47,18 @@
             labelAbsenteesForToday.Font = new Font("Times New Roman", 20F, FontStyle.Bold, GraphicsUnit.Point);
             labelAbsenteesForToday.Location = new Point(38, 32);
             labelAbsenteesForToday.Name = "labelAbsenteesForToday";
-            labelAbsenteesForToday.Size = new Size(341, 31);
+            labelAbsenteesForToday.Size = new Size(238, 31);
             labelAbsenteesForToday.TabIndex = 6;
-            labelAbsenteesForToday.Text = "ABSENTEES FOR TODAY";
+            labelAbsenteesForToday.Text = "ABSENTEES FOR";
             // 
             // labelAbsenteesDate
             // 
             labelAbsenteesDate.AutoSize = true;
             labelAbsenteesDate.BackColor = Color.Transparent;
-            labelAbsenteesDate.Font = new Font("Times New Roman", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            labelAbsenteesDate.Location = new Point(1267, 38);
+            labelAbsenteesDate.Font = new Font("Times New Roman", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            labelAbsenteesDate.Location = new Point(271, 32);
             labelAbsenteesDate.Name = "labelAbsenteesDate";
-            labelAbsenteesDate.Size = new Size(71, 25);
+            labelAbsenteesDate.Size = new Size(87, 31);
             labelAbsenteesDate.TabIndex = 16;
             labelAbsenteesDate.Text = "DATE";
             labelAbsenteesDate.Click += labelAbsenteesDate_Click;
@@ -102,10 +104,10 @@
             button4.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             button4.Image = (Image)resources.GetObject("button4.Image");
             button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.Location = new Point(1525, 91);
+            button4.Location = new Point(354, 89);
             button4.Name = "button4";
             button4.Padding = new Padding(10, 0, 0, 0);
-            button4.Size = new Size(47, 30);
+            button4.Size = new Size(47, 32);
             button4.TabIndex = 74;
             button4.TextAlign = ContentAlignment.MiddleLeft;
             button4.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -124,12 +126,44 @@
             button2.Location = new Point(1578, 91);
             button2.Name = "button2";
             button2.Padding = new Padding(10, 0, 0, 0);
-            button2.Size = new Size(47, 30);
+            button2.Size = new Size(47, 32);
             button2.TabIndex = 76;
             button2.TextAlign = ContentAlignment.MiddleLeft;
             button2.TextImageRelation = TextImageRelation.ImageBeforeText;
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
+            // 
+            // deleteButton
+            // 
+            deleteButton.BackColor = Color.Green;
+            deleteButton.BackgroundImage = (Image)resources.GetObject("deleteButton.BackgroundImage");
+            deleteButton.FlatAppearance.BorderSize = 0;
+            deleteButton.FlatStyle = FlatStyle.Flat;
+            deleteButton.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            deleteButton.Image = (Image)resources.GetObject("deleteButton.Image");
+            deleteButton.ImageAlign = ContentAlignment.MiddleLeft;
+            deleteButton.Location = new Point(1525, 91);
+            deleteButton.Name = "deleteButton";
+            deleteButton.Padding = new Padding(10, 0, 0, 0);
+            deleteButton.Size = new Size(47, 32);
+            deleteButton.TabIndex = 77;
+            deleteButton.TextAlign = ContentAlignment.MiddleLeft;
+            deleteButton.TextImageRelation = TextImageRelation.ImageBeforeText;
+            deleteButton.UseVisualStyleBackColor = false;
+            deleteButton.Click += deleteButton_Click;
+            // 
+            // clearLabel
+            // 
+            clearLabel.AutoSize = true;
+            clearLabel.BackColor = Color.Transparent;
+            clearLabel.Cursor = Cursors.Hand;
+            clearLabel.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            clearLabel.Location = new Point(1514, 723);
+            clearLabel.Name = "clearLabel";
+            clearLabel.Size = new Size(111, 15);
+            clearLabel.TabIndex = 78;
+            clearLabel.Text = "CLEAR ALL DATA";
+            clearLabel.Click += clearLabel_Click;
             // 
             // FormAbsentees
             // 
@@ -140,6 +174,8 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1666, 822);
+            Controls.Add(clearLabel);
+            Controls.Add(deleteButton);
             Controls.Add(button2);
             Controls.Add(button4);
             Controls.Add(searchBox);
@@ -166,5 +202,7 @@
         private TextBox searchBox;
         private Button button4;
         private Button button2;
+        private Button deleteButton;
+        private Label clearLabel;
     }
 }

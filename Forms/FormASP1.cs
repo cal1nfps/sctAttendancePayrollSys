@@ -132,12 +132,6 @@ namespace SCTAttendanceSystemUI.Forms
         }
 
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            sortDepForm sortDgv = new sortDepForm(dataGridViewASP);
-
-            sortDgv.Show();
-        }
 
         private void button4_Click_1(object sender, EventArgs e)
         {

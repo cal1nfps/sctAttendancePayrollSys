@@ -39,29 +39,29 @@ namespace SCTAttendanceSystemUI.Forms
             connection = new MySqlConnection(connectionString);
         }
 
-        public string firstname { get { return textBox2.Text; } set { textBox2.Text = value; } }
-        public string middlename { get { return textBox1.Text; } set { textBox1.Text = value; } }
-        public string lastname { get { return textBox3.Text; } set { textBox3.Text = value; } }
-        public string suffix { get { return textBox10.Text; } set { textBox10.Text = value; } }
-        public string gender { get { return comboBox1.Text; } set { comboBox1.Text = value; } }
-        public string dob { get { return dateTimePicker1.Text; } set { dateTimePicker1.Text = value; } }
-        public string country { get { return comboBox2.Text; } set { comboBox2.Text = value; } }
-        public string address { get { return textBox6.Text; } set { textBox6.Text = value; } }
-        public string province { get { return comboBox3.Text; } set { comboBox3.Text = value; } }
-        public string city { get { return comboBox9.Text; } set { comboBox9.Text = value; } }
-        public string postal { get { return textBox4.Text; } set { textBox4.Text = value; } }
-        public string phone { get { return textBox5.Text; } set { textBox5.Text = value; } }
-        public string telephone { get { return textBox8.Text; } set { textBox8.Text = value; } }
-        public string email { get { return textBox7.Text; } set { textBox7.Text = value; } }
-        public string empnum { get { return textBox9.Text; } set { textBox9.Text = value; } }
-        public string account { get { return textBox11.Text; } set { textBox11.Text = value; } }
-        public string hdate { get { return dateTimePicker2.Text; } set { dateTimePicker2.Text = value; } }
-        public string occupation { get { return comboBox4.Text; } set { comboBox4.Text = value; } }
-        public string department { get { return comboBox5.Text; } set { comboBox5.Text = value; } }
-        public string timein { get { return comboBox6.Text; } set { comboBox6.Text = value; } }
-        public string timeout { get { return comboBox7.Text; } set { comboBox7.Text = value; } }
-        public string jobstatus { get { return comboBox8.Text; } set { comboBox8.Text = value; } }
-        public string jobsalary { get { return textBox14.Text; } set { textBox14.Text = value; } }
+        public string firstname { get { return firstNameTB.Text; } set { firstNameTB.Text = value; } }
+        public string middlename { get { return initialNameTB.Text; } set { initialNameTB.Text = value; } }
+        public string lastname { get { return lastNameTB.Text; } set { lastNameTB.Text = value; } }
+        public string suffix { get { return suffixNameTB.Text; } set { suffixNameTB.Text = value; } }
+        public string gender { get { return genderCMB.Text; } set { genderCMB.Text = value; } }
+        public string dob { get { return dobDTP.Text; } set { dobDTP.Text = value; } }
+        public string barangay { get { return barangayCMB.Text; } set { barangayCMB.Text = value; } }
+        public string address { get { return addressTB.Text; } set { addressTB.Text = value; } }
+        public string province { get { return provinceCMB.Text; } set { provinceCMB.Text = value; } }
+        public string city { get { return cityCMB.Text; } set { cityCMB.Text = value; } }
+        public string postal { get { return postalTB.Text; } set { postalTB.Text = value; } }
+        public string phone { get { return phoneTB.Text; } set { phoneTB.Text = value; } }
+        public string telephone { get { return telNumberTB.Text; } set { telNumberTB.Text = value; } }
+        public string email { get { return emailTB.Text; } set { emailTB.Text = value; } }
+        public string empnum { get { return empNumTB.Text; } set { empNumTB.Text = value; } }
+        public string hdate { get { return hireDTP.Text; } set { hireDTP.Text = value; } }
+        public string occupation { get { return occupationCMB.Text; } set { occupationCMB.Text = value; } }
+        public string department { get { return departmentCMB.Text; } set { departmentCMB.Text = value; } }
+        public string timein { get { return timeinCMB.Text; } set { timeinCMB.Text = value; } }
+        public string timeout { get { return timeoutCMB.Text; } set { timeoutCMB.Text = value; } }
+        public string jobstatus { get { return statusCMB.Text; } set { statusCMB.Text = value; } }
+        public string id { get { return textBox9.Text; } set { textBox9.Text = value; } }
+
 
 
         public byte[] image
@@ -70,11 +70,11 @@ namespace SCTAttendanceSystemUI.Forms
             {
                 ImageConverter converter = new ImageConverter();
 
-                if (pictureBox1.Image != null)
+                if (profilePictureBox.Image != null)
                 {
                     try
                     {
-                        return (byte[])converter.ConvertTo(pictureBox1.Image, typeof(byte[]));
+                        return (byte[])converter.ConvertTo(profilePictureBox.Image, typeof(byte[]));
                     }
                     catch (ArgumentException ex)
                     {
@@ -95,18 +95,18 @@ namespace SCTAttendanceSystemUI.Forms
                     try
                     {
                         ImageConverter converter = new ImageConverter();
-                        pictureBox1.Image = (Image)converter.ConvertFrom(value);
+                        profilePictureBox.Image = (Image)converter.ConvertFrom(value);
                     }
                     catch (ArgumentException ex)
                     {
                         // Handle the case where the image data is not a valid format
                         MessageBox.Show("Error converting byte array to image: " + ex.Message);
-                        pictureBox1.Image = null;
+                        profilePictureBox.Image = null;
                     }
                 }
                 else
                 {
-                    pictureBox1.Image = null;
+                    profilePictureBox.Image = null;
                 }
             }
         }
@@ -123,7 +123,7 @@ namespace SCTAttendanceSystemUI.Forms
         private bool IsValidMobilePhone(string mphone)
         {
             // Use regular expression to validate 11-digit number
-            return System.Text.RegularExpressions.Regex.IsMatch(mphone, @"^\d{11}$");
+            return System.Text.RegularExpressions.Regex.IsMatch(mphone, @"^\d{10}$");
         }
 
         private bool IsValidTelephone(string telephone)
@@ -136,37 +136,30 @@ namespace SCTAttendanceSystemUI.Forms
             //UPDATES EMPLOYEE INFORMATION
 
             // Validate itemCostTB.Text as a number
-            if (!Regex.IsMatch(textBox4.Text, @"^[\d\.,₱]+$"))
+            if (!Regex.IsMatch(postalTB.Text, @"^[\d\.,₱]+$"))
             {
                 MessageBox.Show("Postal must be a valid number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            // Validate itemCostTB.Text as a number
-            if (!Regex.IsMatch(textBox14.Text, @"^[\d\.,₱]+$"))
-            {
-                MessageBox.Show("Salary must be a valid number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
             // Validate empcon_HN.Text
-            string mphone = textBox5.Text.Trim();
+            string mphone = phoneTB.Text.Trim();
             if (!IsValidMobilePhone(mphone))
             {
-                MessageBox.Show("Phone Number must be an 11-digit number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Phone Number must be an 10-digit number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             // Validate empcon_HN.Text
-            string telephone = textBox8.Text.Trim();
+            string telephone = telNumberTB.Text.Trim();
             if (!IsValidTelephone(telephone))
             {
                 MessageBox.Show("Telephone Number must be an 8-digit number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (string.IsNullOrEmpty(textBox9.Text) || string.IsNullOrEmpty(textBox2.Text) || string.IsNullOrEmpty(textBox1.Text) || string.IsNullOrEmpty(textBox3.Text)
-            || string.IsNullOrEmpty(textBox8.Text) || string.IsNullOrEmpty(textBox5.Text) || string.IsNullOrEmpty(textBox7.Text) || string.IsNullOrEmpty(textBox6.Text) ||
-            comboBox3.SelectedIndex == -1 || comboBox1.SelectedIndex == -1 ||string.IsNullOrEmpty(textBox4.Text) || string.IsNullOrEmpty(textBox11.Text) || 
-            string.IsNullOrEmpty(textBox14.Text) || pictureBox1.Image == null || comboBox8.SelectedIndex == -1 || comboBox9.SelectedIndex == -1)
+            if (string.IsNullOrEmpty(empNumTB.Text) || string.IsNullOrEmpty(firstNameTB.Text) || string.IsNullOrEmpty(initialNameTB.Text) || string.IsNullOrEmpty(lastNameTB.Text)
+            || string.IsNullOrEmpty(telNumberTB.Text) || string.IsNullOrEmpty(phoneTB.Text) || string.IsNullOrEmpty(emailTB.Text) || string.IsNullOrEmpty(addressTB.Text) || barangayCMB.SelectedIndex == -1 ||
+            provinceCMB.SelectedIndex == -1 || genderCMB.SelectedIndex == -1 || string.IsNullOrEmpty(postalTB.Text) || profilePictureBox.Image == null || statusCMB.SelectedIndex == -1 || cityCMB.SelectedIndex == -1)
             {
                 MessageBox.Show("Please fill in all the required fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -176,56 +169,55 @@ namespace SCTAttendanceSystemUI.Forms
                 {
                     connection.Open();
 
-                    string query = "UPDATE employee SET occupation = @occupation, department = @department, jobstatus = @jobstatus, firstname = @firstname, middle = @middlename, lastname = @lastname, suffix = @suffix, homenum = @homenum, " +
-                        "phonenum = @phonenum, email = @email, address = @address, province = @province, city = @city, postal = @postal, accountnum = @accountnum, timein = @timein, timeout = @timeout, image_data = @imageData, jobsalary = @jobsalary" +
-                        " WHERE employeenum = @employeenum";
+                    // Update employee information using employeenum as a condition
+                    string query = "UPDATE employee SET employeenum = @employeenum, occupation = @occupation, department = @department, jobstatus = @jobstatus, " +
+                        "firstname = @firstname, middle = @middlename, lastname = @lastname, suffix = @suffix, homenum = @homenum, " +
+                        "phonenum = @phonenum, email = @email, address = @address, barangay = @barangay, province = @province, " +
+                        "city = @city, postal = @postal, timein = @timein, timeout = @timeout, image_data = @imageData" +
+                        " WHERE id = @id";
+
                     MySqlCommand command = new MySqlCommand(query, connection);
 
-                    byte[] imageData = ImageToByteArray(pictureBox1.Image);
+                    // Convert image to byte array
+                    byte[] imageData = ImageToByteArray(profilePictureBox.Image);
 
-                    command.Parameters.AddWithValue("@occupation", comboBox4.Text);
-                    command.Parameters.AddWithValue("@department", comboBox5.Text);
-                    command.Parameters.AddWithValue("@jobstatus", comboBox8.Text);
-                    command.Parameters.AddWithValue("@firstname", textBox2.Text);
-                    command.Parameters.AddWithValue("@middlename", textBox1.Text);
-                    command.Parameters.AddWithValue("@lastname", textBox3.Text);
-                    command.Parameters.AddWithValue("@suffix", textBox10.Text);
-                    command.Parameters.AddWithValue("@homenum", textBox8.Text);
-                    command.Parameters.AddWithValue("@phonenum", textBox5.Text);
-                    command.Parameters.AddWithValue("@email", textBox7.Text);
-                    command.Parameters.AddWithValue("@address", textBox6.Text);
-                    command.Parameters.AddWithValue("@province", comboBox3.Text);
-                    command.Parameters.AddWithValue("@city", comboBox9.Text);
-                    command.Parameters.AddWithValue("@postal", textBox4.Text);
-                    command.Parameters.AddWithValue("@accountnum", textBox11.Text);
-                    command.Parameters.AddWithValue("@timein", comboBox6.Text);
-                    command.Parameters.AddWithValue("@timeout", comboBox7.Text);
-                    command.Parameters.AddWithValue("@employeenum", textBox9.Text);
+                    // Add parameters
+                    command.Parameters.AddWithValue("@id", textBox9.Text);
+                    command.Parameters.AddWithValue("@occupation", occupationCMB.Text);
+                    command.Parameters.AddWithValue("@department", departmentCMB.Text);
+                    command.Parameters.AddWithValue("@jobstatus", statusCMB.Text);
+                    command.Parameters.AddWithValue("@firstname", firstname);
+                    command.Parameters.AddWithValue("@middlename", middlename);
+                    command.Parameters.AddWithValue("@lastname", lastname);
+                    command.Parameters.AddWithValue("@suffix", suffixNameTB.Text);
+                    command.Parameters.AddWithValue("@homenum", telNumberTB.Text);
+                    command.Parameters.AddWithValue("@phonenum", phoneTB.Text);
+                    command.Parameters.AddWithValue("@email", email);
+                    command.Parameters.AddWithValue("@address", addressTB.Text);
+                    command.Parameters.AddWithValue("@province", provinceCMB.Text);
+                    command.Parameters.AddWithValue("@city", cityCMB.Text);
+                    command.Parameters.AddWithValue("@barangay", barangayCMB.Text);
+                    command.Parameters.AddWithValue("@postal", postalTB.Text);
+                    command.Parameters.AddWithValue("@timein", timeinCMB.Text);  // Include if comboBox6 is a valid field in your form
+                    command.Parameters.AddWithValue("@timeout", timeoutCMB.Text);  // Include if comboBox7 is a valid field in your form
+                    command.Parameters.AddWithValue("@employeenum", empNumTB.Text);
                     command.Parameters.AddWithValue("@imageData", imageData);
-                    command.Parameters.AddWithValue("@jobsalary", textBox14.Text);
 
-
-                    string first = textBox2.Text;
-                    string middle = textBox1.Text;
-                    string last = textBox3.Text;
-                    string suffix = textBox10.Text;
-                    string name = first + " " + middle + " " + last + " " + suffix;
-
-                    command.Parameters.AddWithValue("@name", name); //textbox
-
+                    // Execute the query
                     command.ExecuteNonQuery();
 
                     MessageBox.Show("Employee Information Updated Successfully!");
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("An error occurred: " + ex.Message + "\n" + ex.StackTrace);
                 }
                 finally
                 {
                     connection.Close();
+                    this.Close();
                 }
-                this.Close();
+
             }
 
         }
@@ -239,7 +231,7 @@ namespace SCTAttendanceSystemUI.Forms
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string imagePath = openFileDialog.FileName;
-                pictureBox1.Image = Image.FromFile(imagePath);
+                profilePictureBox.Image = Image.FromFile(imagePath);
 
 
             }
@@ -279,10 +271,10 @@ namespace SCTAttendanceSystemUI.Forms
             }
 
             TextBox textBox = sender as TextBox;
-            if (textBox != null && textBox.Text.Length >= 11 && e.KeyChar != (char)Keys.Back)
+            if (textBox != null && textBox.Text.Length >= 10 && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true;
-                MessageBox.Show("You can only enter 11 digits.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("You can only enter 10 digits.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -304,93 +296,93 @@ namespace SCTAttendanceSystemUI.Forms
 
         private void EditButtonForm_Load(object sender, EventArgs e)
         {
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            profilePictureBox.SizeMode = PictureBoxSizeMode.Zoom;
 
 
             {
                 // Populate ComboBox1 with provinces
-                comboBox3.Items.Add("Abra");
-                comboBox3.Items.Add("Agusan del Norte");
-                comboBox3.Items.Add("Agusan del Sur");
-                comboBox3.Items.Add("Aklan");
-                comboBox3.Items.Add("Albay");
-                comboBox3.Items.Add("Antique");
-                comboBox3.Items.Add("Apayao");
-                comboBox3.Items.Add("Aurora");
-                comboBox3.Items.Add("Basilan");
-                comboBox3.Items.Add("Bataan");
-                comboBox3.Items.Add("Batanes");
-                comboBox3.Items.Add("Batangas");
-                comboBox3.Items.Add("Benguet");
-                comboBox3.Items.Add("Biliran");
-                comboBox3.Items.Add("Bohol");
-                comboBox3.Items.Add("Bukidnon");
-                comboBox3.Items.Add("Bulacan");
-                comboBox3.Items.Add("Cagayan");
-                comboBox3.Items.Add("Camarines Norte");
-                comboBox3.Items.Add("Camarines Sur");
-                comboBox3.Items.Add("Camiguin");
-                comboBox3.Items.Add("Capiz");
-                comboBox3.Items.Add("Catanduanes");
-                comboBox3.Items.Add("Cavite");
-                comboBox3.Items.Add("Cebu");
-                comboBox3.Items.Add("Cotabato");
-                comboBox3.Items.Add("Davao de Oro");
-                comboBox3.Items.Add("Davao del Norte");
-                comboBox3.Items.Add("Davao del Sur");
-                comboBox3.Items.Add("Davao Occidental");
-                comboBox3.Items.Add("Davao Oriental");
-                comboBox3.Items.Add("Dinagat Islands");
-                comboBox3.Items.Add("Eastern Samar");
-                comboBox3.Items.Add("Guimaras");
-                comboBox3.Items.Add("Ifugao");
-                comboBox3.Items.Add("Ilocos Norte");
-                comboBox3.Items.Add("Ilocos Sur");
-                comboBox3.Items.Add("Iloilo");
-                comboBox3.Items.Add("Isabela");
-                comboBox3.Items.Add("Kalinga");
-                comboBox3.Items.Add("La Union");
-                comboBox3.Items.Add("Laguna");
-                comboBox3.Items.Add("Lanao del Norte");
-                comboBox3.Items.Add("Lanao del Sur");
-                comboBox3.Items.Add("Leyte");
-                comboBox3.Items.Add("Maguindanao del Norte");
-                comboBox3.Items.Add("Maguindanao del Sur");
-                comboBox3.Items.Add("Marinduque");
-                comboBox3.Items.Add("Masbate");
-                comboBox3.Items.Add("Misamis Occidental");
-                comboBox3.Items.Add("Misamis Oriental");
-                comboBox3.Items.Add("Mountain Province");
-                comboBox3.Items.Add("Negros Occidental");
-                comboBox3.Items.Add("Negros Oriental");
-                comboBox3.Items.Add("Northern Samar");
-                comboBox3.Items.Add("Nueva Ecija");
-                comboBox3.Items.Add("Nueva Vizcaya");
-                comboBox3.Items.Add("Occidental Mindoro");
-                comboBox3.Items.Add("Oriental Mindoro");
-                comboBox3.Items.Add("Palawan");
-                comboBox3.Items.Add("Pampanga");
-                comboBox3.Items.Add("Pangasinan");
-                comboBox3.Items.Add("Quezon");
-                comboBox3.Items.Add("Quirino");
-                comboBox3.Items.Add("Rizal");
-                comboBox3.Items.Add("Romblon");
-                comboBox3.Items.Add("Samar");
-                comboBox3.Items.Add("Sarangani");
-                comboBox3.Items.Add("Siquijor");
-                comboBox3.Items.Add("Sorsogon");
-                comboBox3.Items.Add("South Cotabato");
-                comboBox3.Items.Add("Southern Leyte");
-                comboBox3.Items.Add("Sultan Kudarat");
-                comboBox3.Items.Add("Sulu");
-                comboBox3.Items.Add("Surigao del Norte");
-                comboBox3.Items.Add("Surigao del Sur");
-                comboBox3.Items.Add("Tarlac");
-                comboBox3.Items.Add("Tawi-Tawi");
-                comboBox3.Items.Add("Zambales");
-                comboBox3.Items.Add("Zamboanga del Norte");
-                comboBox3.Items.Add("Zamboanga del Sur");
-                comboBox3.Items.Add("Zamboanga Sibugay");
+                provinceCMB.Items.Add("Abra");
+                provinceCMB.Items.Add("Agusan del Norte");
+                provinceCMB.Items.Add("Agusan del Sur");
+                provinceCMB.Items.Add("Aklan");
+                provinceCMB.Items.Add("Albay");
+                provinceCMB.Items.Add("Antique");
+                provinceCMB.Items.Add("Apayao");
+                provinceCMB.Items.Add("Aurora");
+                provinceCMB.Items.Add("Basilan");
+                provinceCMB.Items.Add("Bataan");
+                provinceCMB.Items.Add("Batanes");
+                provinceCMB.Items.Add("Batangas");
+                provinceCMB.Items.Add("Benguet");
+                provinceCMB.Items.Add("Biliran");
+                provinceCMB.Items.Add("Bohol");
+                provinceCMB.Items.Add("Bukidnon");
+                provinceCMB.Items.Add("Bulacan");
+                provinceCMB.Items.Add("Cagayan");
+                provinceCMB.Items.Add("Camarines Norte");
+                provinceCMB.Items.Add("Camarines Sur");
+                provinceCMB.Items.Add("Camiguin");
+                provinceCMB.Items.Add("Capiz");
+                provinceCMB.Items.Add("Catanduanes");
+                provinceCMB.Items.Add("Cavite");
+                provinceCMB.Items.Add("Cebu");
+                provinceCMB.Items.Add("Cotabato");
+                provinceCMB.Items.Add("Davao de Oro");
+                provinceCMB.Items.Add("Davao del Norte");
+                provinceCMB.Items.Add("Davao del Sur");
+                provinceCMB.Items.Add("Davao Occidental");
+                provinceCMB.Items.Add("Davao Oriental");
+                provinceCMB.Items.Add("Dinagat Islands");
+                provinceCMB.Items.Add("Eastern Samar");
+                provinceCMB.Items.Add("Guimaras");
+                provinceCMB.Items.Add("Ifugao");
+                provinceCMB.Items.Add("Ilocos Norte");
+                provinceCMB.Items.Add("Ilocos Sur");
+                provinceCMB.Items.Add("Iloilo");
+                provinceCMB.Items.Add("Isabela");
+                provinceCMB.Items.Add("Kalinga");
+                provinceCMB.Items.Add("La Union");
+                provinceCMB.Items.Add("Laguna");
+                provinceCMB.Items.Add("Lanao del Norte");
+                provinceCMB.Items.Add("Lanao del Sur");
+                provinceCMB.Items.Add("Leyte");
+                provinceCMB.Items.Add("Maguindanao del Norte");
+                provinceCMB.Items.Add("Maguindanao del Sur");
+                provinceCMB.Items.Add("Marinduque");
+                provinceCMB.Items.Add("Masbate");
+                provinceCMB.Items.Add("Misamis Occidental");
+                provinceCMB.Items.Add("Misamis Oriental");
+                provinceCMB.Items.Add("Mountain Province");
+                provinceCMB.Items.Add("Negros Occidental");
+                provinceCMB.Items.Add("Negros Oriental");
+                provinceCMB.Items.Add("Northern Samar");
+                provinceCMB.Items.Add("Nueva Ecija");
+                provinceCMB.Items.Add("Nueva Vizcaya");
+                provinceCMB.Items.Add("Occidental Mindoro");
+                provinceCMB.Items.Add("Oriental Mindoro");
+                provinceCMB.Items.Add("Palawan");
+                provinceCMB.Items.Add("Pampanga");
+                provinceCMB.Items.Add("Pangasinan");
+                provinceCMB.Items.Add("Quezon");
+                provinceCMB.Items.Add("Quirino");
+                provinceCMB.Items.Add("Rizal");
+                provinceCMB.Items.Add("Romblon");
+                provinceCMB.Items.Add("Samar");
+                provinceCMB.Items.Add("Sarangani");
+                provinceCMB.Items.Add("Siquijor");
+                provinceCMB.Items.Add("Sorsogon");
+                provinceCMB.Items.Add("South Cotabato");
+                provinceCMB.Items.Add("Southern Leyte");
+                provinceCMB.Items.Add("Sultan Kudarat");
+                provinceCMB.Items.Add("Sulu");
+                provinceCMB.Items.Add("Surigao del Norte");
+                provinceCMB.Items.Add("Surigao del Sur");
+                provinceCMB.Items.Add("Tarlac");
+                provinceCMB.Items.Add("Tawi-Tawi");
+                provinceCMB.Items.Add("Zambales");
+                provinceCMB.Items.Add("Zamboanga del Norte");
+                provinceCMB.Items.Add("Zamboanga del Sur");
+                provinceCMB.Items.Add("Zamboanga Sibugay");
             }
         }
 
@@ -399,346 +391,346 @@ namespace SCTAttendanceSystemUI.Forms
 
             {
                 // Clear existing items in ComboBox2
-                comboBox9.Items.Clear();
+                cityCMB.Items.Clear();
 
                 // Get the selected province from ComboBox1
-                string selectedProvince = comboBox3.SelectedItem.ToString();
+                string selectedProvince = provinceCMB.SelectedItem.ToString();
 
                 // Populate ComboBox2 based on the selected province
                 switch (selectedProvince)
                 {
                     case "Abra":
-                        comboBox9.Items.Add("Bangued");
-                        comboBox9.Items.Add("Boliney");
-                        comboBox9.Items.Add("Bucay");
+                        cityCMB.Items.Add("Bangued");
+                        cityCMB.Items.Add("Boliney");
+                        cityCMB.Items.Add("Bucay");
                         break;
                     case "Agusan del Norte":
-                        comboBox9.Items.Add("Cabadbaran");
-                        comboBox9.Items.Add("Butuan");
+                        cityCMB.Items.Add("Cabadbaran");
+                        cityCMB.Items.Add("Butuan");
                         break;
                     case "Agusan del Sur":
-                        comboBox9.Items.Add("Bayugan");
-                        comboBox9.Items.Add("San Francisco");
+                        cityCMB.Items.Add("Bayugan");
+                        cityCMB.Items.Add("San Francisco");
                         break;
                     case "Aklan":
-                        comboBox9.Items.Add("Kalibo");
-                        comboBox9.Items.Add("Banga");
+                        cityCMB.Items.Add("Kalibo");
+                        cityCMB.Items.Add("Banga");
                         break;
                     case "Albay":
-                        comboBox9.Items.Add("Legazpi");
-                        comboBox9.Items.Add("Ligao");
+                        cityCMB.Items.Add("Legazpi");
+                        cityCMB.Items.Add("Ligao");
                         break;
                     case "Antique":
-                        comboBox9.Items.Add("San Jose");
-                        comboBox9.Items.Add("Sibalom");
+                        cityCMB.Items.Add("San Jose");
+                        cityCMB.Items.Add("Sibalom");
                         break;
                     case "Apayao":
-                        comboBox9.Items.Add("Kabugao");
-                        comboBox9.Items.Add("Conner");
+                        cityCMB.Items.Add("Kabugao");
+                        cityCMB.Items.Add("Conner");
                         break;
                     case "Aurora":
-                        comboBox9.Items.Add("Baler");
-                        comboBox9.Items.Add("Dipaculao");
+                        cityCMB.Items.Add("Baler");
+                        cityCMB.Items.Add("Dipaculao");
                         break;
                     case "Basilan":
-                        comboBox9.Items.Add("Isabela City");
-                        comboBox9.Items.Add("Lamitan");
+                        cityCMB.Items.Add("Isabela City");
+                        cityCMB.Items.Add("Lamitan");
                         break;
                     case "Bataan":
-                        comboBox9.Items.Add("Balanga");
-                        comboBox9.Items.Add("Orani");
+                        cityCMB.Items.Add("Balanga");
+                        cityCMB.Items.Add("Orani");
                         break;
                     case "Batanes":
-                        comboBox9.Items.Add("Basco");
-                        comboBox9.Items.Add("Itbayat");
+                        cityCMB.Items.Add("Basco");
+                        cityCMB.Items.Add("Itbayat");
                         break;
                     case "Batangas":
-                        comboBox9.Items.Add("Batangas City");
-                        comboBox9.Items.Add("Lipa");
+                        cityCMB.Items.Add("Batangas City");
+                        cityCMB.Items.Add("Lipa");
                         break;
                     case "Benguet":
-                        comboBox9.Items.Add("Baguio");
-                        comboBox9.Items.Add("La Trinidad");
+                        cityCMB.Items.Add("Baguio");
+                        cityCMB.Items.Add("La Trinidad");
                         break;
                     case "Biliran":
-                        comboBox9.Items.Add("Naval");
-                        comboBox9.Items.Add("Caibiran");
+                        cityCMB.Items.Add("Naval");
+                        cityCMB.Items.Add("Caibiran");
                         break;
                     case "Bohol":
-                        comboBox9.Items.Add("Tagbilaran");
-                        comboBox9.Items.Add("Panglao");
+                        cityCMB.Items.Add("Tagbilaran");
+                        cityCMB.Items.Add("Panglao");
                         break;
                     case "Bukidnon":
-                        comboBox9.Items.Add("Malaybalay");
-                        comboBox9.Items.Add("Valencia");
+                        cityCMB.Items.Add("Malaybalay");
+                        cityCMB.Items.Add("Valencia");
                         break;
                     case "Bulacan":
-                        comboBox9.Items.Add("Malolos");
-                        comboBox9.Items.Add("Meycauayan");
+                        cityCMB.Items.Add("Malolos");
+                        cityCMB.Items.Add("Meycauayan");
                         break;
                     case "Cagayan":
-                        comboBox9.Items.Add("Tuguegarao");
-                        comboBox9.Items.Add("Aparri");
+                        cityCMB.Items.Add("Tuguegarao");
+                        cityCMB.Items.Add("Aparri");
                         break;
                     case "Camarines Norte":
-                        comboBox9.Items.Add("Daet");
-                        comboBox9.Items.Add("Labo");
+                        cityCMB.Items.Add("Daet");
+                        cityCMB.Items.Add("Labo");
                         break;
                     case "Camarines Sur":
-                        comboBox9.Items.Add("Naga");
-                        comboBox9.Items.Add("Iriga");
+                        cityCMB.Items.Add("Naga");
+                        cityCMB.Items.Add("Iriga");
                         break;
                     case "Camiguin":
-                        comboBox9.Items.Add("Mambajao");
-                        comboBox9.Items.Add("Mahinog");
+                        cityCMB.Items.Add("Mambajao");
+                        cityCMB.Items.Add("Mahinog");
                         break;
                     case "Capiz":
-                        comboBox9.Items.Add("Roxas City");
-                        comboBox9.Items.Add("Panay");
+                        cityCMB.Items.Add("Roxas City");
+                        cityCMB.Items.Add("Panay");
                         break;
                     case "Catanduanes":
-                        comboBox9.Items.Add("Virac");
-                        comboBox9.Items.Add("San Andres");
+                        cityCMB.Items.Add("Virac");
+                        cityCMB.Items.Add("San Andres");
                         break;
                     case "Cavite":
-                        comboBox9.Items.Add("Cavite City");
-                        comboBox9.Items.Add("Dasmariñas");
+                        cityCMB.Items.Add("Cavite City");
+                        cityCMB.Items.Add("Dasmariñas");
                         break;
                     case "Cebu":
-                        comboBox9.Items.Add("Cebu City");
-                        comboBox9.Items.Add("Mandaue");
+                        cityCMB.Items.Add("Cebu City");
+                        cityCMB.Items.Add("Mandaue");
                         break;
                     case "Cotabato":
-                        comboBox9.Items.Add("Kidapawan");
-                        comboBox9.Items.Add("Cotabato City");
+                        cityCMB.Items.Add("Kidapawan");
+                        cityCMB.Items.Add("Cotabato City");
                         break;
                     case "Davao de Oro":
-                        comboBox9.Items.Add("Nabunturan");
-                        comboBox9.Items.Add("Mawab");
+                        cityCMB.Items.Add("Nabunturan");
+                        cityCMB.Items.Add("Mawab");
                         break;
                     case "Davao del Norte":
-                        comboBox9.Items.Add("Tagum");
-                        comboBox9.Items.Add("Panabo");
+                        cityCMB.Items.Add("Tagum");
+                        cityCMB.Items.Add("Panabo");
                         break;
                     case "Davao del Sur":
-                        comboBox9.Items.Add("Digos");
-                        comboBox9.Items.Add("Bansalan");
+                        cityCMB.Items.Add("Digos");
+                        cityCMB.Items.Add("Bansalan");
                         break;
                     case "Davao Occidental":
-                        comboBox9.Items.Add("Malita");
-                        comboBox9.Items.Add("Santa Maria");
+                        cityCMB.Items.Add("Malita");
+                        cityCMB.Items.Add("Santa Maria");
                         break;
                     case "Davao Oriental":
-                        comboBox9.Items.Add("Mati");
-                        comboBox9.Items.Add("Baganga");
+                        cityCMB.Items.Add("Mati");
+                        cityCMB.Items.Add("Baganga");
                         break;
                     case "Dinagat Islands":
-                        comboBox9.Items.Add("San Jose");
-                        comboBox9.Items.Add("Dinagat");
+                        cityCMB.Items.Add("San Jose");
+                        cityCMB.Items.Add("Dinagat");
                         break;
                     case "Eastern Samar":
-                        comboBox9.Items.Add("Borongan");
-                        comboBox9.Items.Add("Guiuan");
+                        cityCMB.Items.Add("Borongan");
+                        cityCMB.Items.Add("Guiuan");
                         break;
                     case "Guimaras":
-                        comboBox9.Items.Add("Jordan");
-                        comboBox9.Items.Add("Buenavista");
+                        cityCMB.Items.Add("Jordan");
+                        cityCMB.Items.Add("Buenavista");
                         break;
                     case "Ifugao":
-                        comboBox9.Items.Add("Lagawe");
-                        comboBox9.Items.Add("Kiangan");
+                        cityCMB.Items.Add("Lagawe");
+                        cityCMB.Items.Add("Kiangan");
                         break;
                     case "Ilocos Norte":
-                        comboBox9.Items.Add("Laoag");
-                        comboBox9.Items.Add("Pagudpud");
+                        cityCMB.Items.Add("Laoag");
+                        cityCMB.Items.Add("Pagudpud");
                         break;
                     case "Ilocos Sur":
-                        comboBox9.Items.Add("Vigan");
-                        comboBox9.Items.Add("Candon");
+                        cityCMB.Items.Add("Vigan");
+                        cityCMB.Items.Add("Candon");
                         break;
                     case "Iloilo":
-                        comboBox9.Items.Add("Iloilo City");
-                        comboBox9.Items.Add("Oton");
+                        cityCMB.Items.Add("Iloilo City");
+                        cityCMB.Items.Add("Oton");
                         break;
                     case "Isabela":
-                        comboBox9.Items.Add("Ilagan");
-                        comboBox9.Items.Add("Cauayan");
+                        cityCMB.Items.Add("Ilagan");
+                        cityCMB.Items.Add("Cauayan");
                         break;
                     case "Kalinga":
-                        comboBox9.Items.Add("Tabuk");
-                        comboBox9.Items.Add("Balbalan");
+                        cityCMB.Items.Add("Tabuk");
+                        cityCMB.Items.Add("Balbalan");
                         break;
                     case "La Union":
-                        comboBox9.Items.Add("San Fernando");
-                        comboBox9.Items.Add("Agoo");
+                        cityCMB.Items.Add("San Fernando");
+                        cityCMB.Items.Add("Agoo");
                         break;
                     case "Laguna":
-                        comboBox9.Items.Add("Calamba");
-                        comboBox9.Items.Add("San Pablo");
+                        cityCMB.Items.Add("Calamba");
+                        cityCMB.Items.Add("San Pablo");
                         break;
                     case "Lanao del Norte":
-                        comboBox9.Items.Add("Iligan");
-                        comboBox9.Items.Add("Tubod");
+                        cityCMB.Items.Add("Iligan");
+                        cityCMB.Items.Add("Tubod");
                         break;
                     case "Lanao del Sur":
-                        comboBox9.Items.Add("Marawi");
-                        comboBox9.Items.Add("Sultan Dumalondong");
+                        cityCMB.Items.Add("Marawi");
+                        cityCMB.Items.Add("Sultan Dumalondong");
                         break;
                     case "Leyte":
-                        comboBox9.Items.Add("Tacloban");
-                        comboBox9.Items.Add("Ormoc");
+                        cityCMB.Items.Add("Tacloban");
+                        cityCMB.Items.Add("Ormoc");
                         break;
                     case "Maguindanao del Norte":
-                        comboBox9.Items.Add("Cotabato City");
-                        comboBox9.Items.Add("Buluan");
+                        cityCMB.Items.Add("Cotabato City");
+                        cityCMB.Items.Add("Buluan");
                         break;
                     case "Maguindanao del Sur":
-                        comboBox9.Items.Add("Shariff Aguak");
-                        comboBox9.Items.Add("Sultan Kudarat");
+                        cityCMB.Items.Add("Shariff Aguak");
+                        cityCMB.Items.Add("Sultan Kudarat");
                         break;
                     case "Marinduque":
-                        comboBox9.Items.Add("Boac");
-                        comboBox9.Items.Add("Mogpog");
+                        cityCMB.Items.Add("Boac");
+                        cityCMB.Items.Add("Mogpog");
                         break;
                     case "Masbate":
-                        comboBox9.Items.Add("Masbate City");
-                        comboBox9.Items.Add("Aroroy");
+                        cityCMB.Items.Add("Masbate City");
+                        cityCMB.Items.Add("Aroroy");
                         break;
                     case "Misamis Occidental":
-                        comboBox9.Items.Add("Oroquieta");
-                        comboBox9.Items.Add("Ozamiz");
+                        cityCMB.Items.Add("Oroquieta");
+                        cityCMB.Items.Add("Ozamiz");
                         break;
                     case "Misamis Oriental":
-                        comboBox9.Items.Add("Cagayan de Oro");
-                        comboBox9.Items.Add("Gingoog");
+                        cityCMB.Items.Add("Cagayan de Oro");
+                        cityCMB.Items.Add("Gingoog");
                         break;
                     case "Mountain Province":
-                        comboBox9.Items.Add("Bontoc");
-                        comboBox9.Items.Add("Sagada");
+                        cityCMB.Items.Add("Bontoc");
+                        cityCMB.Items.Add("Sagada");
                         break;
                     case "Negros Occidental":
-                        comboBox9.Items.Add("Bacolod");
-                        comboBox9.Items.Add("Silay");
+                        cityCMB.Items.Add("Bacolod");
+                        cityCMB.Items.Add("Silay");
                         break;
                     case "Negros Oriental":
-                        comboBox9.Items.Add("Dumaguete");
-                        comboBox9.Items.Add("Bais");
+                        cityCMB.Items.Add("Dumaguete");
+                        cityCMB.Items.Add("Bais");
                         break;
                     case "Northern Samar":
-                        comboBox9.Items.Add("Catarman");
-                        comboBox9.Items.Add("Laoang");
+                        cityCMB.Items.Add("Catarman");
+                        cityCMB.Items.Add("Laoang");
                         break;
                     case "Nueva Ecija":
-                        comboBox9.Items.Add("Palayan");
-                        comboBox9.Items.Add("Cabanatuan");
+                        cityCMB.Items.Add("Palayan");
+                        cityCMB.Items.Add("Cabanatuan");
                         break;
                     case "Nueva Vizcaya":
-                        comboBox9.Items.Add("Bayombong");
-                        comboBox9.Items.Add("Solano");
+                        cityCMB.Items.Add("Bayombong");
+                        cityCMB.Items.Add("Solano");
                         break;
                     case "Occidental Mindoro":
-                        comboBox9.Items.Add("Mamburao");
-                        comboBox9.Items.Add("San Jose");
+                        cityCMB.Items.Add("Mamburao");
+                        cityCMB.Items.Add("San Jose");
                         break;
                     case "Oriental Mindoro":
-                        comboBox9.Items.Add("Calapan");
-                        comboBox9.Items.Add("Baco");
+                        cityCMB.Items.Add("Calapan");
+                        cityCMB.Items.Add("Baco");
                         break;
                     case "Palawan":
-                        comboBox9.Items.Add("Puerto Princesa");
-                        comboBox9.Items.Add("Coron");
+                        cityCMB.Items.Add("Puerto Princesa");
+                        cityCMB.Items.Add("Coron");
                         break;
                     case "Pampanga":
-                        comboBox9.Items.Add("San Fernando");
-                        comboBox9.Items.Add("Angeles");
+                        cityCMB.Items.Add("San Fernando");
+                        cityCMB.Items.Add("Angeles");
                         break;
                     case "Pangasinan":
-                        comboBox9.Items.Add("Dagupan");
-                        comboBox9.Items.Add("Urdaneta");
+                        cityCMB.Items.Add("Dagupan");
+                        cityCMB.Items.Add("Urdaneta");
                         break;
                     case "Quezon":
-                        comboBox9.Items.Add("Lucena");
-                        comboBox9.Items.Add("Tayabas");
+                        cityCMB.Items.Add("Lucena");
+                        cityCMB.Items.Add("Tayabas");
                         break;
                     case "Rizal":
-                        comboBox9.Items.Add("Antipolo");
-                        comboBox9.Items.Add("Rodriguez");
-                        comboBox9.Items.Add("Binangonan");
-                        comboBox9.Items.Add("Taytay");
-                        comboBox9.Items.Add("Angono");
-                        comboBox9.Items.Add("Tanay");
-                        comboBox9.Items.Add("Cainta");
-                        comboBox9.Items.Add("San Mateo");
-                        comboBox9.Items.Add("Baras");
-                        comboBox9.Items.Add("Cardona");
+                        cityCMB.Items.Add("Antipolo");
+                        cityCMB.Items.Add("Rodriguez");
+                        cityCMB.Items.Add("Binangonan");
+                        cityCMB.Items.Add("Taytay");
+                        cityCMB.Items.Add("Angono");
+                        cityCMB.Items.Add("Tanay");
+                        cityCMB.Items.Add("Cainta");
+                        cityCMB.Items.Add("San Mateo");
+                        cityCMB.Items.Add("Baras");
+                        cityCMB.Items.Add("Cardona");
                         break;
                     case "Romblon":
-                        comboBox9.Items.Add("Romblon");
-                        comboBox9.Items.Add("Odiongan");
+                        cityCMB.Items.Add("Romblon");
+                        cityCMB.Items.Add("Odiongan");
                         break;
                     case "Samar":
-                        comboBox9.Items.Add("Catbalogan");
-                        comboBox9.Items.Add("Calbayog");
+                        cityCMB.Items.Add("Catbalogan");
+                        cityCMB.Items.Add("Calbayog");
                         break;
                     case "Sarangani":
-                        comboBox9.Items.Add("Alabel");
-                        comboBox9.Items.Add("Kiamba");
+                        cityCMB.Items.Add("Alabel");
+                        cityCMB.Items.Add("Kiamba");
                         break;
                     case "Siquijor":
-                        comboBox9.Items.Add("Siquijor");
-                        comboBox9.Items.Add("Larena");
+                        cityCMB.Items.Add("Siquijor");
+                        cityCMB.Items.Add("Larena");
                         break;
                     case "Sorsogon":
-                        comboBox9.Items.Add("Sorsogon City");
-                        comboBox9.Items.Add("Bulan");
+                        cityCMB.Items.Add("Sorsogon City");
+                        cityCMB.Items.Add("Bulan");
                         break;
                     case "South Cotabato":
-                        comboBox9.Items.Add("Koronadal");
-                        comboBox9.Items.Add("Surallah");
+                        cityCMB.Items.Add("Koronadal");
+                        cityCMB.Items.Add("Surallah");
                         break;
                     case "Southern Leyte":
-                        comboBox9.Items.Add("Maasin");
-                        comboBox9.Items.Add("Sogod");
+                        cityCMB.Items.Add("Maasin");
+                        cityCMB.Items.Add("Sogod");
                         break;
                     case "Sultan Kudarat":
-                        comboBox9.Items.Add("Isulan");
-                        comboBox9.Items.Add("Tacurong");
+                        cityCMB.Items.Add("Isulan");
+                        cityCMB.Items.Add("Tacurong");
                         break;
                     case "Sulu":
-                        comboBox9.Items.Add("Jolo");
-                        comboBox9.Items.Add("Panglima Sugala");
+                        cityCMB.Items.Add("Jolo");
+                        cityCMB.Items.Add("Panglima Sugala");
                         break;
                     case "Surigao del Norte":
-                        comboBox9.Items.Add("Surigao City");
-                        comboBox9.Items.Add("Siargao");
+                        cityCMB.Items.Add("Surigao City");
+                        cityCMB.Items.Add("Siargao");
                         break;
                     case "Surigao del Sur":
-                        comboBox9.Items.Add("Tandag");
-                        comboBox9.Items.Add("Bislig");
+                        cityCMB.Items.Add("Tandag");
+                        cityCMB.Items.Add("Bislig");
                         break;
                     case "Tarlac":
-                        comboBox9.Items.Add("Tarlac City");
-                        comboBox9.Items.Add("Paniqui");
+                        cityCMB.Items.Add("Tarlac City");
+                        cityCMB.Items.Add("Paniqui");
                         break;
                     case "Tawi-Tawi":
-                        comboBox9.Items.Add("Bongao");
-                        comboBox9.Items.Add("Panglima Sugala");
+                        cityCMB.Items.Add("Bongao");
+                        cityCMB.Items.Add("Panglima Sugala");
                         break;
                     case "Zambales":
-                        comboBox9.Items.Add("Olongapo");
-                        comboBox9.Items.Add("Iba");
+                        cityCMB.Items.Add("Olongapo");
+                        cityCMB.Items.Add("Iba");
                         break;
                     case "Zamboanga del Norte":
-                        comboBox9.Items.Add("Dipolog");
-                        comboBox9.Items.Add("Dapitan");
+                        cityCMB.Items.Add("Dipolog");
+                        cityCMB.Items.Add("Dapitan");
                         break;
                     case "Zamboanga del Sur":
-                        comboBox9.Items.Add("Pagadian");
-                        comboBox9.Items.Add("Zamboanga City");
+                        cityCMB.Items.Add("Pagadian");
+                        cityCMB.Items.Add("Zamboanga City");
                         break;
                     case "Zamboanga Sibugay":
-                        comboBox9.Items.Add("Ipil");
-                        comboBox9.Items.Add("Kabasalan");
+                        cityCMB.Items.Add("Ipil");
+                        cityCMB.Items.Add("Kabasalan");
                         break;
                     default:
                         break;
@@ -746,40 +738,140 @@ namespace SCTAttendanceSystemUI.Forms
             }
         }
 
-        private void textBox14_TextChanged(object sender, EventArgs e)
+        private void cityCMB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Remove previous formatting, or the decimal check will fail including leading zeros
-            string value = textBox14.Text.Replace(",", "")
-                .Replace("₱", "").Replace(".", "").TrimStart('0');
-            decimal ul;
 
-            // Check we are indeed handling a number
-            if (decimal.TryParse(value, out ul))
             {
-                ul /= 100;
+                // Clear existing items in ComboBox2
+                barangayCMB.Items.Clear();
 
-                // Unsub the event so we don't enter a loop
-                textBox14.TextChanged -= textBox14_TextChanged;
+                // Get the selected province from ComboBox1
+                string selectedCity = cityCMB.SelectedItem.ToString();
 
-                // Format the text as currency
-                textBox14.Text = string.Format(CultureInfo.CreateSpecificCulture("en-PH"), "{0:C2}", ul);
+                // Populate ComboBox2 based on the selected province
+                switch (selectedCity)
+                {
+                    case "Antipolo":
+                        barangayCMB.Items.Add("Bangued");
+                        barangayCMB.Items.Add("Boliney");
+                        barangayCMB.Items.Add("Bucay");
+                        break;
+                    case "Rodriguez":
+                        barangayCMB.Items.Add("Bangued");
+                        barangayCMB.Items.Add("Boliney");
+                        barangayCMB.Items.Add("Bucay");
+                        break;
+                    case "Binangonan":
+                        barangayCMB.Items.Add("Bangad");
+                        barangayCMB.Items.Add("Batingan");
+                        barangayCMB.Items.Add("Bilibiran");
+                        barangayCMB.Items.Add("Binitagan");
+                        barangayCMB.Items.Add("Bombong");
+                        barangayCMB.Items.Add("Buhangin"); 
+                        barangayCMB.Items.Add("Calumpang");
+                        barangayCMB.Items.Add("Ginoong Sanay");
+                        barangayCMB.Items.Add("Gulod"); 
+                        barangayCMB.Items.Add("Habagatan");
+                        barangayCMB.Items.Add("Ithan");
+                        barangayCMB.Items.Add("Janosa");
+                        barangayCMB.Items.Add("Kalawaan (Darangan)");
+                        barangayCMB.Items.Add("Kalinawan");
+                        barangayCMB.Items.Add("Kasile");
+                        barangayCMB.Items.Add("Kaytome");
+                        barangayCMB.Items.Add("Kinaboogan");
+                        barangayCMB.Items.Add("Kinagatan");
+                        barangayCMB.Items.Add("Layunan (Poblacion)");
+                        barangayCMB.Items.Add("Libid (Poblacion)");
+                        barangayCMB.Items.Add("Libis (Poblacion)");
+                        barangayCMB.Items.Add("Limbon-limbon");
+                        barangayCMB.Items.Add("Lunsad");
+                        barangayCMB.Items.Add("Macamot");
+                        barangayCMB.Items.Add("Mahabang Parang");
+                        barangayCMB.Items.Add("Malakaban");
+                        barangayCMB.Items.Add("Mambog");
+                        barangayCMB.Items.Add("Pag-asa");
+                        barangayCMB.Items.Add("Palangoy");
+                        barangayCMB.Items.Add("Pantok");
+                        barangayCMB.Items.Add("Pila-Pila");
+                        barangayCMB.Items.Add("Pinagdilawan");
+                        barangayCMB.Items.Add("Pipindan");
+                        barangayCMB.Items.Add("Rayap");
+                        barangayCMB.Items.Add("San Carlos");
+                        barangayCMB.Items.Add("Sapang");
+                        barangayCMB.Items.Add("Tabon");
+                        barangayCMB.Items.Add("Tagpos");
+                        barangayCMB.Items.Add("Tatala");
+                        barangayCMB.Items.Add("Tayuman");
+                        break;
+                    case "Taytay":
+                        barangayCMB.Items.Add("Dolores (Poblacion)");
+                        barangayCMB.Items.Add("Muzon");
+                        barangayCMB.Items.Add("San Isidro");
+                        barangayCMB.Items.Add("San Juan");
+                        barangayCMB.Items.Add("Santa Ana");
 
-                textBox14.TextChanged += textBox14_TextChanged;
-                textBox14.Select(textBox14.Text.Length, 0);
+                        break;
+                    case "Angono":
+                        barangayCMB.Items.Add("Bagumbayan");
+                        barangayCMB.Items.Add("Kalayaan");
+                        barangayCMB.Items.Add("Mahabang Parang");
+                        barangayCMB.Items.Add("Poblacion Ibaba");
+                        barangayCMB.Items.Add("Poblacion Itaas");
+                        barangayCMB.Items.Add("San Isidro"); 
+                        barangayCMB.Items.Add("Santo Niño");
+                        barangayCMB.Items.Add("San Pedro");
+                        barangayCMB.Items.Add("San Roque");
+                        break;
+                    case "Tanay":
+                        barangayCMB.Items.Add("Cayabu");
+                        barangayCMB.Items.Add("Cuyambay");
+                        barangayCMB.Items.Add("Daraitan");
+                        barangayCMB.Items.Add("Katipunan-Bayani(Pob.)");
+                        barangayCMB.Items.Add("Kay Buto(Poblacion)");
+                        barangayCMB.Items.Add("Laiban"); 
+                        barangayCMB.Items.Add("Mag-Ampon(Poblacion)");
+                        barangayCMB.Items.Add("Mamuyao");
+                        barangayCMB.Items.Add("Madilay-dilay");
+                        barangayCMB.Items.Add("Pinagkamaligan(Poblacion)");
+                        barangayCMB.Items.Add("Plaza Aldea(Poblacion)");
+                        barangayCMB.Items.Add("Sampaloc");
+                        barangayCMB.Items.Add("San Andres");
+                        barangayCMB.Items.Add("San Isidro(Poblacion)");
+                        barangayCMB.Items.Add("Santa Inez");
+                        barangayCMB.Items.Add("Santo Niño");
+                        barangayCMB.Items.Add("Tabing Ilog(Poblacion)");
+                        barangayCMB.Items.Add("Tandang Kutyo(Poblacion)");
+                        barangayCMB.Items.Add("Tinucan");
+                        barangayCMB.Items.Add("Wawa(Poblacion)");
+                        break;
+                    case "Cainta":
+                        barangayCMB.Items.Add("San Andres");
+                        barangayCMB.Items.Add("Sto. Domingo");
+                        barangayCMB.Items.Add("San Isidro");
+                        barangayCMB.Items.Add("San Juan");
+                        barangayCMB.Items.Add("Sto. Nino");
+                        barangayCMB.Items.Add("San Roque");
+                        barangayCMB.Items.Add("Sta. Rosa");
+                        break;
+                    case "San Mateo":
+                        barangayCMB.Items.Add("Bangued");
+                        barangayCMB.Items.Add("Boliney");
+                        barangayCMB.Items.Add("Bucay");
+                        break;
+                    case "Baras":
+                        barangayCMB.Items.Add("Bangued");
+                        barangayCMB.Items.Add("Boliney");
+                        barangayCMB.Items.Add("Bucay");
+                        break;
+                    case "Cardona":
+                        barangayCMB.Items.Add("Bangued");
+                        barangayCMB.Items.Add("Boliney");
+                        barangayCMB.Items.Add("Bucay");
+                        break;
+                    default:
+                        break;
+                }
             }
-
-            bool goodToGo = TextisValid(textBox14.Text);
-            if (!goodToGo)
-            {
-                textBox14.Text = "₱0.00";
-                textBox14.Select(textBox14.Text.Length, 0);
-            }
-        }
-
-        private bool TextisValid(string text)
-        {
-            Regex money = new Regex(@"^₱(\d{1,3}(\,\d{3})*|(\d+))(\.\d{2})?$");
-            return money.IsMatch(text);
         }
     }
 }

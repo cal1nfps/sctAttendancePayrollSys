@@ -66,7 +66,7 @@
             comboBox3.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox3.FormattingEnabled = true;
             comboBox3.Items.AddRange(new object[] { "FULL-TIME", "PART-TIME" });
-            comboBox3.Location = new Point(36, 167);
+            comboBox3.Location = new Point(37, 154);
             comboBox3.Name = "comboBox3";
             comboBox3.Size = new Size(142, 23);
             comboBox3.TabIndex = 70;
@@ -79,7 +79,7 @@
             button2.FlatAppearance.BorderColor = Color.DimGray;
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Roboto Mono", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button2.ForeColor = Color.DimGray;
             button2.ImageAlign = ContentAlignment.MiddleLeft;
             button2.Location = new Point(130, 292);
@@ -115,7 +115,7 @@
             comboBox2.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox2.FormattingEnabled = true;
             comboBox2.Items.AddRange(new object[] { "IBED", "SED", "ASP" });
-            comboBox2.Location = new Point(36, 117);
+            comboBox2.Location = new Point(37, 125);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(142, 23);
             comboBox2.TabIndex = 65;
@@ -128,7 +128,7 @@
             button1.FlatAppearance.BorderColor = Color.DimGray;
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Roboto Mono", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button1.ForeColor = Color.Black;
             button1.ImageAlign = ContentAlignment.MiddleLeft;
             button1.Location = new Point(53, 292);
@@ -148,7 +148,7 @@
             filterComboBox.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
             filterComboBox.FormattingEnabled = true;
             filterComboBox.Items.AddRange(new object[] { "Teacher", "Sports Coach", "School Nurse", "Maintenance Technician", "Registrar", "Guidance Counselor", "Guard", "Chairperson" });
-            filterComboBox.Location = new Point(36, 65);
+            filterComboBox.Location = new Point(37, 96);
             filterComboBox.Name = "filterComboBox";
             filterComboBox.Size = new Size(142, 23);
             filterComboBox.TabIndex = 62;
@@ -161,7 +161,7 @@
             cancelButton.FlatAppearance.BorderColor = Color.White;
             cancelButton.FlatAppearance.BorderSize = 0;
             cancelButton.FlatStyle = FlatStyle.Flat;
-            cancelButton.Font = new Font("Roboto Mono", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            cancelButton.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             cancelButton.ForeColor = Color.Gray;
             cancelButton.Image = (Image)resources.GetObject("cancelButton.Image");
             cancelButton.ImageAlign = ContentAlignment.MiddleLeft;
@@ -182,7 +182,7 @@
             ClientSize = new Size(216, 335);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Location = new Point(938, 220);
+            Location = new Point(400, 258);
             Name = "filterabsent";
             StartPosition = FormStartPosition.Manual;
             Text = "filterabsent";

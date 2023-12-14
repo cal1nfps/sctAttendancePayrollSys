@@ -11,7 +11,6 @@ using System.Reflection;
 using System.Reflection.Metadata.Ecma335;
 using MySql.Data.MySqlClient;
 using ExcelDataReader;
-using SCTAttendanceSystemUI.Employee.sortAbsent;
 
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using SCTAttendanceSystemUI.Employee.filterAbsent;
@@ -299,6 +298,100 @@ namespace SCTAttendanceSystemUI.Forms
         {
             string searchText = searchBox.Text;
             SearchData(searchText);
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            string connectionString2 = "server=localhost;user=root;password=root;database=payrollsys";
+
+            if (dataGridViewAbsentees.SelectedRows.Count > 0)
+            {
+                try
+                {
+                    // DELETE ITEM
+                    DialogResult result = MessageBox.Show("Are you sure you want to delete the selected data?", "Confirmation", MessageBoxButtons.YesNo);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        using (MySqlConnection checkConnection = new MySqlConnection(connectionString2))
+                        {
+                            checkConnection.Open();
+
+                            foreach (DataGridViewRow selectedRow in dataGridViewAbsentees.SelectedRows)
+                            {
+                                // Get the value from the selected row that you want to use for deletion.
+                                string selectedValue = selectedRow.Cells["id"].Value.ToString();
+
+                                // Delete from UserAct table
+                                string deleteQuery = "DELETE FROM emp_absents WHERE id = @id;";
+                                using (MySqlCommand deleteCommand = new MySqlCommand(deleteQuery, checkConnection))
+                                {
+                                    deleteCommand.Parameters.AddWithValue("@id", selectedValue);
+                                    int rowsAffected = deleteCommand.ExecuteNonQuery();
+                                    if (rowsAffected > 0)
+                                    {
+                                        // If deletion is successful, remove the row from the DataGridView
+                                        dataGridViewAbsentees.Rows.Remove(selectedRow);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show($"Delete failed. Row with ID {selectedValue} not found.");
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+                finally
+                {
+                }
+            }
+            else
+            {
+                MessageBox.Show("No rows selected for deletion.");
+            }
+        }
+
+        private void clearLabel_Click(object sender, EventArgs e)
+        {
+            string connectionString2 = "server=localhost;user=root;password=root;database=payrollsys";
+
+            try
+            {
+                // Confirm with the user before deleting all data
+                DialogResult result = MessageBox.Show("Are you sure you want to delete all data?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                using (MySqlConnection checkConnection = new MySqlConnection(connectionString2))
+                {
+                    if (result == DialogResult.Yes)
+                    {
+                        // Clear the DataGridView
+                        dataGridViewAbsentees.DataSource = null;
+
+                        // Delete all rows from the MySQL database
+                        checkConnection.Open();
+
+                        string deleteAllQuery = "DELETE FROM emp_absents"; // Remove the WHERE clause
+
+                        using (MySqlCommand cmd = new MySqlCommand(deleteAllQuery, checkConnection))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        MessageBox.Show("All data deleted successfully.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+            }
         }
     }
 }

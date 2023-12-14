@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormASP1));
             panel1 = new Panel();
+            clearLabel = new Label();
+            deleteButton = new Button();
             searchBox = new TextBox();
             button4 = new Button();
             dataGridViewASP = new DataGridView();
@@ -38,8 +40,6 @@
             label5 = new Label();
             label4 = new Label();
             buttonBackBtn = new Button();
-            deleteButton = new Button();
-            clearLabel = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewASP).BeginInit();
             panel2.SuspendLayout();
@@ -64,6 +64,38 @@
             panel1.Size = new Size(1682, 861);
             panel1.TabIndex = 59;
             // 
+            // clearLabel
+            // 
+            clearLabel.AutoSize = true;
+            clearLabel.BackColor = Color.Transparent;
+            clearLabel.Cursor = Cursors.Hand;
+            clearLabel.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            clearLabel.Location = new Point(1509, 761);
+            clearLabel.Name = "clearLabel";
+            clearLabel.Size = new Size(111, 15);
+            clearLabel.TabIndex = 78;
+            clearLabel.Text = "CLEAR ALL DATA";
+            clearLabel.Click += clearLabel_Click;
+            // 
+            // deleteButton
+            // 
+            deleteButton.BackColor = Color.Firebrick;
+            deleteButton.BackgroundImage = (Image)resources.GetObject("deleteButton.BackgroundImage");
+            deleteButton.FlatAppearance.BorderSize = 0;
+            deleteButton.FlatStyle = FlatStyle.Flat;
+            deleteButton.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            deleteButton.Image = (Image)resources.GetObject("deleteButton.Image");
+            deleteButton.ImageAlign = ContentAlignment.MiddleLeft;
+            deleteButton.Location = new Point(1573, 127);
+            deleteButton.Name = "deleteButton";
+            deleteButton.Padding = new Padding(10, 0, 0, 0);
+            deleteButton.Size = new Size(47, 32);
+            deleteButton.TabIndex = 77;
+            deleteButton.TextAlign = ContentAlignment.MiddleLeft;
+            deleteButton.TextImageRelation = TextImageRelation.ImageBeforeText;
+            deleteButton.UseVisualStyleBackColor = false;
+            deleteButton.Click += deleteButton_Click;
+            // 
             // searchBox
             // 
             searchBox.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
@@ -83,10 +115,10 @@
             button4.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             button4.Image = (Image)resources.GetObject("button4.Image");
             button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.Location = new Point(1573, 129);
+            button4.Location = new Point(349, 127);
             button4.Name = "button4";
             button4.Padding = new Padding(10, 0, 0, 0);
-            button4.Size = new Size(47, 30);
+            button4.Size = new Size(47, 32);
             button4.TabIndex = 73;
             button4.TextAlign = ContentAlignment.MiddleLeft;
             button4.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -172,38 +204,6 @@
             buttonBackBtn.TabIndex = 59;
             buttonBackBtn.UseVisualStyleBackColor = false;
             buttonBackBtn.Click += buttonBackBtn_Click;
-            // 
-            // deleteButton
-            // 
-            deleteButton.BackColor = Color.Firebrick;
-            deleteButton.BackgroundImage = (Image)resources.GetObject("deleteButton.BackgroundImage");
-            deleteButton.FlatAppearance.BorderSize = 0;
-            deleteButton.FlatStyle = FlatStyle.Flat;
-            deleteButton.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            deleteButton.Image = (Image)resources.GetObject("deleteButton.Image");
-            deleteButton.ImageAlign = ContentAlignment.MiddleLeft;
-            deleteButton.Location = new Point(1522, 129);
-            deleteButton.Name = "deleteButton";
-            deleteButton.Padding = new Padding(10, 0, 0, 0);
-            deleteButton.Size = new Size(45, 30);
-            deleteButton.TabIndex = 77;
-            deleteButton.TextAlign = ContentAlignment.MiddleLeft;
-            deleteButton.TextImageRelation = TextImageRelation.ImageBeforeText;
-            deleteButton.UseVisualStyleBackColor = false;
-            deleteButton.Click += deleteButton_Click;
-            // 
-            // clearLabel
-            // 
-            clearLabel.AutoSize = true;
-            clearLabel.BackColor = Color.Transparent;
-            clearLabel.Cursor = Cursors.Hand;
-            clearLabel.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            clearLabel.Location = new Point(1509, 761);
-            clearLabel.Name = "clearLabel";
-            clearLabel.Size = new Size(111, 15);
-            clearLabel.TabIndex = 78;
-            clearLabel.Text = "CLEAR ALL DATA";
-            clearLabel.Click += clearLabel_Click;
             // 
             // FormASP1
             // 

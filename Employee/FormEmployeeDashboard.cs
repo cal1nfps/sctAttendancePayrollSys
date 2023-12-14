@@ -12,7 +12,6 @@ using MySql.Data.MySqlClient;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using System.Xml;
 using System.Data.SqlTypes;
-using SCTAttendanceSystemUI.Resources;
 
 namespace SCTAttendanceSystemUI.Employee
 {

@@ -47,11 +47,9 @@
             textBox6 = new TextBox();
             textBox7 = new TextBox();
             pictureBox1 = new PictureBox();
-            label5 = new Label();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
-            textBox4 = new TextBox();
             textBox3 = new TextBox();
             textBox2 = new TextBox();
             textBox1 = new TextBox();
@@ -89,10 +87,10 @@
             button3.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             button3.Image = (Image)resources.GetObject("button3.Image");
             button3.ImageAlign = ContentAlignment.MiddleLeft;
-            button3.Location = new Point(1502, 93);
+            button3.Location = new Point(1502, 94);
             button3.Name = "button3";
             button3.Padding = new Padding(10, 0, 0, 0);
-            button3.Size = new Size(47, 30);
+            button3.Size = new Size(47, 32);
             button3.TabIndex = 50;
             button3.TextAlign = ContentAlignment.MiddleLeft;
             button3.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -132,11 +130,9 @@
             panel2.Controls.Add(label18);
             panel2.Controls.Add(panel3);
             panel2.Controls.Add(pictureBox1);
-            panel2.Controls.Add(label5);
             panel2.Controls.Add(label4);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label2);
-            panel2.Controls.Add(textBox4);
             panel2.Controls.Add(textBox3);
             panel2.Controls.Add(textBox2);
             panel2.Controls.Add(textBox1);
@@ -150,7 +146,7 @@
             // 
             label19.AutoSize = true;
             label19.Font = new Font("Bahnschrift Condensed", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label19.Location = new Point(398, 171);
+            label19.Location = new Point(398, 133);
             label19.Name = "label19";
             label19.Size = new Size(13, 18);
             label19.TabIndex = 38;
@@ -159,7 +155,7 @@
             // textBox9
             // 
             textBox9.Enabled = false;
-            textBox9.Location = new Point(417, 171);
+            textBox9.Location = new Point(417, 133);
             textBox9.Name = "textBox9";
             textBox9.ReadOnly = true;
             textBox9.Size = new Size(62, 23);
@@ -168,7 +164,7 @@
             // textBox8
             // 
             textBox8.Enabled = false;
-            textBox8.Location = new Point(330, 171);
+            textBox8.Location = new Point(330, 133);
             textBox8.Name = "textBox8";
             textBox8.ReadOnly = true;
             textBox8.Size = new Size(62, 23);
@@ -178,7 +174,7 @@
             // 
             label18.AutoSize = true;
             label18.Font = new Font("Bahnschrift Condensed", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label18.Location = new Point(230, 171);
+            label18.Location = new Point(230, 133);
             label18.Name = "label18";
             label18.Size = new Size(94, 18);
             label18.TabIndex = 35;
@@ -278,16 +274,6 @@
             pictureBox1.TabIndex = 8;
             pictureBox1.TabStop = false;
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Bahnschrift Condensed", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(252, 138);
-            label5.Name = "label5";
-            label5.Size = new Size(72, 18);
-            label5.TabIndex = 7;
-            label5.Text = "ACCOUNT NO.";
-            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -302,7 +288,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Bahnschrift Condensed", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(267, 109);
+            label3.Location = new Point(267, 104);
             label3.Name = "label3";
             label3.Size = new Size(57, 18);
             label3.TabIndex = 5;
@@ -317,15 +303,6 @@
             label2.Size = new Size(79, 18);
             label2.TabIndex = 4;
             label2.Text = "EMPLOYEE NO.";
-            // 
-            // textBox4
-            // 
-            textBox4.Enabled = false;
-            textBox4.Location = new Point(330, 133);
-            textBox4.Name = "textBox4";
-            textBox4.ReadOnly = true;
-            textBox4.Size = new Size(174, 23);
-            textBox4.TabIndex = 3;
             // 
             // textBox3
             // 
@@ -385,7 +362,7 @@
             button1.Location = new Point(1555, 94);
             button1.Name = "button1";
             button1.Padding = new Padding(10, 0, 0, 0);
-            button1.Size = new Size(45, 30);
+            button1.Size = new Size(47, 32);
             button1.TabIndex = 62;
             button1.TextAlign = ContentAlignment.MiddleLeft;
             button1.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -401,10 +378,10 @@
             button2.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             button2.Image = (Image)resources.GetObject("button2.Image");
             button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(891, 93);
+            button2.Location = new Point(891, 91);
             button2.Name = "button2";
             button2.Padding = new Padding(10, 0, 0, 0);
-            button2.Size = new Size(45, 30);
+            button2.Size = new Size(47, 32);
             button2.TabIndex = 63;
             button2.TextAlign = ContentAlignment.MiddleLeft;
             button2.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -420,10 +397,10 @@
             button4.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             button4.Image = (Image)resources.GetObject("button4.Image");
             button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.Location = new Point(838, 93);
+            button4.Location = new Point(354, 91);
             button4.Name = "button4";
             button4.Padding = new Padding(10, 0, 0, 0);
-            button4.Size = new Size(47, 30);
+            button4.Size = new Size(47, 32);
             button4.TabIndex = 64;
             button4.TextAlign = ContentAlignment.MiddleLeft;
             button4.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -462,10 +439,10 @@
             button5.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             button5.Image = (Image)resources.GetObject("button5.Image");
             button5.ImageAlign = ContentAlignment.MiddleLeft;
-            button5.Location = new Point(942, 93);
+            button5.Location = new Point(944, 91);
             button5.Name = "button5";
             button5.Padding = new Padding(10, 0, 0, 0);
-            button5.Size = new Size(47, 30);
+            button5.Size = new Size(47, 32);
             button5.TabIndex = 72;
             button5.TextAlign = ContentAlignment.MiddleLeft;
             button5.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -517,14 +494,12 @@
         private Panel panel1;
         private Panel panel2;
         private Label label1;
-        private TextBox textBox4;
         private TextBox textBox3;
         private TextBox textBox2;
         private TextBox textBox1;
         private Label label2;
         private Label label4;
         private Label label3;
-        private Label label5;
         private Panel panel3;
         private Label label6;
         private Label label7;
