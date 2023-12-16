@@ -27,16 +27,11 @@ namespace SCTAttendanceSystemUI.Forms
             connection = new MySqlConnection(connectionString);
             //MessageBox.Show("Please enter your chosen excel file and choose a sheet. Thank you!", "To proceed to Home", MessageBoxButtons.OK);
 
-            filterComboBox.Items.Add("Department");
-            //sortCB.Items.Add("itemPrice");
-            filterComboBox.Items.Add("Occupation");
-            filterComboBox.Items.Add("Job Status");
-            filterComboBox.Items.Add("Status");
-
-            filterComboBox.KeyPress += ComboBox_KeyPress;
-            filterApplyCMB.KeyPress += ComboBox_KeyPress;
 
             SetDataGridViewStyle(dataGridViewAttendance, new Padding(10, 5, 10, 5), 30, 10); // Adjust the Padding values, cell height, and font size as needed
+
+            clearLabel.MouseEnter += clearLabel_MouseEnter;
+            clearLabel.MouseLeave += clearLabel_MouseLeave;
 
         }
 
@@ -599,90 +594,6 @@ namespace SCTAttendanceSystemUI.Forms
             }
         }
 
-        private void filterComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Clear existing items in ComboBox2
-            filterApplyCMB.Items.Clear();
-
-            // Get the selected sort option from ComboBox1
-            string selectedSort = filterComboBox.SelectedItem?.ToString();
-
-            // Populate ComboBox2 based on the selected sort option
-            switch (selectedSort)
-            {
-                case "Department":
-                    filterApplyCMB.Items.Add("ASP");
-                    filterApplyCMB.Items.Add("IBED");
-                    filterApplyCMB.Items.Add("SED");
-                    break;
-                case "Occupation":
-                    filterApplyCMB.Items.Add("Chairperson");
-                    filterApplyCMB.Items.Add("Guard");
-                    filterApplyCMB.Items.Add("Guidance Counselor");
-                    filterApplyCMB.Items.Add("Maintenance Technician");
-                    filterApplyCMB.Items.Add("Registrar");
-                    filterApplyCMB.Items.Add("School Nurse");
-                    filterApplyCMB.Items.Add("Sports Coach");
-                    filterApplyCMB.Items.Add("Teacher");
-                    break;
-                case "Job Status":
-                    filterApplyCMB.Items.Add("FULL-TIME");
-                    filterApplyCMB.Items.Add("PART-TIME");
-                    break;
-                case "Status":
-                    filterApplyCMB.Items.Add("Present/On-Time");
-                    filterApplyCMB.Items.Add("Late");
-                    break;
-                default:
-                    break;
-            }
-
-            // Apply the filter
-            ApplyFilter();
-        }
-
-        private void ApplyFilter()
-        {
-
-            // exception handling
-            try
-            {
-                string selectedFilter = filterComboBox.SelectedItem?.ToString();
-                string selectedApply = filterApplyCMB.SelectedItem?.ToString();
-
-                // Check if both sort and filter values are selected
-                if (!string.IsNullOrEmpty(selectedFilter) && !string.IsNullOrEmpty(selectedApply))
-                {
-                    // Apply the filter to the DataGridView
-                    if (dataGridViewAttendance.DataSource is System.Data.DataTable dataTable)
-                    {
-                        dataTable.DefaultView.RowFilter = $"{selectedFilter} = '{selectedApply}'";
-                    }
-                }
-                // If only the sort value is selected
-                else if (!string.IsNullOrEmpty(selectedFilter))
-                {
-                    // Remove the filter
-                    if (dataGridViewAttendance.DataSource is System.Data.DataTable dataTable)
-                    {
-                        dataTable.DefaultView.RowFilter = string.Empty;
-                    }
-                }
-                // If neither sort nor filter is selected, show all rows
-                else
-                {
-                    if (dataGridViewAttendance.DataSource is System.Data.DataTable dataTable)
-                    {
-                        dataTable.DefaultView.RowFilter = string.Empty;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                // Handle the exception (e.g., display an error message, log the exception)
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
@@ -694,6 +605,18 @@ namespace SCTAttendanceSystemUI.Forms
         {
             dataSet.Tables["empattendance"].Clear();
             adapter.Fill(dataSet, "empattendance");
+        }
+
+        private void clearLabel_MouseEnter(object sender, EventArgs e)
+        {
+            clearLabel.ForeColor = Color.Red;
+
+        }
+
+        private void clearLabel_MouseLeave(object sender, EventArgs e)
+        {
+            clearLabel.ForeColor = SystemColors.ControlText; // You can set it to your desired default color
+
         }
     }
 }

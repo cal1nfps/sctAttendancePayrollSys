@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminLogin));
             panelColorBg = new Panel();
+            hidePassword = new Button();
+            showPassword = new Button();
             button1 = new Button();
             buttonLogin = new Button();
             textBoxPassword = new TextBox();
@@ -48,6 +50,8 @@
             panelColorBg.BackColor = Color.FromArgb(164, 16, 52);
             panelColorBg.BackgroundImage = (Image)resources.GetObject("panelColorBg.BackgroundImage");
             panelColorBg.BackgroundImageLayout = ImageLayout.Stretch;
+            panelColorBg.Controls.Add(hidePassword);
+            panelColorBg.Controls.Add(showPassword);
             panelColorBg.Controls.Add(button1);
             panelColorBg.Controls.Add(buttonLogin);
             panelColorBg.Controls.Add(textBoxPassword);
@@ -61,6 +65,37 @@
             panelColorBg.Name = "panelColorBg";
             panelColorBg.Size = new Size(605, 681);
             panelColorBg.TabIndex = 10;
+            // 
+            // hidePassword
+            // 
+            hidePassword.BackColor = Color.White;
+            hidePassword.Cursor = Cursors.Hand;
+            hidePassword.FlatAppearance.BorderSize = 0;
+            hidePassword.FlatStyle = FlatStyle.Flat;
+            hidePassword.Font = new Font("Times New Roman", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            hidePassword.Image = (Image)resources.GetObject("hidePassword.Image");
+            hidePassword.Location = new Point(430, 417);
+            hidePassword.Name = "hidePassword";
+            hidePassword.Size = new Size(38, 27);
+            hidePassword.TabIndex = 7;
+            hidePassword.UseVisualStyleBackColor = false;
+            hidePassword.Visible = false;
+            hidePassword.Click += hidePassword_Click;
+            // 
+            // showPassword
+            // 
+            showPassword.BackColor = Color.White;
+            showPassword.Cursor = Cursors.Hand;
+            showPassword.FlatAppearance.BorderSize = 0;
+            showPassword.FlatStyle = FlatStyle.Flat;
+            showPassword.Font = new Font("Times New Roman", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            showPassword.Image = (Image)resources.GetObject("showPassword.Image");
+            showPassword.Location = new Point(430, 417);
+            showPassword.Name = "showPassword";
+            showPassword.Size = new Size(38, 27);
+            showPassword.TabIndex = 5;
+            showPassword.UseVisualStyleBackColor = false;
+            showPassword.Click += showPassword_Click;
             // 
             // button1
             // 
@@ -88,7 +123,7 @@
             buttonLogin.Location = new Point(271, 508);
             buttonLogin.Name = "buttonLogin";
             buttonLogin.Size = new Size(150, 58);
-            buttonLogin.TabIndex = 5;
+            buttonLogin.TabIndex = 6;
             buttonLogin.Text = "LOGIN";
             buttonLogin.UseVisualStyleBackColor = false;
             buttonLogin.Click += buttonLogin_Click;
@@ -113,7 +148,7 @@
             textBoxIDNum.MaxLength = 100;
             textBoxIDNum.Multiline = true;
             textBoxIDNum.Name = "textBoxIDNum";
-            textBoxIDNum.PlaceholderText = "ID NO.";
+            textBoxIDNum.PlaceholderText = "ID NUMBER";
             textBoxIDNum.Size = new Size(290, 40);
             textBoxIDNum.TabIndex = 3;
             // 
@@ -200,11 +235,12 @@
             Controls.Add(panelColorBg);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximumSize = new Size(1920, 1080);
             MinimumSize = new Size(800, 600);
             Name = "AdminLogin";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "AdminLogin";
+            Text = "SCT Attendance System";
             panelColorBg.ResumeLayout(false);
             panelColorBg.PerformLayout();
             ResumeLayout(false);
@@ -224,5 +260,7 @@
         private Panel panelLogo;
         private Label labelTaytay;
         private Label labelSiena;
+        private Button showPassword;
+        private Button hidePassword;
     }
 }

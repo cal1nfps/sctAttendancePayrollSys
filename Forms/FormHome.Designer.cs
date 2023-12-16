@@ -38,8 +38,6 @@
             exportButton = new Button();
             deleteButton = new Button();
             clearLabel = new Label();
-            filterComboBox = new ComboBox();
-            filterApplyCMB = new ComboBox();
             refreshButton = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAttendance).BeginInit();
             SuspendLayout();
@@ -100,8 +98,8 @@
             // 
             // filterButton
             // 
-            filterButton.BackColor = Color.Green;
-            filterButton.BackgroundImage = (Image)resources.GetObject("filterButton.BackgroundImage");
+            filterButton.BackColor = Color.FromArgb(219, 20, 62);
+            filterButton.Cursor = Cursors.Hand;
             filterButton.FlatAppearance.BorderSize = 0;
             filterButton.FlatStyle = FlatStyle.Flat;
             filterButton.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
@@ -113,7 +111,6 @@
             filterButton.Size = new Size(47, 30);
             filterButton.TabIndex = 65;
             filterButton.TextAlign = ContentAlignment.MiddleLeft;
-            filterButton.TextImageRelation = TextImageRelation.ImageBeforeText;
             filterButton.UseVisualStyleBackColor = false;
             filterButton.Click += button4_Click;
             // 
@@ -129,8 +126,8 @@
             // 
             // exportButton
             // 
-            exportButton.BackColor = Color.Green;
-            exportButton.BackgroundImage = (Image)resources.GetObject("exportButton.BackgroundImage");
+            exportButton.BackColor = Color.FromArgb(219, 20, 62);
+            exportButton.Cursor = Cursors.Hand;
             exportButton.FlatAppearance.BorderSize = 0;
             exportButton.FlatStyle = FlatStyle.Flat;
             exportButton.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
@@ -148,8 +145,8 @@
             // 
             // deleteButton
             // 
-            deleteButton.BackColor = Color.Green;
-            deleteButton.BackgroundImage = (Image)resources.GetObject("deleteButton.BackgroundImage");
+            deleteButton.BackColor = Color.FromArgb(219, 20, 62);
+            deleteButton.Cursor = Cursors.Hand;
             deleteButton.FlatAppearance.BorderSize = 0;
             deleteButton.FlatStyle = FlatStyle.Flat;
             deleteButton.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
@@ -177,34 +174,8 @@
             clearLabel.TabIndex = 73;
             clearLabel.Text = "CLEAR ALL DATA";
             clearLabel.Click += clearLabel_Click;
-            // 
-            // filterComboBox
-            // 
-            filterComboBox.BackColor = Color.WhiteSmoke;
-            filterComboBox.Cursor = Cursors.Hand;
-            filterComboBox.FlatStyle = FlatStyle.Flat;
-            filterComboBox.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            filterComboBox.FormattingEnabled = true;
-            filterComboBox.Location = new Point(888, 99);
-            filterComboBox.Name = "filterComboBox";
-            filterComboBox.Size = new Size(142, 23);
-            filterComboBox.TabIndex = 74;
-            filterComboBox.Text = "FILTER BY:";
-            filterComboBox.Visible = false;
-            filterComboBox.SelectedIndexChanged += filterComboBox_SelectedIndexChanged;
-            // 
-            // filterApplyCMB
-            // 
-            filterApplyCMB.BackColor = Color.WhiteSmoke;
-            filterApplyCMB.Cursor = Cursors.Hand;
-            filterApplyCMB.FlatStyle = FlatStyle.Flat;
-            filterApplyCMB.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            filterApplyCMB.FormattingEnabled = true;
-            filterApplyCMB.Location = new Point(1036, 99);
-            filterApplyCMB.Name = "filterApplyCMB";
-            filterApplyCMB.Size = new Size(142, 23);
-            filterApplyCMB.TabIndex = 75;
-            filterApplyCMB.Visible = false;
+            clearLabel.MouseEnter += clearLabel_MouseEnter;
+            clearLabel.MouseLeave += clearLabel_MouseLeave;
             // 
             // refreshButton
             // 
@@ -237,8 +208,6 @@
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1666, 822);
             Controls.Add(refreshButton);
-            Controls.Add(filterApplyCMB);
-            Controls.Add(filterComboBox);
             Controls.Add(clearLabel);
             Controls.Add(deleteButton);
             Controls.Add(exportButton);
@@ -252,7 +221,7 @@
             MinimumSize = new Size(1598, 821);
             Name = "FormHome";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormHome";
+            Text = "Attendance";
             Load += FormHome_Load_1;
             ((System.ComponentModel.ISupportInitialize)dataGridViewAttendance).EndInit();
             ResumeLayout(false);
@@ -269,8 +238,6 @@
         private Button exportButton;
         private Button deleteButton;
         private Label clearLabel;
-        private ComboBox filterComboBox;
-        private ComboBox filterApplyCMB;
         private Button refreshButton;
     }
 }

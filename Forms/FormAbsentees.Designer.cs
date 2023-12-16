@@ -97,8 +97,8 @@
             // 
             // button4
             // 
-            button4.BackColor = Color.Green;
-            button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
+            button4.BackColor = Color.FromArgb(219, 20, 62);
+            button4.Cursor = Cursors.Hand;
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
@@ -116,8 +116,8 @@
             // 
             // button2
             // 
-            button2.BackColor = Color.Green;
-            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
+            button2.BackColor = Color.FromArgb(219, 20, 62);
+            button2.Cursor = Cursors.Hand;
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
@@ -135,8 +135,8 @@
             // 
             // deleteButton
             // 
-            deleteButton.BackColor = Color.Green;
-            deleteButton.BackgroundImage = (Image)resources.GetObject("deleteButton.BackgroundImage");
+            deleteButton.BackColor = Color.FromArgb(219, 20, 62);
+            deleteButton.Cursor = Cursors.Hand;
             deleteButton.FlatAppearance.BorderSize = 0;
             deleteButton.FlatStyle = FlatStyle.Flat;
             deleteButton.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
@@ -164,6 +164,8 @@
             clearLabel.TabIndex = 78;
             clearLabel.Text = "CLEAR ALL DATA";
             clearLabel.Click += clearLabel_Click;
+            clearLabel.MouseEnter += clearLabel_MouseEnter;
+            clearLabel.MouseLeave += clearLabel_MouseLeave;
             // 
             // FormAbsentees
             // 

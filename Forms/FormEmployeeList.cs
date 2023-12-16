@@ -34,6 +34,9 @@ namespace SCTAttendanceSystemUI.Forms
 
             SetDataGridViewStyle(dataGridViewEmployeeList, new Padding(10, 5, 10, 5), 30, 10); // Adjust the Padding values, cell height, and font size as needed
 
+            clearLabel.MouseEnter += clearLabel_MouseEnter;
+            clearLabel.MouseLeave += clearLabel_MouseLeave;
+
         }
         private void ApplyColumnStyles()
         {
@@ -666,6 +669,18 @@ namespace SCTAttendanceSystemUI.Forms
             finally
             {
             }
+        }
+
+        private void clearLabel_MouseEnter(object sender, EventArgs e)
+        {
+            clearLabel.ForeColor = Color.Red;
+
+        }
+
+        private void clearLabel_MouseLeave(object sender, EventArgs e)
+        {
+            clearLabel.ForeColor = SystemColors.ControlText; // You can set it to your desired default color
+
         }
     }
 }

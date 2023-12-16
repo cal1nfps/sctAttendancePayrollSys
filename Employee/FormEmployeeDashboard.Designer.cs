@@ -33,7 +33,6 @@
             labelEmployeeName = new Label();
             dateLabel = new Label();
             panelBG = new Panel();
-            tapID = new TextBox();
             occupationPanel = new Panel();
             occupationLabel = new Label();
             departmentPanel = new Panel();
@@ -56,6 +55,7 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
+            tapID = new TextBox();
             panelBG.SuspendLayout();
             occupationPanel.SuspendLayout();
             departmentPanel.SuspendLayout();
@@ -90,11 +90,11 @@
             // dateLabel
             // 
             dateLabel.AutoSize = true;
-            dateLabel.Font = new Font("Times New Roman", 13F, FontStyle.Bold, GraphicsUnit.Point);
+            dateLabel.Font = new Font("Times New Roman", 30F, FontStyle.Bold, GraphicsUnit.Point);
             dateLabel.ForeColor = Color.White;
-            dateLabel.Location = new Point(115, 403);
+            dateLabel.Location = new Point(279, 871);
             dateLabel.Name = "dateLabel";
-            dateLabel.Size = new Size(0, 20);
+            dateLabel.Size = new Size(0, 45);
             dateLabel.TabIndex = 9;
             // 
             // panelBG
@@ -117,21 +117,8 @@
             panelBG.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             panelBG.Location = new Point(0, 0);
             panelBG.Name = "panelBG";
-            panelBG.Size = new Size(800, 450);
+            panelBG.Size = new Size(1904, 1041);
             panelBG.TabIndex = 1;
-            // 
-            // tapID
-            // 
-            tapID.BackColor = Color.FromArgb(242, 205, 10);
-            tapID.BorderStyle = BorderStyle.None;
-            tapID.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            tapID.ForeColor = Color.FromArgb(164, 16, 52);
-            tapID.Location = new Point(323, 338);
-            tapID.MaxLength = 100;
-            tapID.Name = "tapID";
-            tapID.Size = new Size(290, 27);
-            tapID.TabIndex = 1;
-            tapID.KeyDown += tapID_KeyDown;
             // 
             // occupationPanel
             // 
@@ -140,19 +127,19 @@
             occupationPanel.BackgroundImageLayout = ImageLayout.None;
             occupationPanel.Controls.Add(occupationLabel);
             occupationPanel.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            occupationPanel.Location = new Point(323, 201);
+            occupationPanel.Location = new Point(707, 352);
             occupationPanel.Name = "occupationPanel";
-            occupationPanel.Size = new Size(403, 42);
+            occupationPanel.Size = new Size(915, 85);
             occupationPanel.TabIndex = 25;
             // 
             // occupationLabel
             // 
             occupationLabel.AutoSize = true;
-            occupationLabel.Font = new Font("Times New Roman", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
+            occupationLabel.Font = new Font("Times New Roman", 30.75F, FontStyle.Regular, GraphicsUnit.Point);
             occupationLabel.ForeColor = Color.White;
-            occupationLabel.Location = new Point(3, 4);
+            occupationLabel.Location = new Point(0, 19);
             occupationLabel.Name = "occupationLabel";
-            occupationLabel.Size = new Size(193, 33);
+            occupationLabel.Size = new Size(275, 47);
             occupationLabel.TabIndex = 14;
             occupationLabel.Text = "OCCUPATION";
             occupationLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -164,19 +151,19 @@
             departmentPanel.BackgroundImageLayout = ImageLayout.None;
             departmentPanel.Controls.Add(departmentLabel);
             departmentPanel.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            departmentPanel.Location = new Point(323, 269);
+            departmentPanel.Location = new Point(707, 454);
             departmentPanel.Name = "departmentPanel";
-            departmentPanel.Size = new Size(403, 42);
+            departmentPanel.Size = new Size(915, 85);
             departmentPanel.TabIndex = 24;
             // 
             // departmentLabel
             // 
             departmentLabel.AutoSize = true;
-            departmentLabel.Font = new Font("Times New Roman", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
+            departmentLabel.Font = new Font("Times New Roman", 30.75F, FontStyle.Regular, GraphicsUnit.Point);
             departmentLabel.ForeColor = Color.White;
-            departmentLabel.Location = new Point(3, 4);
+            departmentLabel.Location = new Point(3, 17);
             departmentLabel.Name = "departmentLabel";
-            departmentLabel.Size = new Size(205, 33);
+            departmentLabel.Size = new Size(289, 47);
             departmentLabel.TabIndex = 14;
             departmentLabel.Text = "DEPARTMENT";
             departmentLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -188,19 +175,19 @@
             namePanel.BackgroundImageLayout = ImageLayout.None;
             namePanel.Controls.Add(empName);
             namePanel.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            namePanel.Location = new Point(323, 133);
+            namePanel.Location = new Point(707, 248);
             namePanel.Name = "namePanel";
-            namePanel.Size = new Size(403, 42);
+            namePanel.Size = new Size(915, 85);
             namePanel.TabIndex = 23;
             // 
             // empName
             // 
             empName.AutoSize = true;
-            empName.Font = new Font("Times New Roman", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
+            empName.Font = new Font("Times New Roman", 35.75F, FontStyle.Regular, GraphicsUnit.Point);
             empName.ForeColor = Color.White;
-            empName.Location = new Point(3, 4);
+            empName.Location = new Point(0, 16);
             empName.Name = "empName";
-            empName.Size = new Size(100, 33);
+            empName.Size = new Size(165, 55);
             empName.TabIndex = 14;
             empName.Text = "NAME";
             empName.TextAlign = ContentAlignment.MiddleCenter;
@@ -208,11 +195,11 @@
             // todayLabel
             // 
             todayLabel.AutoSize = true;
-            todayLabel.Font = new Font("Times New Roman", 12.75F, FontStyle.Bold, GraphicsUnit.Point);
+            todayLabel.Font = new Font("Times New Roman", 30.75F, FontStyle.Bold, GraphicsUnit.Point);
             todayLabel.ForeColor = Color.White;
-            todayLabel.Location = new Point(30, 403);
+            todayLabel.Location = new Point(68, 871);
             todayLabel.Name = "todayLabel";
-            todayLabel.Size = new Size(82, 19);
+            todayLabel.Size = new Size(211, 47);
             todayLabel.TabIndex = 21;
             todayLabel.Text = "TODAY IS";
             // 
@@ -223,21 +210,21 @@
             StatusPanel.BackgroundImageLayout = ImageLayout.None;
             StatusPanel.Controls.Add(empStatusLabel);
             StatusPanel.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            StatusPanel.Location = new Point(30, 341);
+            StatusPanel.Location = new Point(66, 680);
             StatusPanel.Name = "StatusPanel";
-            StatusPanel.Size = new Size(200, 28);
+            StatusPanel.Size = new Size(400, 81);
             StatusPanel.TabIndex = 20;
             // 
             // empStatusLabel
             // 
             empStatusLabel.AutoSize = true;
-            empStatusLabel.Font = new Font("Times New Roman", 12.75F, FontStyle.Regular, GraphicsUnit.Point);
+            empStatusLabel.Font = new Font("Times New Roman", 25.75F, FontStyle.Regular, GraphicsUnit.Point);
             empStatusLabel.ForeColor = Color.White;
-            empStatusLabel.Location = new Point(64, 5);
+            empStatusLabel.Location = new Point(124, 20);
             empStatusLabel.Name = "empStatusLabel";
-            empStatusLabel.Size = new Size(50, 19);
+            empStatusLabel.Size = new Size(138, 40);
             empStatusLabel.TabIndex = 23;
-            empStatusLabel.Text = "Status";
+            empStatusLabel.Text = "STATUS";
             empStatusLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // empNumPanel
@@ -247,29 +234,29 @@
             empNumPanel.BackgroundImageLayout = ImageLayout.None;
             empNumPanel.Controls.Add(empNumLabel);
             empNumPanel.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            empNumPanel.Location = new Point(30, 307);
+            empNumPanel.Location = new Point(66, 593);
             empNumPanel.Name = "empNumPanel";
-            empNumPanel.Size = new Size(200, 28);
+            empNumPanel.Size = new Size(400, 81);
             empNumPanel.TabIndex = 19;
             // 
             // empNumLabel
             // 
             empNumLabel.AutoSize = true;
-            empNumLabel.Font = new Font("Times New Roman", 12.75F, FontStyle.Regular, GraphicsUnit.Point);
+            empNumLabel.Font = new Font("Times New Roman", 25.75F, FontStyle.Regular, GraphicsUnit.Point);
             empNumLabel.ForeColor = Color.White;
-            empNumLabel.Location = new Point(45, 5);
+            empNumLabel.Location = new Point(24, 19);
             empNumLabel.Name = "empNumLabel";
-            empNumLabel.Size = new Size(137, 19);
+            empNumLabel.Size = new Size(358, 40);
             empNumLabel.TabIndex = 22;
-            empNumLabel.Text = "Employee Number";
+            empNumLabel.Text = "EMPLOYEE NUMBER";
             empNumLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // employeePB
             // 
             employeePB.BackColor = Color.WhiteSmoke;
-            employeePB.Location = new Point(30, 101);
+            employeePB.Location = new Point(66, 187);
             employeePB.Name = "employeePB";
-            employeePB.Size = new Size(200, 200);
+            employeePB.Size = new Size(400, 400);
             employeePB.TabIndex = 16;
             employeePB.TabStop = false;
             // 
@@ -290,7 +277,7 @@
             SCTLogoPanel.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             SCTLogoPanel.Location = new Point(0, 8);
             SCTLogoPanel.Name = "SCTLogoPanel";
-            SCTLogoPanel.Size = new Size(800, 70);
+            SCTLogoPanel.Size = new Size(1920, 116);
             SCTLogoPanel.TabIndex = 15;
             // 
             // backButton
@@ -314,9 +301,9 @@
             domiePB.BackColor = Color.Transparent;
             domiePB.BackgroundImage = (Image)resources.GetObject("domiePB.BackgroundImage");
             domiePB.BackgroundImageLayout = ImageLayout.Zoom;
-            domiePB.Location = new Point(697, 0);
+            domiePB.Location = new Point(1752, -2);
             domiePB.Name = "domiePB";
-            domiePB.Size = new Size(98, 69);
+            domiePB.Size = new Size(168, 118);
             domiePB.TabIndex = 18;
             domiePB.TabStop = false;
             // 
@@ -324,11 +311,11 @@
             // 
             logo2Label.AutoSize = true;
             logo2Label.BackColor = Color.Transparent;
-            logo2Label.Font = new Font("Times New Roman", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            logo2Label.Font = new Font("Times New Roman", 25F, FontStyle.Bold, GraphicsUnit.Point);
             logo2Label.ForeColor = Color.Transparent;
-            logo2Label.Location = new Point(323, 39);
+            logo2Label.Location = new Point(889, 68);
             logo2Label.Name = "logo2Label";
-            logo2Label.Size = new Size(215, 31);
+            logo2Label.Size = new Size(272, 38);
             logo2Label.TabIndex = 17;
             logo2Label.Text = "TAYTAY, RIZAL";
             logo2Label.TextAlign = ContentAlignment.MiddleCenter;
@@ -337,11 +324,11 @@
             // 
             logo1Label.AutoSize = true;
             logo1Label.BackColor = Color.Transparent;
-            logo1Label.Font = new Font("Times New Roman", 30F, FontStyle.Bold, GraphicsUnit.Point);
+            logo1Label.Font = new Font("Times New Roman", 50F, FontStyle.Bold, GraphicsUnit.Point);
             logo1Label.ForeColor = Color.Transparent;
-            logo1Label.Location = new Point(262, 1);
+            logo1Label.Location = new Point(742, 3);
             logo1Label.Name = "logo1Label";
-            logo1Label.Size = new Size(360, 45);
+            logo1Label.Size = new Size(598, 76);
             logo1Label.TabIndex = 16;
             logo1Label.Text = "SIENA COLLEGE ";
             logo1Label.TextAlign = ContentAlignment.MiddleCenter;
@@ -363,9 +350,9 @@
             sctLogoPB.BackColor = Color.Transparent;
             sctLogoPB.BackgroundImage = Properties.Resources.logo;
             sctLogoPB.BackgroundImageLayout = ImageLayout.Zoom;
-            sctLogoPB.Location = new Point(169, 4);
+            sctLogoPB.Location = new Point(613, 4);
             sctLogoPB.Name = "sctLogoPB";
-            sctLogoPB.Size = new Size(105, 62);
+            sctLogoPB.Size = new Size(158, 103);
             sctLogoPB.TabIndex = 14;
             sctLogoPB.TabStop = false;
             // 
@@ -399,21 +386,35 @@
             label4.Size = new Size(0, 13);
             label4.TabIndex = 7;
             // 
+            // tapID
+            // 
+            tapID.BackColor = Color.FromArgb(242, 205, 10);
+            tapID.BorderStyle = BorderStyle.None;
+            tapID.Font = new Font("Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point);
+            tapID.ForeColor = Color.FromArgb(164, 16, 52);
+            tapID.Location = new Point(707, 582);
+            tapID.MaxLength = 100;
+            tapID.Name = "tapID";
+            tapID.Size = new Size(915, 54);
+            tapID.TabIndex = 1;
+            tapID.KeyDown += tapID_KeyDown;
+            // 
             // FormEmployeeDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             BackColor = Color.FromArgb(164, 16, 52);
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1904, 1041);
             Controls.Add(panelBG);
             Controls.Add(labelLoginAs);
             DoubleBuffered = true;
-            FormBorderStyle = FormBorderStyle.None;
-            MaximizeBox = false;
-            MinimizeBox = false;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximumSize = new Size(1920, 1080);
             Name = "FormEmployeeDashboard";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "EMPLOYEE DASHBOARD";
+            Text = "SCT Attendance System";
+            WindowState = FormWindowState.Maximized;
             Load += FormEmployeeDashboard_Load_1;
             panelBG.ResumeLayout(false);
             panelBG.PerformLayout();

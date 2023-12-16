@@ -36,8 +36,8 @@
             button4 = new Button();
             dataGridViewASP = new DataGridView();
             panel2 = new Panel();
-            label1 = new Label();
             label5 = new Label();
+            label1 = new Label();
             label4 = new Label();
             buttonBackBtn = new Button();
             panel1.SuspendLayout();
@@ -76,11 +76,13 @@
             clearLabel.TabIndex = 78;
             clearLabel.Text = "CLEAR ALL DATA";
             clearLabel.Click += clearLabel_Click;
+            clearLabel.MouseEnter += clearLabel_MouseEnter;
+            clearLabel.MouseLeave += clearLabel_MouseLeave;
             // 
             // deleteButton
             // 
-            deleteButton.BackColor = Color.Firebrick;
-            deleteButton.BackgroundImage = (Image)resources.GetObject("deleteButton.BackgroundImage");
+            deleteButton.BackColor = Color.FromArgb(219, 20, 62);
+            deleteButton.Cursor = Cursors.Hand;
             deleteButton.FlatAppearance.BorderSize = 0;
             deleteButton.FlatStyle = FlatStyle.Flat;
             deleteButton.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
@@ -108,8 +110,8 @@
             // 
             // button4
             // 
-            button4.BackColor = Color.Green;
-            button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
+            button4.BackColor = Color.FromArgb(219, 20, 62);
+            button4.Cursor = Cursors.Hand;
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
@@ -145,13 +147,25 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(2, 35, 68);
-            panel2.Controls.Add(label1);
             panel2.Controls.Add(label5);
+            panel2.Controls.Add(label1);
             panel2.Controls.Add(label4);
             panel2.Location = new Point(84, 12);
             panel2.Name = "panel2";
             panel2.Size = new Size(264, 85);
             panel2.TabIndex = 60;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = Color.Transparent;
+            label5.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(12, 13);
+            label5.Name = "label5";
+            label5.Size = new Size(68, 37);
+            label5.TabIndex = 63;
+            label5.Text = "ASP";
             // 
             // label1
             // 
@@ -164,18 +178,6 @@
             label1.Size = new Size(38, 45);
             label1.TabIndex = 60;
             label1.Text = "1";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.BackColor = Color.FromArgb(2, 35, 68);
-            label5.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.ForeColor = Color.White;
-            label5.Location = new Point(12, 13);
-            label5.Name = "label5";
-            label5.Size = new Size(68, 37);
-            label5.TabIndex = 62;
-            label5.Text = "ASP";
             // 
             // label4
             // 
@@ -195,7 +197,8 @@
             buttonBackBtn.Cursor = Cursors.Hand;
             buttonBackBtn.FlatAppearance.BorderSize = 0;
             buttonBackBtn.FlatStyle = FlatStyle.Flat;
-            buttonBackBtn.Font = new Font("Times New Roman", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonBackBtn.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonBackBtn.ForeColor = Color.White;
             buttonBackBtn.Image = (Image)resources.GetObject("buttonBackBtn.Image");
             buttonBackBtn.ImageAlign = ContentAlignment.MiddleLeft;
             buttonBackBtn.Location = new Point(33, 20);
@@ -235,12 +238,12 @@
         private Button buttonBackBtn;
         private Panel panel2;
         private Label label1;
-        private Label label5;
         private Label label4;
         public DataGridView dataGridViewASP;
         private Button button4;
         private TextBox searchBox;
         private Button deleteButton;
         private Label clearLabel;
+        private Label label5;
     }
 }

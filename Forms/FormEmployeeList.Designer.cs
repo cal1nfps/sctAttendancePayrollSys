@@ -54,9 +54,9 @@
             textBox2 = new TextBox();
             textBox1 = new TextBox();
             dataGridViewEmployeeList = new DataGridView();
-            button1 = new Button();
+            editButton = new Button();
             button2 = new Button();
-            button4 = new Button();
+            filterButton = new Button();
             searchBox = new TextBox();
             clearLabel = new Label();
             button5 = new Button();
@@ -80,8 +80,8 @@
             // 
             // button3
             // 
-            button3.BackColor = Color.Transparent;
-            button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
+            button3.BackColor = Color.FromArgb(219, 20, 62);
+            button3.Cursor = Cursors.Hand;
             button3.FlatAppearance.BorderSize = 0;
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
@@ -350,29 +350,29 @@
             dataGridViewEmployeeList.CellContentClick += dataGridView1_CellContentClick;
             dataGridViewEmployeeList.CellFormatting += dataGridView1_CellFormatting_1;
             // 
-            // button1
+            // editButton
             // 
-            button1.BackColor = Color.Gold;
-            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(1555, 94);
-            button1.Name = "button1";
-            button1.Padding = new Padding(10, 0, 0, 0);
-            button1.Size = new Size(47, 32);
-            button1.TabIndex = 62;
-            button1.TextAlign = ContentAlignment.MiddleLeft;
-            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            editButton.BackColor = Color.FromArgb(219, 20, 62);
+            editButton.Cursor = Cursors.Hand;
+            editButton.FlatAppearance.BorderSize = 0;
+            editButton.FlatStyle = FlatStyle.Flat;
+            editButton.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            editButton.Image = (Image)resources.GetObject("editButton.Image");
+            editButton.ImageAlign = ContentAlignment.MiddleLeft;
+            editButton.Location = new Point(1555, 94);
+            editButton.Name = "editButton";
+            editButton.Padding = new Padding(10, 0, 0, 0);
+            editButton.Size = new Size(47, 32);
+            editButton.TabIndex = 62;
+            editButton.TextAlign = ContentAlignment.MiddleLeft;
+            editButton.TextImageRelation = TextImageRelation.ImageBeforeText;
+            editButton.UseVisualStyleBackColor = false;
+            editButton.Click += button1_Click;
             // 
             // button2
             // 
-            button2.BackColor = Color.Firebrick;
-            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
+            button2.BackColor = Color.FromArgb(219, 20, 62);
+            button2.Cursor = Cursors.Hand;
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
@@ -388,24 +388,24 @@
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
-            // button4
+            // filterButton
             // 
-            button4.BackColor = Color.Green;
-            button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
-            button4.FlatAppearance.BorderSize = 0;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.Location = new Point(354, 91);
-            button4.Name = "button4";
-            button4.Padding = new Padding(10, 0, 0, 0);
-            button4.Size = new Size(47, 32);
-            button4.TabIndex = 64;
-            button4.TextAlign = ContentAlignment.MiddleLeft;
-            button4.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button4.UseVisualStyleBackColor = false;
-            button4.Click += button4_Click;
+            filterButton.BackColor = Color.FromArgb(219, 20, 62);
+            filterButton.Cursor = Cursors.Hand;
+            filterButton.FlatAppearance.BorderSize = 0;
+            filterButton.FlatStyle = FlatStyle.Flat;
+            filterButton.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            filterButton.Image = (Image)resources.GetObject("filterButton.Image");
+            filterButton.ImageAlign = ContentAlignment.MiddleLeft;
+            filterButton.Location = new Point(354, 91);
+            filterButton.Name = "filterButton";
+            filterButton.Padding = new Padding(10, 0, 0, 0);
+            filterButton.Size = new Size(47, 32);
+            filterButton.TabIndex = 64;
+            filterButton.TextAlign = ContentAlignment.MiddleLeft;
+            filterButton.TextImageRelation = TextImageRelation.ImageBeforeText;
+            filterButton.UseVisualStyleBackColor = false;
+            filterButton.Click += button4_Click;
             // 
             // searchBox
             // 
@@ -429,11 +429,13 @@
             clearLabel.TabIndex = 74;
             clearLabel.Text = "CLEAR ALL DATA";
             clearLabel.Click += clearLabel_Click;
+            clearLabel.MouseEnter += clearLabel_MouseEnter;
+            clearLabel.MouseLeave += clearLabel_MouseLeave;
             // 
             // button5
             // 
-            button5.BackColor = Color.Green;
-            button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
+            button5.BackColor = Color.FromArgb(219, 20, 62);
+            button5.Cursor = Cursors.Hand;
             button5.FlatAppearance.BorderSize = 0;
             button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
@@ -460,9 +462,9 @@
             Controls.Add(clearLabel);
             Controls.Add(searchBox);
             Controls.Add(button5);
-            Controls.Add(button4);
+            Controls.Add(filterButton);
             Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(editButton);
             Controls.Add(dataGridViewEmployeeList);
             Controls.Add(panel2);
             Controls.Add(panel1);
@@ -512,9 +514,9 @@
         private TextBox textBox9;
         private TextBox textBox8;
         private Label label18;
-        private Button button1;
+        private Button editButton;
         private Button button2;
-        private Button button4;
+        private Button filterButton;
         public DataGridView dataGridViewEmployeeList;
         public PictureBox pictureBox1;
         private TextBox searchBox;

@@ -132,11 +132,13 @@
             clearLabel.TabIndex = 77;
             clearLabel.Text = "CLEAR ALL DATA";
             clearLabel.Click += clearLabel_Click;
+            clearLabel.MouseEnter += clearLabel_MouseEnter;
+            clearLabel.MouseLeave += clearLabel_MouseLeave;
             // 
             // deleteButton
             // 
-            deleteButton.BackColor = Color.Firebrick;
-            deleteButton.BackgroundImage = (Image)resources.GetObject("deleteButton.BackgroundImage");
+            deleteButton.BackColor = Color.FromArgb(219, 20, 62);
+            deleteButton.Cursor = Cursors.Hand;
             deleteButton.FlatAppearance.BorderSize = 0;
             deleteButton.FlatStyle = FlatStyle.Flat;
             deleteButton.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
@@ -164,8 +166,8 @@
             // 
             // button4
             // 
-            button4.BackColor = Color.Green;
-            button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
+            button4.BackColor = Color.FromArgb(219, 20, 62);
+            button4.Cursor = Cursors.Hand;
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);

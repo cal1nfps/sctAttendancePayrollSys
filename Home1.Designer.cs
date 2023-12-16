@@ -56,7 +56,7 @@
             // 
             // panelHeader
             // 
-            panelHeader.BackColor = Color.FromArgb(164, 16, 48);
+            panelHeader.BackColor = Color.FromArgb(242, 205, 10);
             panelHeader.BackgroundImage = (Image)resources.GetObject("panelHeader.BackgroundImage");
             panelHeader.Controls.Add(Title);
             panelHeader.Controls.Add(logo2Label);
@@ -354,10 +354,11 @@
             Controls.Add(panelMenu);
             Controls.Add(panelHeader);
             DoubleBuffered = true;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximumSize = new Size(1920, 1080);
             Name = "Home1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "SCT ATTENDANCE SYSTEM";
+            Text = "SCT Attendance System";
             WindowState = FormWindowState.Maximized;
             panelHeader.ResumeLayout(false);
             panelHeader.PerformLayout();

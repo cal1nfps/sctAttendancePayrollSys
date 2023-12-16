@@ -140,12 +140,13 @@
             Controls.Add(labelSiena);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             KeyPreview = true;
             MaximumSize = new Size(1920, 1080);
             MinimumSize = new Size(800, 600);
             Name = "WelcomePage";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "SCT ATTENDANCE SYSTEM";
+            Text = "SCT Attendance System";
             panelColorBg.ResumeLayout(false);
             panelColorBg.PerformLayout();
             ResumeLayout(false);

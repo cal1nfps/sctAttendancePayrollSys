@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using SCTAttendanceSystemUI.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace SCTAttendanceSystemUI
@@ -23,69 +24,61 @@ namespace SCTAttendanceSystemUI
             InitializeComponent();
             string connectionString = "server=localhost;user=root;password=root;database=payrollsys";
             connection = new MySqlConnection(connectionString);
+
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
+            string enteredUsername = textBoxIDNum.Text;
+            string enteredPassword = textBoxPassword.Text;
 
-            /*            string username = textBoxIDNum.Text;
-                        string password = textBoxPassword.Text;
+            if (string.IsNullOrEmpty(enteredUsername) || string.IsNullOrEmpty(enteredPassword))
+            {
+                MessageBox.Show("Please enter both username and password.");
+                return;
+            }
 
-                        try
-                        {
-                            connection.Open();
+            if (Authentication(enteredUsername, enteredPassword))
+            {
+                this.Hide();
+                Home1 form_home1 = new Home1();
+                form_home1.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Login failed. Please check your credentials.");
+            }
 
-                            // Create a query to check the username and password against the adminlogin table
-                            string query = "SELECT COUNT(*) FROM adminlogin WHERE username = @Username AND password = @Password";
 
-                            using (MySqlCommand command = new MySqlCommand(query, connection))
-                            {
-                                command.Parameters.AddWithValue("@Username", username);
-                                command.Parameters.AddWithValue("@Password", password);
+        }
 
-                                // Execute the query and retrieve the result
-                                int result = Convert.ToInt32(command.ExecuteScalar());
+        private bool Authentication(string enteredUsername, string enteredPassword)
+        {
+            try
+            {
+                connection.Open();
 
-<<<<<<< Updated upstream
-                    if (result > 0)
-                    {
-                        this.Hide();
-                        Home1 form_home = new Home1();
-                        form_home.ShowDialog();
-                        this.Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid username or password. Please try again.");
-                    }
+                string query = "SELECT COUNT(*) FROM adminlogin WHERE username = @username AND password = @password;";
+
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@username", enteredUsername);
+                    command.Parameters.AddWithValue("@password", enteredPassword);
+
+                    int count = Convert.ToInt32(command.ExecuteScalar());
+
+                    connection.Close();
+
+                    return count > 0;
                 }
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occurred: " + ex.Message);
+                MessageBox.Show("Error during authentication: " + ex.Message);
+                return false;
             }
-=======
-                                if (result > 0)
-                                {
-                                    Home1 form_home = new Home1();
-                                    form_home.ShowDialog();
-                                    this.Close();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Invalid username or password. Please try again.");
-                                }
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("An error occurred: " + ex.Message);
-                        }*/
-
-            this.Hide();
-            Home1 form_home1 = new Home1();
-            form_home1.ShowDialog();
-            this.Close();
 
         }
 
@@ -100,6 +93,20 @@ namespace SCTAttendanceSystemUI
         private void button1_MouseHover(object sender, EventArgs e)
         {
             button1.BackColor = Color.FromArgb(164, 16, 48);
+        }
+
+        private void showPassword_Click(object sender, EventArgs e)
+        {
+            textBoxPassword.UseSystemPasswordChar = !textBoxPassword.UseSystemPasswordChar;
+            hidePassword.Visible = true;
+
+        }
+
+        private void hidePassword_Click(object sender, EventArgs e)
+        {
+            textBoxPassword.UseSystemPasswordChar = false;
+            hidePassword.Visible = false;
+
         }
     }
 }

@@ -61,8 +61,13 @@ namespace SCTAttendanceSystemUI.Employee
                     }
                     else
                     {
-                        // Handle the case where no match is found
-                        MessageBox.Show("Employee not found.");
+                        ClearDisplayedData();
+                        empStatusLabel.Text = "Employee Not Found!";
+                        empStatusLabel.Location = new Point(40, 20);
+                        StatusPanel.BackColor = Color.FromArgb(242, 205, 10);
+
+                        //empStatusLabel.ForeColor = Color.Red;
+
                     }
                 }
             }
@@ -79,6 +84,8 @@ namespace SCTAttendanceSystemUI.Employee
         private void DisplayEmployeeData(MySqlDataReader reader)
         {
             empNumLabel.Text = reader["employeenum"].ToString();
+            empNumLabel.Location = new Point(100, 19);
+
             empName.Text = reader["name"].ToString();
             occupationLabel.Text = reader["occupation"].ToString();
             departmentLabel.Text = reader["department"].ToString();
@@ -133,7 +140,6 @@ namespace SCTAttendanceSystemUI.Employee
 
             // Reset the status label and color
             empStatusLabel.Text = "";
-            empStatusLabel.BackColor = SystemColors.Control; // Set to the default color
 
             // Reset the tapID label
             tapID.Text = "";
@@ -198,8 +204,8 @@ namespace SCTAttendanceSystemUI.Employee
 
                                     tapID.Text = "";
                                     empStatusLabel.Text = "Time-In";
-                                    empStatusLabel.BackColor = Color.Green;
-
+                                    empStatusLabel.Location = new Point(124, 20);
+                                    StatusPanel.BackColor = Color.Green;
                                     StartDisplayTimer();
                                 }
                             }
@@ -239,8 +245,8 @@ namespace SCTAttendanceSystemUI.Employee
                     if (rowsAffected > 0)
                     {
                         empStatusLabel.Text = "Time-Out";
-                        empStatusLabel.BackColor = Color.Red;
-                        StartDisplayTimer();
+                        empStatusLabel.Location = new Point(124, 20);
+                        StatusPanel.BackColor = Color.Red; StartDisplayTimer();
                     }
                     else
                     {

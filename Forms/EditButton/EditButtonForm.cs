@@ -45,7 +45,6 @@ namespace SCTAttendanceSystemUI.Forms
         public string suffix { get { return suffixNameTB.Text; } set { suffixNameTB.Text = value; } }
         public string gender { get { return genderCMB.Text; } set { genderCMB.Text = value; } }
         public string dob { get { return dobDTP.Text; } set { dobDTP.Text = value; } }
-        public string barangay { get { return barangayCMB.Text; } set { barangayCMB.Text = value; } }
         public string address { get { return addressTB.Text; } set { addressTB.Text = value; } }
         public string province { get { return provinceCMB.Text; } set { provinceCMB.Text = value; } }
         public string city { get { return cityCMB.Text; } set { cityCMB.Text = value; } }
@@ -61,6 +60,8 @@ namespace SCTAttendanceSystemUI.Forms
         public string timeout { get { return timeoutCMB.Text; } set { timeoutCMB.Text = value; } }
         public string jobstatus { get { return statusCMB.Text; } set { statusCMB.Text = value; } }
         public string id { get { return textBox9.Text; } set { textBox9.Text = value; } }
+        public string barangay { get { return barangayCMB.Text; } set { barangayCMB.Text = value; } }
+
 
 
 
@@ -145,7 +146,6 @@ namespace SCTAttendanceSystemUI.Forms
             string mphone = phoneTB.Text.Trim();
             if (!IsValidMobilePhone(mphone))
             {
-                MessageBox.Show("Phone Number must be an 10-digit number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -153,13 +153,13 @@ namespace SCTAttendanceSystemUI.Forms
             string telephone = telNumberTB.Text.Trim();
             if (!IsValidTelephone(telephone))
             {
-                MessageBox.Show("Telephone Number must be an 8-digit number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (string.IsNullOrEmpty(empNumTB.Text) || string.IsNullOrEmpty(firstNameTB.Text) || string.IsNullOrEmpty(initialNameTB.Text) || string.IsNullOrEmpty(lastNameTB.Text)
             || string.IsNullOrEmpty(telNumberTB.Text) || string.IsNullOrEmpty(phoneTB.Text) || string.IsNullOrEmpty(emailTB.Text) || string.IsNullOrEmpty(addressTB.Text) || barangayCMB.SelectedIndex == -1 ||
-            provinceCMB.SelectedIndex == -1 || genderCMB.SelectedIndex == -1 || string.IsNullOrEmpty(postalTB.Text) || profilePictureBox.Image == null || statusCMB.SelectedIndex == -1 || cityCMB.SelectedIndex == -1)
+            provinceCMB.SelectedIndex == -1 || genderCMB.SelectedIndex == -1 || string.IsNullOrEmpty(postalTB.Text) || profilePictureBox.Image == null || statusCMB.SelectedIndex == -1 || cityCMB.SelectedIndex == -1
+             || occupationCMB.SelectedIndex == -1 || departmentCMB.SelectedIndex == -1 || statusCMB.SelectedIndex == -1 || genderCMB.SelectedIndex == -1 || timeinCMB.SelectedIndex == -1 || timeoutCMB.SelectedIndex == -1)
             {
                 MessageBox.Show("Please fill in all the required fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -171,9 +171,9 @@ namespace SCTAttendanceSystemUI.Forms
 
                     // Update employee information using employeenum as a condition
                     string query = "UPDATE employee SET employeenum = @employeenum, occupation = @occupation, department = @department, jobstatus = @jobstatus, " +
-                        "firstname = @firstname, middle = @middlename, lastname = @lastname, suffix = @suffix, homenum = @homenum, " +
-                        "phonenum = @phonenum, email = @email, address = @address, barangay = @barangay, province = @province, " +
-                        "city = @city, postal = @postal, timein = @timein, timeout = @timeout, image_data = @imageData" +
+                        "firstname = @firstname, middle = @middlename, lastname = @lastname, suffix = @suffix, gender = @gender, dob = @dob, homenum = @homenum, " +
+                        "phonenum = @phonenum, email = @email, address = @address, province = @province, " +
+                        "city = @city, barangay = @barangay, postal = @postal, hiredate = @hiredate, timein = @timein, timeout = @timeout, image_data = @imageData" +
                         " WHERE id = @id";
 
                     MySqlCommand command = new MySqlCommand(query, connection);
@@ -183,6 +183,7 @@ namespace SCTAttendanceSystemUI.Forms
 
                     // Add parameters
                     command.Parameters.AddWithValue("@id", textBox9.Text);
+                    command.Parameters.AddWithValue("@employeenum", empNumTB.Text);
                     command.Parameters.AddWithValue("@occupation", occupationCMB.Text);
                     command.Parameters.AddWithValue("@department", departmentCMB.Text);
                     command.Parameters.AddWithValue("@jobstatus", statusCMB.Text);
@@ -190,6 +191,8 @@ namespace SCTAttendanceSystemUI.Forms
                     command.Parameters.AddWithValue("@middlename", middlename);
                     command.Parameters.AddWithValue("@lastname", lastname);
                     command.Parameters.AddWithValue("@suffix", suffixNameTB.Text);
+                    command.Parameters.AddWithValue("@gender", genderCMB.Text);
+                    command.Parameters.AddWithValue("@dob", dobDTP.Value);
                     command.Parameters.AddWithValue("@homenum", telNumberTB.Text);
                     command.Parameters.AddWithValue("@phonenum", phoneTB.Text);
                     command.Parameters.AddWithValue("@email", email);
@@ -198,9 +201,9 @@ namespace SCTAttendanceSystemUI.Forms
                     command.Parameters.AddWithValue("@city", cityCMB.Text);
                     command.Parameters.AddWithValue("@barangay", barangayCMB.Text);
                     command.Parameters.AddWithValue("@postal", postalTB.Text);
+                    command.Parameters.AddWithValue("@hiredate", hireDTP.Value);
                     command.Parameters.AddWithValue("@timein", timeinCMB.Text);  // Include if comboBox6 is a valid field in your form
                     command.Parameters.AddWithValue("@timeout", timeoutCMB.Text);  // Include if comboBox7 is a valid field in your form
-                    command.Parameters.AddWithValue("@employeenum", empNumTB.Text);
                     command.Parameters.AddWithValue("@imageData", imageData);
 
                     // Execute the query
@@ -274,7 +277,6 @@ namespace SCTAttendanceSystemUI.Forms
             if (textBox != null && textBox.Text.Length >= 10 && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true;
-                MessageBox.Show("You can only enter 10 digits.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -290,7 +292,6 @@ namespace SCTAttendanceSystemUI.Forms
             if (textBox != null && textBox.Text.Length >= 8 && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true;
-                MessageBox.Show("You can only enter 8 digits.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -742,9 +743,6 @@ namespace SCTAttendanceSystemUI.Forms
         {
 
             {
-                // Clear existing items in ComboBox2
-                barangayCMB.Items.Clear();
-
                 // Get the selected province from ComboBox1
                 string selectedCity = cityCMB.SelectedItem.ToString();
 
