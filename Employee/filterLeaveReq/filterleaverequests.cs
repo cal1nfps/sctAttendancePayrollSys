@@ -15,7 +15,6 @@ namespace SCTAttendanceSystemUI.Employee.filterLeaveReq
     public partial class filterleaverequests : Form
     {
         private MySqlConnection connection;
-        private MySqlDataAdapter adapter;
         public filterleaverequests()
         {
             InitializeComponent();

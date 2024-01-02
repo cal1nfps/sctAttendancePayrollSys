@@ -19,7 +19,6 @@ namespace SCTAttendanceSystemUI
     public partial class EmployeeLogin : Form
     {
         private MySqlConnection connection;
-        private MySqlDataAdapter adapter;
 
         public EmployeeLogin()
         {

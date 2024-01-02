@@ -15,6 +15,8 @@ using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Text.RegularExpressions;
 using System.Globalization;
+using Xamarin.Essentials;
+
 
 namespace SCTAttendanceSystemUI.Forms
 {
@@ -23,10 +25,28 @@ namespace SCTAttendanceSystemUI.Forms
 
 
         private MySqlConnection connection;
-        private MySqlDataAdapter adapter;
-        private DataTable table;
 
-
+        public string firstname { get { return FirstName.Text; } set { FirstName.Text = value; } }
+        public string middlename { get { return MiddleName.Text; } set { MiddleName.Text = value; } }
+        public string lastname { get { return LastName.Text; } set { LastName.Text = value; } }
+        public string suffix { get { return Suffix.Text; } set { Suffix.Text = value; } }
+        public string gender { get { return Gender.Text; } set { Gender.Text = value; } }
+        public string dob { get { return DateOfBirth.Text; } set { DateOfBirth.Text = value; } }
+        public string address { get { return Address.Text; } set { Address.Text = value; } }
+        public string province { get { return Province.Text; } set { Province.Text = value; } }
+        public string city { get { return cityCMB.Text; } set { cityCMB.Text = value; } }
+        public string postal { get { return PostalCode.Text; } set { PostalCode.Text = value; } }
+        public string phone { get { return phoneNum.Text; } set { phoneNum.Text = value; } }
+        public string telephone { get { return Telephone.Text; } set { Telephone.Text = value; } }
+        public string email { get { return Email.Text; } set { Email.Text = value; } }
+        public string empnum { get { return EmployeeNum.Text; } set { EmployeeNum.Text = value; } }
+        public string hdate { get { return HireDate.Text; } set { HireDate.Text = value; } }
+        public string occupation { get { return Occupation.Text; } set { Occupation.Text = value; } }
+        public string department { get { return Department.Text; } set { Department.Text = value; } }
+        public string timein { get { return TimeIn.Text; } set { TimeIn.Text = value; } }
+        public string timeout { get { return TimeOut.Text; } set { TimeOut.Text = value; } }
+        public string jobstatus { get { return JobStatus.Text; } set { JobStatus.Text = value; } }
+        public string barangay { get { return barangayCMB.Text; } set { barangayCMB.Text = value; } }
 
         public AddEmployeeButtonForm()
         {
@@ -40,12 +60,30 @@ namespace SCTAttendanceSystemUI.Forms
         }
 
 
+
+
         private byte[] ImageToByteArray(Image image)
         {
-            using (MemoryStream memoryStream = new MemoryStream())
+            if (image != null)
             {
-                image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
-                return memoryStream.ToArray();
+                try
+                {
+                    using (MemoryStream memoryStream = new MemoryStream())
+                    {
+                        image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        return memoryStream.ToArray();
+                    }
+                }
+                catch (ArgumentException ex)
+                {
+                    // Handle the case where the image data is not a valid format
+                    MessageBox.Show("Error converting image to byte array: " + ex.Message);
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
             }
         }
 
@@ -160,27 +198,22 @@ namespace SCTAttendanceSystemUI.Forms
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            //UPLOAD AND DISPLAYS IMAGE
+            // UPLOAD AND DISPLAYS IMAGE
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Image Files (*.jpg, *.jpeg, *.png)|*.jpg;*.jpeg;*.png";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string imagePath = openFileDialog.FileName;
-                ProfilePic.Image = Image.FromFile(imagePath);
+
+                // Use System.Drawing.Image for Windows Forms PictureBox
+                Image image = Image.FromFile(imagePath);
 
                 // Set the position of the image within the PictureBox
                 ProfilePic.SizeMode = PictureBoxSizeMode.Zoom;
 
+                ProfilePic.Image = image;
             }
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            //RANDOMIZE NUMBERS FOR EMPLOYEE NUM
-            Random random = new Random();
-            int randomNumber = random.Next(10000, 99999);
-            EmployeeNum.Text = randomNumber.ToString();
         }
 
 
@@ -805,5 +838,65 @@ namespace SCTAttendanceSystemUI.Forms
             }
         }
 
+        private void cameraButton_Click_1(object sender, EventArgs e)
+        {
+            addWebcam webcam = new addWebcam();
+
+            string firstname = FirstName.Text;
+            string middlename = MiddleName.Text;
+            string lastname = LastName.Text;
+            string suffix = Suffix.Text;
+            string gender = Gender.Text;
+            string dob = DateOfBirth.Text;
+            string barangay = barangayCMB.Text;
+            string address = Address.Text;
+            string province = Province.Text;
+            string city = cityCMB.Text;
+            string postal = PostalCode.Text;
+            string phone = phoneNum.Text;
+            string telephone = Telephone.Text;
+            string email = Email.Text;
+            string empnum = EmployeeNum.Text;
+            string hdate = HireDate.Text;
+            string occupation = Occupation.Text;
+            string department = Department.Text;
+            string jobstatus = JobStatus.Text;
+            string timein = TimeIn.Text;
+            string timeout = TimeOut.Text;
+
+
+            //set the public properties of the textboxes on the second form
+            webcam.firstname = firstname;
+            webcam.middlename = middlename;
+            webcam.lastname = lastname;
+            webcam.suffix = suffix;
+            webcam.gender = gender;
+            webcam.dob = dob;
+            webcam.barangay = barangay;
+            webcam.address = address;
+            webcam.province = province;
+            webcam.city = city;
+            webcam.postal = postal;
+            webcam.phone = phone;
+            webcam.telephone = telephone;
+            webcam.email = email;
+            webcam.empnum = empnum;
+            webcam.hdate = hdate;
+            webcam.occupation = occupation;
+            webcam.department = department;
+            webcam.jobstatus = jobstatus;
+            webcam.timein = timein;
+            webcam.timeout = timeout;
+
+            webcam.Show();
+            this.Hide();
+        }
+
+        public void SetCapturedImage(Bitmap capturedImage)
+        {
+            // Set the position of the image within the PictureBox
+            ProfilePic.SizeMode = PictureBoxSizeMode.Zoom;
+            ProfilePic.Image = capturedImage;
+        }
     }
 }

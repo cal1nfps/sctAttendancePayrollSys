@@ -17,8 +17,6 @@ namespace SCTAttendanceSystemUI
     public partial class AdminLogin : Form
     {
         private MySqlConnection connection;
-        private MySqlDataAdapter adapter;
-        private DataTable table;
         public AdminLogin()
         {
             InitializeComponent();

@@ -74,7 +74,7 @@
             Title.BackColor = Color.Transparent;
             Title.Font = new Font("Times New Roman", 35F, FontStyle.Bold, GraphicsUnit.Point);
             Title.ForeColor = Color.White;
-            Title.Location = new Point(1340, 30);
+            Title.Location = new Point(1209, 30);
             Title.Name = "Title";
             Title.Size = new Size(552, 53);
             Title.TabIndex = 27;
@@ -86,7 +86,7 @@
             logo2Label.BackColor = Color.Transparent;
             logo2Label.Font = new Font("Times New Roman", 20F, FontStyle.Bold, GraphicsUnit.Point);
             logo2Label.ForeColor = Color.Transparent;
-            logo2Label.Location = new Point(303, 62);
+            logo2Label.Location = new Point(253, 65);
             logo2Label.Name = "logo2Label";
             logo2Label.Size = new Size(215, 31);
             logo2Label.TabIndex = 26;
@@ -109,7 +109,7 @@
             labelSiena.BackColor = Color.Transparent;
             labelSiena.Font = new Font("Times New Roman", 35F, FontStyle.Bold, GraphicsUnit.Point);
             labelSiena.ForeColor = Color.White;
-            labelSiena.Location = new Point(214, 9);
+            labelSiena.Location = new Point(164, 12);
             labelSiena.Name = "labelSiena";
             labelSiena.Size = new Size(407, 53);
             labelSiena.TabIndex = 3;
@@ -120,6 +120,7 @@
             panelMenu.AutoScroll = true;
             panelMenu.BackColor = Color.FromArgb(164, 16, 48);
             panelMenu.BackgroundImage = (Image)resources.GetObject("panelMenu.BackgroundImage");
+            panelMenu.BorderStyle = BorderStyle.FixedSingle;
             panelMenu.Controls.Add(buttonLogout);
             panelMenu.Controls.Add(buttonPayroll);
             panelMenu.Controls.Add(buttonLeave);
@@ -131,42 +132,47 @@
             panelMenu.Dock = DockStyle.Left;
             panelMenu.Location = new Point(0, 110);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(214, 931);
+            panelMenu.Size = new Size(50, 931);
             panelMenu.TabIndex = 4;
+            panelMenu.MouseEnter += panelMenu_MouseEnter;
+            panelMenu.MouseLeave += panelMenu_MouseLeave;
             // 
             // buttonLogout
             // 
-            buttonLogout.Dock = DockStyle.Top;
+            buttonLogout.Cursor = Cursors.Hand;
+            buttonLogout.Dock = DockStyle.Bottom;
             buttonLogout.FlatAppearance.BorderSize = 0;
             buttonLogout.FlatStyle = FlatStyle.Flat;
             buttonLogout.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonLogout.ForeColor = Color.Gainsboro;
+            buttonLogout.ForeColor = Color.White;
             buttonLogout.Image = Properties.Resources.logout;
             buttonLogout.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonLogout.Location = new Point(0, 447);
+            buttonLogout.Location = new Point(0, 864);
             buttonLogout.Name = "buttonLogout";
             buttonLogout.Padding = new Padding(10, 0, 0, 0);
-            buttonLogout.Size = new Size(214, 65);
+            buttonLogout.Size = new Size(48, 65);
             buttonLogout.TabIndex = 25;
             buttonLogout.Text = "     LOGOUT";
             buttonLogout.TextAlign = ContentAlignment.MiddleLeft;
             buttonLogout.TextImageRelation = TextImageRelation.ImageBeforeText;
             buttonLogout.UseVisualStyleBackColor = true;
             buttonLogout.Click += buttonLogout_Click;
+            buttonLogout.MouseEnter += buttonLogout_MouseEnter;
             // 
             // buttonPayroll
             // 
+            buttonPayroll.Cursor = Cursors.Hand;
             buttonPayroll.Dock = DockStyle.Top;
             buttonPayroll.FlatAppearance.BorderSize = 0;
             buttonPayroll.FlatStyle = FlatStyle.Flat;
             buttonPayroll.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonPayroll.ForeColor = Color.Gainsboro;
+            buttonPayroll.ForeColor = Color.White;
             buttonPayroll.Image = Properties.Resources.payroll;
             buttonPayroll.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonPayroll.Location = new Point(0, 382);
+            buttonPayroll.Location = new Point(0, 390);
             buttonPayroll.Name = "buttonPayroll";
             buttonPayroll.Padding = new Padding(10, 0, 0, 0);
-            buttonPayroll.Size = new Size(214, 65);
+            buttonPayroll.Size = new Size(48, 65);
             buttonPayroll.TabIndex = 25;
             buttonPayroll.Text = "     PAYROLL";
             buttonPayroll.TextAlign = ContentAlignment.MiddleLeft;
@@ -177,17 +183,18 @@
             // 
             // buttonLeave
             // 
+            buttonLeave.Cursor = Cursors.Hand;
             buttonLeave.Dock = DockStyle.Top;
             buttonLeave.FlatAppearance.BorderSize = 0;
             buttonLeave.FlatStyle = FlatStyle.Flat;
             buttonLeave.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonLeave.ForeColor = Color.Gainsboro;
+            buttonLeave.ForeColor = Color.White;
             buttonLeave.Image = Properties.Resources.leave;
             buttonLeave.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonLeave.Location = new Point(0, 317);
+            buttonLeave.Location = new Point(0, 325);
             buttonLeave.Name = "buttonLeave";
             buttonLeave.Padding = new Padding(10, 0, 0, 0);
-            buttonLeave.Size = new Size(214, 65);
+            buttonLeave.Size = new Size(48, 65);
             buttonLeave.TabIndex = 25;
             buttonLeave.Text = "     LEAVE";
             buttonLeave.TextAlign = ContentAlignment.MiddleLeft;
@@ -198,59 +205,65 @@
             // 
             // buttonAbsentees
             // 
+            buttonAbsentees.Cursor = Cursors.Hand;
             buttonAbsentees.Dock = DockStyle.Top;
             buttonAbsentees.FlatAppearance.BorderSize = 0;
             buttonAbsentees.FlatStyle = FlatStyle.Flat;
             buttonAbsentees.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonAbsentees.ForeColor = Color.Gainsboro;
+            buttonAbsentees.ForeColor = Color.White;
             buttonAbsentees.Image = Properties.Resources.absentees;
             buttonAbsentees.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonAbsentees.Location = new Point(0, 252);
+            buttonAbsentees.Location = new Point(0, 260);
             buttonAbsentees.Name = "buttonAbsentees";
             buttonAbsentees.Padding = new Padding(10, 0, 0, 0);
-            buttonAbsentees.Size = new Size(214, 65);
+            buttonAbsentees.Size = new Size(48, 65);
             buttonAbsentees.TabIndex = 25;
             buttonAbsentees.Text = "     ABSENTEES";
             buttonAbsentees.TextAlign = ContentAlignment.MiddleLeft;
             buttonAbsentees.TextImageRelation = TextImageRelation.ImageBeforeText;
             buttonAbsentees.UseVisualStyleBackColor = true;
             buttonAbsentees.Click += buttonAbsentees_Click_1;
+            buttonAbsentees.MouseEnter += buttonAbsentees_MouseEnter;
             // 
             // buttonEmployeeList
             // 
+            buttonEmployeeList.Cursor = Cursors.Hand;
             buttonEmployeeList.Dock = DockStyle.Top;
             buttonEmployeeList.FlatAppearance.BorderSize = 0;
             buttonEmployeeList.FlatStyle = FlatStyle.Flat;
             buttonEmployeeList.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonEmployeeList.ForeColor = Color.Gainsboro;
+            buttonEmployeeList.ForeColor = Color.White;
             buttonEmployeeList.Image = Properties.Resources.employees;
             buttonEmployeeList.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonEmployeeList.Location = new Point(0, 187);
+            buttonEmployeeList.Location = new Point(0, 195);
             buttonEmployeeList.Name = "buttonEmployeeList";
             buttonEmployeeList.Padding = new Padding(10, 0, 10, 0);
-            buttonEmployeeList.Size = new Size(214, 65);
+            buttonEmployeeList.Size = new Size(48, 65);
             buttonEmployeeList.TabIndex = 25;
             buttonEmployeeList.Text = "    EMPLOYEE LIST";
             buttonEmployeeList.UseVisualStyleBackColor = true;
             buttonEmployeeList.Click += buttonEmployeeList_Click;
+            buttonEmployeeList.MouseEnter += buttonEmployeeList_MouseEnter;
             // 
             // buttonDepartment
             // 
+            buttonDepartment.Cursor = Cursors.Hand;
             buttonDepartment.Dock = DockStyle.Top;
             buttonDepartment.FlatAppearance.BorderSize = 0;
             buttonDepartment.FlatStyle = FlatStyle.Flat;
             buttonDepartment.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonDepartment.ForeColor = Color.Gainsboro;
+            buttonDepartment.ForeColor = Color.White;
             buttonDepartment.Image = Properties.Resources.department;
             buttonDepartment.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonDepartment.Location = new Point(0, 122);
+            buttonDepartment.Location = new Point(0, 130);
             buttonDepartment.Name = "buttonDepartment";
             buttonDepartment.Padding = new Padding(10, 0, 0, 0);
-            buttonDepartment.Size = new Size(214, 65);
+            buttonDepartment.Size = new Size(48, 65);
             buttonDepartment.TabIndex = 25;
             buttonDepartment.Text = "DEPARTMENTS";
             buttonDepartment.UseVisualStyleBackColor = true;
             buttonDepartment.Click += buttonDepartment_Click_1;
+            buttonDepartment.MouseEnter += buttonDepartment_MouseEnter;
             // 
             // buttonAttendance
             // 
@@ -259,44 +272,46 @@
             buttonAttendance.FlatAppearance.BorderSize = 0;
             buttonAttendance.FlatStyle = FlatStyle.Flat;
             buttonAttendance.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonAttendance.ForeColor = Color.Gainsboro;
+            buttonAttendance.ForeColor = Color.White;
             buttonAttendance.Image = Properties.Resources.dashboard;
             buttonAttendance.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonAttendance.Location = new Point(0, 57);
+            buttonAttendance.Location = new Point(0, 65);
             buttonAttendance.Name = "buttonAttendance";
             buttonAttendance.Padding = new Padding(10, 0, 0, 0);
-            buttonAttendance.Size = new Size(214, 65);
+            buttonAttendance.Size = new Size(48, 65);
             buttonAttendance.TabIndex = 25;
             buttonAttendance.Text = "     ATTENDANCE";
             buttonAttendance.TextAlign = ContentAlignment.MiddleLeft;
             buttonAttendance.TextImageRelation = TextImageRelation.ImageBeforeText;
             buttonAttendance.UseVisualStyleBackColor = true;
             buttonAttendance.Click += buttonAttendance_Click_1;
+            buttonAttendance.MouseEnter += buttonAttendance_MouseEnter;
             // 
             // labelMenu
             // 
-            labelMenu.AutoSize = true;
             labelMenu.Dock = DockStyle.Top;
-            labelMenu.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            labelMenu.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
             labelMenu.ForeColor = Color.White;
+            labelMenu.Image = (Image)resources.GetObject("labelMenu.Image");
+            labelMenu.ImageAlign = ContentAlignment.MiddleLeft;
             labelMenu.Location = new Point(0, 0);
             labelMenu.Name = "labelMenu";
-            labelMenu.Padding = new Padding(60, 10, 0, 10);
-            labelMenu.Size = new Size(158, 57);
+            labelMenu.Padding = new Padding(10, 0, 0, 0);
+            labelMenu.Size = new Size(48, 65);
             labelMenu.TabIndex = 25;
-            labelMenu.Text = "MENU";
-            labelMenu.TextAlign = ContentAlignment.TopCenter;
+            labelMenu.TextAlign = ContentAlignment.MiddleCenter;
+            labelMenu.MouseEnter += labelMenu_MouseEnter;
             // 
             // panelDesktopPane
             // 
             panelDesktopPane.AutoScroll = true;
             panelDesktopPane.BorderStyle = BorderStyle.FixedSingle;
             panelDesktopPane.Dock = DockStyle.Fill;
-            panelDesktopPane.Location = new Point(214, 110);
+            panelDesktopPane.Location = new Point(50, 110);
             panelDesktopPane.MaximumSize = new Size(1920, 1080);
             panelDesktopPane.MinimumSize = new Size(1454, 712);
             panelDesktopPane.Name = "panelDesktopPane";
-            panelDesktopPane.Size = new Size(1690, 931);
+            panelDesktopPane.Size = new Size(1854, 931);
             panelDesktopPane.TabIndex = 5;
             // 
             // tableLayoutPanel2
@@ -364,7 +379,6 @@
             panelHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
             panelMenu.ResumeLayout(false);
-            panelMenu.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);

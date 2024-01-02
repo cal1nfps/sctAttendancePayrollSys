@@ -18,7 +18,6 @@ namespace SCTAttendanceSystemUI.Forms.PayRoll
     public partial class FormPayroll2 : Form
     {
         private MySqlConnection connection;
-        private MySqlDataAdapter adapter;
         private string employeeNumber;
         private string selectedMonth;
         public FormPayroll2(string empNumber, string month)

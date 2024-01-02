@@ -17,11 +17,9 @@ namespace SCTAttendanceSystemUI.Forms
     {
         private Button currentButton;
         private Random random;
-        private int tempIndex;
         private Form activeForm;
         private MySqlConnection connection;
-        private MySqlDataAdapter adapter;
-        private DataTable table;
+
 
         public FormDepartment()
         {

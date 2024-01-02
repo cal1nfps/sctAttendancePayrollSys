@@ -31,7 +31,6 @@ namespace SCTAttendanceSystemUI.Forms.AddLeaveButton
         private string transferredData10;
         private string transferredData11;
         private MySqlConnection connection;
-        private MySqlDataAdapter adapter;
 
 
         public AddLeaveButtonForm(string empnum, string firstname, string middlename, string lastname, string suffix, string dep, string occupation, string jobstatus, string start, string end, string leavestatus)

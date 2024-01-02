@@ -22,8 +22,7 @@ namespace SCTAttendanceSystemUI.Forms
     public partial class FormSettings : Form
     {
         private MySqlConnection connection;
-        private MySqlDataAdapter adapter;
-        private DataTable table;
+
         public FormSettings()
         {
             InitializeComponent();

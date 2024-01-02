@@ -343,10 +343,10 @@ namespace SCTAttendanceSystemUI.Forms
             if (result == DialogResult.OK)
             {
                 // Get the selected values from the comboboxes in the second form
-                string occupation = filterForm.filterComboBox.SelectedItem?.ToString();
-                string department = filterForm.comboBox2.SelectedItem?.ToString();
-                string gender = filterForm.comboBox1.SelectedItem?.ToString();
-                string jobstatus = filterForm.comboBox3.SelectedItem?.ToString();
+                string occupation = filterForm.occupationCMB.SelectedItem?.ToString();
+                string department = filterForm.depCMB.SelectedItem?.ToString();
+                string gender = filterForm.genderCMB.SelectedItem?.ToString();
+                string jobstatus = filterForm.jobStatusCMB.SelectedItem?.ToString();
 
                 // Check if at least one combobox is selected
                 if (string.IsNullOrWhiteSpace(occupation) && string.IsNullOrWhiteSpace(department) && string.IsNullOrWhiteSpace(gender) && string.IsNullOrWhiteSpace(jobstatus))

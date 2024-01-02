@@ -16,6 +16,17 @@ namespace SCTAttendanceSystemUI.Forms.filterButton
         public filterForm()
         {
             InitializeComponent();
+
+            occupationCMB.KeyPress += ComboBox_KeyPress;
+            depCMB.KeyPress += ComboBox_KeyPress;
+            jobStatusCMB.KeyPress += ComboBox_KeyPress;
+            genderCMB.KeyPress += ComboBox_KeyPress;
+        }
+
+        private void ComboBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Block any keypress event to prevent user input in the comboboxes
+            e.Handled = true;
         }
 
         private void cancelButton_Click(object sender, EventArgs e)

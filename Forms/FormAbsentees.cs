@@ -183,9 +183,9 @@ namespace SCTAttendanceSystemUI.Forms
                 if (result == DialogResult.OK)
                 {
                     // Get the selected values from the comboboxes in the second form
-                    string occupation = filterForm.filterComboBox.SelectedItem?.ToString();
-                    string department = filterForm.comboBox2.SelectedItem?.ToString();
-                    string jobstatus = filterForm.comboBox3.SelectedItem?.ToString();
+                    string occupation = filterForm.occupationCMB.SelectedItem?.ToString();
+                    string department = filterForm.depCMB.SelectedItem?.ToString();
+                    string jobstatus = filterForm.jobStatusCMB.SelectedItem?.ToString();
 
 
 

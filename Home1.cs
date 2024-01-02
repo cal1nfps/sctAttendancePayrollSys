@@ -18,11 +18,53 @@ namespace SCTAttendanceSystemUI
         private int tempIndex;
         private Form activeForm = null;
 
+        private bool isSideMenuExpanded = false;
+
         public Home1()
         {
             InitializeComponent();
             customizeDesign();
             random = new Random();
+
+            InitializeControls();
+
+        }
+
+        private void InitializeControls()
+        {
+            // Create a Panel for the side menu
+            panelMenu.Size = new System.Drawing.Size(50, this.ClientRectangle.Height); // Initial width (collapsed state)
+            panelMenu.MouseEnter += panelMenu_MouseEnter;
+            panelMenu.MouseLeave += panelMenu_MouseLeave;
+
+            labelMenu.MouseEnter += labelMenu_MouseEnter;
+
+            buttonAttendance.MouseEnter += buttonAttendance_MouseEnter;
+
+            buttonDepartment.MouseEnter += buttonDepartment_MouseEnter;
+
+            buttonEmployeeList.MouseEnter += buttonEmployeeList_MouseEnter;
+
+            buttonAbsentees.MouseEnter += buttonAbsentees_MouseEnter;
+
+            buttonLogout.MouseEnter += buttonLogout_MouseEnter;
+
+
+            labelMenu.Text = string.Empty; // Set the text to empty or any other desired value
+            buttonAttendance.Text = string.Empty; // Set the text to empty or any other desired value
+            buttonDepartment.Text = string.Empty; // Set the text to empty or any other desired value
+            buttonEmployeeList.Text = string.Empty; // Set the text to empty or any other desired value
+            buttonAbsentees.Text = string.Empty; // Set the text to empty or any other desired value
+            buttonLogout.Text = string.Empty; // Set the text to empty or any other desired value
+
+
+
+
+            // Add controls to the side menu (e.g., buttons, labels, etc.)
+            // ...
+
+            // Create other controls on your form
+            // ...
         }
 
         private void customizeDesign()
@@ -586,6 +628,149 @@ namespace SCTAttendanceSystemUI
                 WelcomePage form_home1 = new WelcomePage();
                 form_home1.ShowDialog();
                 this.Close();
+            }
+        }
+
+        private void panelMenu_MouseEnter(object sender, EventArgs e)
+        {
+
+            // Expand the side menu when the cursor enters
+            if (!isSideMenuExpanded)
+            {
+                panelMenu.Width = 214; // Adjust the expanded width as needed
+                isSideMenuExpanded = true;
+
+                labelMenu.Text = "MENU"; // Set the text to empty or any other desired value
+                buttonAttendance.Text = "ATTENDANCE"; // Set the text to empty or any other desired value
+                buttonDepartment.Text = "DEPARTMENT"; // Set the text to empty or any other desired value
+                buttonEmployeeList.Text = "EMPLOYEE LIST"; // Set the text to empty or any other desired value
+                buttonAbsentees.Text = "ABSENTEES"; // Set the text to empty or any other desired value
+                buttonLogout.Text = "LOGOUT"; // Set the text to empty or any other desired value
+
+            }
+
+        }
+
+        private void panelMenu_MouseLeave(object sender, EventArgs e)
+        {
+
+            // Collapse the side menu when the cursor leaves
+            if (isSideMenuExpanded)
+            {
+                panelMenu.Width = 50; // Adjust the collapsed width as needed
+                isSideMenuExpanded = false;
+
+                labelMenu.Text = string.Empty; // Set the text to empty or any other desired value
+                buttonAttendance.Text = string.Empty; // Set the text to empty or any other desired value
+                buttonDepartment.Text = string.Empty; // Set the text to empty or any other desired value
+                buttonEmployeeList.Text = string.Empty; // Set the text to empty or any other desired value
+                buttonAbsentees.Text = string.Empty; // Set the text to empty or any other desired value
+                buttonLogout.Text = string.Empty; // Set the text to empty or any other desired value
+
+            }
+        }
+
+        private void buttonAttendance_MouseEnter(object sender, EventArgs e)
+        {
+            // Expand the side menu when the cursor enters
+            if (!isSideMenuExpanded)
+            {
+                panelMenu.Width = 214; // Adjust the expanded width as needed
+                isSideMenuExpanded = true;
+
+                labelMenu.Text = "MENU"; // Set the text to empty or any other desired value
+                buttonAttendance.Text = "ATTENDANCE"; // Set the text to empty or any other desired value
+                buttonDepartment.Text = "DEPARTMENT"; // Set the text to empty or any other desired value
+                buttonEmployeeList.Text = "EMPLOYEE LIST"; // Set the text to empty or any other desired value
+                buttonAbsentees.Text = "ABSENTEES"; // Set the text to empty or any other desired value
+                buttonLogout.Text = "LOGOUT"; // Set the text to empty or any other desired value
+            }
+        }
+
+        private void buttonDepartment_MouseEnter(object sender, EventArgs e)
+        {
+            // Expand the side menu when the cursor enters
+            if (!isSideMenuExpanded)
+            {
+                panelMenu.Width = 214; // Adjust the expanded width as needed
+                isSideMenuExpanded = true;
+
+                labelMenu.Text = "MENU"; // Set the text to empty or any other desired value
+                buttonAttendance.Text = "ATTENDANCE"; // Set the text to empty or any other desired value
+                buttonDepartment.Text = "DEPARTMENT"; // Set the text to empty or any other desired value
+                buttonEmployeeList.Text = "EMPLOYEE LIST"; // Set the text to empty or any other desired value
+                buttonAbsentees.Text = "ABSENTEES"; // Set the text to empty or any other desired value
+                buttonLogout.Text = "LOGOUT"; // Set the text to empty or any other desired value
+
+            }
+        }
+
+        private void buttonEmployeeList_MouseEnter(object sender, EventArgs e)
+        {
+            // Expand the side menu when the cursor enters
+            if (!isSideMenuExpanded)
+            {
+                panelMenu.Width = 214; // Adjust the expanded width as needed
+                isSideMenuExpanded = true;
+
+                labelMenu.Text = "MENU"; // Set the text to empty or any other desired value
+                buttonAttendance.Text = "ATTENDANCE"; // Set the text to empty or any other desired value
+                buttonDepartment.Text = "DEPARTMENT"; // Set the text to empty or any other desired value
+                buttonEmployeeList.Text = "EMPLOYEE LIST"; // Set the text to empty or any other desired value
+                buttonAbsentees.Text = "ABSENTEES"; // Set the text to empty or any other desired value
+                buttonLogout.Text = "LOGOUT"; // Set the text to empty or any other desired value
+
+            }
+        }
+
+        private void buttonAbsentees_MouseEnter(object sender, EventArgs e)
+        {
+            // Expand the side menu when the cursor enters
+            if (!isSideMenuExpanded)
+            {
+                panelMenu.Width = 214; // Adjust the expanded width as needed
+                isSideMenuExpanded = true;
+
+                labelMenu.Text = "MENU"; // Set the text to empty or any other desired value
+                buttonAttendance.Text = "ATTENDANCE"; // Set the text to empty or any other desired value
+                buttonDepartment.Text = "DEPARTMENT"; // Set the text to empty or any other desired value
+                buttonEmployeeList.Text = "EMPLOYEE LIST"; // Set the text to empty or any other desired value
+                buttonAbsentees.Text = "ABSENTEES"; // Set the text to empty or any other desired value
+                buttonLogout.Text = "LOGOUT"; // Set the text to empty or any other desired value
+            }
+        }
+
+        private void buttonLogout_MouseEnter(object sender, EventArgs e)
+        {
+            // Expand the side menu when the cursor enters
+            if (!isSideMenuExpanded)
+            {
+                panelMenu.Width = 214; // Adjust the expanded width as needed
+                isSideMenuExpanded = true;
+
+                labelMenu.Text = "MENU"; // Set the text to empty or any other desired value
+                buttonAttendance.Text = "ATTENDANCE"; // Set the text to empty or any other desired value
+                buttonDepartment.Text = "DEPARTMENT"; // Set the text to empty or any other desired value
+                buttonEmployeeList.Text = "EMPLOYEE LIST"; // Set the text to empty or any other desired value
+                buttonAbsentees.Text = "ABSENTEES"; // Set the text to empty or any other desired value
+                buttonLogout.Text = "LOGOUT"; // Set the text to empty or any other desired value
+            }
+        }
+
+        private void labelMenu_MouseEnter(object sender, EventArgs e)
+        {
+            // Expand the side menu when the cursor enters
+            if (!isSideMenuExpanded)
+            {
+                panelMenu.Width = 214; // Adjust the expanded width as needed
+                isSideMenuExpanded = true;
+
+                labelMenu.Text = "MENU"; // Set the text to empty or any other desired value
+                buttonAttendance.Text = "ATTENDANCE"; // Set the text to empty or any other desired value
+                buttonDepartment.Text = "DEPARTMENT"; // Set the text to empty or any other desired value
+                buttonEmployeeList.Text = "EMPLOYEE LIST"; // Set the text to empty or any other desired value
+                buttonAbsentees.Text = "ABSENTEES"; // Set the text to empty or any other desired value
+                buttonLogout.Text = "LOGOUT"; // Set the text to empty or any other desired value
             }
         }
     }

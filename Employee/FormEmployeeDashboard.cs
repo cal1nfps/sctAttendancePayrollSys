@@ -18,7 +18,6 @@ namespace SCTAttendanceSystemUI.Employee
     public partial class FormEmployeeDashboard : Form
     {
         private MySqlConnection connection;
-        private MySqlDataAdapter adapter;
 
 
         //private string name;
@@ -34,6 +33,32 @@ namespace SCTAttendanceSystemUI.Employee
 
             string empNum = empNumLabel.Text;
             string status = empStatusLabel.Text;
+
+
+            InitializeControls();
+
+        }
+
+        private void InitializeControls()
+        {
+
+/*            // Create a PictureBox and set its properties
+            PictureBox pictureBox = employeePB;
+            employeePB.Dock = DockStyle.Fill; // Dock the PictureBox to fill the Panel
+            employeePB.SizeMode = PictureBoxSizeMode.StretchImage; // Set the size mode as needed
+
+            // Add the PictureBox to the Panel
+            panelPB.Controls.Add(employeePB);
+
+            // Set the border radius of the Panel (creating a rounded border effect)
+            int borderRadius = 400; // Adjust the value based on your preference
+            System.Drawing.Drawing2D.GraphicsPath panelPath = new System.Drawing.Drawing2D.GraphicsPath();
+            panelPath.AddArc(0, 0, borderRadius, borderRadius, 180, 90);
+            panelPath.AddArc(panelPB.Width - borderRadius, 0, borderRadius, borderRadius, 270, 90);
+            panelPath.AddArc(panelPB.Width - borderRadius, panelPB.Height - borderRadius, borderRadius, borderRadius, 0, 90);
+            panelPath.AddArc(0, panelPB.Height - borderRadius, borderRadius, borderRadius, 90, 90);
+            panelPath.CloseFigure();
+            panelPB.Region = new System.Drawing.Region(panelPath);*/
 
         }
 
@@ -108,8 +133,9 @@ namespace SCTAttendanceSystemUI.Employee
         {
             // Create and configure the timer
             displayTimer = new System.Windows.Forms.Timer();
-            displayTimer.Interval = 10000; // 10 seconds
+            displayTimer.Interval = 5000; // 5 seconds
             displayTimer.Tick += DisplayTimer_Tick;
+
 
             // Start the timer
             displayTimer.Start();
@@ -127,10 +153,12 @@ namespace SCTAttendanceSystemUI.Employee
         private void ClearDisplayedData()
         {
             // Clear or hide the displayed data on your form
-            empNumLabel.Text = "";
-            empName.Text = "";
-            occupationLabel.Text = "";
-            departmentLabel.Text = "";
+            empNumLabel.Text = "EMPLOYEE NUMBER";
+            empNumLabel.Location = new Point(20, 19);
+
+            empName.Text = "NAME";
+            occupationLabel.Text = "OCCUPATION";
+            departmentLabel.Text = "DEPARTMENT";
             employeePB.Image = null; // Clear the image
 
             // Additional clearing code as needed
@@ -139,7 +167,8 @@ namespace SCTAttendanceSystemUI.Employee
             // TimeOut();
 
             // Reset the status label and color
-            empStatusLabel.Text = "";
+            empStatusLabel.Text = "STATUS";
+            StatusPanel.BackColor = Color.FromArgb(242, 205, 10);
 
             // Reset the tapID label
             tapID.Text = "";
@@ -246,7 +275,8 @@ namespace SCTAttendanceSystemUI.Employee
                     {
                         empStatusLabel.Text = "Time-Out";
                         empStatusLabel.Location = new Point(124, 20);
-                        StatusPanel.BackColor = Color.Red; StartDisplayTimer();
+                        StatusPanel.BackColor = Color.Red; 
+                        StartDisplayTimer();
                     }
                     else
                     {
@@ -283,6 +313,21 @@ namespace SCTAttendanceSystemUI.Employee
             form_form1.ShowDialog();
             this.Close();
         }
+
+        private void ToggleMaximizeRestore()
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                // If currently Maximized, restore to Normal
+                this.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                // If currently Normal, maximize the window
+                this.WindowState = FormWindowState.Maximized;
+            }
+        }
+
     }
 
 }

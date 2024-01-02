@@ -6,7 +6,6 @@ namespace SCTAttendanceSystemUI
     public partial class WelcomePage : Form
     {
 
-        string username, password;
 
 
         public WelcomePage()

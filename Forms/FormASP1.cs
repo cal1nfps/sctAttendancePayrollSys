@@ -16,12 +16,8 @@ namespace SCTAttendanceSystemUI.Forms
     public partial class FormASP1 : Form
     {
         private Button currentButton;
-        private Random random;
-        private int tempIndex;
         private Form activeForm;
         private MySqlConnection connection;
-        private MySqlDataAdapter adapter;
-        private DataTable table;
 
         public FormASP1()
         {
@@ -149,8 +145,8 @@ namespace SCTAttendanceSystemUI.Forms
             if (result == DialogResult.OK)
             {
                 // Get the selected values from the comboboxes in the second form
-                string occupation = filterForm.filterComboBox.SelectedItem?.ToString();
-                string jobstatus = filterForm.comboBox3.SelectedItem?.ToString();
+                string occupation = filterForm.occupationCMB.SelectedItem?.ToString();
+                string jobstatus = filterForm.jobStatusCMB.SelectedItem?.ToString();
 
 
 
@@ -257,8 +253,8 @@ namespace SCTAttendanceSystemUI.Forms
             if (result == DialogResult.OK)
             {
                 // Get the selected values from the comboboxes in the second form
-                string occupation = filterForm.filterComboBox.SelectedItem?.ToString();
-                string jobstatus = filterForm.comboBox3.SelectedItem?.ToString();
+                string occupation = filterForm.occupationCMB.SelectedItem?.ToString();
+                string jobstatus = filterForm.jobStatusCMB.SelectedItem?.ToString();
 
 
 

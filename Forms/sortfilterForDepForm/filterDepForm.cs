@@ -17,13 +17,21 @@ namespace SCTAttendanceSystemUI.Forms.sortfilterForDepForm
         private DataGridView dataGridView;
 
         private MySqlConnection connection;
-        private MySqlDataAdapter adapter;
         public filterDepForm(DataGridView dataGridView)
         {
             InitializeComponent();
             string connectionString = "server=localhost;user=root;password=root;database=payrollsys";
             connection = new MySqlConnection(connectionString);
             this.dataGridView = dataGridView;
+
+            occupationCMB.KeyPress += ComboBox_KeyPress;
+            jobStatusCMB.KeyPress += ComboBox_KeyPress;
+        }
+
+        private void ComboBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Block any keypress event to prevent user input in the comboboxes
+            e.Handled = true;
         }
 
         private void button1_Click(object sender, EventArgs e)

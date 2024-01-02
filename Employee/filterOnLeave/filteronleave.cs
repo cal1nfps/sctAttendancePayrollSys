@@ -15,7 +15,6 @@ namespace SCTAttendanceSystemUI.Employee.filterOnLeave
     public partial class filteronleave : Form
     {
         private MySqlConnection connection;
-        private MySqlDataAdapter adapter;
         public filteronleave()
         {
             InitializeComponent();

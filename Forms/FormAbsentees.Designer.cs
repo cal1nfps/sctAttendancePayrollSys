@@ -33,7 +33,7 @@
             labelAbsenteesDate = new Label();
             dataGridViewAbsentees = new DataGridView();
             searchBox = new TextBox();
-            button4 = new Button();
+            filterButton = new Button();
             button2 = new Button();
             deleteButton = new Button();
             clearLabel = new Label();
@@ -95,24 +95,24 @@
             searchBox.TabIndex = 1;
             searchBox.TextChanged += searchBox_TextChanged;
             // 
-            // button4
+            // filterButton
             // 
-            button4.BackColor = Color.FromArgb(219, 20, 62);
-            button4.Cursor = Cursors.Hand;
-            button4.FlatAppearance.BorderSize = 0;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.Location = new Point(354, 89);
-            button4.Name = "button4";
-            button4.Padding = new Padding(10, 0, 0, 0);
-            button4.Size = new Size(47, 32);
-            button4.TabIndex = 74;
-            button4.TextAlign = ContentAlignment.MiddleLeft;
-            button4.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button4.UseVisualStyleBackColor = false;
-            button4.Click += button4_Click;
+            filterButton.BackColor = Color.FromArgb(219, 20, 62);
+            filterButton.Cursor = Cursors.Hand;
+            filterButton.FlatAppearance.BorderSize = 0;
+            filterButton.FlatStyle = FlatStyle.Flat;
+            filterButton.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            filterButton.Image = (Image)resources.GetObject("filterButton.Image");
+            filterButton.ImageAlign = ContentAlignment.MiddleLeft;
+            filterButton.Location = new Point(354, 89);
+            filterButton.Name = "filterButton";
+            filterButton.Padding = new Padding(10, 0, 0, 0);
+            filterButton.Size = new Size(47, 32);
+            filterButton.TabIndex = 74;
+            filterButton.TextAlign = ContentAlignment.MiddleLeft;
+            filterButton.TextImageRelation = TextImageRelation.ImageBeforeText;
+            filterButton.UseVisualStyleBackColor = false;
+            filterButton.Click += button4_Click;
             // 
             // button2
             // 
@@ -179,7 +179,7 @@
             Controls.Add(clearLabel);
             Controls.Add(deleteButton);
             Controls.Add(button2);
-            Controls.Add(button4);
+            Controls.Add(filterButton);
             Controls.Add(searchBox);
             Controls.Add(dataGridViewAbsentees);
             Controls.Add(labelAbsenteesDate);
@@ -202,7 +202,7 @@
         private Label labelAbsenteesDate;
         private DataGridView dataGridViewAbsentees;
         private TextBox searchBox;
-        private Button button4;
+        private Button filterButton;
         private Button button2;
         private Button deleteButton;
         private Label clearLabel;

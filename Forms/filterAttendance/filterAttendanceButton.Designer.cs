@@ -30,14 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(filterAttendanceButton));
             panel1 = new Panel();
-            comboBox4 = new ComboBox();
-            comboBox3 = new ComboBox();
-            button2 = new Button();
+            yearCMB = new ComboBox();
+            jobStatusCMB = new ComboBox();
+            clearButton = new Button();
             panel4 = new Panel();
             panel2 = new Panel();
-            comboBox2 = new ComboBox();
-            button1 = new Button();
-            filterComboBox = new ComboBox();
+            depCMB = new ComboBox();
+            applyButton = new Button();
+            occupationCMB = new ComboBox();
             cancelButton = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -46,14 +46,14 @@
             // 
             panel1.BackColor = Color.White;
             panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(comboBox4);
-            panel1.Controls.Add(comboBox3);
-            panel1.Controls.Add(button2);
+            panel1.Controls.Add(yearCMB);
+            panel1.Controls.Add(jobStatusCMB);
+            panel1.Controls.Add(clearButton);
             panel1.Controls.Add(panel4);
             panel1.Controls.Add(panel2);
-            panel1.Controls.Add(comboBox2);
-            panel1.Controls.Add(button1);
-            panel1.Controls.Add(filterComboBox);
+            panel1.Controls.Add(depCMB);
+            panel1.Controls.Add(applyButton);
+            panel1.Controls.Add(occupationCMB);
             panel1.Controls.Add(cancelButton);
             panel1.Location = new Point(2, 1);
             panel1.Name = "panel1";
@@ -61,54 +61,55 @@
             panel1.TabIndex = 8;
             panel1.Paint += panel1_Paint;
             // 
-            // comboBox4
+            // yearCMB
             // 
-            comboBox4.BackColor = Color.WhiteSmoke;
-            comboBox4.Cursor = Cursors.Hand;
-            comboBox4.FlatStyle = FlatStyle.Flat;
-            comboBox4.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Items.AddRange(new object[] { "None", "2023", "2022", "2021", "2020", "2019" });
-            comboBox4.Location = new Point(36, 168);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(142, 23);
-            comboBox4.TabIndex = 71;
-            comboBox4.Text = "YEAR";
-            comboBox4.SelectedIndexChanged += comboBox4_SelectedIndexChanged;
+            yearCMB.BackColor = Color.WhiteSmoke;
+            yearCMB.Cursor = Cursors.Hand;
+            yearCMB.FlatStyle = FlatStyle.Flat;
+            yearCMB.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            yearCMB.FormattingEnabled = true;
+            yearCMB.Items.AddRange(new object[] { "None", "2023", "2022", "2021", "2020", "2019" });
+            yearCMB.Location = new Point(36, 168);
+            yearCMB.Name = "yearCMB";
+            yearCMB.Size = new Size(142, 23);
+            yearCMB.TabIndex = 71;
+            yearCMB.Text = "YEAR";
+            yearCMB.SelectedIndexChanged += comboBox4_SelectedIndexChanged;
             // 
-            // comboBox3
+            // jobStatusCMB
             // 
-            comboBox3.BackColor = Color.WhiteSmoke;
-            comboBox3.Cursor = Cursors.Hand;
-            comboBox3.FlatStyle = FlatStyle.Flat;
-            comboBox3.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Items.AddRange(new object[] { "FULL-TIME", "PART-TIME" });
-            comboBox3.Location = new Point(36, 139);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(142, 23);
-            comboBox3.TabIndex = 70;
-            comboBox3.Text = "JOB STATUS";
-            comboBox3.SelectedIndexChanged += comboBox3_SelectedIndexChanged;
+            jobStatusCMB.BackColor = Color.WhiteSmoke;
+            jobStatusCMB.Cursor = Cursors.Hand;
+            jobStatusCMB.FlatStyle = FlatStyle.Flat;
+            jobStatusCMB.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            jobStatusCMB.FormattingEnabled = true;
+            jobStatusCMB.Items.AddRange(new object[] { "FULL-TIME", "PART-TIME" });
+            jobStatusCMB.Location = new Point(36, 139);
+            jobStatusCMB.Name = "jobStatusCMB";
+            jobStatusCMB.Size = new Size(142, 23);
+            jobStatusCMB.TabIndex = 70;
+            jobStatusCMB.Text = "JOB STATUS";
+            jobStatusCMB.SelectedIndexChanged += comboBox3_SelectedIndexChanged;
             // 
-            // button2
+            // clearButton
             // 
-            button2.BackColor = Color.White;
-            button2.BackgroundImageLayout = ImageLayout.None;
-            button2.FlatAppearance.BorderColor = Color.DimGray;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.ForeColor = Color.DimGray;
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(130, 292);
-            button2.Name = "button2";
-            button2.Size = new Size(71, 29);
-            button2.TabIndex = 68;
-            button2.Text = "Clear";
-            button2.UseMnemonic = false;
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
+            clearButton.BackColor = Color.White;
+            clearButton.BackgroundImageLayout = ImageLayout.None;
+            clearButton.Cursor = Cursors.Hand;
+            clearButton.FlatAppearance.BorderColor = Color.DimGray;
+            clearButton.FlatAppearance.BorderSize = 0;
+            clearButton.FlatStyle = FlatStyle.Flat;
+            clearButton.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            clearButton.ForeColor = Color.DimGray;
+            clearButton.ImageAlign = ContentAlignment.MiddleLeft;
+            clearButton.Location = new Point(130, 292);
+            clearButton.Name = "clearButton";
+            clearButton.Size = new Size(71, 29);
+            clearButton.TabIndex = 68;
+            clearButton.Text = "Clear";
+            clearButton.UseMnemonic = false;
+            clearButton.UseVisualStyleBackColor = false;
+            clearButton.Click += button2_Click;
             // 
             // panel4
             // 
@@ -128,59 +129,61 @@
             panel2.TabIndex = 66;
             panel2.Paint += panel2_Paint;
             // 
-            // comboBox2
+            // depCMB
             // 
-            comboBox2.BackColor = Color.WhiteSmoke;
-            comboBox2.Cursor = Cursors.Hand;
-            comboBox2.FlatStyle = FlatStyle.Flat;
-            comboBox2.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "IBED", "SED", "ASP" });
-            comboBox2.Location = new Point(36, 110);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(142, 23);
-            comboBox2.TabIndex = 65;
-            comboBox2.Text = "DEPARTMENT";
-            comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
+            depCMB.BackColor = Color.WhiteSmoke;
+            depCMB.Cursor = Cursors.Hand;
+            depCMB.FlatStyle = FlatStyle.Flat;
+            depCMB.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            depCMB.FormattingEnabled = true;
+            depCMB.Items.AddRange(new object[] { "IBED", "SED", "ASP" });
+            depCMB.Location = new Point(36, 110);
+            depCMB.Name = "depCMB";
+            depCMB.Size = new Size(142, 23);
+            depCMB.TabIndex = 65;
+            depCMB.Text = "DEPARTMENT";
+            depCMB.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
             // 
-            // button1
+            // applyButton
             // 
-            button1.BackColor = Color.White;
-            button1.BackgroundImageLayout = ImageLayout.None;
-            button1.FlatAppearance.BorderColor = Color.DimGray;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.ForeColor = Color.Black;
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(53, 292);
-            button1.Name = "button1";
-            button1.Size = new Size(71, 29);
-            button1.TabIndex = 63;
-            button1.Text = "Apply";
-            button1.UseMnemonic = false;
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            applyButton.BackColor = Color.White;
+            applyButton.BackgroundImageLayout = ImageLayout.None;
+            applyButton.Cursor = Cursors.Hand;
+            applyButton.FlatAppearance.BorderColor = Color.DimGray;
+            applyButton.FlatAppearance.BorderSize = 0;
+            applyButton.FlatStyle = FlatStyle.Flat;
+            applyButton.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            applyButton.ForeColor = Color.Black;
+            applyButton.ImageAlign = ContentAlignment.MiddleLeft;
+            applyButton.Location = new Point(53, 292);
+            applyButton.Name = "applyButton";
+            applyButton.Size = new Size(71, 29);
+            applyButton.TabIndex = 63;
+            applyButton.Text = "Apply";
+            applyButton.UseMnemonic = false;
+            applyButton.UseVisualStyleBackColor = false;
+            applyButton.Click += button1_Click;
             // 
-            // filterComboBox
+            // occupationCMB
             // 
-            filterComboBox.BackColor = Color.WhiteSmoke;
-            filterComboBox.Cursor = Cursors.Hand;
-            filterComboBox.FlatStyle = FlatStyle.Flat;
-            filterComboBox.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            filterComboBox.FormattingEnabled = true;
-            filterComboBox.Items.AddRange(new object[] { "Teacher", "Sports Coach", "School Nurse", "Maintenance Technician", "Registrar", "Guidance Counselor", "Guard", "Chairperson" });
-            filterComboBox.Location = new Point(36, 81);
-            filterComboBox.Name = "filterComboBox";
-            filterComboBox.Size = new Size(142, 23);
-            filterComboBox.TabIndex = 62;
-            filterComboBox.Text = "OCCUPATION";
-            filterComboBox.SelectedIndexChanged += filterComboBox_SelectedIndexChanged;
+            occupationCMB.BackColor = Color.WhiteSmoke;
+            occupationCMB.Cursor = Cursors.Hand;
+            occupationCMB.FlatStyle = FlatStyle.Flat;
+            occupationCMB.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            occupationCMB.FormattingEnabled = true;
+            occupationCMB.Items.AddRange(new object[] { "Teacher", "Sports Coach", "School Nurse", "Maintenance Technician", "Registrar", "Guidance Counselor", "Guard", "Chairperson" });
+            occupationCMB.Location = new Point(36, 81);
+            occupationCMB.Name = "occupationCMB";
+            occupationCMB.Size = new Size(142, 23);
+            occupationCMB.TabIndex = 62;
+            occupationCMB.Text = "OCCUPATION";
+            occupationCMB.SelectedIndexChanged += filterComboBox_SelectedIndexChanged;
             // 
             // cancelButton
             // 
             cancelButton.BackColor = Color.Transparent;
             cancelButton.BackgroundImageLayout = ImageLayout.None;
+            cancelButton.Cursor = Cursors.Hand;
             cancelButton.FlatAppearance.BorderColor = Color.White;
             cancelButton.FlatAppearance.BorderSize = 0;
             cancelButton.FlatStyle = FlatStyle.Flat;
@@ -216,14 +219,14 @@
         #endregion
 
         private Panel panel1;
-        private Button button2;
+        private Button clearButton;
         private Panel panel4;
         private Panel panel2;
-        public ComboBox comboBox2;
-        private Button button1;
-        public ComboBox filterComboBox;
+        public ComboBox depCMB;
+        private Button applyButton;
+        public ComboBox occupationCMB;
         private Button cancelButton;
-        public ComboBox comboBox3;
-        public ComboBox comboBox4;
+        public ComboBox jobStatusCMB;
+        public ComboBox yearCMB;
     }
 }

@@ -17,7 +17,6 @@ namespace SCTAttendanceSystemUI.Employee
     public partial class FormRequestLeave : Form
     {
         private MySqlConnection connection;
-        private MySqlDataAdapter adapter;
         private string name;
         public FormRequestLeave(string name)
         {

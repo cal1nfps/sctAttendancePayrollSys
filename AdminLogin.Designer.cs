@@ -137,7 +137,7 @@
             textBoxPassword.Multiline = true;
             textBoxPassword.Name = "textBoxPassword";
             textBoxPassword.PasswordChar = '*';
-            textBoxPassword.PlaceholderText = "PASSWORD";
+            textBoxPassword.PlaceholderText = "Password";
             textBoxPassword.Size = new Size(290, 40);
             textBoxPassword.TabIndex = 4;
             // 
@@ -148,7 +148,7 @@
             textBoxIDNum.MaxLength = 100;
             textBoxIDNum.Multiline = true;
             textBoxIDNum.Name = "textBoxIDNum";
-            textBoxIDNum.PlaceholderText = "ID NUMBER";
+            textBoxIDNum.PlaceholderText = "ID Number";
             textBoxIDNum.Size = new Size(290, 40);
             textBoxIDNum.TabIndex = 3;
             // 

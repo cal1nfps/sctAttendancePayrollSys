@@ -15,7 +15,6 @@ namespace SCTAttendanceSystemUI.Employee.filterPayroll
     public partial class filterpayroll : Form
     {
         private MySqlConnection connection;
-        private MySqlDataAdapter adapter;
         public filterpayroll()
         {
             InitializeComponent();

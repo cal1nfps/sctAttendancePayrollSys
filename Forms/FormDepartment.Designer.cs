@@ -70,6 +70,7 @@
             panelSed.Controls.Add(labelAttendanceSed);
             panelSed.Controls.Add(labelSED);
             panelSed.Controls.Add(buttonSed);
+            panelSed.Cursor = Cursors.Hand;
             panelSed.Location = new Point(358, 302);
             panelSed.Name = "panelSed";
             panelSed.Size = new Size(307, 208);
@@ -129,6 +130,7 @@
             panelIbed.Controls.Add(labelAttendanceIbed);
             panelIbed.Controls.Add(labelIBED);
             panelIbed.Controls.Add(buttonIbed);
+            panelIbed.Cursor = Cursors.Hand;
             panelIbed.Location = new Point(683, 302);
             panelIbed.Name = "panelIbed";
             panelIbed.Size = new Size(307, 208);
@@ -188,6 +190,7 @@
             panelAsp.Controls.Add(labelAttendanceAsp);
             panelAsp.Controls.Add(labelASP);
             panelAsp.Controls.Add(buttonAsp);
+            panelAsp.Cursor = Cursors.Hand;
             panelAsp.Location = new Point(1007, 302);
             panelAsp.Name = "panelAsp";
             panelAsp.Size = new Size(307, 208);

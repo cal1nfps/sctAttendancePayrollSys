@@ -17,19 +17,15 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using System.Diagnostics.Metrics;
+using SCTAttendanceSystemUI.Forms.filterAttendance;
 
 
 namespace SCTAttendanceSystemUI.Forms
 {
     public partial class EditButtonForm : Form
     {
-        private Random random;
-        private int tempIndex;
-        private Form activeForm = null;
 
         private MySqlConnection connection;
-        private MySqlDataAdapter adapter;
-        private DataTable table;
 
 
         public EditButtonForm()
@@ -235,7 +231,6 @@ namespace SCTAttendanceSystemUI.Forms
             {
                 string imagePath = openFileDialog.FileName;
                 profilePictureBox.Image = Image.FromFile(imagePath);
-
 
             }
         }
@@ -765,10 +760,10 @@ namespace SCTAttendanceSystemUI.Forms
                         barangayCMB.Items.Add("Bilibiran");
                         barangayCMB.Items.Add("Binitagan");
                         barangayCMB.Items.Add("Bombong");
-                        barangayCMB.Items.Add("Buhangin"); 
+                        barangayCMB.Items.Add("Buhangin");
                         barangayCMB.Items.Add("Calumpang");
                         barangayCMB.Items.Add("Ginoong Sanay");
-                        barangayCMB.Items.Add("Gulod"); 
+                        barangayCMB.Items.Add("Gulod");
                         barangayCMB.Items.Add("Habagatan");
                         barangayCMB.Items.Add("Ithan");
                         barangayCMB.Items.Add("Janosa");
@@ -815,7 +810,7 @@ namespace SCTAttendanceSystemUI.Forms
                         barangayCMB.Items.Add("Mahabang Parang");
                         barangayCMB.Items.Add("Poblacion Ibaba");
                         barangayCMB.Items.Add("Poblacion Itaas");
-                        barangayCMB.Items.Add("San Isidro"); 
+                        barangayCMB.Items.Add("San Isidro");
                         barangayCMB.Items.Add("Santo Niño");
                         barangayCMB.Items.Add("San Pedro");
                         barangayCMB.Items.Add("San Roque");
@@ -826,7 +821,7 @@ namespace SCTAttendanceSystemUI.Forms
                         barangayCMB.Items.Add("Daraitan");
                         barangayCMB.Items.Add("Katipunan-Bayani(Pob.)");
                         barangayCMB.Items.Add("Kay Buto(Poblacion)");
-                        barangayCMB.Items.Add("Laiban"); 
+                        barangayCMB.Items.Add("Laiban");
                         barangayCMB.Items.Add("Mag-Ampon(Poblacion)");
                         barangayCMB.Items.Add("Mamuyao");
                         barangayCMB.Items.Add("Madilay-dilay");
@@ -870,6 +865,72 @@ namespace SCTAttendanceSystemUI.Forms
                         break;
                 }
             }
+        }
+
+        private void cameraButton_Click(object sender, EventArgs e)
+        {
+            Webcam webcam = new Webcam();
+
+            // Get the data from the selected row
+            string id = textBox9.Text;
+            string firstname = firstNameTB.Text;
+            string middlename = initialNameTB.Text;
+            string lastname = lastNameTB.Text;
+            string suffix = suffixNameTB.Text;
+            string gender = genderCMB.Text;
+            string dob = dobDTP.Text;
+            string barangay = barangayCMB.Text;
+            string address = addressTB.Text;
+            string province = provinceCMB.Text;
+            string city = cityCMB.Text;
+            string postal = postalTB.Text;
+            string phone = phoneTB.Text;
+            string telephone = telNumberTB.Text;
+            string email = emailTB.Text;
+            string empnum = empNumTB.Text;
+            string hdate = hireDTP.Text;
+            string occupation = occupationCMB.Text;
+            string department = departmentCMB.Text;
+            string jobstatus = statusCMB.Text;
+            string timein = timeinCMB.Text;
+            string timeout = timeoutCMB.Text;
+
+
+
+
+            //set the public properties of the textboxes on the second form
+            webcam.id = id;
+            webcam.firstname = firstname;
+            webcam.middlename = middlename;
+            webcam.lastname = lastname;
+            webcam.suffix = suffix;
+            webcam.gender = gender;
+            webcam.dob = dob;
+            webcam.barangay = barangay;
+            webcam.address = address;
+            webcam.province = province;
+            webcam.city = city;
+            webcam.postal = postal;
+            webcam.phone = phone;
+            webcam.telephone = telephone;
+            webcam.email = email;
+            webcam.empnum = empnum;
+            webcam.hdate = hdate;
+            webcam.occupation = occupation;
+            webcam.department = department;
+            webcam.jobstatus = jobstatus;
+            webcam.timein = timein;
+            webcam.timeout = timeout;
+
+            // Show the second form as a dialog and wait for it to close
+            //show the second form
+            webcam.Show();
+            this.Close();
+        }
+
+        public void SetCapturedImage(Bitmap capturedImage)
+        {
+            profilePictureBox.Image = capturedImage;
         }
     }
 }

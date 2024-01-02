@@ -31,16 +31,31 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditButtonForm));
             personalButton = new Button();
             panel1 = new Panel();
+            cameraButton = new Button();
+            personalPanel = new Panel();
             barangayCMB = new ComboBox();
+            postalTB = new TextBox();
+            genderlbl = new Label();
+            doblbl = new Label();
+            cityCMB = new ComboBox();
+            initialNameTB = new TextBox();
+            suffixNameTB = new TextBox();
+            lastNameTB = new TextBox();
+            genderCMB = new ComboBox();
+            dobDTP = new DateTimePicker();
+            label7 = new Label();
+            firstNameTB = new TextBox();
+            label4 = new Label();
+            addressTB = new TextBox();
+            label3 = new Label();
+            provinceCMB = new ComboBox();
+            label1 = new Label();
             textBox9 = new TextBox();
             saveButton = new Button();
-            cityCMB = new ComboBox();
-            suffixNameTB = new TextBox();
             cancelButton = new Button();
             confirmButton = new Button();
-            label7 = new Label();
             profilePictureBox = new PictureBox();
-            panel3 = new Panel();
+            employmentPanel = new Panel();
             empNumTB = new TextBox();
             statusCMB = new ComboBox();
             label18 = new Label();
@@ -56,13 +71,7 @@
             label9 = new Label();
             label11 = new Label();
             hireDTP = new DateTimePicker();
-            label3 = new Label();
-            postalTB = new TextBox();
-            label1 = new Label();
-            provinceCMB = new ComboBox();
-            addressTB = new TextBox();
-            label4 = new Label();
-            panel2 = new Panel();
+            contactPanel = new Panel();
             label15 = new Label();
             label14 = new Label();
             textBox13 = new TextBox();
@@ -70,17 +79,11 @@
             phoneTB = new TextBox();
             emailTB = new TextBox();
             telNumberTB = new TextBox();
-            firstNameTB = new TextBox();
-            dobDTP = new DateTimePicker();
-            genderCMB = new ComboBox();
-            lastNameTB = new TextBox();
-            initialNameTB = new TextBox();
-            doblbl = new Label();
-            genderlbl = new Label();
             panel1.SuspendLayout();
+            personalPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)profilePictureBox).BeginInit();
-            panel3.SuspendLayout();
-            panel2.SuspendLayout();
+            employmentPanel.SuspendLayout();
+            contactPanel.SuspendLayout();
             SuspendLayout();
             // 
             // personalButton
@@ -108,49 +111,245 @@
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
             panel1.BorderStyle = BorderStyle.Fixed3D;
-            panel1.Controls.Add(barangayCMB);
+            panel1.Controls.Add(cameraButton);
+            panel1.Controls.Add(personalPanel);
             panel1.Controls.Add(textBox9);
             panel1.Controls.Add(saveButton);
-            panel1.Controls.Add(cityCMB);
-            panel1.Controls.Add(suffixNameTB);
             panel1.Controls.Add(cancelButton);
             panel1.Controls.Add(confirmButton);
-            panel1.Controls.Add(label7);
             panel1.Controls.Add(profilePictureBox);
-            panel1.Controls.Add(panel3);
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(postalTB);
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(provinceCMB);
-            panel1.Controls.Add(addressTB);
-            panel1.Controls.Add(label4);
-            panel1.Controls.Add(panel2);
-            panel1.Controls.Add(firstNameTB);
-            panel1.Controls.Add(dobDTP);
-            panel1.Controls.Add(genderCMB);
-            panel1.Controls.Add(lastNameTB);
-            panel1.Controls.Add(initialNameTB);
-            panel1.Controls.Add(doblbl);
-            panel1.Controls.Add(genderlbl);
+            panel1.Controls.Add(employmentPanel);
+            panel1.Controls.Add(contactPanel);
             panel1.Location = new Point(-1, 38);
             panel1.Name = "panel1";
             panel1.Size = new Size(1160, 712);
             panel1.TabIndex = 3;
             // 
+            // cameraButton
+            // 
+            cameraButton.AutoSize = true;
+            cameraButton.BackColor = Color.FromArgb(219, 20, 62);
+            cameraButton.BackgroundImageLayout = ImageLayout.Zoom;
+            cameraButton.Cursor = Cursors.Hand;
+            cameraButton.FlatAppearance.BorderSize = 0;
+            cameraButton.FlatStyle = FlatStyle.Flat;
+            cameraButton.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            cameraButton.ForeColor = SystemColors.ControlDarkDark;
+            cameraButton.Image = (Image)resources.GetObject("cameraButton.Image");
+            cameraButton.ImageAlign = ContentAlignment.MiddleLeft;
+            cameraButton.Location = new Point(867, 460);
+            cameraButton.Name = "cameraButton";
+            cameraButton.RightToLeft = RightToLeft.No;
+            cameraButton.Size = new Size(41, 38);
+            cameraButton.TabIndex = 23;
+            cameraButton.TextAlign = ContentAlignment.MiddleLeft;
+            cameraButton.TextImageRelation = TextImageRelation.ImageBeforeText;
+            cameraButton.UseVisualStyleBackColor = false;
+            cameraButton.Click += cameraButton_Click;
+            // 
+            // personalPanel
+            // 
+            personalPanel.BackColor = Color.White;
+            personalPanel.BorderStyle = BorderStyle.FixedSingle;
+            personalPanel.Controls.Add(barangayCMB);
+            personalPanel.Controls.Add(postalTB);
+            personalPanel.Controls.Add(genderlbl);
+            personalPanel.Controls.Add(doblbl);
+            personalPanel.Controls.Add(cityCMB);
+            personalPanel.Controls.Add(initialNameTB);
+            personalPanel.Controls.Add(suffixNameTB);
+            personalPanel.Controls.Add(lastNameTB);
+            personalPanel.Controls.Add(genderCMB);
+            personalPanel.Controls.Add(dobDTP);
+            personalPanel.Controls.Add(label7);
+            personalPanel.Controls.Add(firstNameTB);
+            personalPanel.Controls.Add(label4);
+            personalPanel.Controls.Add(addressTB);
+            personalPanel.Controls.Add(label3);
+            personalPanel.Controls.Add(provinceCMB);
+            personalPanel.Controls.Add(label1);
+            personalPanel.ForeColor = SystemColors.ControlText;
+            personalPanel.Location = new Point(22, 19);
+            personalPanel.Name = "personalPanel";
+            personalPanel.Size = new Size(607, 221);
+            personalPanel.TabIndex = 67;
+            // 
             // barangayCMB
             // 
             barangayCMB.DropDownStyle = ComboBoxStyle.DropDownList;
             barangayCMB.FormattingEnabled = true;
-            barangayCMB.Location = new Point(211, 167);
+            barangayCMB.Location = new Point(184, 141);
             barangayCMB.Name = "barangayCMB";
             barangayCMB.Size = new Size(147, 23);
             barangayCMB.TabIndex = 9;
+            // 
+            // postalTB
+            // 
+            postalTB.ForeColor = Color.Black;
+            postalTB.Location = new Point(371, 141);
+            postalTB.Name = "postalTB";
+            postalTB.PlaceholderText = "Postal Code";
+            postalTB.Size = new Size(105, 23);
+            postalTB.TabIndex = 10;
+            // 
+            // genderlbl
+            // 
+            genderlbl.AutoSize = true;
+            genderlbl.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            genderlbl.ForeColor = SystemColors.ControlDarkDark;
+            genderlbl.Location = new Point(15, 65);
+            genderlbl.Name = "genderlbl";
+            genderlbl.Size = new Size(53, 14);
+            genderlbl.TabIndex = 11;
+            genderlbl.Text = "GENDER";
+            // 
+            // doblbl
+            // 
+            doblbl.AutoSize = true;
+            doblbl.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            doblbl.ForeColor = SystemColors.ControlDarkDark;
+            doblbl.Location = new Point(184, 68);
+            doblbl.Name = "doblbl";
+            doblbl.Size = new Size(90, 14);
+            doblbl.TabIndex = 12;
+            doblbl.Text = "DATE OF BIRTH";
+            // 
+            // cityCMB
+            // 
+            cityCMB.DropDownStyle = ComboBoxStyle.DropDownList;
+            cityCMB.FormattingEnabled = true;
+            cityCMB.Location = new Point(16, 141);
+            cityCMB.Name = "cityCMB";
+            cityCMB.Size = new Size(121, 23);
+            cityCMB.TabIndex = 8;
+            cityCMB.SelectedIndexChanged += cityCMB_SelectedIndexChanged;
+            // 
+            // initialNameTB
+            // 
+            initialNameTB.ForeColor = Color.Black;
+            initialNameTB.Location = new Point(457, 27);
+            initialNameTB.Name = "initialNameTB";
+            initialNameTB.PlaceholderText = "M.I.";
+            initialNameTB.Size = new Size(46, 23);
+            initialNameTB.TabIndex = 3;
+            // 
+            // suffixNameTB
+            // 
+            suffixNameTB.ForeColor = Color.Black;
+            suffixNameTB.Location = new Point(520, 27);
+            suffixNameTB.Name = "suffixNameTB";
+            suffixNameTB.PlaceholderText = "Suffix";
+            suffixNameTB.Size = new Size(67, 23);
+            suffixNameTB.TabIndex = 4;
+            // 
+            // lastNameTB
+            // 
+            lastNameTB.ForeColor = Color.Black;
+            lastNameTB.Location = new Point(229, 27);
+            lastNameTB.Name = "lastNameTB";
+            lastNameTB.PlaceholderText = "Last Name";
+            lastNameTB.Size = new Size(212, 23);
+            lastNameTB.TabIndex = 2;
+            // 
+            // genderCMB
+            // 
+            genderCMB.DropDownStyle = ComboBoxStyle.DropDownList;
+            genderCMB.FormattingEnabled = true;
+            genderCMB.Items.AddRange(new object[] { "Male", "Female" });
+            genderCMB.Location = new Point(15, 85);
+            genderCMB.Name = "genderCMB";
+            genderCMB.Size = new Size(121, 23);
+            genderCMB.TabIndex = 5;
+            genderCMB.Tag = "";
+            // 
+            // dobDTP
+            // 
+            dobDTP.CustomFormat = "MM/dd/yyyy";
+            dobDTP.Location = new Point(184, 85);
+            dobDTP.MaxDate = new DateTime(2023, 12, 31, 0, 0, 0, 0);
+            dobDTP.MinDate = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            dobDTP.Name = "dobDTP";
+            dobDTP.Size = new Size(204, 23);
+            dobDTP.TabIndex = 6;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.ForeColor = SystemColors.ControlDarkDark;
+            label7.Location = new Point(3, 3);
+            label7.Name = "label7";
+            label7.Size = new Size(146, 14);
+            label7.TabIndex = 24;
+            label7.Text = "PERSONAL INFORMATION";
+            // 
+            // firstNameTB
+            // 
+            firstNameTB.ForeColor = Color.Black;
+            firstNameTB.Location = new Point(16, 27);
+            firstNameTB.Name = "firstNameTB";
+            firstNameTB.PlaceholderText = "First Name";
+            firstNameTB.Size = new Size(207, 23);
+            firstNameTB.TabIndex = 1;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.ForeColor = SystemColors.ControlDarkDark;
+            label4.Location = new Point(184, 121);
+            label4.Name = "label4";
+            label4.Size = new Size(68, 14);
+            label4.TabIndex = 25;
+            label4.Text = "BARANGAY";
+            // 
+            // addressTB
+            // 
+            addressTB.ForeColor = Color.Black;
+            addressTB.Location = new Point(15, 184);
+            addressTB.Name = "addressTB";
+            addressTB.PlaceholderText = "Address";
+            addressTB.Size = new Size(418, 23);
+            addressTB.TabIndex = 11;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.ForeColor = SystemColors.ControlDarkDark;
+            label3.Location = new Point(426, 68);
+            label3.Name = "label3";
+            label3.Size = new Size(62, 14);
+            label3.TabIndex = 26;
+            label3.Text = "PROVINCE";
+            // 
+            // provinceCMB
+            // 
+            provinceCMB.DropDownStyle = ComboBoxStyle.DropDownList;
+            provinceCMB.FormattingEnabled = true;
+            provinceCMB.Items.AddRange(new object[] { "Abra", "Agusan del Norte", "Agusan del Sur", "Aklan", "Albay", "Antique", "Apayao", "Aurora", "Basilan", "Bataan", "Batanes", "Batangas", "Benguet", "Biliran", "Bohol", "Bukidnon", "Bulacan", "Cagayan", "Camarines Norte", "Camarines Sur", "Camiguin", "Capiz", "Catanduanes", "Cavite", "Cebu", "Cotabato", "Davao de Oro", "Davao del Norte", "Davao del Sur", "Davao Occidental", "Davao Oriental", "Dinagat Islands", "Eastern Samar", "Guimaras", "Ifugao", "Ilocos Norte", "Ilocos Sur", "Iloilo", "Isabela", "Kalinga", "La Union", "Laguna", "Lanao del Norte", "Lanao del Sur", "Leyte", "Maguindanao del Norte", "Maguindanao del Sur", "Marinduque", "Masbate", "Misamis Occidental", "Misamis Oriental", "Mountain Province", "Negros Occidental", "Negros Oriental", "Northern Samar", "Nueva Ecija", "Nueva Vizcaya", "Occidental Mindoro", "Oriental Mindoro", "Palawan", "Pampanga", "Pangasinan", "Quezon", "Quirino", "Rizal", "Romblon", "Samar", "Sarangani", "Siquijor", "Sorsogon", "South Cotabato", "Southern Leyte", "Sultan Kudarat", "Sulu", "Surigao del Norte", "Surigao del Sur", "Tarlac", "Tawi-Tawi", "Zambales", "Zamboanga del Norte", "Zamboanga del Sur", "Zamboanga Sibugay" });
+            provinceCMB.Location = new Point(426, 85);
+            provinceCMB.Name = "provinceCMB";
+            provinceCMB.Size = new Size(161, 23);
+            provinceCMB.TabIndex = 7;
+            provinceCMB.SelectedIndexChanged += comboBox3_SelectedIndexChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.ControlDarkDark;
+            label1.Location = new Point(16, 123);
+            label1.Name = "label1";
+            label1.Size = new Size(30, 14);
+            label1.TabIndex = 31;
+            label1.Text = "CITY";
             // 
             // textBox9
             // 
             textBox9.Enabled = false;
             textBox9.ForeColor = Color.Silver;
-            textBox9.Location = new Point(1012, 50);
+            textBox9.Location = new Point(1063, 23);
             textBox9.Name = "textBox9";
             textBox9.ReadOnly = true;
             textBox9.Size = new Size(39, 23);
@@ -159,53 +358,35 @@
             // 
             // saveButton
             // 
-            saveButton.BackColor = Color.Transparent;
-            saveButton.BackgroundImage = (Image)resources.GetObject("saveButton.BackgroundImage");
+            saveButton.BackColor = Color.FromArgb(219, 20, 62);
             saveButton.BackgroundImageLayout = ImageLayout.Zoom;
+            saveButton.Cursor = Cursors.Hand;
             saveButton.FlatAppearance.BorderSize = 0;
-            saveButton.FlatStyle = FlatStyle.Popup;
+            saveButton.FlatStyle = FlatStyle.Flat;
             saveButton.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            saveButton.Image = (Image)resources.GetObject("saveButton.Image");
             saveButton.ImageAlign = ContentAlignment.MiddleLeft;
-            saveButton.Location = new Point(955, 203);
+            saveButton.Location = new Point(914, 459);
             saveButton.Name = "saveButton";
-            saveButton.Padding = new Padding(10, 0, 0, 0);
-            saveButton.Size = new Size(43, 37);
+            saveButton.Size = new Size(41, 38);
             saveButton.TabIndex = 22;
             saveButton.TextAlign = ContentAlignment.MiddleLeft;
             saveButton.TextImageRelation = TextImageRelation.ImageBeforeText;
             saveButton.UseVisualStyleBackColor = false;
             saveButton.Click += button2_Click;
             // 
-            // cityCMB
-            // 
-            cityCMB.DropDownStyle = ComboBoxStyle.DropDownList;
-            cityCMB.FormattingEnabled = true;
-            cityCMB.Location = new Point(42, 167);
-            cityCMB.Name = "cityCMB";
-            cityCMB.Size = new Size(121, 23);
-            cityCMB.TabIndex = 8;
-            cityCMB.SelectedIndexChanged += cityCMB_SelectedIndexChanged;
-            // 
-            // suffixNameTB
-            // 
-            suffixNameTB.ForeColor = Color.Black;
-            suffixNameTB.Location = new Point(640, 50);
-            suffixNameTB.Name = "suffixNameTB";
-            suffixNameTB.PlaceholderText = "Suffix";
-            suffixNameTB.Size = new Size(67, 23);
-            suffixNameTB.TabIndex = 4;
-            // 
             // cancelButton
             // 
             cancelButton.BackColor = Color.WhiteSmoke;
             cancelButton.BackgroundImageLayout = ImageLayout.None;
+            cancelButton.Cursor = Cursors.Hand;
             cancelButton.FlatAppearance.BorderColor = Color.DimGray;
             cancelButton.FlatStyle = FlatStyle.Flat;
             cancelButton.ForeColor = SystemColors.ControlText;
             cancelButton.Location = new Point(1026, 633);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(88, 34);
-            cancelButton.TabIndex = 23;
+            cancelButton.TabIndex = 24;
             cancelButton.Text = "Cancel";
             cancelButton.UseMnemonic = false;
             cancelButton.UseVisualStyleBackColor = false;
@@ -213,72 +394,62 @@
             // 
             // confirmButton
             // 
-            confirmButton.BackColor = SystemColors.ActiveCaption;
+            confirmButton.BackColor = Color.FromArgb(219, 20, 62);
             confirmButton.BackgroundImageLayout = ImageLayout.None;
+            confirmButton.Cursor = Cursors.Hand;
             confirmButton.FlatAppearance.BorderColor = Color.DimGray;
             confirmButton.FlatStyle = FlatStyle.Flat;
-            confirmButton.ForeColor = SystemColors.ControlText;
+            confirmButton.ForeColor = Color.White;
             confirmButton.Location = new Point(932, 633);
             confirmButton.Name = "confirmButton";
             confirmButton.Size = new Size(88, 34);
-            confirmButton.TabIndex = 24;
+            confirmButton.TabIndex = 25;
             confirmButton.Text = "Confirm";
             confirmButton.UseMnemonic = false;
             confirmButton.UseVisualStyleBackColor = false;
             confirmButton.Click += button1_Click;
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.ForeColor = SystemColors.ControlDarkDark;
-            label7.Location = new Point(38, 21);
-            label7.Name = "label7";
-            label7.Size = new Size(146, 14);
-            label7.TabIndex = 24;
-            label7.Text = "PERSONAL INFORMATION";
-            // 
             // profilePictureBox
             // 
             profilePictureBox.BackColor = Color.WhiteSmoke;
             profilePictureBox.BorderStyle = BorderStyle.FixedSingle;
-            profilePictureBox.Location = new Point(806, 50);
+            profilePictureBox.Location = new Point(702, 49);
             profilePictureBox.Name = "profilePictureBox";
-            profilePictureBox.Size = new Size(200, 200);
+            profilePictureBox.Size = new Size(400, 400);
             profilePictureBox.TabIndex = 36;
             profilePictureBox.TabStop = false;
             // 
-            // panel3
+            // employmentPanel
             // 
-            panel3.BackColor = Color.White;
-            panel3.BorderStyle = BorderStyle.FixedSingle;
-            panel3.Controls.Add(empNumTB);
-            panel3.Controls.Add(statusCMB);
-            panel3.Controls.Add(label18);
-            panel3.Controls.Add(timeoutCMB);
-            panel3.Controls.Add(label17);
-            panel3.Controls.Add(timeinCMB);
-            panel3.Controls.Add(label16);
-            panel3.Controls.Add(occupationCMB);
-            panel3.Controls.Add(departmentCMB);
-            panel3.Controls.Add(label13);
-            panel3.Controls.Add(label12);
-            panel3.Controls.Add(label8);
-            panel3.Controls.Add(label9);
-            panel3.Controls.Add(label11);
-            panel3.Controls.Add(hireDTP);
-            panel3.ForeColor = SystemColors.ControlText;
-            panel3.Location = new Point(22, 432);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(607, 235);
-            panel3.TabIndex = 34;
+            employmentPanel.BackColor = Color.White;
+            employmentPanel.BorderStyle = BorderStyle.FixedSingle;
+            employmentPanel.Controls.Add(empNumTB);
+            employmentPanel.Controls.Add(statusCMB);
+            employmentPanel.Controls.Add(label18);
+            employmentPanel.Controls.Add(timeoutCMB);
+            employmentPanel.Controls.Add(label17);
+            employmentPanel.Controls.Add(timeinCMB);
+            employmentPanel.Controls.Add(label16);
+            employmentPanel.Controls.Add(occupationCMB);
+            employmentPanel.Controls.Add(departmentCMB);
+            employmentPanel.Controls.Add(label13);
+            employmentPanel.Controls.Add(label12);
+            employmentPanel.Controls.Add(label8);
+            employmentPanel.Controls.Add(label9);
+            employmentPanel.Controls.Add(label11);
+            employmentPanel.Controls.Add(hireDTP);
+            employmentPanel.ForeColor = SystemColors.ControlText;
+            employmentPanel.Location = new Point(22, 432);
+            employmentPanel.Name = "employmentPanel";
+            employmentPanel.Size = new Size(607, 235);
+            employmentPanel.TabIndex = 34;
             // 
             // empNumTB
             // 
             empNumTB.ForeColor = Color.Black;
             empNumTB.Location = new Point(103, 47);
             empNumTB.Name = "empNumTB";
-            empNumTB.Size = new Size(147, 23);
+            empNumTB.Size = new Size(204, 23);
             empNumTB.TabIndex = 67;
             // 
             // statusCMB
@@ -288,7 +459,7 @@
             statusCMB.Items.AddRange(new object[] { "FULL-TIME", "PART-TIME" });
             statusCMB.Location = new Point(103, 163);
             statusCMB.Name = "statusCMB";
-            statusCMB.Size = new Size(147, 23);
+            statusCMB.Size = new Size(204, 23);
             statusCMB.TabIndex = 19;
             // 
             // label18
@@ -307,7 +478,7 @@
             timeoutCMB.DropDownStyle = ComboBoxStyle.DropDownList;
             timeoutCMB.FormattingEnabled = true;
             timeoutCMB.Items.AddRange(new object[] { "4:00 PM", "5:00 PM", "6:00 PM" });
-            timeoutCMB.Location = new Point(371, 111);
+            timeoutCMB.Location = new Point(410, 108);
             timeoutCMB.Name = "timeoutCMB";
             timeoutCMB.Size = new Size(147, 23);
             timeoutCMB.TabIndex = 21;
@@ -317,7 +488,7 @@
             label17.AutoSize = true;
             label17.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label17.ForeColor = SystemColors.ControlDarkDark;
-            label17.Location = new Point(308, 115);
+            label17.Location = new Point(347, 112);
             label17.Name = "label17";
             label17.Size = new Size(57, 14);
             label17.TabIndex = 62;
@@ -328,7 +499,7 @@
             timeinCMB.DropDownStyle = ComboBoxStyle.DropDownList;
             timeinCMB.FormattingEnabled = true;
             timeinCMB.Items.AddRange(new object[] { "7:00 AM", "8:00 AM", "9:00 AM" });
-            timeinCMB.Location = new Point(371, 82);
+            timeinCMB.Location = new Point(410, 79);
             timeinCMB.Name = "timeinCMB";
             timeinCMB.Size = new Size(147, 23);
             timeinCMB.TabIndex = 20;
@@ -338,7 +509,7 @@
             label16.AutoSize = true;
             label16.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label16.ForeColor = SystemColors.ControlDarkDark;
-            label16.Location = new Point(319, 86);
+            label16.Location = new Point(358, 83);
             label16.Name = "label16";
             label16.Size = new Size(46, 14);
             label16.TabIndex = 60;
@@ -351,7 +522,7 @@
             occupationCMB.Items.AddRange(new object[] { "Teacher", "Sports Coach", "School Nurse", "Maintenance Technician", "Registrar", "Guidance Counselor", "Guard", "Chairperson" });
             occupationCMB.Location = new Point(103, 105);
             occupationCMB.Name = "occupationCMB";
-            occupationCMB.Size = new Size(147, 23);
+            occupationCMB.Size = new Size(204, 23);
             occupationCMB.TabIndex = 17;
             // 
             // departmentCMB
@@ -361,7 +532,7 @@
             departmentCMB.Items.AddRange(new object[] { "IBED", "SED", "ASP" });
             departmentCMB.Location = new Point(103, 134);
             departmentCMB.Name = "departmentCMB";
-            departmentCMB.Size = new Size(147, 23);
+            departmentCMB.Size = new Size(204, 23);
             departmentCMB.TabIndex = 18;
             // 
             // label13
@@ -422,92 +593,29 @@
             // hireDTP
             // 
             hireDTP.CustomFormat = "MM/dd/yyyy";
-            hireDTP.Format = DateTimePickerFormat.Custom;
             hireDTP.Location = new Point(103, 76);
             hireDTP.MaxDate = new DateTime(2023, 12, 31, 0, 0, 0, 0);
             hireDTP.MinDate = new DateTime(1970, 1, 1, 0, 0, 0, 0);
             hireDTP.Name = "hireDTP";
-            hireDTP.Size = new Size(147, 23);
+            hireDTP.Size = new Size(204, 23);
             hireDTP.TabIndex = 16;
             // 
-            // label3
+            // contactPanel
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.ForeColor = SystemColors.ControlDarkDark;
-            label3.Location = new Point(468, 90);
-            label3.Name = "label3";
-            label3.Size = new Size(62, 14);
-            label3.TabIndex = 26;
-            label3.Text = "PROVINCE";
-            // 
-            // postalTB
-            // 
-            postalTB.ForeColor = Color.Black;
-            postalTB.Location = new Point(404, 167);
-            postalTB.Name = "postalTB";
-            postalTB.PlaceholderText = "Postal Code";
-            postalTB.Size = new Size(105, 23);
-            postalTB.TabIndex = 10;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.ControlDarkDark;
-            label1.Location = new Point(42, 149);
-            label1.Name = "label1";
-            label1.Size = new Size(30, 14);
-            label1.TabIndex = 31;
-            label1.Text = "CITY";
-            // 
-            // provinceCMB
-            // 
-            provinceCMB.DropDownStyle = ComboBoxStyle.DropDownList;
-            provinceCMB.FormattingEnabled = true;
-            provinceCMB.Items.AddRange(new object[] { "Abra", "Agusan del Norte", "Agusan del Sur", "Aklan", "Albay", "Antique", "Apayao", "Aurora", "Basilan", "Bataan", "Batanes", "Batangas", "Benguet", "Biliran", "Bohol", "Bukidnon", "Bulacan", "Cagayan", "Camarines Norte", "Camarines Sur", "Camiguin", "Capiz", "Catanduanes", "Cavite", "Cebu", "Cotabato", "Davao de Oro", "Davao del Norte", "Davao del Sur", "Davao Occidental", "Davao Oriental", "Dinagat Islands", "Eastern Samar", "Guimaras", "Ifugao", "Ilocos Norte", "Ilocos Sur", "Iloilo", "Isabela", "Kalinga", "La Union", "Laguna", "Lanao del Norte", "Lanao del Sur", "Leyte", "Maguindanao del Norte", "Maguindanao del Sur", "Marinduque", "Masbate", "Misamis Occidental", "Misamis Oriental", "Mountain Province", "Negros Occidental", "Negros Oriental", "Northern Samar", "Nueva Ecija", "Nueva Vizcaya", "Occidental Mindoro", "Oriental Mindoro", "Palawan", "Pampanga", "Pangasinan", "Quezon", "Quirino", "Rizal", "Romblon", "Samar", "Sarangani", "Siquijor", "Sorsogon", "South Cotabato", "Southern Leyte", "Sultan Kudarat", "Sulu", "Surigao del Norte", "Surigao del Sur", "Tarlac", "Tawi-Tawi", "Zambales", "Zamboanga del Norte", "Zamboanga del Sur", "Zamboanga Sibugay" });
-            provinceCMB.Location = new Point(468, 107);
-            provinceCMB.Name = "provinceCMB";
-            provinceCMB.Size = new Size(161, 23);
-            provinceCMB.TabIndex = 7;
-            provinceCMB.SelectedIndexChanged += comboBox3_SelectedIndexChanged;
-            // 
-            // addressTB
-            // 
-            addressTB.ForeColor = Color.Black;
-            addressTB.Location = new Point(42, 211);
-            addressTB.Name = "addressTB";
-            addressTB.PlaceholderText = "Address";
-            addressTB.Size = new Size(316, 23);
-            addressTB.TabIndex = 11;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.ForeColor = SystemColors.ControlDarkDark;
-            label4.Location = new Point(211, 147);
-            label4.Name = "label4";
-            label4.Size = new Size(68, 14);
-            label4.TabIndex = 25;
-            label4.Text = "BARANGAY";
-            // 
-            // panel2
-            // 
-            panel2.BackColor = Color.White;
-            panel2.BorderStyle = BorderStyle.FixedSingle;
-            panel2.Controls.Add(label15);
-            panel2.Controls.Add(label14);
-            panel2.Controls.Add(textBox13);
-            panel2.Controls.Add(label6);
-            panel2.Controls.Add(phoneTB);
-            panel2.Controls.Add(emailTB);
-            panel2.Controls.Add(telNumberTB);
-            panel2.ForeColor = SystemColors.ControlText;
-            panel2.Location = new Point(22, 261);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(607, 145);
-            panel2.TabIndex = 33;
+            contactPanel.BackColor = Color.White;
+            contactPanel.BorderStyle = BorderStyle.FixedSingle;
+            contactPanel.Controls.Add(label15);
+            contactPanel.Controls.Add(label14);
+            contactPanel.Controls.Add(textBox13);
+            contactPanel.Controls.Add(label6);
+            contactPanel.Controls.Add(phoneTB);
+            contactPanel.Controls.Add(emailTB);
+            contactPanel.Controls.Add(telNumberTB);
+            contactPanel.ForeColor = SystemColors.ControlText;
+            contactPanel.Location = new Point(22, 261);
+            contactPanel.Name = "contactPanel";
+            contactPanel.Size = new Size(607, 145);
+            contactPanel.TabIndex = 33;
             // 
             // label15
             // 
@@ -582,76 +690,6 @@
             telNumberTB.TabIndex = 14;
             telNumberTB.KeyPress += textBox8_KeyPress_1;
             // 
-            // firstNameTB
-            // 
-            firstNameTB.ForeColor = Color.Black;
-            firstNameTB.Location = new Point(42, 50);
-            firstNameTB.Name = "firstNameTB";
-            firstNameTB.PlaceholderText = "First Name";
-            firstNameTB.Size = new Size(207, 23);
-            firstNameTB.TabIndex = 1;
-            // 
-            // dobDTP
-            // 
-            dobDTP.CustomFormat = "MM/dd/yyyy";
-            dobDTP.Location = new Point(211, 107);
-            dobDTP.MaxDate = new DateTime(2023, 12, 31, 0, 0, 0, 0);
-            dobDTP.MinDate = new DateTime(1970, 1, 1, 0, 0, 0, 0);
-            dobDTP.Name = "dobDTP";
-            dobDTP.Size = new Size(204, 23);
-            dobDTP.TabIndex = 6;
-            // 
-            // genderCMB
-            // 
-            genderCMB.DropDownStyle = ComboBoxStyle.DropDownList;
-            genderCMB.FormattingEnabled = true;
-            genderCMB.Items.AddRange(new object[] { "Male", "Female" });
-            genderCMB.Location = new Point(42, 107);
-            genderCMB.Name = "genderCMB";
-            genderCMB.Size = new Size(121, 23);
-            genderCMB.TabIndex = 5;
-            genderCMB.Tag = "";
-            // 
-            // lastNameTB
-            // 
-            lastNameTB.ForeColor = Color.Black;
-            lastNameTB.Location = new Point(310, 50);
-            lastNameTB.Name = "lastNameTB";
-            lastNameTB.PlaceholderText = "Last Name";
-            lastNameTB.Size = new Size(212, 23);
-            lastNameTB.TabIndex = 2;
-            // 
-            // initialNameTB
-            // 
-            initialNameTB.ForeColor = Color.Black;
-            initialNameTB.Location = new Point(564, 50);
-            initialNameTB.Name = "initialNameTB";
-            initialNameTB.PlaceholderText = "M.I.";
-            initialNameTB.Size = new Size(46, 23);
-            initialNameTB.TabIndex = 3;
-            // 
-            // doblbl
-            // 
-            doblbl.AutoSize = true;
-            doblbl.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            doblbl.ForeColor = SystemColors.ControlDarkDark;
-            doblbl.Location = new Point(211, 87);
-            doblbl.Name = "doblbl";
-            doblbl.Size = new Size(90, 14);
-            doblbl.TabIndex = 12;
-            doblbl.Text = "DATE OF BIRTH";
-            // 
-            // genderlbl
-            // 
-            genderlbl.AutoSize = true;
-            genderlbl.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            genderlbl.ForeColor = SystemColors.ControlDarkDark;
-            genderlbl.Location = new Point(42, 87);
-            genderlbl.Name = "genderlbl";
-            genderlbl.Size = new Size(53, 14);
-            genderlbl.TabIndex = 11;
-            genderlbl.Text = "GENDER";
-            // 
             // EditButtonForm
             // 
             BackColor = Color.FromArgb(164, 16, 48);
@@ -666,11 +704,13 @@
             Load += EditButtonForm_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            personalPanel.ResumeLayout(false);
+            personalPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)profilePictureBox).EndInit();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
+            employmentPanel.ResumeLayout(false);
+            employmentPanel.PerformLayout();
+            contactPanel.ResumeLayout(false);
+            contactPanel.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -692,13 +732,13 @@
         private TextBox addressTB;
         private Label label3;
         private Label label4;
-        private Panel panel2;
+        private Panel contactPanel;
         private Label label6;
         private TextBox emailTB;
         private TextBox telNumberTB;
         private TextBox phoneTB;
         private Label label7;
-        private Panel panel3;
+        private Panel employmentPanel;
         private Label label8;
         private Label label9;
         private Label label11;
@@ -723,5 +763,7 @@
         private TextBox empNumTB;
         private TextBox textBox9;
         private ComboBox barangayCMB;
+        private Panel personalPanel;
+        private Button cameraButton;
     }
 }
