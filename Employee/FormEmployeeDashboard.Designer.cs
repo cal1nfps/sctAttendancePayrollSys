@@ -33,6 +33,8 @@
             labelEmployeeName = new Label();
             dateLabel = new Label();
             panelBG = new Panel();
+            panelPB = new Panel();
+            employeePB = new PictureBox();
             backButton = new Button();
             occupationPanel = new Panel();
             occupationLabel = new Label();
@@ -45,9 +47,7 @@
             empStatusLabel = new Label();
             empNumPanel = new Panel();
             empNumLabel = new Label();
-            employeePB = new PictureBox();
             SCTLogoPanel = new Panel();
-            domiePB = new PictureBox();
             logo2Label = new Label();
             logo1Label = new Label();
             leaveButton = new Button();
@@ -55,19 +55,19 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
+            domiePB = new PictureBox();
             tapID = new TextBox();
-            panelPB = new Panel();
             panelBG.SuspendLayout();
+            panelPB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)employeePB).BeginInit();
             occupationPanel.SuspendLayout();
             departmentPanel.SuspendLayout();
             namePanel.SuspendLayout();
             StatusPanel.SuspendLayout();
             empNumPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)employeePB).BeginInit();
             SCTLogoPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)domiePB).BeginInit();
             ((System.ComponentModel.ISupportInitialize)sctLogoPB).BeginInit();
-            panelPB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)domiePB).BeginInit();
             SuspendLayout();
             // 
             // labelLoginAs
@@ -122,6 +122,27 @@
             panelBG.Name = "panelBG";
             panelBG.Size = new Size(1900, 1037);
             panelBG.TabIndex = 1;
+            // 
+            // panelPB
+            // 
+            panelPB.BackColor = Color.FromArgb(242, 205, 10);
+            panelPB.BackgroundImage = (Image)resources.GetObject("panelPB.BackgroundImage");
+            panelPB.BackgroundImageLayout = ImageLayout.None;
+            panelPB.Controls.Add(employeePB);
+            panelPB.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            panelPB.Location = new Point(66, 274);
+            panelPB.Name = "panelPB";
+            panelPB.Size = new Size(400, 400);
+            panelPB.TabIndex = 24;
+            // 
+            // employeePB
+            // 
+            employeePB.BackColor = Color.WhiteSmoke;
+            employeePB.Location = new Point(0, 0);
+            employeePB.Name = "employeePB";
+            employeePB.Size = new Size(400, 400);
+            employeePB.TabIndex = 16;
+            employeePB.TabStop = false;
             // 
             // backButton
             // 
@@ -270,21 +291,11 @@
             empNumLabel.Text = "EMPLOYEE NUMBER";
             empNumLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // employeePB
-            // 
-            employeePB.BackColor = Color.WhiteSmoke;
-            employeePB.Location = new Point(0, 0);
-            employeePB.Name = "employeePB";
-            employeePB.Size = new Size(400, 400);
-            employeePB.TabIndex = 16;
-            employeePB.TabStop = false;
-            // 
             // SCTLogoPanel
             // 
             SCTLogoPanel.BackColor = Color.FromArgb(242, 205, 10);
             SCTLogoPanel.BackgroundImage = (Image)resources.GetObject("SCTLogoPanel.BackgroundImage");
             SCTLogoPanel.BackgroundImageLayout = ImageLayout.None;
-            SCTLogoPanel.Controls.Add(domiePB);
             SCTLogoPanel.Controls.Add(logo2Label);
             SCTLogoPanel.Controls.Add(logo1Label);
             SCTLogoPanel.Controls.Add(leaveButton);
@@ -292,22 +303,12 @@
             SCTLogoPanel.Controls.Add(label2);
             SCTLogoPanel.Controls.Add(label3);
             SCTLogoPanel.Controls.Add(label4);
+            SCTLogoPanel.Controls.Add(domiePB);
             SCTLogoPanel.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             SCTLogoPanel.Location = new Point(0, 70);
             SCTLogoPanel.Name = "SCTLogoPanel";
             SCTLogoPanel.Size = new Size(1920, 116);
             SCTLogoPanel.TabIndex = 15;
-            // 
-            // domiePB
-            // 
-            domiePB.BackColor = Color.Transparent;
-            domiePB.BackgroundImage = (Image)resources.GetObject("domiePB.BackgroundImage");
-            domiePB.BackgroundImageLayout = ImageLayout.Zoom;
-            domiePB.Location = new Point(1752, -2);
-            domiePB.Name = "domiePB";
-            domiePB.Size = new Size(168, 118);
-            domiePB.TabIndex = 18;
-            domiePB.TabStop = false;
             // 
             // logo2Label
             // 
@@ -388,6 +389,17 @@
             label4.Size = new Size(0, 13);
             label4.TabIndex = 7;
             // 
+            // domiePB
+            // 
+            domiePB.BackColor = Color.Transparent;
+            domiePB.BackgroundImage = (Image)resources.GetObject("domiePB.BackgroundImage");
+            domiePB.BackgroundImageLayout = ImageLayout.Zoom;
+            domiePB.Location = new Point(1720, 0);
+            domiePB.Name = "domiePB";
+            domiePB.Size = new Size(168, 118);
+            domiePB.TabIndex = 18;
+            domiePB.TabStop = false;
+            // 
             // tapID
             // 
             tapID.BackColor = Color.FromArgb(242, 205, 10);
@@ -400,18 +412,6 @@
             tapID.Size = new Size(915, 54);
             tapID.TabIndex = 1;
             tapID.KeyDown += tapID_KeyDown;
-            // 
-            // panelPB
-            // 
-            panelPB.BackColor = Color.FromArgb(242, 205, 10);
-            panelPB.BackgroundImage = (Image)resources.GetObject("panelPB.BackgroundImage");
-            panelPB.BackgroundImageLayout = ImageLayout.None;
-            panelPB.Controls.Add(employeePB);
-            panelPB.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            panelPB.Location = new Point(66, 274);
-            panelPB.Name = "panelPB";
-            panelPB.Size = new Size(400, 400);
-            panelPB.TabIndex = 24;
             // 
             // FormEmployeeDashboard
             // 
@@ -433,6 +433,8 @@
             Load += FormEmployeeDashboard_Load_1;
             panelBG.ResumeLayout(false);
             panelBG.PerformLayout();
+            panelPB.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)employeePB).EndInit();
             occupationPanel.ResumeLayout(false);
             occupationPanel.PerformLayout();
             departmentPanel.ResumeLayout(false);
@@ -443,12 +445,10 @@
             StatusPanel.PerformLayout();
             empNumPanel.ResumeLayout(false);
             empNumPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)employeePB).EndInit();
             SCTLogoPanel.ResumeLayout(false);
             SCTLogoPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)domiePB).EndInit();
             ((System.ComponentModel.ISupportInitialize)sctLogoPB).EndInit();
-            panelPB.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)domiePB).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }

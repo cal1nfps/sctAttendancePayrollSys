@@ -248,6 +248,7 @@
             dobDTP.Name = "dobDTP";
             dobDTP.Size = new Size(204, 23);
             dobDTP.TabIndex = 6;
+            dobDTP.Value = new DateTime(2023, 12, 31, 0, 0, 0, 0);
             // 
             // label7
             // 
@@ -590,6 +591,7 @@
             hireDTP.Name = "hireDTP";
             hireDTP.Size = new Size(147, 23);
             hireDTP.TabIndex = 16;
+            hireDTP.Value = new DateTime(2023, 12, 31, 0, 0, 0, 0);
             // 
             // addWebcam
             // 
@@ -597,12 +599,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(31, 31, 31);
             ClientSize = new Size(1904, 1041);
-            Controls.Add(employmentPanel);
-            Controls.Add(contactPanel);
-            Controls.Add(personalPanel);
             Controls.Add(deviceCMB);
             Controls.Add(captureButton);
             Controls.Add(webcamPictureBox);
+            Controls.Add(personalPanel);
+            Controls.Add(contactPanel);
+            Controls.Add(employmentPanel);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximumSize = new Size(1920, 1080);
             Name = "addWebcam";

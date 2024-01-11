@@ -745,14 +745,35 @@ namespace SCTAttendanceSystemUI.Forms
                 switch (selectedCity)
                 {
                     case "Antipolo":
-                        barangayCMB.Items.Add("Bangued");
-                        barangayCMB.Items.Add("Boliney");
-                        barangayCMB.Items.Add("Bucay");
+                        barangayCMB.Items.Add("Bagong Nayon");
+                        barangayCMB.Items.Add("Beverly Hills");
+                        barangayCMB.Items.Add("Calawis");
+                        barangayCMB.Items.Add("Cupang");
+                        barangayCMB.Items.Add("Dalig");
+                        barangayCMB.Items.Add("Dela Paz");
+                        barangayCMB.Items.Add("Inarawan");
+                        barangayCMB.Items.Add("Mambugan");
+                        barangayCMB.Items.Add("Mayamot");
+                        barangayCMB.Items.Add("Muntindilaw");
+                        barangayCMB.Items.Add("San Isidro");
+                        barangayCMB.Items.Add("San Jose");
+                        barangayCMB.Items.Add("San Juan");
+                        barangayCMB.Items.Add("San Luis");
+                        barangayCMB.Items.Add("San Roque");
+                        barangayCMB.Items.Add("Santa Cruz");
                         break;
                     case "Rodriguez":
-                        barangayCMB.Items.Add("Bangued");
-                        barangayCMB.Items.Add("Boliney");
-                        barangayCMB.Items.Add("Bucay");
+                        barangayCMB.Items.Add("Balite");
+                        barangayCMB.Items.Add("Burgos");
+                        barangayCMB.Items.Add("Geronimo");
+                        barangayCMB.Items.Add("Macabud");
+                        barangayCMB.Items.Add("Manggahan");
+                        barangayCMB.Items.Add("Mascap");
+                        barangayCMB.Items.Add("Puray");
+                        barangayCMB.Items.Add("Rosario");
+                        barangayCMB.Items.Add("San Isidro");
+                        barangayCMB.Items.Add("San Jose");
+                        barangayCMB.Items.Add("San Rafael");
                         break;
                     case "Binangonan":
                         barangayCMB.Items.Add("Bangad");
@@ -847,19 +868,47 @@ namespace SCTAttendanceSystemUI.Forms
                         barangayCMB.Items.Add("Sta. Rosa");
                         break;
                     case "San Mateo":
-                        barangayCMB.Items.Add("Bangued");
-                        barangayCMB.Items.Add("Boliney");
-                        barangayCMB.Items.Add("Bucay");
+                        barangayCMB.Items.Add("Ampid 1");
+                        barangayCMB.Items.Add("Ampid 2");
+                        barangayCMB.Items.Add("Banaba");
+                        barangayCMB.Items.Add("Dulong Bayan 1");
+                        barangayCMB.Items.Add("Dulong Bayan 2");
+                        barangayCMB.Items.Add("Guinayang");
+                        barangayCMB.Items.Add("Guitnang Bayan 1");
+                        barangayCMB.Items.Add("Guitnang Bayan 2");
+                        barangayCMB.Items.Add("Gulod Malaya"); 
+                        barangayCMB.Items.Add("Malanday");
+                        barangayCMB.Items.Add("Maly");
+                        barangayCMB.Items.Add("Pintong Bukawe");
+                        barangayCMB.Items.Add("Santa Ana");
+                        barangayCMB.Items.Add("Santo Niño");
+                        barangayCMB.Items.Add("Silangan");
                         break;
                     case "Baras":
-                        barangayCMB.Items.Add("Bangued");
-                        barangayCMB.Items.Add("Boliney");
-                        barangayCMB.Items.Add("Bucay");
+                        barangayCMB.Items.Add("San Juan");
+                        barangayCMB.Items.Add("Concepcion");
+                        barangayCMB.Items.Add("Santiago");
+                        barangayCMB.Items.Add("Evangelista");
+                        barangayCMB.Items.Add("Mabini");
+                        barangayCMB.Items.Add("San Salvador");
+                        barangayCMB.Items.Add("San Jose");
+                        barangayCMB.Items.Add("San Miguel");
+                        barangayCMB.Items.Add("Rizal");
+                        barangayCMB.Items.Add("Pinugay");
                         break;
                     case "Cardona":
-                        barangayCMB.Items.Add("Bangued");
+                        barangayCMB.Items.Add("Calahan");
+                        barangayCMB.Items.Add("Dalig");
+                        barangayCMB.Items.Add("Del Remedio");
+                        barangayCMB.Items.Add("Iglesia");
                         barangayCMB.Items.Add("Boliney");
-                        barangayCMB.Items.Add("Bucay");
+                        barangayCMB.Items.Add("Looc");
+                        barangayCMB.Items.Add("Nagsulo");
+                        barangayCMB.Items.Add("Patunhay");
+                        barangayCMB.Items.Add("Real");
+                        barangayCMB.Items.Add("Sampad");
+                        barangayCMB.Items.Add("San Roque");
+                        barangayCMB.Items.Add("Ticulio");
                         break;
                     default:
                         break;
