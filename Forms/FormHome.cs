@@ -237,7 +237,6 @@ namespace SCTAttendanceSystemUI.Forms
                     dataGridViewAttendance.Columns["jobhours"].Visible = false;    // Hide a specific column
                     dataGridViewAttendance.Columns["jobtimein"].Visible = false;    // Hide a specific column
                     dataGridViewAttendance.Columns["jobtimeout"].Visible = false;    // Hide a specific column
-                    dataGridViewAttendance.Columns["absences"].Visible = false;    // Hide a specific column
 
 
 
@@ -601,12 +600,6 @@ namespace SCTAttendanceSystemUI.Forms
             SearchData(searchText);
         }
 
-        private void refreshButton_Click(object sender, EventArgs e)
-        {
-            dataSet.Tables["empattendance"].Clear();
-            adapter.Fill(dataSet, "empattendance");
-        }
-
         private void clearLabel_MouseEnter(object sender, EventArgs e)
         {
             clearLabel.ForeColor = Color.Red;
@@ -616,6 +609,25 @@ namespace SCTAttendanceSystemUI.Forms
         private void clearLabel_MouseLeave(object sender, EventArgs e)
         {
             clearLabel.ForeColor = SystemColors.ControlText; // You can set it to your desired default color
+
+        }
+
+        private void refreshButton_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                // Use the null-conditional operator to check and clear the "empattendance" table if it exists
+                dataSet?.Tables["empattendance"]?.Clear();
+
+                // Check if adapter is not null before calling Fill
+                // Also, use null-conditional operator for dataSet in case it is null
+                adapter?.Fill(dataSet, "empattendance");
+            }
+            catch (Exception ex)
+            {
+                // Handle exception, such as logging the error or showing a message to the user
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
 
         }
     }

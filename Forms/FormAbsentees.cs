@@ -12,6 +12,7 @@ using System.Reflection.Metadata.Ecma335;
 using MySql.Data.MySqlClient;
 using ExcelDataReader;
 
+
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using SCTAttendanceSystemUI.Employee.filterAbsent;
 using System.Globalization;
@@ -32,6 +33,8 @@ namespace SCTAttendanceSystemUI.Forms
 
             clearLabel.MouseEnter += clearLabel_MouseEnter;
             clearLabel.MouseLeave += clearLabel_MouseLeave;
+            InitializeTimer();
+
 
         }
 
@@ -81,11 +84,17 @@ namespace SCTAttendanceSystemUI.Forms
             LoadAbsentEmployees();
             ApplyColumnStyles();
 
+
             dataGridViewAbsentees.Columns["employeenum"].HeaderText = "Employee Number";
             dataGridViewAbsentees.Columns["name"].HeaderText = "Name";
             dataGridViewAbsentees.Columns["department"].HeaderText = "Department";
             dataGridViewAbsentees.Columns["occupation"].HeaderText = "Occupation";
             dataGridViewAbsentees.Columns["jobstatus"].HeaderText = "Job Status";
+            dataGridViewAbsentees.Columns["jobhours"].HeaderText = "Job Hours";
+            dataGridViewAbsentees.Columns["jobtimein"].HeaderText = "Job Time-In";
+            dataGridViewAbsentees.Columns["jobtimeout"].HeaderText = "Job Time-Out";
+
+
 
         }
 
@@ -98,7 +107,7 @@ namespace SCTAttendanceSystemUI.Forms
                 connection.Open();
 
                 // Retrieve employees who are not present in empattendance today
-                string selectQuery = "SELECT employeenum, name, department, occupation, jobstatus FROM employee WHERE employeenum NOT IN (SELECT empnum FROM empattendance WHERE DATE(date) = @today)";
+                string selectQuery = "SELECT employeenum, name, department, occupation, jobstatus, jobhours, jobtimein, jobtimeout FROM employee WHERE employeenum NOT IN (SELECT empnum FROM empattendance WHERE DATE(date) = @today)";
                 MySqlCommand selectCommand = new MySqlCommand(selectQuery, connection);
                 selectCommand.Parameters.AddWithValue("@today", DateTime.Today);
                 adapter = new MySqlDataAdapter(selectCommand);
@@ -112,35 +121,125 @@ namespace SCTAttendanceSystemUI.Forms
                 // Set the DataSource of the DataGridView to the DataTable
                 dataGridViewAbsentees.DataSource = table;
 
-                /*                // Insert the absent employees into emp_absent table
-                                foreach (DataRow row in table.Rows)
-                                {
-                                    string empnum = row["employeenum"].ToString();
-                                    string name = row["name"].ToString();
-                                    string dep = row["department"].ToString();
-                                    string occupation = row["occupation"].ToString();
-                                    string jobstatus = row["jobstatus"].ToString();
-                                    DateTime currentDate = DateTime.Now;
+                // Check if the end of the day has passed
+                if (IsEndOfDay())
+                {
+                    // Insert the absent employees into emp_absents table
+                    InsertAbsentEmployees();
 
-
-                                    string insertQuery = "INSERT INTO emp_absents (empnum, name, department, occupation, jobstatus, date) VALUES (@empnum, @name, @department, @occupation, @jobstatus, @date)";
-                                    MySqlCommand insertCommand = new MySqlCommand(insertQuery, connection);
-                                    insertCommand.Parameters.AddWithValue("@empnum", empnum);
-                                    insertCommand.Parameters.AddWithValue("@name", name);
-                                    insertCommand.Parameters.AddWithValue("@department", dep);
-                                    insertCommand.Parameters.AddWithValue("@occupation", occupation);
-                                    insertCommand.Parameters.AddWithValue("@jobstatus", jobstatus);
-                                    insertCommand.Parameters.AddWithValue("@date", currentDate);
-
-
-
-                                    insertCommand.ExecuteNonQuery();
-                                }*/
+                    // Update the last stored date
+                    UpdateLastStoredDate();
+                }
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred: " + ex.Message);
+            }
+            finally
+            {
+                // Close the connection
+                connection.Close();
+            }
+        }
+
+        private bool IsEndOfDay()
+        {
+            // Specify the time zone for the Philippines
+            TimeZoneInfo phTimeZone = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
+
+            // Get the current time in the Philippines time zone
+            DateTime currentTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, phTimeZone);
+
+            // Set the end of the day time in the Philippines time zone
+            DateTime endOfDayTime = new DateTime(currentTime.Year, currentTime.Month, currentTime.Day, 23, 59, 59, 999);
+
+            return currentTime >= endOfDayTime;
+        }
+
+        private void UpdateLastStoredDate()
+        {
+            try
+            {
+                // Open the connection
+                connection.Open();
+
+                // Specify the time zone for the Philippines
+                TimeZoneInfo phTimeZone = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
+
+                // Get the current date in the Philippines time zone
+                DateTime currentDate = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, phTimeZone).Date;
+
+                // Update the last stored date in your settings or another table
+                string updateQuery = "UPDATE settings SET last_stored_date = @today";
+                MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection);
+                updateCommand.Parameters.AddWithValue("@today", currentDate);
+                updateCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
+            finally
+            {
+                // Close the connection
+                connection.Close();
+            }
+        }
+
+        private void InsertAbsentEmployees()
+        {
+            try
+            {
+                // Open the connection
+                connection.Open();
+
+                // Iterate through the rows of the DataGridView
+                foreach (DataGridViewRow row in dataGridViewAbsentees.Rows)
+                {
+                    if (row.IsNewRow) continue; // Skip the new row if any
+
+                    // Retrieve values from the DataGridView (check for null values)
+                    string empnum = row.Cells["employeenum"].Value?.ToString();
+                    string name = row.Cells["name"].Value?.ToString();
+                    string dep = row.Cells["department"].Value?.ToString();
+                    string occupation = row.Cells["occupation"].Value?.ToString();
+                    string jobstatus = row.Cells["jobstatus"].Value?.ToString();
+                    string jobhours = row.Cells["jobhours"].Value?.ToString();
+                    string jobtimeinString = row.Cells["jobtimein"].Value?.ToString();
+                    string jobtimeoutString = row.Cells["jobtimeout"].Value?.ToString();
+
+                    // Convert string values to DateTime
+                    DateTime jobtimein = DateTime.Parse(jobtimeinString);
+                    DateTime jobtimeout = DateTime.Parse(jobtimeoutString);
+
+                    // Format DateTime values to string with "hh:mm:ss tt" format
+                    string formattedJobTimeIn = jobtimein.ToString("hh:mm:ss tt");
+                    string formattedJobTimeOut = jobtimeout.ToString("hh:mm:ss tt");
+
+                    DateTime currentDate = DateTime.Now;
+
+                    // Insert the absent employee into emp_absents table
+                    string insertQuery = "INSERT INTO emp_absents (empnum, name, department, occupation, jobstatus, jobhours, jobtimein, jobtimeout, date) " +
+                                         "VALUES (@empnum, @name, @department, @occupation, @jobstatus, @jobhours, @jobtimein, @jobtimeout, @date)";
+                    MySqlCommand insertCommand = new MySqlCommand(insertQuery, connection);
+                    insertCommand.Parameters.AddWithValue("@empnum", empnum);
+                    insertCommand.Parameters.AddWithValue("@name", name);
+                    insertCommand.Parameters.AddWithValue("@department", dep);
+                    insertCommand.Parameters.AddWithValue("@occupation", occupation);
+                    insertCommand.Parameters.AddWithValue("@jobstatus", jobstatus);
+                    insertCommand.Parameters.AddWithValue("@jobhours", jobhours);
+                    insertCommand.Parameters.AddWithValue("@jobtimein", formattedJobTimeIn);
+                    insertCommand.Parameters.AddWithValue("@jobtimeout", formattedJobTimeOut);
+                    insertCommand.Parameters.AddWithValue("@date", currentDate);
+
+                    insertCommand.ExecuteNonQuery();
+                    Console.WriteLine("Absent employees inserted successfully!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred during insertion: " + ex.Message);
             }
             finally
             {
@@ -162,11 +261,6 @@ namespace SCTAttendanceSystemUI.Forms
 
             dataView.RowFilter = $"name LIKE '%{searchText}%' OR Convert(employeenum, 'System.String') LIKE '%{searchText}%'";
             dataGridViewAbsentees.DataSource = dataView;
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -407,6 +501,61 @@ namespace SCTAttendanceSystemUI.Forms
         {
             clearLabel.ForeColor = SystemColors.ControlText; // You can set it to your desired default color
 
+        }
+
+        private void dataGridViewAbsentees_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Check if the current cell belongs to the "DateColumn" and has a datetime value
+            if (dataGridViewAbsentees.Columns[e.ColumnIndex].Name == "jobtimein" && e.Value != null && e.Value is DateTime)
+            {
+                // Format the datetime value to the desired format
+                DateTime dateValue = (DateTime)e.Value;
+                e.Value = dateValue.ToString("hh:mm:ss tt");
+                e.FormattingApplied = true;
+            }
+
+            // Check if the current cell belongs to the "DateColumn" and has a datetime value
+            if (dataGridViewAbsentees.Columns[e.ColumnIndex].Name == "jobtimeout" && e.Value != null && e.Value is DateTime)
+            {
+                // Format the datetime value to the desired format
+                DateTime dateValue = (DateTime)e.Value;
+                e.Value = dateValue.ToString("hh:mm:ss tt");
+                e.FormattingApplied = true;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            InsertAbsentEmployees();
+        }
+
+        private System.Threading.Timer timer;
+
+        private void InitializeTimer()
+        {
+            // Set the initial delay to the time until the next day
+            DateTime now = DateTime.Now;
+            DateTime nextDay = now.AddDays(1).Date;
+            TimeSpan initialDelay = nextDay - now;
+
+            // Set the timer to trigger every 24 hours after the initial delay
+            timer = new System.Threading.Timer(TimerCallback, null, (int)initialDelay.TotalMilliseconds, (int)TimeSpan.FromHours(24).TotalMilliseconds);
+        }
+
+        private void TimerCallback(object state)
+        {
+            // Insert absent employees
+            InsertAbsentEmployees();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            // Insert absent employees
+            InsertAbsentEmployees();
+
+            // Reset the timer
+            timer1.Stop();
+            timer1.Start();
         }
     }
 }

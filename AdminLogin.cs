@@ -27,27 +27,32 @@ namespace SCTAttendanceSystemUI
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            string enteredUsername = textBoxIDNum.Text;
-            string enteredPassword = textBoxPassword.Text;
+            /*            string enteredUsername = textBoxIDNum.Text;
+                        string enteredPassword = textBoxPassword.Text;
 
-            if (string.IsNullOrEmpty(enteredUsername) || string.IsNullOrEmpty(enteredPassword))
-            {
-                MessageBox.Show("Please enter both username and password.");
-                return;
-            }
+                        if (string.IsNullOrEmpty(enteredUsername) || string.IsNullOrEmpty(enteredPassword))
+                        {
+                            MessageBox.Show("Please enter both username and password.");
+                            return;
+                        }
 
-            if (Authentication(enteredUsername, enteredPassword))
-            {
-                this.Hide();
-                Home1 form_home1 = new Home1();
-                form_home1.ShowDialog();
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Login failed. Please check your credentials.");
-            }
+                        if (Authentication(enteredUsername, enteredPassword))
+                        {
+                            this.Hide();
+                            Home1 form_home1 = new Home1();
+                            form_home1.ShowDialog();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Login failed. Please check your credentials.");
+                        }
+            */
 
+            this.Hide();
+            Home1 form_home1 = new Home1();
+            form_home1.ShowDialog();
+            this.Close();
 
         }
 

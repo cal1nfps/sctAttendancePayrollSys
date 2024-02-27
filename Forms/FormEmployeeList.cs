@@ -12,6 +12,8 @@ using MySql.Data.MySqlClient;
 using SCTAttendanceSystemUI.Forms.filterButton;
 using System.Globalization;
 using System.Threading;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using System.Drawing;
 
@@ -20,7 +22,6 @@ namespace SCTAttendanceSystemUI.Forms
 {
     public partial class FormEmployeeList : Form
     {
-
 
         private MySqlConnection connection;
         private MySqlDataAdapter adapter;

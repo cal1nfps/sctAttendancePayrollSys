@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home1));
             panelHeader = new Panel();
             Title = new Label();
@@ -35,21 +36,27 @@
             pictureBoxLogo = new PictureBox();
             labelSiena = new Label();
             panelMenu = new Panel();
+            dropDownAbsent = new FlowLayoutPanel();
+            buttonAbsentees = new Button();
+            absenteesButton = new Button();
+            recordsButton = new Button();
             buttonLogout = new Button();
             buttonPayroll = new Button();
             buttonLeave = new Button();
-            buttonAbsentees = new Button();
             buttonEmployeeList = new Button();
             buttonDepartment = new Button();
             buttonAttendance = new Button();
+            buttonDashboard = new Button();
             labelMenu = new Label();
             panelDesktopPane = new Panel();
             tableLayoutPanel2 = new TableLayoutPanel();
             button2 = new Button();
             pictureBox2 = new PictureBox();
+            timer1 = new System.Windows.Forms.Timer(components);
             panelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             panelMenu.SuspendLayout();
+            dropDownAbsent.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -121,21 +128,97 @@
             panelMenu.BackColor = Color.FromArgb(164, 16, 48);
             panelMenu.BackgroundImage = (Image)resources.GetObject("panelMenu.BackgroundImage");
             panelMenu.BorderStyle = BorderStyle.FixedSingle;
+            panelMenu.Controls.Add(dropDownAbsent);
             panelMenu.Controls.Add(buttonLogout);
             panelMenu.Controls.Add(buttonPayroll);
             panelMenu.Controls.Add(buttonLeave);
-            panelMenu.Controls.Add(buttonAbsentees);
             panelMenu.Controls.Add(buttonEmployeeList);
             panelMenu.Controls.Add(buttonDepartment);
             panelMenu.Controls.Add(buttonAttendance);
+            panelMenu.Controls.Add(buttonDashboard);
             panelMenu.Controls.Add(labelMenu);
             panelMenu.Dock = DockStyle.Left;
             panelMenu.Location = new Point(0, 110);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(50, 931);
+            panelMenu.Size = new Size(63, 931);
             panelMenu.TabIndex = 4;
-            panelMenu.MouseEnter += panelMenu_MouseEnter;
-            panelMenu.MouseLeave += panelMenu_MouseLeave;
+            // 
+            // dropDownAbsent
+            // 
+            dropDownAbsent.BackColor = Color.FromArgb(164, 16, 48);
+            dropDownAbsent.Controls.Add(buttonAbsentees);
+            dropDownAbsent.Controls.Add(absenteesButton);
+            dropDownAbsent.Controls.Add(recordsButton);
+            dropDownAbsent.Dock = DockStyle.Top;
+            dropDownAbsent.Location = new Point(0, 455);
+            dropDownAbsent.MaximumSize = new Size(370, 213);
+            dropDownAbsent.MinimumSize = new Size(370, 69);
+            dropDownAbsent.Name = "dropDownAbsent";
+            dropDownAbsent.Size = new Size(370, 69);
+            dropDownAbsent.TabIndex = 0;
+            // 
+            // buttonAbsentees
+            // 
+            buttonAbsentees.BackColor = Color.FromArgb(164, 16, 48);
+            buttonAbsentees.BackgroundImageLayout = ImageLayout.None;
+            buttonAbsentees.Cursor = Cursors.Hand;
+            buttonAbsentees.Dock = DockStyle.Top;
+            buttonAbsentees.FlatAppearance.BorderSize = 0;
+            buttonAbsentees.FlatStyle = FlatStyle.Flat;
+            buttonAbsentees.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonAbsentees.ForeColor = Color.White;
+            buttonAbsentees.Image = (Image)resources.GetObject("buttonAbsentees.Image");
+            buttonAbsentees.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonAbsentees.Location = new Point(3, 3);
+            buttonAbsentees.Name = "buttonAbsentees";
+            buttonAbsentees.Padding = new Padding(10, 0, 0, 0);
+            buttonAbsentees.Size = new Size(210, 65);
+            buttonAbsentees.TabIndex = 26;
+            buttonAbsentees.Text = "     ABSENT";
+            buttonAbsentees.UseVisualStyleBackColor = false;
+            buttonAbsentees.Click += buttonAbsentees_Click;
+            // 
+            // absenteesButton
+            // 
+            absenteesButton.BackColor = Color.FromArgb(204, 35, 71);
+            absenteesButton.BackgroundImageLayout = ImageLayout.None;
+            absenteesButton.Cursor = Cursors.Hand;
+            absenteesButton.Dock = DockStyle.Top;
+            absenteesButton.FlatAppearance.BorderSize = 0;
+            absenteesButton.FlatStyle = FlatStyle.Flat;
+            absenteesButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            absenteesButton.ForeColor = Color.White;
+            absenteesButton.Image = (Image)resources.GetObject("absenteesButton.Image");
+            absenteesButton.ImageAlign = ContentAlignment.MiddleLeft;
+            absenteesButton.Location = new Point(3, 74);
+            absenteesButton.Name = "absenteesButton";
+            absenteesButton.Padding = new Padding(10, 0, 0, 0);
+            absenteesButton.Size = new Size(210, 65);
+            absenteesButton.TabIndex = 27;
+            absenteesButton.Text = "     ABSENTEES";
+            absenteesButton.UseVisualStyleBackColor = false;
+            absenteesButton.Click += absenteesButton_Click;
+            // 
+            // recordsButton
+            // 
+            recordsButton.BackColor = Color.FromArgb(204, 35, 71);
+            recordsButton.BackgroundImageLayout = ImageLayout.None;
+            recordsButton.Cursor = Cursors.Hand;
+            recordsButton.Dock = DockStyle.Top;
+            recordsButton.FlatAppearance.BorderSize = 0;
+            recordsButton.FlatStyle = FlatStyle.Flat;
+            recordsButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            recordsButton.ForeColor = Color.White;
+            recordsButton.Image = (Image)resources.GetObject("recordsButton.Image");
+            recordsButton.ImageAlign = ContentAlignment.MiddleLeft;
+            recordsButton.Location = new Point(3, 145);
+            recordsButton.Name = "recordsButton";
+            recordsButton.Padding = new Padding(10, 0, 0, 0);
+            recordsButton.Size = new Size(210, 65);
+            recordsButton.TabIndex = 28;
+            recordsButton.Text = "     RECORDS";
+            recordsButton.UseVisualStyleBackColor = false;
+            recordsButton.Click += recordsButton_Click;
             // 
             // buttonLogout
             // 
@@ -150,14 +233,11 @@
             buttonLogout.Location = new Point(0, 864);
             buttonLogout.Name = "buttonLogout";
             buttonLogout.Padding = new Padding(10, 0, 0, 0);
-            buttonLogout.Size = new Size(48, 65);
+            buttonLogout.Size = new Size(61, 65);
             buttonLogout.TabIndex = 25;
             buttonLogout.Text = "     LOGOUT";
-            buttonLogout.TextAlign = ContentAlignment.MiddleLeft;
-            buttonLogout.TextImageRelation = TextImageRelation.ImageBeforeText;
             buttonLogout.UseVisualStyleBackColor = true;
             buttonLogout.Click += buttonLogout_Click;
-            buttonLogout.MouseEnter += buttonLogout_MouseEnter;
             // 
             // buttonPayroll
             // 
@@ -172,7 +252,7 @@
             buttonPayroll.Location = new Point(0, 390);
             buttonPayroll.Name = "buttonPayroll";
             buttonPayroll.Padding = new Padding(10, 0, 0, 0);
-            buttonPayroll.Size = new Size(48, 65);
+            buttonPayroll.Size = new Size(61, 65);
             buttonPayroll.TabIndex = 25;
             buttonPayroll.Text = "     PAYROLL";
             buttonPayroll.TextAlign = ContentAlignment.MiddleLeft;
@@ -194,7 +274,7 @@
             buttonLeave.Location = new Point(0, 325);
             buttonLeave.Name = "buttonLeave";
             buttonLeave.Padding = new Padding(10, 0, 0, 0);
-            buttonLeave.Size = new Size(48, 65);
+            buttonLeave.Size = new Size(61, 65);
             buttonLeave.TabIndex = 25;
             buttonLeave.Text = "     LEAVE";
             buttonLeave.TextAlign = ContentAlignment.MiddleLeft;
@@ -202,28 +282,6 @@
             buttonLeave.UseVisualStyleBackColor = true;
             buttonLeave.Visible = false;
             buttonLeave.Click += buttonLeave_Click_1;
-            // 
-            // buttonAbsentees
-            // 
-            buttonAbsentees.Cursor = Cursors.Hand;
-            buttonAbsentees.Dock = DockStyle.Top;
-            buttonAbsentees.FlatAppearance.BorderSize = 0;
-            buttonAbsentees.FlatStyle = FlatStyle.Flat;
-            buttonAbsentees.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonAbsentees.ForeColor = Color.White;
-            buttonAbsentees.Image = Properties.Resources.absentees;
-            buttonAbsentees.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonAbsentees.Location = new Point(0, 260);
-            buttonAbsentees.Name = "buttonAbsentees";
-            buttonAbsentees.Padding = new Padding(10, 0, 0, 0);
-            buttonAbsentees.Size = new Size(48, 65);
-            buttonAbsentees.TabIndex = 25;
-            buttonAbsentees.Text = "     ABSENTEES";
-            buttonAbsentees.TextAlign = ContentAlignment.MiddleLeft;
-            buttonAbsentees.TextImageRelation = TextImageRelation.ImageBeforeText;
-            buttonAbsentees.UseVisualStyleBackColor = true;
-            buttonAbsentees.Click += buttonAbsentees_Click_1;
-            buttonAbsentees.MouseEnter += buttonAbsentees_MouseEnter;
             // 
             // buttonEmployeeList
             // 
@@ -233,17 +291,16 @@
             buttonEmployeeList.FlatStyle = FlatStyle.Flat;
             buttonEmployeeList.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttonEmployeeList.ForeColor = Color.White;
-            buttonEmployeeList.Image = Properties.Resources.employees;
+            buttonEmployeeList.Image = (Image)resources.GetObject("buttonEmployeeList.Image");
             buttonEmployeeList.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonEmployeeList.Location = new Point(0, 195);
+            buttonEmployeeList.Location = new Point(0, 260);
             buttonEmployeeList.Name = "buttonEmployeeList";
-            buttonEmployeeList.Padding = new Padding(10, 0, 10, 0);
-            buttonEmployeeList.Size = new Size(48, 65);
+            buttonEmployeeList.Padding = new Padding(10, 0, 0, 0);
+            buttonEmployeeList.Size = new Size(61, 65);
             buttonEmployeeList.TabIndex = 25;
-            buttonEmployeeList.Text = "    EMPLOYEE LIST";
+            buttonEmployeeList.Text = "     EMPLOYEES";
             buttonEmployeeList.UseVisualStyleBackColor = true;
-            buttonEmployeeList.Click += buttonEmployeeList_Click;
-            buttonEmployeeList.MouseEnter += buttonEmployeeList_MouseEnter;
+            buttonEmployeeList.Click += buttonEmployeeList_Click_1;
             // 
             // buttonDepartment
             // 
@@ -253,17 +310,16 @@
             buttonDepartment.FlatStyle = FlatStyle.Flat;
             buttonDepartment.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttonDepartment.ForeColor = Color.White;
-            buttonDepartment.Image = Properties.Resources.department;
+            buttonDepartment.Image = (Image)resources.GetObject("buttonDepartment.Image");
             buttonDepartment.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonDepartment.Location = new Point(0, 130);
+            buttonDepartment.Location = new Point(0, 195);
             buttonDepartment.Name = "buttonDepartment";
-            buttonDepartment.Padding = new Padding(10, 0, 0, 0);
-            buttonDepartment.Size = new Size(48, 65);
+            buttonDepartment.Padding = new Padding(10, 0, 10, 0);
+            buttonDepartment.Size = new Size(61, 65);
             buttonDepartment.TabIndex = 25;
-            buttonDepartment.Text = "DEPARTMENTS";
+            buttonDepartment.Text = "     DEPARTMENT";
             buttonDepartment.UseVisualStyleBackColor = true;
-            buttonDepartment.Click += buttonDepartment_Click_1;
-            buttonDepartment.MouseEnter += buttonDepartment_MouseEnter;
+            buttonDepartment.Click += buttonDepartment_Click;
             // 
             // buttonAttendance
             // 
@@ -273,23 +329,41 @@
             buttonAttendance.FlatStyle = FlatStyle.Flat;
             buttonAttendance.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttonAttendance.ForeColor = Color.White;
-            buttonAttendance.Image = Properties.Resources.dashboard;
+            buttonAttendance.Image = (Image)resources.GetObject("buttonAttendance.Image");
             buttonAttendance.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonAttendance.Location = new Point(0, 65);
+            buttonAttendance.Location = new Point(0, 130);
             buttonAttendance.Name = "buttonAttendance";
             buttonAttendance.Padding = new Padding(10, 0, 0, 0);
-            buttonAttendance.Size = new Size(48, 65);
+            buttonAttendance.Size = new Size(61, 65);
             buttonAttendance.TabIndex = 25;
             buttonAttendance.Text = "     ATTENDANCE";
-            buttonAttendance.TextAlign = ContentAlignment.MiddleLeft;
-            buttonAttendance.TextImageRelation = TextImageRelation.ImageBeforeText;
             buttonAttendance.UseVisualStyleBackColor = true;
-            buttonAttendance.Click += buttonAttendance_Click_1;
-            buttonAttendance.MouseEnter += buttonAttendance_MouseEnter;
+            buttonAttendance.Click += buttonAttendance_Click;
+            // 
+            // buttonDashboard
+            // 
+            buttonDashboard.Cursor = Cursors.Hand;
+            buttonDashboard.Dock = DockStyle.Top;
+            buttonDashboard.FlatAppearance.BorderSize = 0;
+            buttonDashboard.FlatStyle = FlatStyle.Flat;
+            buttonDashboard.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonDashboard.ForeColor = Color.White;
+            buttonDashboard.Image = (Image)resources.GetObject("buttonDashboard.Image");
+            buttonDashboard.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonDashboard.Location = new Point(0, 65);
+            buttonDashboard.Name = "buttonDashboard";
+            buttonDashboard.Padding = new Padding(10, 0, 0, 0);
+            buttonDashboard.Size = new Size(61, 65);
+            buttonDashboard.TabIndex = 25;
+            buttonDashboard.Text = "     DASHBOARD";
+            buttonDashboard.UseVisualStyleBackColor = true;
+            buttonDashboard.Click += buttonDashboard_Click;
             // 
             // labelMenu
             // 
+            labelMenu.Cursor = Cursors.Hand;
             labelMenu.Dock = DockStyle.Top;
+            labelMenu.FlatStyle = FlatStyle.Flat;
             labelMenu.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
             labelMenu.ForeColor = Color.White;
             labelMenu.Image = (Image)resources.GetObject("labelMenu.Image");
@@ -297,21 +371,21 @@
             labelMenu.Location = new Point(0, 0);
             labelMenu.Name = "labelMenu";
             labelMenu.Padding = new Padding(10, 0, 0, 0);
-            labelMenu.Size = new Size(48, 65);
+            labelMenu.Size = new Size(61, 65);
             labelMenu.TabIndex = 25;
             labelMenu.TextAlign = ContentAlignment.MiddleCenter;
-            labelMenu.MouseEnter += labelMenu_MouseEnter;
+            labelMenu.Click += labelMenu_Click;
             // 
             // panelDesktopPane
             // 
             panelDesktopPane.AutoScroll = true;
             panelDesktopPane.BorderStyle = BorderStyle.FixedSingle;
             panelDesktopPane.Dock = DockStyle.Fill;
-            panelDesktopPane.Location = new Point(50, 110);
+            panelDesktopPane.Location = new Point(63, 110);
             panelDesktopPane.MaximumSize = new Size(1920, 1080);
             panelDesktopPane.MinimumSize = new Size(1454, 712);
             panelDesktopPane.Name = "panelDesktopPane";
-            panelDesktopPane.Size = new Size(1854, 931);
+            panelDesktopPane.Size = new Size(1841, 931);
             panelDesktopPane.TabIndex = 5;
             // 
             // tableLayoutPanel2
@@ -358,6 +432,11 @@
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
             // 
+            // timer1
+            // 
+            timer1.Interval = 1;
+            timer1.Tick += timer1_Tick;
+            // 
             // Home1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -379,6 +458,7 @@
             panelHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
             panelMenu.ResumeLayout(false);
+            dropDownAbsent.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
@@ -394,15 +474,20 @@
         private Button button2;
         private PictureBox pictureBox2;
         private PictureBox pictureBoxLogo;
-        private Button buttonAbsentees;
         private Button buttonEmployeeList;
         private Button buttonDepartment;
         private Button buttonAttendance;
+        private Button buttonDashboard;
         private Label labelMenu;
         private Button buttonLeave;
         private Button buttonPayroll;
         private Button buttonLogout;
         private Label logo2Label;
         private Label Title;
+        private Button buttonAbsentees;
+        private FlowLayoutPanel dropDownAbsent;
+        private Button absenteesButton;
+        private Button recordsButton;
+        private System.Windows.Forms.Timer timer1;
     }
 }

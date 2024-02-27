@@ -179,24 +179,22 @@
             // 
             // refreshButton
             // 
-            refreshButton.BackColor = Color.Green;
-            refreshButton.BackgroundImage = (Image)resources.GetObject("refreshButton.BackgroundImage");
+            refreshButton.BackColor = Color.FromArgb(219, 20, 62);
+            refreshButton.Cursor = Cursors.Hand;
             refreshButton.FlatAppearance.BorderSize = 0;
             refreshButton.FlatStyle = FlatStyle.Flat;
-            refreshButton.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            refreshButton.ForeColor = Color.White;
+            refreshButton.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            refreshButton.Image = (Image)resources.GetObject("refreshButton.Image");
             refreshButton.ImageAlign = ContentAlignment.MiddleLeft;
-            refreshButton.Location = new Point(1395, 95);
+            refreshButton.Location = new Point(407, 95);
             refreshButton.Name = "refreshButton";
             refreshButton.Padding = new Padding(10, 0, 0, 0);
-            refreshButton.Size = new Size(71, 30);
-            refreshButton.TabIndex = 76;
-            refreshButton.Text = "Refresh";
+            refreshButton.Size = new Size(47, 30);
+            refreshButton.TabIndex = 74;
             refreshButton.TextAlign = ContentAlignment.MiddleLeft;
-            refreshButton.TextImageRelation = TextImageRelation.ImageBeforeText;
             refreshButton.UseVisualStyleBackColor = false;
             refreshButton.Visible = false;
-            refreshButton.Click += refreshButton_Click;
+            refreshButton.Click += refreshButton_Click_1;
             // 
             // FormHome
             // 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAbsentees));
             labelAbsenteesForToday = new Label();
             labelAbsenteesDate = new Label();
@@ -37,6 +38,8 @@
             button2 = new Button();
             deleteButton = new Button();
             clearLabel = new Label();
+            button1 = new Button();
+            timer1 = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)dataGridViewAbsentees).BeginInit();
             SuspendLayout();
             // 
@@ -84,6 +87,7 @@
             dataGridViewAbsentees.ShowRowErrors = false;
             dataGridViewAbsentees.Size = new Size(1587, 593);
             dataGridViewAbsentees.TabIndex = 33;
+            dataGridViewAbsentees.CellFormatting += dataGridViewAbsentees_CellFormatting;
             // 
             // searchBox
             // 
@@ -167,6 +171,29 @@
             clearLabel.MouseEnter += clearLabel_MouseEnter;
             clearLabel.MouseLeave += clearLabel_MouseLeave;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(219, 20, 62);
+            button1.Cursor = Cursors.Hand;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(407, 89);
+            button1.Name = "button1";
+            button1.Padding = new Padding(10, 0, 0, 0);
+            button1.Size = new Size(47, 32);
+            button1.TabIndex = 79;
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // timer1
+            // 
+            timer1.Tick += timer1_Tick;
+            // 
             // FormAbsentees
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -176,6 +203,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1666, 822);
+            Controls.Add(button1);
             Controls.Add(clearLabel);
             Controls.Add(deleteButton);
             Controls.Add(button2);
@@ -206,5 +234,7 @@
         private Button button2;
         private Button deleteButton;
         private Label clearLabel;
+        private Button button1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
