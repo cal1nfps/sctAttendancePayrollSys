@@ -33,11 +33,12 @@
             labelEmployeeName = new Label();
             dateLabel = new Label();
             panelBG = new Panel();
+            timeBox = new Label();
+            tapID = new TextBox();
             panelPB = new Panel();
             employeePB = new PictureBox();
+            dataChecker = new DataGridView();
             backButton = new Button();
-            occupationPanel = new Panel();
-            occupationLabel = new Label();
             departmentPanel = new Panel();
             departmentLabel = new Label();
             namePanel = new Panel();
@@ -56,11 +57,10 @@
             label3 = new Label();
             label4 = new Label();
             domiePB = new PictureBox();
-            tapID = new TextBox();
             panelBG.SuspendLayout();
             panelPB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)employeePB).BeginInit();
-            occupationPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataChecker).BeginInit();
             departmentPanel.SuspendLayout();
             namePanel.SuspendLayout();
             StatusPanel.SuspendLayout();
@@ -104,9 +104,10 @@
             panelBG.BackColor = Color.FromArgb(164, 16, 52);
             panelBG.BackgroundImage = (Image)resources.GetObject("panelBG.BackgroundImage");
             panelBG.BackgroundImageLayout = ImageLayout.Stretch;
+            panelBG.Controls.Add(timeBox);
+            panelBG.Controls.Add(tapID);
             panelBG.Controls.Add(panelPB);
             panelBG.Controls.Add(backButton);
-            panelBG.Controls.Add(occupationPanel);
             panelBG.Controls.Add(departmentPanel);
             panelBG.Controls.Add(namePanel);
             panelBG.Controls.Add(dateLabel);
@@ -115,13 +116,36 @@
             panelBG.Controls.Add(empNumPanel);
             panelBG.Controls.Add(SCTLogoPanel);
             panelBG.Controls.Add(labelEmployeeName);
-            panelBG.Controls.Add(tapID);
             panelBG.Dock = DockStyle.Fill;
             panelBG.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             panelBG.Location = new Point(0, 0);
             panelBG.Name = "panelBG";
-            panelBG.Size = new Size(1900, 1037);
+            panelBG.Size = new Size(1900, 881);
             panelBG.TabIndex = 1;
+            // 
+            // timeBox
+            // 
+            timeBox.AutoSize = true;
+            timeBox.BackColor = Color.Transparent;
+            timeBox.Font = new Font("Times New Roman", 48F, FontStyle.Bold, GraphicsUnit.Point);
+            timeBox.Location = new Point(473, 213);
+            timeBox.Name = "timeBox";
+            timeBox.Size = new Size(266, 73);
+            timeBox.TabIndex = 25;
+            timeBox.Text = "00:00:00";
+            // 
+            // tapID
+            // 
+            tapID.BackColor = Color.FromArgb(242, 205, 10);
+            tapID.BorderStyle = BorderStyle.None;
+            tapID.Font = new Font("Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point);
+            tapID.ForeColor = Color.FromArgb(164, 16, 52);
+            tapID.Location = new Point(1893, 824);
+            tapID.MaxLength = 100;
+            tapID.Name = "tapID";
+            tapID.Size = new Size(325, 54);
+            tapID.TabIndex = 1;
+            tapID.KeyDown += tapID_KeyDown;
             // 
             // panelPB
             // 
@@ -129,8 +153,9 @@
             panelPB.BackgroundImage = (Image)resources.GetObject("panelPB.BackgroundImage");
             panelPB.BackgroundImageLayout = ImageLayout.None;
             panelPB.Controls.Add(employeePB);
+            panelPB.Controls.Add(dataChecker);
             panelPB.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            panelPB.Location = new Point(66, 274);
+            panelPB.Location = new Point(49, 301);
             panelPB.Name = "panelPB";
             panelPB.Size = new Size(400, 400);
             panelPB.TabIndex = 24;
@@ -138,11 +163,20 @@
             // employeePB
             // 
             employeePB.BackColor = Color.WhiteSmoke;
-            employeePB.Location = new Point(0, 0);
+            employeePB.Location = new Point(0, -3);
             employeePB.Name = "employeePB";
             employeePB.Size = new Size(400, 400);
             employeePB.TabIndex = 16;
             employeePB.TabStop = false;
+            // 
+            // dataChecker
+            // 
+            dataChecker.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataChecker.Location = new Point(19, 25);
+            dataChecker.Name = "dataChecker";
+            dataChecker.RowTemplate.Height = 25;
+            dataChecker.Size = new Size(378, 340);
+            dataChecker.TabIndex = 26;
             // 
             // backButton
             // 
@@ -160,30 +194,6 @@
             backButton.UseVisualStyleBackColor = false;
             backButton.Click += backButton_Click;
             // 
-            // occupationPanel
-            // 
-            occupationPanel.BackColor = Color.FromArgb(242, 205, 10);
-            occupationPanel.BackgroundImage = (Image)resources.GetObject("occupationPanel.BackgroundImage");
-            occupationPanel.BackgroundImageLayout = ImageLayout.None;
-            occupationPanel.Controls.Add(occupationLabel);
-            occupationPanel.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            occupationPanel.Location = new Point(707, 414);
-            occupationPanel.Name = "occupationPanel";
-            occupationPanel.Size = new Size(915, 85);
-            occupationPanel.TabIndex = 25;
-            // 
-            // occupationLabel
-            // 
-            occupationLabel.AutoSize = true;
-            occupationLabel.Font = new Font("Times New Roman", 30.75F, FontStyle.Regular, GraphicsUnit.Point);
-            occupationLabel.ForeColor = Color.White;
-            occupationLabel.Location = new Point(0, 19);
-            occupationLabel.Name = "occupationLabel";
-            occupationLabel.Size = new Size(275, 47);
-            occupationLabel.TabIndex = 14;
-            occupationLabel.Text = "OCCUPATION";
-            occupationLabel.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // departmentPanel
             // 
             departmentPanel.BackColor = Color.FromArgb(242, 205, 10);
@@ -191,7 +201,7 @@
             departmentPanel.BackgroundImageLayout = ImageLayout.None;
             departmentPanel.Controls.Add(departmentLabel);
             departmentPanel.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            departmentPanel.Location = new Point(707, 516);
+            departmentPanel.Location = new Point(472, 431);
             departmentPanel.Name = "departmentPanel";
             departmentPanel.Size = new Size(915, 85);
             departmentPanel.TabIndex = 24;
@@ -201,7 +211,7 @@
             departmentLabel.AutoSize = true;
             departmentLabel.Font = new Font("Times New Roman", 30.75F, FontStyle.Regular, GraphicsUnit.Point);
             departmentLabel.ForeColor = Color.White;
-            departmentLabel.Location = new Point(3, 17);
+            departmentLabel.Location = new Point(13, 19);
             departmentLabel.Name = "departmentLabel";
             departmentLabel.Size = new Size(289, 47);
             departmentLabel.TabIndex = 14;
@@ -215,7 +225,7 @@
             namePanel.BackgroundImageLayout = ImageLayout.None;
             namePanel.Controls.Add(empName);
             namePanel.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            namePanel.Location = new Point(707, 310);
+            namePanel.Location = new Point(472, 310);
             namePanel.Name = "namePanel";
             namePanel.Size = new Size(915, 85);
             namePanel.TabIndex = 23;
@@ -225,7 +235,7 @@
             empName.AutoSize = true;
             empName.Font = new Font("Times New Roman", 35.75F, FontStyle.Regular, GraphicsUnit.Point);
             empName.ForeColor = Color.White;
-            empName.Location = new Point(0, 16);
+            empName.Location = new Point(13, 16);
             empName.Name = "empName";
             empName.Size = new Size(165, 55);
             empName.TabIndex = 14;
@@ -250,9 +260,9 @@
             StatusPanel.BackgroundImageLayout = ImageLayout.None;
             StatusPanel.Controls.Add(empStatusLabel);
             StatusPanel.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            StatusPanel.Location = new Point(66, 767);
+            StatusPanel.Location = new Point(933, 569);
             StatusPanel.Name = "StatusPanel";
-            StatusPanel.Size = new Size(400, 81);
+            StatusPanel.Size = new Size(454, 81);
             StatusPanel.TabIndex = 20;
             // 
             // empStatusLabel
@@ -260,7 +270,7 @@
             empStatusLabel.AutoSize = true;
             empStatusLabel.Font = new Font("Times New Roman", 25.75F, FontStyle.Regular, GraphicsUnit.Point);
             empStatusLabel.ForeColor = Color.White;
-            empStatusLabel.Location = new Point(124, 20);
+            empStatusLabel.Location = new Point(144, 18);
             empStatusLabel.Name = "empStatusLabel";
             empStatusLabel.Size = new Size(138, 40);
             empStatusLabel.TabIndex = 23;
@@ -274,17 +284,18 @@
             empNumPanel.BackgroundImageLayout = ImageLayout.None;
             empNumPanel.Controls.Add(empNumLabel);
             empNumPanel.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            empNumPanel.Location = new Point(66, 680);
+            empNumPanel.Location = new Point(473, 569);
             empNumPanel.Name = "empNumPanel";
-            empNumPanel.Size = new Size(400, 81);
+            empNumPanel.Size = new Size(454, 81);
             empNumPanel.TabIndex = 19;
             // 
             // empNumLabel
             // 
             empNumLabel.AutoSize = true;
+            empNumLabel.BackColor = Color.FromArgb(242, 205, 10);
             empNumLabel.Font = new Font("Times New Roman", 25.75F, FontStyle.Regular, GraphicsUnit.Point);
             empNumLabel.ForeColor = Color.White;
-            empNumLabel.Location = new Point(24, 19);
+            empNumLabel.Location = new Point(49, 18);
             empNumLabel.Name = "empNumLabel";
             empNumLabel.Size = new Size(358, 40);
             empNumLabel.TabIndex = 22;
@@ -400,32 +411,19 @@
             domiePB.TabIndex = 18;
             domiePB.TabStop = false;
             // 
-            // tapID
-            // 
-            tapID.BackColor = Color.FromArgb(242, 205, 10);
-            tapID.BorderStyle = BorderStyle.None;
-            tapID.Font = new Font("Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point);
-            tapID.ForeColor = Color.FromArgb(164, 16, 52);
-            tapID.Location = new Point(707, 644);
-            tapID.MaxLength = 100;
-            tapID.Name = "tapID";
-            tapID.Size = new Size(915, 54);
-            tapID.TabIndex = 1;
-            tapID.KeyDown += tapID_KeyDown;
-            // 
             // FormEmployeeDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             BackColor = Color.FromArgb(164, 16, 52);
-            ClientSize = new Size(1900, 1037);
+            ClientSize = new Size(1900, 881);
             Controls.Add(panelBG);
             Controls.Add(labelLoginAs);
             DoubleBuffered = true;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximumSize = new Size(1920, 1080);
-            MinimumSize = new Size(1600, 900);
+            MinimumSize = new Size(1598, 858);
             Name = "FormEmployeeDashboard";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SCT Attendance System";
@@ -435,8 +433,7 @@
             panelBG.PerformLayout();
             panelPB.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)employeePB).EndInit();
-            occupationPanel.ResumeLayout(false);
-            occupationPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataChecker).EndInit();
             departmentPanel.ResumeLayout(false);
             departmentPanel.PerformLayout();
             namePanel.ResumeLayout(false);
@@ -476,12 +473,12 @@
         private Label empNumLabel;
         private Label todayLabel;
         private Panel namePanel;
-        private Panel occupationPanel;
-        private Label occupationLabel;
         private Panel departmentPanel;
         private Label departmentLabel;
         private TextBox tapID;
         private Button backButton;
         private Panel panelPB;
+        private Label timeBox;
+        private DataGridView dataChecker;
     }
 }

@@ -175,7 +175,7 @@ namespace SCTAttendanceSystemUI.Forms
                     string middle = MiddleName.Text;
                     string last = LastName.Text;
                     string suffix = Suffix.Text;
-                    string name = first + " " + middle + " " + last + " " + suffix;
+                    string name =  last + " " + first + " " + middle + " " + suffix;
 
                     cmd.Parameters.AddWithValue("@name", name); //textbox
 

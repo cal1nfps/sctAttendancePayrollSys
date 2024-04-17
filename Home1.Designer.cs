@@ -140,7 +140,7 @@
             panelMenu.Dock = DockStyle.Left;
             panelMenu.Location = new Point(0, 110);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(63, 931);
+            panelMenu.Size = new Size(63, 771);
             panelMenu.TabIndex = 4;
             // 
             // dropDownAbsent
@@ -230,7 +230,7 @@
             buttonLogout.ForeColor = Color.White;
             buttonLogout.Image = Properties.Resources.logout;
             buttonLogout.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonLogout.Location = new Point(0, 864);
+            buttonLogout.Location = new Point(0, 704);
             buttonLogout.Name = "buttonLogout";
             buttonLogout.Padding = new Padding(10, 0, 0, 0);
             buttonLogout.Size = new Size(61, 65);
@@ -385,7 +385,7 @@
             panelDesktopPane.MaximumSize = new Size(1920, 1080);
             panelDesktopPane.MinimumSize = new Size(1454, 712);
             panelDesktopPane.Name = "panelDesktopPane";
-            panelDesktopPane.Size = new Size(1841, 931);
+            panelDesktopPane.Size = new Size(1841, 771);
             panelDesktopPane.TabIndex = 5;
             // 
             // tableLayoutPanel2
@@ -443,7 +443,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1904, 1041);
+            ClientSize = new Size(1904, 881);
             Controls.Add(panelDesktopPane);
             Controls.Add(panelMenu);
             Controls.Add(panelHeader);

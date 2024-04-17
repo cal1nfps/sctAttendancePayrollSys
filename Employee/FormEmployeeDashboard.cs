@@ -12,21 +12,40 @@ using MySql.Data.MySqlClient;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using System.Xml;
 using System.Data.SqlTypes;
+using System;
+using System.Windows.Forms;
 
 namespace SCTAttendanceSystemUI.Employee
 {
     public partial class FormEmployeeDashboard : Form
     {
         private MySqlConnection connection;
-
+        private System.Windows.Forms.Timer timeTimer;
 
         //private string name;
 
         public FormEmployeeDashboard()
         {
+
+
+            // Make tapID interactable but invisible
+
             InitializeComponent();
             string connectionString = "server=localhost;user=root;password=root;database=payrollsys";
             connection = new MySqlConnection(connectionString);
+            timeTimer = new System.Windows.Forms.Timer(); // Specify the full namespace here
+            timeTimer.Interval = 1000; // 1 second
+            timeTimer.Tick += TimeTimer_Tick;
+            timeTimer.Start();
+
+            // Set focus to the tapID textbox
+
+            tapID.Focus();
+
+            LoadEmployeeAttendanceData();
+
+            // Set the text cursor color to match the background color of the textbox
+            tapID.BackColor = this.BackColor; // Assuming the form's background color i
 
 
             //this.name = name;
@@ -35,31 +54,41 @@ namespace SCTAttendanceSystemUI.Employee
             string status = empStatusLabel.Text;
 
 
-            InitializeControls();
+
+
+            // Disable all controls except tapID textbox
+
 
         }
 
         private void InitializeControls()
         {
 
-/*            // Create a PictureBox and set its properties
-            PictureBox pictureBox = employeePB;
-            employeePB.Dock = DockStyle.Fill; // Dock the PictureBox to fill the Panel
-            employeePB.SizeMode = PictureBoxSizeMode.StretchImage; // Set the size mode as needed
+            /*            // Create a PictureBox and set its properties
+                        PictureBox pictureBox = employeePB;
+                        employeePB.Dock = DockStyle.Fill; // Dock the PictureBox to fill the Panel
+                        employeePB.SizeMode = PictureBoxSizeMode.StretchImage; // Set the size mode as needed
 
-            // Add the PictureBox to the Panel
-            panelPB.Controls.Add(employeePB);
+                        // Add the PictureBox to the Panel
+                        panelPB.Controls.Add(employeePB);
 
-            // Set the border radius of the Panel (creating a rounded border effect)
-            int borderRadius = 400; // Adjust the value based on your preference
-            System.Drawing.Drawing2D.GraphicsPath panelPath = new System.Drawing.Drawing2D.GraphicsPath();
-            panelPath.AddArc(0, 0, borderRadius, borderRadius, 180, 90);
-            panelPath.AddArc(panelPB.Width - borderRadius, 0, borderRadius, borderRadius, 270, 90);
-            panelPath.AddArc(panelPB.Width - borderRadius, panelPB.Height - borderRadius, borderRadius, borderRadius, 0, 90);
-            panelPath.AddArc(0, panelPB.Height - borderRadius, borderRadius, borderRadius, 90, 90);
-            panelPath.CloseFigure();
-            panelPB.Region = new System.Drawing.Region(panelPath);*/
+                        // Set the border radius of the Panel (creating a rounded border effect)
+                        int borderRadius = 400; // Adjust the value based on your preference
+                        System.Drawing.Drawing2D.GraphicsPath panelPath = new System.Drawing.Drawing2D.GraphicsPath();
+                        panelPath.AddArc(0, 0, borderRadius, borderRadius, 180, 90);
+                        panelPath.AddArc(panelPB.Width - borderRadius, 0, borderRadius, borderRadius, 270, 90);
+                        panelPath.AddArc(panelPB.Width - borderRadius, panelPB.Height - borderRadius, borderRadius, borderRadius, 0, 90);
+                        panelPath.AddArc(0, panelPB.Height - borderRadius, borderRadius, borderRadius, 90, 90);
+                        panelPath.CloseFigure();
+                        panelPB.Region = new System.Drawing.Region(panelPath);*/
 
+        }
+
+        // Define the event handler for the timer's Tick event
+        private void TimeTimer_Tick(object sender, EventArgs e)
+        {
+            // Update the timeLabel with the current time and date
+            timeBox.Text = DateTime.Now.ToString("hh:mm:ss tt, MMM dd, yyyy");
         }
 
         private void FormEmployeeDashboard_Load_1(object sender, EventArgs e)
@@ -71,6 +100,15 @@ namespace SCTAttendanceSystemUI.Employee
         {
             try
             {
+                // Disable all controls on the form except for the ones you want to keep enabled
+                foreach (Control control in Controls)
+                {
+                    if (control != empStatusLabel && control != StatusPanel)
+                    {
+                        control.Enabled = false;
+                    }
+                }
+
                 connection.Open();
 
                 // Use a parameterized query to avoid SQL injection
@@ -83,16 +121,40 @@ namespace SCTAttendanceSystemUI.Employee
                     if (reader.Read())
                     {
                         DisplayEmployeeData(reader);
+
+                        // Start a timer to clear the displayed data after 12 seconds
+                        System.Windows.Forms.Timer clearTimer = new System.Windows.Forms.Timer();
+                        clearTimer.Interval = 8000; // 12 seconds
+                        clearTimer.Tick += (sender, args) =>
+                        {
+                            clearTimer.Stop();
+                            clearTimer.Dispose();
+
+                            // Enable all controls on the form
+                            foreach (Control control in Controls)
+                            {
+                                control.Enabled = true;
+                            }
+
+                            // Set focus to the tapID textbox
+                            tapID.Focus();
+                        };
+                        clearTimer.Start();
                     }
                     else
                     {
-                        ClearDisplayedData();
                         empStatusLabel.Text = "Employee Not Found!";
                         empStatusLabel.Location = new Point(40, 20);
                         StatusPanel.BackColor = Color.FromArgb(242, 205, 10);
 
-                        //empStatusLabel.ForeColor = Color.Red;
+                        // Enable all controls on the form
+                        foreach (Control control in Controls)
+                        {
+                            control.Enabled = true;
+                        }
 
+                        // Set focus to the tapID textbox
+                        tapID.Focus();
                     }
                 }
             }
@@ -106,13 +168,46 @@ namespace SCTAttendanceSystemUI.Employee
             }
         }
 
+        private void LoadEmployeeAttendanceData()
+        {
+            try
+            {
+                connection.Open();
+
+                // Query to fetch all rows and columns from the empattendance table
+                string query = "SELECT * FROM empattendance";
+                MySqlCommand command = new MySqlCommand(query, connection);
+
+                // Create a DataTable to store the results
+                DataTable dataTable = new DataTable();
+
+                // Load the data into the DataTable
+                dataTable.Load(command.ExecuteReader());
+
+                // Bind the DataTable to the DataGridView
+                dataChecker.DataSource = dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+
+
+
+
         private void DisplayEmployeeData(MySqlDataReader reader)
         {
             empNumLabel.Text = reader["employeenum"].ToString();
             empNumLabel.Location = new Point(100, 19);
 
             empName.Text = reader["name"].ToString();
-            occupationLabel.Text = reader["occupation"].ToString();
+
             departmentLabel.Text = reader["department"].ToString();
 
             byte[] imageData = (byte[])reader["image_data"];
@@ -133,7 +228,7 @@ namespace SCTAttendanceSystemUI.Employee
         {
             // Create and configure the timer
             displayTimer = new System.Windows.Forms.Timer();
-            displayTimer.Interval = 5000; // 5 seconds
+            displayTimer.Interval = 8000;
             displayTimer.Tick += DisplayTimer_Tick;
 
 
@@ -148,29 +243,13 @@ namespace SCTAttendanceSystemUI.Employee
 
             // Clear or hide the displayed data
             ClearDisplayedData();
+
+
         }
 
         private void ClearDisplayedData()
         {
-            // Clear or hide the displayed data on your form
-            empNumLabel.Text = "EMPLOYEE NUMBER";
-            empNumLabel.Location = new Point(20, 19);
 
-            empName.Text = "NAME";
-            occupationLabel.Text = "OCCUPATION";
-            departmentLabel.Text = "DEPARTMENT";
-            employeePB.Image = null; // Clear the image
-
-            // Additional clearing code as needed
-
-            // Call TimeOut here if you want to proceed to TimeOut after 10 seconds
-            // TimeOut();
-
-            // Reset the status label and color
-            empStatusLabel.Text = "STATUS";
-            StatusPanel.BackColor = Color.FromArgb(242, 205, 10);
-
-            // Reset the tapID label
             tapID.Text = "";
         }
 
@@ -232,7 +311,8 @@ namespace SCTAttendanceSystemUI.Employee
                                     insertCommand.ExecuteNonQuery();
 
                                     tapID.Text = "";
-                                    empStatusLabel.Text = "Time-In";
+                                    string currentTimeStamp = DateTime.Now.ToString("HH:mm:ss");
+                                    empStatusLabel.Text = $"Time-In ({currentTimeStamp})";
                                     empStatusLabel.Location = new Point(124, 20);
                                     StatusPanel.BackColor = Color.Green;
                                     StartDisplayTimer();
@@ -273,9 +353,10 @@ namespace SCTAttendanceSystemUI.Employee
 
                     if (rowsAffected > 0)
                     {
-                        empStatusLabel.Text = "Time-Out";
+                        string currentTimeStamp = DateTime.Now.ToString("HH:mm:ss");
+                        empStatusLabel.Text = $"Time-Out ({currentTimeStamp})";
                         empStatusLabel.Location = new Point(124, 20);
-                        StatusPanel.BackColor = Color.Red; 
+                        StatusPanel.BackColor = Color.Red;
                         StartDisplayTimer();
                     }
                     else
@@ -301,10 +382,186 @@ namespace SCTAttendanceSystemUI.Employee
                 // Handle RFID input here
                 string scannedRFID = tapID.Text;
 
+                // Check if the user has already timed in or out for the day based on job time
+                if (HasAlreadyTimedInForToday(scannedRFID) && HasAlreadyTimedOutForToday(scannedRFID))
+                {
+                    // Display a message informing the user that they have already timed in and out for today based on job time
+                    
+                    empStatusLabel.Text = $"Already Logged out";
+                    empStatusLabel.Location = new Point(124, 20);
+                    StatusPanel.BackColor = Color.Red;
+                    return; // Exit the method
+                }
+                if (HasAlreadyTimedInForToday(scannedRFID))
+                {
+                    // Display a message informing the user that they have already timed in for today based on job time
+             
+                    empStatusLabel.Text = $"Already Logged out";
+                    empStatusLabel.Location = new Point(124, 20);
+                    StatusPanel.BackColor = Color.Red;
+                    return; // Exit the method
+                }
+                if (HasAlreadyTimedOutForToday(scannedRFID))
+                {
+                    // Display a message informing the user that they have already timed out for today based on job time
+                
+                    empStatusLabel.Text = $"Already Logged out";
+                    empStatusLabel.Location = new Point(124, 20);
+                    StatusPanel.BackColor = Color.Red;
+                    return; // Exit the method
+                }
+
                 // Call a method to look for the matched employeenum in the database
                 LoadEmployeeData(scannedRFID);
+
+                // Update the table to indicate that the user has timed in for today
+                UpdateAttendanceTable(scannedRFID, true);
+
+                // Reload the data into the DataGridView named dataChecker
+                LoadDataIntoDataGridView();
             }
         }
+
+        private void UpdateAttendanceTable(string employeeID, bool isTimedIn)
+        {
+            try
+            {
+                connection.Open();
+
+                // Construct the SQL update query based on whether the user is timed in or timed out
+                string query;
+                if (isTimedIn)
+                {
+                    query = "UPDATE empattendance SET jobtimein = @timein WHERE empnum = @employeeID";
+                }
+                else
+                {
+                    query = "UPDATE empattendance SET jobtimeout = @timeout WHERE empnum = @employeeID";
+                }
+
+                // Create and execute the SQL command
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@timein", DateTime.Now);
+                command.Parameters.AddWithValue("@timeout", DateTime.Now);
+                command.Parameters.AddWithValue("@employeeID", employeeID);
+                int rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    
+                }
+                else
+                {
+                   
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        private void LoadDataIntoDataGridView()
+        {
+            // Assuming dataChecker is a DataGridView bound to a DataTable or similar data source
+            // Reload data into the DataGridView
+            // This assumes you have a method or logic to fetch and load the updated data source into the DataGridView
+            // For example:
+            dataChecker.DataSource = null; // Clear the existing data source
+                                           // Reassign the data source (e.g., dt is your DataTable)
+            dataChecker.DataSource = GetUpdatedDataSource(); // Replace GetUpdatedDataSource() with your method to fetch the updated data source
+        }
+
+        private DataTable GetUpdatedDataSource()
+        {
+            // Assuming you have a method to fetch data from your database and return it as a DataTable
+            // Replace this with your actual logic to fetch the updated data source
+            DataTable updatedDataSource = new DataTable();
+
+            try
+            {
+                connection.Open();
+
+                string query = "SELECT * FROM empattendance"; // Example query to fetch data from the empattendance table
+                MySqlCommand command = new MySqlCommand(query, connection);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                adapter.Fill(updatedDataSource);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error fetching updated data source: {ex.Message}");
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return updatedDataSource;
+        }
+
+
+
+
+
+        private bool HasAlreadyTimedOutForToday(string employeeID)
+        {
+            // Get the current date
+            DateTime currentDate = DateTime.Today;
+
+            // Iterate through the rows of the DataGridView
+            foreach (DataGridViewRow row in dataChecker.Rows)
+            {
+                // Check if the row has data and matches the employee ID and current date
+                if (!row.IsNewRow && row.Cells["empnum"].Value.ToString() == employeeID)
+                {
+                    // Check if timeout value exists for the current row and is not DBNull
+                    if (row.Cells["timeout"].Value != null && row.Cells["timeout"].Value != DBNull.Value)
+                    {
+                        // If timeout value exists and is not DBNull, return true (user has already timed out for the day)
+                        return true;
+                    }
+                }
+            }
+
+            // If no matching record found with timeout value for today or if timeout value is DBNull, return false
+            return false;
+        }
+
+
+
+        private bool HasAlreadyTimedInForToday(string employeeID)
+        {
+            // Get the current date
+            DateTime currentDate = DateTime.Today;
+
+            // Iterate through the rows of the DataGridView
+            foreach (DataGridViewRow row in dataChecker.Rows)
+            {
+                // Check if the row has data and matches the employee ID and current date
+                if (!row.IsNewRow && row.Cells["empnum"].Value.ToString() == employeeID)
+                {
+                    // Check if timein value exists for the current row
+                    if (row.Cells["timein"].Value != null)
+                    {
+                        // If timein value exists and timeout value doesn't exist, return true
+                        if (row.Cells["timeout"].Value == null)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            // If no matching record found with timein value for today or if timeout value exists, return false
+            return false;
+        }
+
+
+
 
         private void backButton_Click(object sender, EventArgs e)
         {
